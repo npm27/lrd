@@ -108,4 +108,4 @@ output = read.csv("output.csv") #load in the scored data
 dat$fifty = output$scored
 
 #write.csv(dat,
-    #    file = "cmh processed.csv", row.names = F)
+      #  file = "cmh processed.csv", row.names = F)

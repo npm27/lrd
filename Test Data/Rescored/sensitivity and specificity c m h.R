@@ -1,12 +1,12 @@
 ####setup####
-dat = read.csv("max_buch processed.csv")
+dat = read.csv("cmh processed.csv")
 
 library(caret)
 
 ####sensitivity analysis####
 #set up
 data100 = factor(dat$one_hundred)
-data90 = factor(dat$ninety)    
+data90 = factor(dat$ninety)
 data85 = factor(dat$eightyfive)
 data80 = factor(dat$eighty)
 data75 = factor(dat$seventy_five)
