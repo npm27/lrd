@@ -1,4 +1,4 @@
-#lrd - Lexical Response Data
+# lrd - Lexical Response Data
 
 ## Overview
 
@@ -12,5 +12,7 @@
     3: Load the library to get started! library(lrd)
 
 ## Scoring data:
+
+
 
 You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)!
