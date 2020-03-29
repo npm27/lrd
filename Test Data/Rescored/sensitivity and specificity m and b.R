@@ -6,7 +6,8 @@ library(caret)
 ####sensitivity analysis####
 #set up
 data100 = factor(dat$one_hundred)
-data90 = factor(dat$ninety)    
+data95 = factor(dat$ninety_five)
+data90 = factor(dat$ninety)
 data85 = factor(dat$eightyfive)
 data80 = factor(dat$eighty)
 data75 = factor(dat$seventy_five)
@@ -22,6 +23,11 @@ ref = factor(dat$manually_coded)
 table(data100, ref)
 sensitivity(data100, ref)
 specificity(data100, ref)
+
+#95
+table(data95, ref)
+sensitivity(data95, ref)
+specificity(data95, ref)
 
 #90
 table(data90, ref)

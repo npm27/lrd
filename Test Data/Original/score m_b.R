@@ -14,7 +14,7 @@ dat$Key = tolower(dat$Key)
 maxbuch_matched = percent_match(dat$Response, key = dat$Key, id = dat$Sub.ID)
 
 ####Score the data####
-#going to use 10 cutoff points: 100, 90, 85, 80, 75, 70, 65, 60, 55, 50
+#going to use 10 cutoff points: 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50
 
 #first add percent match
 dat$percent_match = maxbuch_matched$percent_match
@@ -26,6 +26,14 @@ score_recall(maxbuch_matched, set.cutoff = 1)
 output = read.csv("output.csv") #load in the scored data
 
 dat$one_hundred = output$scored
+
+#95%
+score_recall(maxbuch_matched, set.cutoff = .95)
+
+#now add the scored data to the original file
+output = read.csv("output.csv") #load in the scored data
+
+dat$ninety_five = output$scored
 
 #90%
 score_recall(maxbuch_matched, set.cutoff = .90)
@@ -100,4 +108,4 @@ output = read.csv("output.csv") #load in the scored data
 dat$fifty = output$scored
 
 #write.csv(dat,
-  #        file = "max_buch processed.csv", row.names = F)
+    #      file = "max_buch processed.csv", row.names = F)

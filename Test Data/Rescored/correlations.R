@@ -1,6 +1,9 @@
 dat1 = read.csv("max_buch processed.csv")
 dat2 = read.csv("max_huff processed.csv")
 
+length(unique(dat1$Sub.ID))
+length(unique(dat2$Sub.ID))
+
 dat2 = na.omit(dat2)
 
 #item level
@@ -11,10 +14,11 @@ corr.test(dat2$manually_coded, dat2[ , 8:17]) #Maxwell Huff
 
 library(psych)
 
-c1 = cohen.kappa(dat1[ , c(6, 8, 14, 17)]) #M & B
+c1 = cohen.kappa(dat1[ , c(6, 8:18)]) #M & B
+c1
 print(c1, all = T)
 
-cohen.kappa(dat2[ , c(6, 8, 14, 17)]) #M & H
+cohen.kappa(dat2[ , c(6, 8:18)]) #M & H
 
 cohen.k
 
@@ -23,13 +27,13 @@ library(ez)
 library(reshape)
 
 #set up for ANOVA
-long.dat1 = melt(dat1[ , c(1, 6, 8, 14, 17)],
+long.dat1 = melt(dat1[ , c(1, 6, 8:18)],
                 id = c("Sub.ID"))
 
 colnames(long.dat1)[2] = "score_type"
 colnames(long.dat1)[3] = "score"
 
-long.dat2 = melt(dat2[ , c(2, 6, 8, 14, 17)],
+long.dat2 = melt(dat2[ , c(2, 6, 8:18)],
                  id = c("Sub.ID"))
 
 colnames(long.dat2)[2] = "score_type"
@@ -55,7 +59,6 @@ anova.2 = melt(final.2,
 colnames(anova.2)[2] = "score"
 colnames(anova.2)[3] = "score_type"
 
-
 #Anova time!
 model1 = ezANOVA(anova.1,
         dv = score,
@@ -69,6 +72,25 @@ anovaLength = length(model1$ANOVA)
 model1$ANOVA$MSE = model1$ANOVA$SSd/model1$ANOVA$DFd
 model1$ANOVA$MSE
 
+##get t values for comparison
+library(reshape)
+
+tapply(anova.1$score,
+       anova.1$score_type, mean)
+
+#get 95%CI
+tap1 = tapply(anova.1$score,
+              anova.1$score_type, sd)
+
+se1 = tap1 / sqrt(length(unique(anova.1$Sub.ID)))
+
+se1 * 1.96
+
+mb_posthoc = cast(long.dat1, Sub.ID ~ score_type, mean)
+
+t.test(mb_posthoc$fifty, mb_posthoc$one_hundred, paired = F, p.adjust.methods = "bonferroni") #sig
+
+##Now do the maxwell and huff data
 model2 = ezANOVA(anova.2,
         dv = score,
         wid = Sub.ID,
@@ -80,17 +102,6 @@ model2
 anovaLength2 = length(model2$ANOVA)
 model2$ANOVA$MSE = model2$ANOVA$SSd/model2$ANOVA$DFd
 model2$ANOVA$MSE
-
-tapply(anova.1$score,
-       anova.1$score_type, mean)
-
-#get 95%CI
-tap1 = tapply(anova.1$score,
-       anova.1$score_type, sd)
-
-se1 = tap1 / sqrt(length(unique(anova.1$Sub.ID)))
-
-se1 * 1.96
 
 ##now do the other dataset
 tapply(anova.2$score,
@@ -104,19 +115,11 @@ se2 = tap2 / sqrt(length(unique(anova.2$Sub.ID)))
 
 se2 * 1.96
 
-##do the post hoc for Maxwell and Huff
-#comparing between scoring conditions
-t.test(fifty$score, one_hundred$score, paired = F, p.adjust.methods = "bonferroni") #sig
-t.test(fifty$score, sixty_five$score, paired = F, p.adjust.methods = "bonferroni") #sig
-t.test(sixty_five$score, one_hundred$score, paired = F, p.adjust.methods = "bonferroni") #marginal
+#get t-values
+mh_posthoc = cast(long.dat2, Sub.ID ~ score_type, mean)
 
-#comparing to manually coding
-t.test(fifty$score, manual$score, paired = F, p.adjust.methods = "bonferroni") #sig
-t.test(sixty_five$score, manual$score, paired = F, p.adjust.methods = "bonferroni") #non-sig
-t.test(one_hundred$score, manual$score, paired = F, p.adjust.methods = "bonferroni") #non-sig
-
-#get SEM for the significant comparison
-temp = t.test(fifty$score, manual$score, paired = F, p.adjust.methods = "bonferroni")
+temp = t.test(mh_posthoc$fifty, mh_posthoc$sixty, paired = F, p.adjust.methods = "bonferroni")
+temp
 p4 = round(temp$p.value, 3)
 t4 = temp$statistic
 SEM4 = (temp$conf.int[2] - temp$conf.int[1]) / 3.92

@@ -104,6 +104,7 @@ percent_match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL){
 
   output = rbind(sub1, sub2, sub3)
   output = output[order(as.numeric(rownames(output))),,drop = FALSE]
+  #output$Scored = as.numeric(output$percent_match >= .75)
 
   if (weight == TRUE){
 
