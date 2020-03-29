@@ -13,4 +13,4 @@
 
 ## Scoring data:
 
-You can also use the shiny app
+You can also use the [Shiny app] (https://npm27.shinyapps.io/lrdshiny/)
