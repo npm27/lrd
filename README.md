@@ -1,4 +1,4 @@
-#To install lrd:
+# To install lrd:
 
     1: Install devtools if you do not have it.
 
