@@ -21,5 +21,7 @@ This package uses two functions for scoring data.
 	
 	2: score_recall()
 
+Detailed descriptions of each function are available in the documentation and in the [manuscript] (https://osf.io/g96a7/)
+
 
 You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)!
