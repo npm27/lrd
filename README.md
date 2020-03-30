@@ -6,6 +6,8 @@ The *lrd* package provides tools for quickly and accurately processing the large
 
 ## To install lrd:
 
+The following steps will install the development version of *lrd*. CRAN release coming soon!
+
     1: Install devtools if you do not have it. install.packages(devtools)
 
     2: With devtools installed, you can then install domo by executing the following:
@@ -21,7 +23,7 @@ This package uses two functions for scoring data.
 	
 	2: score_recall()
 
-Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/g96a7/)
+Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/g96a7/).
 
 
 You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)!
