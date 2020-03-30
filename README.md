@@ -2,7 +2,7 @@
 
 ## Overview
 
-The *lrd* package provides tools for quickly and accurately processing large amounts of lexical response data generated from cued-recall tests, while also being able to control for minor errors in participant responses.
+The *lrd* package provides tools for quickly and accurately processing the large amounts of lexical response data that are typically generated from cued-recall tests, while also being able to control for minor errors in participant responses.
 
 ## To install lrd:
 
