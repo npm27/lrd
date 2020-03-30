@@ -2,7 +2,7 @@
 
 ## Overview
 
-This app allows you to researchers to quickly and accurately score large amounts of lexical output, while also being able to control for minor errors in participant responses.
+The *lrd* package provides tools for quickly and accurately processing large amounts of lexical response data generated from cued-recall tests, while also being able to control for minor errors in participant responses.
 
 ## To install lrd:
 
