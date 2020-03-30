@@ -8,20 +8,20 @@ The *lrd* package provides tools for quickly and accurately processing the large
 
 The following steps will install the development version of *lrd*. CRAN release coming soon!
 
-    1: Install devtools if you do not have it. install.packages(devtools)
+    1: Install devtools if you do not have it. This package lets install packages hosted on GitHub. `install.packages(devtools)`
 
     2: With devtools installed, you can then install domo by executing the following:
-	   devtools::install_github("npm27/lrd")
+	   `devtools::install_github("npm27/lrd")`
 
-    3: Load the library to get started! library(lrd)
+    3: Load the library to get started! `library(lrd)`
 
 ## Scoring data:
 
 This package uses two functions for scoring data.
 
-	1: percent_match()
+	1: `percent_match()`
 	
-	2: score_recall()
+	2: `score_recall()`
 
 Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/g96a7/).
 
