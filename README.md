@@ -2,7 +2,7 @@
 
 ## Overview
 
-This app allows you to 
+This app allows you to researchers to quickly and accurately score large amounts of lexical output, while also being able to control for minor errors in participant responses.
 
 ## To install lrd:
 
@@ -17,9 +17,9 @@ This app allows you to
 
 This package uses two functions for scoring data.
 
-	1: *percent_match()*
+	1: percent_match()
 	
-	2: *score_recall()*
+	2: score_recall()
 
 
 You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)!
