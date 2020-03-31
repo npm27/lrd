@@ -23,10 +23,10 @@ This package uses two functions for scoring data.
   2. `score_recall()` This function determines whether or not two strings match based on a user defined percentage of matching characters.
 
 Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/g96a7/).
-For step-by-step instructions on using the Shiny application, see the [how-to-guide](https://nick1028blog.wordpress.com/lrd-shiny-application/).
 
 
-You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)!
+
+You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)! For step-by-step instructions on using the Shiny application, see the [how-to-guide](https://nick1028blog.wordpress.com/lrd-shiny-application/).
 
 ## Contact:
 
