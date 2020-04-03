@@ -26,7 +26,7 @@ Detailed descriptions of each function are available in the documentation and in
 
 
 
-You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)! For step-by-step instructions on using the Shiny application, see the [how-to-guide](https://nick1028blog.wordpress.com/lrd-shiny-application/).
+You can also use the [Shiny app](https://npm27.shinyapps.io/lrdshiny/)! For step-by-step instructions on using the Shiny application, see the [how-to-guide](https://www.macapsych.com/lexical-re).
 
 ## Contact:
 
