@@ -93,7 +93,7 @@ setwd('..')
 
 getwd()
 
-app.test = read.csv("lrdSHINY/app test 2.csv")
+app.test = read.csv("lrdSHINY/Delayed Final Data.csv")
 
 #Need to score test data
 ID = app.test$Subject
