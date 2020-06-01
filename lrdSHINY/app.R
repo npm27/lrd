@@ -1,6 +1,8 @@
 #####load libraries####
 library(shiny)
 library(ggplot2)
+library(vecsets)
+library(Hmisc)
 
 ##Erin's clean up code
 cleanup = theme(panel.grid.major = element_blank(),
@@ -15,6 +17,8 @@ cleanup = theme(panel.grid.major = element_blank(),
 ##Percent Match
 Percent_Match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL,
                          other = NULL, cutoff = qqq){
+
+    nb = is.null(other)
 
     xx = weight.by
 
@@ -65,8 +69,8 @@ Percent_Match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL,
         c = char.x1[[k]]
         d = char.y1[[k]]
 
-        percent_match1[k] = length(na.omit(d[is.element(c, d)])) /
-            length(c)
+        percent_match1[k] = length(vintersect(c, d)) /
+            max(length((c)), length((d)))
 
         sub1$percent_match = percent_match1
 
@@ -84,8 +88,8 @@ Percent_Match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL,
         e = char.x2[[j]]
         f = char.y2[[j]]
 
-        percent_match2[j] = length(na.omit(f[is.element(e, f)])) /
-            length(e)
+        percent_match2[j] = length(vintersect(e, f)) /
+            max(length((e)), length((f)))
 
         sub2$percent_match = percent_match2
 
@@ -103,8 +107,8 @@ Percent_Match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL,
         r = char.x3[[p]]
         s = char.y3[[p]]
 
-        percent_match3[p] = length(unique(r[r %in% s[s %in% r]])) /
-            length(s)
+        percent_match3[p] = length(vintersect(r, s)) /
+            max(length((r)), length((s)))
 
         sub3$percent_match = percent_match3
 
@@ -115,7 +119,7 @@ Percent_Match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL,
     output = output[order(as.numeric(rownames(output))),,drop = FALSE]
 
 
-    if (is.null(other) == FALSE){
+    if (nb == FALSE){
 
         output$Scored = as.numeric(output$percent_match >= cutoff)
         other = data.frame(other)
@@ -123,46 +127,9 @@ Percent_Match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL,
         print(output3)
     }
 
-    else if (is.null(other) == TRUE){
+    else if (nb == TRUE){
 
         output$Scored = as.numeric(output$percent_match >= cutoff)
-        print(output)
-
-    }
-
-    else if (weight == TRUE){
-
-        if (weight.by <= 1 & is.null(weight.by) == FALSE){
-
-            sub4 = subset(output,
-                          output$percent_match == 1)
-            sub5 = subset(output,
-                          output$percent_match == 0)
-            sub6 = subset(output,
-                          output$percent_match < 1 & output$percent_match > 0)
-
-            sub4$weighted_match = as.numeric(sub4$percent_match)
-            sub5$weighted_match = as.numeric(sub5$percent_match)
-
-            sub6$weighted_match = as.numeric(sub6$percent_match) + (weight.by / nchar(sub6$key))
-
-            output2 = rbind(sub4, sub5, sub6)
-
-            output2 = output2[order(as.numeric(rownames(output2))),,drop = FALSE]
-            print(output2)
-
-        }
-
-        else if (is.null(weight.by) == FALSE & weight.by > 1) {
-
-            print("weight.by must be a value between 0 and 1!")
-
-        }
-
-    }
-
-    else if (weight == FALSE) {
-
         print(output)
 
     }
@@ -290,6 +257,10 @@ ui = fluidPage(
 
                 tags$hr(),
 
+                tags$style(type = "text/css",
+                           ".shiny-output-error {visibility: hidden;}",
+                           ".shiny-output-error:before {visibility: hidden;}"),
+
                 checkboxInput('header', 'Header', TRUE),
 
                 radioButtons('sep', 'Separator',
@@ -308,7 +279,6 @@ ui = fluidPage(
                                 min = 50, max = 100,
                                 value = 75),
 
-                downloadButton('downloadData', 'Download')
             ),
 
             mainPanel(
@@ -316,31 +286,60 @@ ui = fluidPage(
 
                     tabPanel("Instructions",
 
+                             helpText(" "),
+
                              p(strong("Welcome to lrd!")),
 
-                             helpText("To begin, select the appropriate settings based on your input file, choose the cutoff percentage used for scoring",
-                                     "(i.e., what percentage of characters must match between response and key for items to be counted as correct; 100% = Strictest), and ",
-                                     "upload your file. Scored output will appear below. You can download a .csv file of the scored data using the button at the bottom of the screen."),
+                             helpText("To begin, select the appropriate settings based on your upload file, choose the cutoff percentage used for scoring",
+                                     "(i.e., what percentage of characters must match between response and key for items to be counted as correct; 100% = Strictest, 75% is recommended), and ",
+                                     "upload your file."),
 
-                             helpText("The scored dataset can be viewed by clicking on the \"Scored Output\" tab. The mean proportion correct and corresponding z-score for each participant can be viewed",
-                                      "using the \"Proportion Correct\" tab. The \"Distrubitions\" tab can be used to visualize the dataset. Please note that these tabs will not populate until a datset has been uploaded."),
+                             helpText("The scored dataset can be viewed by clicking on the \"Scored Output\" tab and can be downloaded using the download button at the top of tab. Use the slidebar to adjust the scoring cutoff.",
+                                      "Each participant's mean proportion of correct responses and corresponding z-score can be viewed",
+                                      "using the \"Proportion Correct\" tab. This output can be customized based on any optional condition columns that are attached to upload .csv file. These values can be downloaded using the download button at the top of the tab.",
+                                      "Please note that z-scores are only generated when splitting the data on one condition.",
+                                      "The \"Plots\" tab can be used to visualize the dataset. Plots can be customized based on optional condition columns in the dataset.",
+                                      "If no condition columns are included, this tab will display the distribution of participant responses (This can also be viewed by selecting \"id\" as the grouping condition.",
+                                      "Please note that tabs will not populate until a .csv file in the correct format has been uploaded."),
 
                              p(strong("Instructions for Formatting Your Upload File:")),
 
-                             helpText("Input file must contain at least three columns arranged in the following order:",
-                                      "A unique participant identifier, participant resopnses, a scoring key.",
+                             helpText("The upload .csv file must contain at minimun three columns that are arranged in the following order:",
+                                      "A unique participant identifier, participant responses, and a scoring key.",
                                       "After uploading your file, the scored data will be displayed below.",
-                                      "Any additional columns must be placed after these.")),
+                                      "Any additional columns (such as those denoting experimental conditions) must be placed after these. An example of how to format the upload file is available", a("here.", href = "https://osf.io/evpq8/", target = "_blank"))),
 
                     tabPanel("Scored Output",
+
+                            helpText(" "),
+
+                            downloadButton('downloadData', 'Download'),
+
+                            helpText(" "),
 
                             tableOutput('contents')),
 
                     tabPanel("Proportion Correct",
 
-                            tableOutput('contents2')),
+                             helpText(" "),
 
-                    tabPanel("Distributions", h3("Proportion Correct", align = "center"),
+                             downloadButton('downloadData2', 'Download'),
+
+                             helpText(" "),
+
+                             uiOutput("select_grouping1"),
+
+                             helpText(" "),
+
+                             uiOutput("select_grouping2"),
+
+                             tableOutput('contents2')),
+
+                    tabPanel("Plots",
+
+                             helpText(" "),
+
+                             uiOutput("toCol"),
 
                              plotOutput(outputId = "distPlot"))
                 )
@@ -369,12 +368,87 @@ server = function(input, output) {
             colnames(dat)[1:3] = c("ID", "Response", "Key")
             dat$Response = tolower(dat$Response)
             dat$Key = tolower(dat$Key)
-            dat2 = dat[ , c(4:length(dat))]
+            #dat2 = dat[ , c(4:length(dat))]
 
-            Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
+            if (length(dat) > 3) {
 
+                Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
+
+            }
+
+            else if (length(dat) == 3) {
+
+                Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = NULL, cutoff = percentage)
+
+            }
         }
     )
+
+    output$select_grouping1 = renderUI({
+
+        df = getData()
+
+        items = colnames(df)
+
+        if (length(df) == 5) {
+
+            items = names(df)
+            items = items[1]
+            selectInput("conditions2", "Select First Grouping Variable", items)
+
+        }
+
+        else if (length(df) > 5) {
+
+            items = names(df)
+            items = items[ -c(2:5)]
+            selectInput("conditions2", "Select First Grouping Variable", items)
+
+        }
+
+    })
+
+    output$select_grouping2 = renderUI({
+
+        df = getData()
+
+        items = colnames(df)
+
+        if (length(df) == 5) {
+
+            items = names(df)
+            items = "None Available"
+            selectInput("conditions3", "Select Second Grouping Variable (Optional)", items)
+
+        }
+
+        else if (length(df) > 5) {
+
+            df2 = df[ ,-c(1:5)]
+
+            if (input$conditions2 == "id"){
+
+                items = names(df2)
+
+                items = append(items, "None")
+
+                selectInput("conditions3", "Select Second Grouping Variable (Optional)", items, selected = "None")
+
+                }
+
+           else if(input$conditions2 != "id"){
+
+               items = names(df2)
+
+               items = append(items, "None")
+
+               selectInput("conditions3", "Select Second Grouping Variable (Optional)", items)
+
+           }
+
+        }
+
+    })
 
     getData2 = reactive({
 
@@ -395,15 +469,82 @@ server = function(input, output) {
         dat$Key = tolower(dat$Key)
         #dat2 = dat[ , c(4:length(dat))]
 
-        matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
+        if (length(dat) > 3) {
 
-        prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
 
-        Participant = row.names(prop.correct.output)
-        Participant = as.data.frame(Participant)
-        final_out = cbind(Participant, prop.correct.output)
-        colnames(final_out)[2] = "Proportion Correct Response"
-        final_out
+            if(input$conditions3 == "None"){
+
+                if (input$conditions2 == "id"){
+
+                    prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+
+                    Participant = row.names(prop.correct.output)
+                    Participant = as.data.frame(Participant)
+                    final_out = cbind(Participant, prop.correct.output)
+                    colnames(final_out)[2] = "Proportion Correct Response"
+                    final_out
+
+                    }
+
+                else if (input$conditions2 != "id") {
+
+                    prop.correct.output = prop.correct(matched$Scored, id = dat[ , input$conditions2], flag = TRUE)
+
+                    Participant = row.names(prop.correct.output)
+                    Participant = as.data.frame(Participant)
+                    final_out = cbind(Participant, prop.correct.output)
+                    colnames(final_out)[1] = names(dat[input$conditions2])
+                    colnames(final_out)[2] = "Proportion Correct Response"
+                    final_out
+
+                }
+            }
+
+            else if (input$conditions3 != "None"){
+
+                if (input$conditions2 == "id"){
+
+                    prop.correct.output = prop.correct(matched$Scored, id = dat$ID, group.by = dat[ , input$conditions3])
+
+                    Participant = row.names(prop.correct.output)
+                    Participant = as.data.frame(Participant)
+                    final_out = cbind(Participant, prop.correct.output)
+                    #colnames(final_out)[2] = "Proportion Correct Response"
+                    final_out
+
+                }
+
+                else if (input$conditions2 != "id"){
+
+                    prop.correct.output = prop.correct(matched$Scored, id = dat[ , input$conditions2], group.by = dat[, input$conditions3])
+
+                    Participant = row.names(prop.correct.output)
+                    Participant = as.data.frame(Participant)
+                    final_out = cbind(Participant, prop.correct.output)
+                    #colnames(final_out)[1] = names(dat[input$conditions2])
+                    #colnames(final_out)[2] = "Proportion Correct Response"
+                    final_out
+
+                }
+
+            }
+
+        }
+
+        else if (length(dat) == 3) {
+
+            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = NULL, cutoff = percentage)
+
+            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+
+            Participant = row.names(prop.correct.output)
+            Participant = as.data.frame(Participant)
+            final_out = cbind(Participant, prop.correct.output)
+            colnames(final_out)[2] = "Proportion Correct Response"
+            final_out
+
+            }
 
         }
     )
@@ -427,17 +568,33 @@ server = function(input, output) {
         dat$Key = tolower(dat$Key)
         #dat2 = dat[ , c(4:length(dat))]
 
-        matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
+        if (length(dat) > 3) {
 
-        prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
 
-        Participant = row.names(prop.correct.output)
-        Participant = as.data.frame(Participant)
-        final_out = cbind(Participant, prop.correct.output)
-        colnames(final_out)[2] = "Proportion_Correct"
+            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
 
-        ggplot(final_out, aes(Proportion_Correct)) + xlab("Proportion Correct") + ylab("Frequency") + geom_histogram(binwidth = 0.2, fill = "blue4", color = "white") + cleanup
+            Participant = row.names(prop.correct.output)
+            Participant = as.data.frame(Participant)
+            final_out = cbind(Participant, prop.correct.output)
+            colnames(final_out)[2] = "Proportion Correct Response"
+            final_out
 
+        }
+
+        else if (length(dat) == 3) {
+
+            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = NULL, cutoff = percentage)
+
+            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+
+            Participant = row.names(prop.correct.output)
+            Participant = as.data.frame(Participant)
+            final_out = cbind(Participant, prop.correct.output)
+            colnames(final_out)[2] = "Proportion Correct Response"
+            final_out
+
+            }
         }
     )
 
@@ -453,12 +610,72 @@ server = function(input, output) {
 
     )
 
-    output$distPlot = renderPlot({
+    output$toCol = renderUI({
 
-        getData3()
+        df = getData()
 
-        })
+        items = colnames(df)
 
+            if (length(df) == 5) {
+
+                items = names(df)
+                items = items[1]
+                selectInput("conditions", "Select Grouping Condition", items)
+
+        }
+
+            else if (length(df) > 5) {
+
+                items = names(df)
+                items = items[ -c(2:5)]
+                selectInput("conditions", "Select Grouping Condition", items)
+
+            }
+
+    })
+
+    output$distPlot =  renderPlot({
+
+        dat1 = getData()
+        dat2 = getData3()
+
+        #described = describe.condition(dat$scored, id = dat$id, group.by = dat[ , input$conditions])
+
+        if (input$conditions == "id") {
+
+            colnames(dat2)[2] = "Proportion_Correct"
+
+            hist1 = ggplot(dat2, aes(Proportion_Correct)) + xlab("Proportion Correct") + ylab("Frequency") + geom_histogram(binwidth = 0.2, fill = "blue4", color = "white") + cleanup
+
+            hist1
+
+        }
+
+        else if (input$conditions != "id") {
+
+            bar = ggplot(dat1, aes(dat1[ ,input$conditions], dat1[ ,5]))
+
+            bar = bar +
+
+                stat_summary(fun.y = mean,
+                           geom = "bar",
+                           fill = "Blue4",
+                           color = "White") +
+
+                stat_summary(fun.data = mean_cl_normal,
+                         geom = "errorbar",
+                         width = .2,
+                         position = "dodge") +
+
+                cleanup +
+                xlab(input$conditions) +
+                ylab("Mean Correct Response") +
+                labs(caption = "Bars = 95% CI")
+
+        bar
+
+        }
+    })
 
     output$downloadData = downloadHandler(
 
@@ -468,7 +685,19 @@ server = function(input, output) {
 
         content = function(file) {
 
-            write.csv(getData(), file)
+            write.csv(getData(), file, row.names = F)
+
+        })
+
+    output$downloadData2 = downloadHandler(
+
+        filename = function() {
+            paste("prop.correct-", Sys.Date(), ".csv", sep = "")
+        },
+
+        content = function(file) {
+
+            write.csv(getData2(), file, row.names = F)
 
         })
 

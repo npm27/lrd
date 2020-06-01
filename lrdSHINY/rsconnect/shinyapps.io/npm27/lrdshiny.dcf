@@ -5,6 +5,6 @@ account: npm27
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2003328
-bundleId: 3202042
+bundleId: 3214567
 url: https://npm27.shinyapps.io/lrdshiny/
-when: 1590697431.72267
+when: 1591026012.62737
