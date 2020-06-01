@@ -4,7 +4,7 @@
 \alias{describe.condition}
 \title{Describe data}
 \usage{
-describe.condition(x, group.by = y, id = z)
+\method{describe}{condition}(x, group.by = y, id = z)
 }
 \arguments{
 \item{x}{a vector containing input data}

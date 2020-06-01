@@ -4,6 +4,7 @@
 #'
 #' @param x a vector containing input data
 #' @return a dataframe object containing the input vectors and a percent match column
+#' @import vecsets
 #' @export
 
 percent_match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL){
@@ -57,8 +58,8 @@ percent_match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL){
     c = char.x1[[k]]
     d = char.y1[[k]]
 
-    percent_match1[k] = length(na.omit(d[is.element(c, d)])) /
-      length(c)
+    percent_match1[k] = length(vintersect(c, d)) /
+      max(length((c)), length((d)))
 
     sub1$percent_match = percent_match1
 
@@ -76,8 +77,8 @@ percent_match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL){
     e = char.x2[[j]]
     f = char.y2[[j]]
 
-    percent_match2[j] = length(na.omit(f[is.element(e, f)])) /
-      length(e)
+    percent_match2[j] = length(vintersect(e, f)) /
+      max(length((e)), length((f)))
 
     sub2$percent_match = percent_match2
 
@@ -95,8 +96,8 @@ percent_match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL){
     r = char.x3[[p]]
     s = char.y3[[p]]
 
-    percent_match3[p] = length(unique(r[r %in% s[s %in% r]])) /
-      length(s)
+    percent_match3[p] = length(vintersect(r, s)) /
+      max(length((r)), length((s)))
 
     sub3$percent_match = percent_match3
 
