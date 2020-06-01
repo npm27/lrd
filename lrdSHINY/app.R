@@ -296,9 +296,9 @@ ui = fluidPage(
 
                              helpText("The scored dataset can be viewed by clicking on the \"Scored Output\" tab and can be downloaded using the download button at the top of tab. Use the slidebar to adjust the scoring cutoff.",
                                       "Each participant's mean proportion of correct responses and corresponding z-score can be viewed",
-                                      "using the \"Proportion Correct\" tab. This output can be customized based on any optional condition columns that are attached to upload .csv file. These values can be downloaded using the download button at the top of the tab.",
+                                      "using the \"Proportion Correct\" tab. This output can be customized based on any of the optional condition columns that are attached to the upload .csv file. These values can be downloaded using the download button at the top of the tab.",
                                       "Please note that z-scores are only generated when splitting the data on one condition.",
-                                      "The \"Plots\" tab can be used to visualize the dataset. Plots can be customized based on optional condition columns in the dataset.",
+                                      "The \"Plots\" tab can be used to visualize the dataset. Plots can be customized based on the optional condition columns in the dataset.",
                                       "If no condition columns are included, this tab will display the distribution of participant responses (This can also be viewed by selecting \"id\" as the grouping condition.",
                                       "Please note that tabs will not populate until a .csv file in the correct format has been uploaded."),
 
