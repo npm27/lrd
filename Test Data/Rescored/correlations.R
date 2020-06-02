@@ -20,7 +20,7 @@ print(c1, all = T)
 
 cohen.kappa(dat2[ , c(6, 8:18)]) #M & H
 
-cohen.k
+#cohen.k
 
 ####Descriptives, ANOVAS, t-tests####
 library(ez)
