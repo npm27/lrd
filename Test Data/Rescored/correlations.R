@@ -118,7 +118,7 @@ se2 * 1.96
 #get t-values
 mh_posthoc = cast(long.dat2, Sub.ID ~ score_type, mean)
 
-temp = t.test(mh_posthoc$fifty, mh_posthoc$sixty, paired = F, p.adjust.methods = "bonferroni")
+temp = t.test(mh_posthoc$fifty, mh_posthoc$sixty_five, paired = F, p.adjust.methods = "bonferroni")
 temp
 p4 = round(temp$p.value, 3)
 t4 = temp$statistic
