@@ -4,7 +4,7 @@
 \alias{prop.correct}
 \title{Proportion Correct}
 \usage{
-prop.correct(x, group.by = NULL, id = z)
+prop.correct(x, group.by = NULL, id = z, flag = FALSE)
 }
 \arguments{
 \item{x}{a vector containing participant scores}
