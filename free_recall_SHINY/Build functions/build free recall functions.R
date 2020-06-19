@@ -95,3 +95,84 @@ df2$Scored = (df2$Scored - 1) * -1 #Invert 1's and 0's (0 should equal incorrect
 ##Function would end here
 
 ####Now I can use the output to compute each participant's proportion of correct responses, proportion of intrusions, and probability of an item being recalled first
+##Can I just use the function I already created?
+#Let's find out!
+prop.correct(output$Scored, id = output$id) #Yep, it works, but this isn't completely what I need. This gives their proportion of correct responses relative to their total number of responses.
+
+#I need something that where the bottom of the fraction is the number of items in the key
+
+##This function needs to compute the total number of 1's for each participant, divide that by the key
+##Then have the ability to convert the proportions to a z-score
+##Then output everything as a dataframe (id, condition, z)
+
+prop.correct.f = function(x, key = y, id = z, flag = FALSE){
+
+  input = data.frame(id, x)
+
+  temp = c() #Make a blank vector for storage
+
+  if (flag == FALSE) {
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      input2 = subset(input, #subset by participant id
+                      input$id == i)
+
+      output = as.numeric(table(input2$x))[2] / k #Get each participants total number of correct responses and divide by key
+
+      temp = c(output, temp)
+
+    }
+
+    name.list = unique(input$id)
+
+    output2 = data.frame(name.list, temp)
+
+    colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+
+    output2$Z = scale(output2$Proportion_Correct)
+
+   print(output2)
+
+  }
+
+  else if (flag == TRUE) {
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      input2 = subset(input, #subset by participant id
+                      input$id == i)
+
+      output = as.numeric(table(input2$x))[2] / k #Get each participants total number of correct responses and divide by key
+
+      temp = c(output, temp)
+
+    }
+
+    name.list = unique(input$id)
+
+    output2 = data.frame(name.list, temp)
+
+    colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+
+    output2$Z = scale(output2$Proportion_Correct)
+
+    output2$Flagged = rep(" ")
+    output2$Flagged[output2$z >= 3] = "*"
+    output2$Flagged[output2$z <= -3] = "*"
+
+    colnames(output2)[4] = " "
+
+    print(output2)
+
+  }
+
+}
+
+prop.correct.f(df2$Scored, key = key, id = df2$id, flag = TRUE)
