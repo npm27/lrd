@@ -1,3 +1,7 @@
+##x is a df column of participant scores
+##z is a column of sub ids
+##y is the answer key (most likely going to be uploaded as a separate file)
+
 prop.correct.f = function(x, key = y, id = z, flag = FALSE){
   
   input = data.frame(id, x)
