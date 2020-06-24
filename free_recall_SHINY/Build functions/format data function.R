@@ -1,35 +1,59 @@
-####Write a function to give each word its own dataframe row.####
-##Essentially, doing a text to columns type thing then putting it into long format
-dat = read.csv("sample data 2.csv")
-
-spl = strsplit(dat$Response, ",")
-spl = data.frame(dat$Sub.ID, V1 = sapply(spl, "[", 1), V2 = sapply(spl, "[", 2))
-
-##the above would work great if all participants responded with the same number of words. But that's not going to happen
-
-library(stringr)
-
-strsplit(dat$Response[1], split = ",")
-
-#Okay, could probably do a loop where it goes through the rows, splits things, and puts it all back together
-
 #Let's try it!
 #make an empty df for storage
-x = data.frame()
 
-for (i in dat$Response){
+arrange.dat = function(x, sep = y, id = z){
+
+df = data.frame()
+lengths = data.frame()
+df2 = data.frame()
+
+  for (i in x){
   
-  for (j in 1:nrow(dat)){
-  
-    x2 = strsplit(i, split = ",")
+    for (j in 1:length(x)){
     
-    x2 = data.frame(x2)
-    colnames(x2)[1] = "response"
+      x2 = strsplit(i, split = sep)
+    
+      x2 = data.frame(x2)
+      colnames(x2)[1] = "response"
+      
+      lengths2 = nrow(x2)
+      
+      lengths2 = data.frame(lengths2)
+      colnames(lengths2)[1] = "Length"
+    
+    }
+    
+    lengths = rbind(lengths, lengths2)
+    lengths$Length = as.numeric(lengths$Length)
   
+    df = rbind(df, x2)
+    
   }
+  
+  s = 0
     
-  x = rbind(x, x2)
+  for (m in lengths$Length){
+    
+    s = s + 1 
+      
+    for (h in 1:length(id)){
+      
+      x3 = rep(id[s], m)
+      
+      x3 = data.frame(x3)
+      colnames(x3)[1] = "Sub.ID"
+        
+      }
+    
+    df2 = rbind(df2, x3)
+    
+  }
+  
+  #Remove spaces
+  df = as.data.frame(apply(df, 2, function(y)gsub('\\s+', '',y)))
+  
+  final = cbind(df2, df)
 
 }
 
-x = as.data.frame(apply(x, 2, function(y)gsub('\\s+', '',y))) #remove spaces
+output = arrange.dat(dat$Response, id = dat$Sub.ID, sep = ",")
