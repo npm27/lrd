@@ -31,7 +31,7 @@ df3 = data.frame()
 
   }
 
-  #Get subject IDs
+  ##Add in subject IDs
 
   s = 0
 
@@ -52,7 +52,7 @@ df3 = data.frame()
 
   }
 
-  #Now add in position tagging
+  ##Now add in position tagging
 
   s = 0 #Reset the counter
 
