@@ -2,7 +2,7 @@
 #y is a dataframe column with the answer key (probably uploaded as a separate .csv) y won't be the same length as x
 #z is the participant id. x and z should come from the same df (sample data.csv)
 
-match_free_recall = function(x, key = y, id = z){
+match_free_recall = function(x, key = y, id = z, cutoff = g){
 
   df = cbind(id, x)
   df = data.frame(df)
@@ -25,7 +25,7 @@ match_free_recall = function(x, key = y, id = z){
 
     colnames(scores)[1:length(scores)] = key[1:length(key)]
 
-    #Now that I have the key arranged: Pull the key item that is closest to each response. I could then use lrd's percent match
+    #Now that I have the key arranged: Pull the key item that is closest to each response.
 
     output = c() #Make an empty vector for storage
 
@@ -35,9 +35,9 @@ match_free_recall = function(x, key = y, id = z){
 
       for (m in 1:length(scores)){
 
-        if (scores2[n] <= 2){ #find all the minimums that meet the threshold
+        if (scores2[n] <= cutoff){ #find all the minimums that meet the threshold
 
-          if (scores[n,m] <= 2){ #The sign would need to be flipped if doing a percent match measure. The two is a placeholder value and ideally would be user specified
+          if (scores[n,m] <= cutoff){ #The sign would need to be flipped if doing a percent match measure.
 
             output2 = colnames(scores)[m] #Not sure what to do for ties yet. colnames are the items in the key. So pull the key item matching the response
 

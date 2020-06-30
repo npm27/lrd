@@ -1,5 +1,5 @@
 ####Write a basic percent match function that computes percentage of shared characters between any two strings####
-#The other percentmatch function requires a dataframe, I also need one that works on a smaller scale.
+#The other percent match function requires a dataframe, I also need one that works on a smaller scale.
 
 library(vecsets)
 
