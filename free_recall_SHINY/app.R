@@ -95,7 +95,6 @@ match_free_recall = function(x, key = y, id = z, cutoff = g, other = NULL){
 }
 
 ##Proportion correct free recall function
-
 prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
   a = is.null(group.by)
@@ -104,6 +103,7 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
   temp = c() #Make a blank vector for storage
   temp2 = c()
+  temp3 = c()
 
   if (a == TRUE & flag == FALSE) {
 
@@ -189,6 +189,10 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
         print(output)
 
         temp = c(output, temp)
+        temp2 = c(temp2, g)
+        print(temp2)
+        temp3 = c(temp3, i)
+
 
       }
 
@@ -196,10 +200,11 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
   }
 
-  name.list = unique(input$id)
+  name.list = data.frame(temp3)
+  conditions = data.frame(temp2)
 
-  output2 = data.frame(name.list, temp)
-  colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+  output2 = data.frame(temp3, temp, temp2)
+  colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
 
   print(output2)
 
