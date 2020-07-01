@@ -103,6 +103,7 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
   input = data.frame(id, x)
 
   temp = c() #Make a blank vector for storage
+  temp2 = c()
 
   if (a == TRUE & flag == FALSE) {
 
@@ -168,7 +169,7 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
   else if (a == FALSE & flag == FALSE){
 
-   input = cbind(input, group.by)
+    input = cbind(input, group.by)
 
     k = length(key)
 
@@ -182,8 +183,10 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
         input3 = subset(input2,
                         input2$group.by == g)
+        print(input3)
 
         output = as.numeric(table(input3$x))[2] / k #Get each participants total number of correct responses and divide by key
+        print(output)
 
         temp = c(output, temp)
 
@@ -192,6 +195,13 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
     }
 
   }
+
+  name.list = unique(input$id)
+
+  output2 = data.frame(name.list, temp)
+  colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+
+  print(output2)
 
 }
 
@@ -357,6 +367,7 @@ server = function(input, output) {
 
         items = colnames(df)
 
+        #No condition columns
         if (length(df) == 4) {
 
             items = names(df)
@@ -365,6 +376,7 @@ server = function(input, output) {
 
         }
 
+        #condition columns
         else if (length(df) > 4) {
 
             items = names(df)
@@ -381,6 +393,7 @@ server = function(input, output) {
 
         items = colnames(df)
 
+        #No condition columns
         if (length(df) == 4) {
 
             items = names(df)
@@ -484,7 +497,16 @@ server = function(input, output) {
 
             final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, group.by = dat[ , input$conditions3])
 
-            colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+            #colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+            final
+
+          }
+
+          else if (input$conditions2 != "id"){
+
+            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat[ , input$conditions2], group.by = dat[ , input$conditions3])
+
+            #colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
             final
 
           }
