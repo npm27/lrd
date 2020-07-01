@@ -81,6 +81,78 @@ match_free_recall = function(x, key = y, id = z, cutoff = g){
 
 }
 
+##Proportion correct free recall function
+
+prop.correct.f = function(x, key = y, id = z, flag = FALSE){
+
+  input = data.frame(id, x)
+
+  temp = c() #Make a blank vector for storage
+
+  if (flag == FALSE) {
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      input2 = subset(input, #subset by participant id
+                      input$id == i)
+
+      output = as.numeric(table(input2$x))[2] / k #Get each participants total number of correct responses and divide by key
+
+      temp = c(output, temp)
+
+    }
+
+    name.list = unique(input$id)
+
+    output2 = data.frame(name.list, temp)
+
+    colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+
+    output2$Z = scale(output2$Proportion_Correct)
+
+    print(output2)
+
+  }
+
+  else if (flag == TRUE) {
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      input2 = subset(input, #subset by participant id
+                      input$id == i)
+
+      output = as.numeric(table(input2$x))[2] / k #Get each participants total number of correct responses and divide by key
+
+      temp = c(output, temp)
+
+    }
+
+    name.list = unique(input$id)
+
+    output2 = data.frame(name.list, temp)
+
+    colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+
+    output2$Z = scale(output2$Proportion_Correct)
+
+    output2$Flagged = rep(" ")
+    output2$Flagged[output2$z >= 3] = "*"
+    output2$Flagged[output2$z <= -3] = "*"
+
+    colnames(output2)[4] = " "
+
+    print(output2)
+
+  }
+
+}
+
 
 ####Set up page####
 ui = fluidPage(
@@ -294,101 +366,40 @@ server = function(input, output) {
 
     getData2 = reactive({
 
-        inFile = input$file1
+      inFile = input$file1
 
-        if (is.null(input$file1))
-            return(NULL)
+      if (is.null(input$file1))
+        return(NULL)
 
-        dat = read.csv(inFile$datapath, header = input$header, sep = input$sep,
-                       quote = input$quote)
+      inFile2 = input$file2
 
-        ##use lrd to process the output
+      if(is.null(input$file2))
+        return(NULL)
 
-        percentage = input$Percentage / 100
+      dat = read.csv(inFile$datapath, header = input$header, sep = input$sep,
+                     quote = input$quote)
 
-        colnames(dat)[1:3] = c("ID", "Response", "Key")
-        dat$Response = tolower(dat$Response)
-        dat$Key = tolower(dat$Key)
-        #dat2 = dat[ , c(4:length(dat))]
+      key = read.csv(inFile2$datapath, header = input$header, sep = input$sep,
+                     quote = input$quote)
 
-        if (length(dat) > 3) {
+      ##use the free recall scoring function
 
-            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
+      percentage = input$Percentage  #I think this is controlling the value from the slider
 
-            if(input$conditions3 == "None"){
+      colnames(dat)[1:2] = c("ID", "Response")
+      dat$Response = tolower(dat$Response)
 
-                if (input$conditions2 == "id"){
+      colnames(key)[1] = "KEY"
+      key$KEY = tolower(key$KEY)
+      #dat2 = dat[ , c(4:length(dat))]
 
-                    prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+      ##Now score using the free recall function
+      matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage)
 
-                    Participant = row.names(prop.correct.output)
-                    Participant = as.data.frame(Participant)
-                    final_out = cbind(Participant, prop.correct.output)
-                    colnames(final_out)[2] = "Proportion Correct Response"
-                    final_out
+      ##Now compute the proportion correct
+      final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
 
-                    }
-
-                else if (input$conditions2 != "id") {
-
-                    prop.correct.output = prop.correct(matched$Scored, id = dat[ , input$conditions2], flag = TRUE)
-
-                    Participant = row.names(prop.correct.output)
-                    Participant = as.data.frame(Participant)
-                    final_out = cbind(Participant, prop.correct.output)
-                    colnames(final_out)[1] = names(dat[input$conditions2])
-                    colnames(final_out)[2] = "Proportion Correct Response"
-                    final_out
-
-                }
-            }
-
-            else if (input$conditions3 != "None"){
-
-                if (input$conditions2 == "id"){
-
-                    prop.correct.output = prop.correct(matched$Scored, id = dat$ID, group.by = dat[ , input$conditions3])
-
-                    Participant = row.names(prop.correct.output)
-                    Participant = as.data.frame(Participant)
-                    final_out = cbind(Participant, prop.correct.output)
-                    #colnames(final_out)[2] = "Proportion Correct Response"
-                    final_out
-
-                }
-
-                else if (input$conditions2 != "id"){
-
-                    prop.correct.output = prop.correct(matched$Scored, id = dat[ , input$conditions2], group.by = dat[, input$conditions3])
-
-                    Participant = row.names(prop.correct.output)
-                    Participant = as.data.frame(Participant)
-                    final_out = cbind(Participant, prop.correct.output)
-                    #colnames(final_out)[1] = names(dat[input$conditions2])
-                    #colnames(final_out)[2] = "Proportion Correct Response"
-                    final_out
-
-                }
-
-            }
-
-        }
-
-        else if (length(dat) == 3) {
-
-            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = NULL, cutoff = percentage)
-
-            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
-
-            Participant = row.names(prop.correct.output)
-            Participant = as.data.frame(Participant)
-            final_out = cbind(Participant, prop.correct.output)
-            colnames(final_out)[2] = "Proportion Correct Response"
-            final_out
-
-            }
-
-        }
+    }
     )
 
     getData3 = reactive({
