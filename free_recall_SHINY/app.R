@@ -447,12 +447,15 @@ server = function(input, output) {
       #dat2 = dat[ , c(4:length(dat))]
 
       ##Now score using the free recall function
-      if (length(dat) > 2){
+      ##When the data contains multiple condition columns:
+      if (length(dat) > 3){
 
-        matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = dat[ c(3:length(dat))] )
+        matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = dat[ c(3:length(dat))])
 
+        ##If grouping by one variable
         if(input$conditions3 == "None"){
 
+          ##IF specifically grouping by sub ID
           if (input$conditions2 == "id"){
 
             final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
@@ -460,8 +463,9 @@ server = function(input, output) {
             colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
             final
 
-            }
+          }
 
+          ##If the one variable is something other than sub ID
           else if (input$conditions2 != "id"){
 
             final = prop.correct.f(matched$Scored, key = key$KEY, id = dat[ , input$conditions2], flag = TRUE)
@@ -472,18 +476,16 @@ server = function(input, output) {
             }
 
         }
-
+        ##If grouping by multiple variables
         else if (input$conditions3 != "None"){
 
+          ##If ID is selected as the first grouping variable
           if (input$conditions2 == "id"){
 
-            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, group.by = dat[ , input$conditions3])
+            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, group.by = dat[ , input$conditions3])
 
-            Participant = row.names(prop.correct.output)
-            Participant = as.data.frame(Participant)
-            final_out = cbind(Participant, prop.correct.output)
-            #colnames(final_out)[2] = "Proportion Correct Response"
-            final_out
+            colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+            final
 
           }
 
@@ -491,6 +493,59 @@ server = function(input, output) {
       #final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
         }
       }
+      ##If the dataset contains one condition column
+      else if (length(dat) == 3){
+
+        matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = dat[3])
+
+        ##If grouping by one variable
+        if(input$conditions3 == "None"){
+
+          ##IF specifically grouping by sub ID
+          if (input$conditions2 == "id"){
+
+            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
+
+            colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+            final
+
+          }
+
+          ##If the one variable is something other than sub ID
+          else if (input$conditions2 != "id"){
+
+            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat[ , input$conditions2], flag = TRUE)
+
+            colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+            final
+
+          }
+
+        }
+
+        else if(input$conditions3 != "None"){
+
+          final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, group.by = dat[ , input$conditions3])
+
+          colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+          final
+
+        }
+
+      }
+
+      ##If the dataset does not have condition columns
+      else if (length(dat) == 2){
+
+        matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = NULL)
+
+        final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, group.by = NULL)
+
+        colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+        final
+
+      }
+
     }
     )
 
@@ -501,45 +556,54 @@ server = function(input, output) {
         if (is.null(input$file1))
             return(NULL)
 
+        inFile2 = input$file2
+
+        if(is.null(input$file2))
+          return(NULL)
+
         dat = read.csv(inFile$datapath, header = input$header, sep = input$sep,
                        quote = input$quote)
 
-        ##use lrd to process the output
+        key = read.csv(inFile2$datapath, header = input$header, sep = input$sep,
+                       quote = input$quote)
 
-        percentage = input$Percentage / 100
+        ##use the free recall scoring function
 
-        colnames(dat)[1:3] = c("ID", "Response", "Key")
+        percentage = input$Percentage
+
+        colnames(dat)[1:2] = c("ID", "Response")
         dat$Response = tolower(dat$Response)
-        dat$Key = tolower(dat$Key)
+
+        colnames(key)[1] = "KEY"
+        key$KEY = tolower(key$KEY)
         #dat2 = dat[ , c(4:length(dat))]
 
-        if (length(dat) > 3) {
+        if (length(dat) > 2) {
 
-            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = dat[ c(4:length(dat))], cutoff = percentage)
+          matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = dat[ c(3:length(dat))])
 
-            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+          prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
 
-            Participant = row.names(prop.correct.output)
-            Participant = as.data.frame(Participant)
-            final_out = cbind(Participant, prop.correct.output)
-            colnames(final_out)[2] = "Proportion Correct Response"
-            final_out
+          final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
+
+          colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+          final
 
         }
 
-        else if (length(dat) == 3) {
+        else if (length(dat) == 2) {
 
-            matched = Percent_Match(dat$Response, key = dat$Key, id = dat$ID, other = NULL, cutoff = percentage)
+          matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = NULL)
 
-            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+          prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
 
-            Participant = row.names(prop.correct.output)
-            Participant = as.data.frame(Participant)
-            final_out = cbind(Participant, prop.correct.output)
-            colnames(final_out)[2] = "Proportion Correct Response"
-            final_out
+          Participant = row.names(prop.correct.output)
+          Participant = as.data.frame(Participant)
+          final_out = cbind(Participant, prop.correct.output)
+          colnames(final_out)[2] = "Proportion Correct Response"
+          final_out
 
-            }
+          }
         }
     )
 
