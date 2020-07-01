@@ -96,13 +96,15 @@ match_free_recall = function(x, key = y, id = z, cutoff = g, other = NULL){
 
 ##Proportion correct free recall function
 
-prop.correct.f = function(x, key = y, id = z, flag = FALSE){
+prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
+
+  a = is.null(group.by)
 
   input = data.frame(id, x)
 
   temp = c() #Make a blank vector for storage
 
-  if (flag == FALSE) {
+  if (a == TRUE & flag == FALSE) {
 
     k = length(key)
 
@@ -130,7 +132,7 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE){
 
   }
 
-  else if (flag == TRUE) {
+  else if (a == TRUE & flag == TRUE) {
 
     k = length(key)
 
@@ -161,6 +163,33 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE){
     colnames(output2)[4] = " "
 
     print(output2)
+
+  }
+
+  else if (a == FALSE & flag == FALSE){
+
+   input = cbind(input, group.by)
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      for (g in unique(input$group.by)){
+
+        input2 = subset(input, #subset by participant id
+                        input$id == i)
+
+        input3 = subset(input2,
+                        input2$group.by == g)
+
+        output = as.numeric(table(input3$x))[2] / k #Get each participants total number of correct responses and divide by key
+
+        temp = c(output, temp)
+
+      }
+
+    }
 
   }
 
@@ -328,7 +357,7 @@ server = function(input, output) {
 
         items = colnames(df)
 
-        if (length(df) == 5) {
+        if (length(df) == 4) {
 
             items = names(df)
             items = items[1]
@@ -336,10 +365,10 @@ server = function(input, output) {
 
         }
 
-        else if (length(df) > 5) {
+        else if (length(df) > 4) {
 
             items = names(df)
-            items = items[ -c(2:5)]
+            items = items[ -c(2:4)]
             selectInput("conditions2", "Select First Grouping Variable", items)
 
         }
@@ -352,7 +381,7 @@ server = function(input, output) {
 
         items = colnames(df)
 
-        if (length(df) == 5) {
+        if (length(df) == 4) {
 
             items = names(df)
             items = "None Available"
@@ -360,9 +389,9 @@ server = function(input, output) {
 
         }
 
-        else if (length(df) > 5) {
+        else if (length(df) > 4) {
 
-            df2 = df[ ,-c(1:5)]
+            df2 = df[ ,-c(1:4)]
 
             if (input$conditions2 == "id"){
 
@@ -408,7 +437,7 @@ server = function(input, output) {
 
       ##use the free recall scoring function
 
-      percentage = input$Percentage  #I think this is controlling the value from the slider
+      percentage = input$Percentage
 
       colnames(dat)[1:2] = c("ID", "Response")
       dat$Response = tolower(dat$Response)
@@ -418,11 +447,50 @@ server = function(input, output) {
       #dat2 = dat[ , c(4:length(dat))]
 
       ##Now score using the free recall function
-      matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage)
+      if (length(dat) > 2){
+
+        matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = dat[ c(3:length(dat))] )
+
+        if(input$conditions3 == "None"){
+
+          if (input$conditions2 == "id"){
+
+            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
+
+            colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+            final
+
+            }
+
+          else if (input$conditions2 != "id"){
+
+            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat[ , input$conditions2], flag = TRUE)
+
+            colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+            final
+
+            }
+
+        }
+
+        else if (input$conditions3 != "None"){
+
+          if (input$conditions2 == "id"){
+
+            prop.correct.output = prop.correct(matched$Scored, id = dat$ID, group.by = dat[ , input$conditions3])
+
+            Participant = row.names(prop.correct.output)
+            Participant = as.data.frame(Participant)
+            final_out = cbind(Participant, prop.correct.output)
+            #colnames(final_out)[2] = "Proportion Correct Response"
+            final_out
+
+          }
 
       ##Now compute the proportion correct
-      final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
-
+      #final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
+        }
+      }
     }
     )
 
