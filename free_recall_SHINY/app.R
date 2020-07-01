@@ -9,7 +9,9 @@ library(Hmisc)
 #y is a dataframe column with the answer key (probably uploaded as a separate .csv) y won't be the same length as x
 #z is the participant id. x and z should come from the same df (sample data.csv)
 
-match_free_recall = function(x, key = y, id = z, cutoff = g){
+match_free_recall = function(x, key = y, id = z, cutoff = g, other = NULL){
+
+  nb = is.null(other)
 
   df = cbind(id, x)
   df = data.frame(df)
@@ -77,7 +79,18 @@ match_free_recall = function(x, key = y, id = z, cutoff = g){
 
   colnames(df2)[2] = "Response"
 
-  return(df2)
+  if (nb == FALSE){
+
+    other = data.frame(other)
+    output3 = cbind(df2, other)
+
+  }
+
+  else if (nb == TRUE){
+
+    output = df2
+
+  }
 
 }
 
@@ -283,7 +296,7 @@ server = function(input, output) {
 
             ##use the free recall scoring function
 
-            percentage = input$Percentage  #I think this is controlling the value from the slider
+            percentage = input$Percentage  #This is controlling the value from the slider
 
             colnames(dat)[1:2] = c("ID", "Response")
             dat$Response = tolower(dat$Response)
@@ -293,8 +306,19 @@ server = function(input, output) {
             #dat2 = dat[ , c(4:length(dat))]
 
             ##Now score using the free recall function
-            matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage)
+            ##With extra column
+            if (length(dat) > 2){
 
+              matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = dat[ c(3:length(dat))])
+
+            }
+
+            #Without extra columns
+            else if (length(dat) == 2){
+
+              matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = NULL)
+
+            }
         }
     )
 
