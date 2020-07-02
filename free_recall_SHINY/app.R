@@ -389,17 +389,25 @@ ui = fluidPage(
 
                              helpText(" "),
 
-                             p(strong("Welcome to lrd!")),
+                             p(strong("Welcome to the lrd free recall calculator!")),
 
-                             helpText("To begin, select the appropriate settings based on your upload file, choose the cutoff percentage used for scoring",
-                                     "[EXPLAIN CUTOFF], and ",
-                                     "upload your file."),
+                             helpText("To begin, select the appropriate settings based on your upload file and choose the criteria used for scoring",
+                                     "(i.e., 0 = strictest, 5 = is most lenient). The scoring criteria uses a Levenshtein distance measure to match participant responses to the answer key."),
 
-                             helpText("[EXPLAIN TABS HERE]"),
+                             helpText("The scored dataset can be viewed by clicking on the \"Scored Output\" tab and can be downloaded using the download button at the top of tab. Use the slidebar to adjust the scoring cutoff.",
+                                      "Each participant's mean proportion of correct responses and corresponding z-score can be viewed",
+                                      "using the \"Proportion Correct\" tab. This output can be customized based on any of the optional condition columns that are attached to the upload .csv file. These values can be downloaded using the download button at the top of the tab.",
+                                      "Please note that z-scores are only generated when splitting the data on one condition.",
+                                      "The \"Plots\" tab can be used to visualize the dataset. Plots can be customized based on the optional condition columns in the dataset.",
+                                      "If no condition columns are included, this tab will display the distribution of participant responses (This can also be viewed by selecting \"id\" as the grouping condition.",
+                                      "Please note that tabs will not populate until a .csv file in the correct format has been uploaded."),
 
-                             p(strong("Instructions for Formatting Your Upload File:")),
+                             p(strong("Instructions for Formatting Your Upload Files:")),
 
-                             helpText("Two upload .csv files are required. [EXPLAIN THEM AND FORMATTING HERE]", a("here.", href = "https://osf.io/evpq8/", target = "_blank"))),
+                             helpText("Two upload .csv files are required. The first .csv file needs to contain the data to be scored. This file must contain at least two columns arranged in the following order:",
+                                      "A column containing unique identifiers for each participant followed by a column containing participant responses.",
+                                      "The second .csv file contains the scoring key used to process the data. This file should be formatted to contain only one column.",
+                                      "Examples of each file structure are available ", a("here.", href = "https://osf.io/evpq8/", target = "_blank"))),
 
                     tabPanel("Scored Output",
 
