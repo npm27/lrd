@@ -193,7 +193,7 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
                         input2$group.by == g)
         print(input3)
 
-        output = as.numeric(table(input3$x))[2] / k #Get each participants total number of correct responses and divide by key
+        output = as.numeric(table(input3$x))[2] #Get each participants total number of correct responses and divide by key
 
         temp = c(output, temp)
         temp2 = c(temp2, g)
@@ -210,12 +210,129 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
     output2 = data.frame(temp3, temp, temp2)
     colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
 
+    output2$Proportion_Correct = output2$Proportion_Correct / k
+
     print(output2)
 
   }
 
 }
 
+##USE THIS ONE WHEN NEEDING TO COLLAPSE ACROSS PARTICIPANT (SO ID WOULD BE ONE OF THE GROUPING CONDITIONS)
+prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
+
+  a = is.null(group.by)
+
+  input = data.frame(id, x)
+
+  temp = c() #Make a blank vector for storage
+  temp2 = c()
+  temp3 = c()
+
+  if (a == TRUE & flag == FALSE) {
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      input2 = subset(input, #subset by participant id
+                      input$id == i)
+
+      output = as.numeric(table(input2$x))[2] / k #Get each participants total number of correct responses and divide by key
+
+      temp = c(output, temp)
+
+    }
+
+    name.list = unique(input$id)
+
+    output2 = data.frame(name.list, temp)
+
+    colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+
+    output2$Z = scale(output2$Proportion_Correct)
+
+    print(output2)
+
+  }
+
+  else if (a == TRUE & flag == TRUE) {
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      input2 = subset(input, #subset by participant id
+                      input$id == i)
+
+      output = as.numeric(table(input2$x))[2] / k #Get each participants total number of correct responses and divide by key
+
+      temp = c(output, temp)
+
+    }
+
+    name.list = unique(input$id)
+
+    output2 = data.frame(name.list, temp)
+
+    colnames(output2)[1:2] = c("ID", "Proportion_Correct")
+
+    output2$Z = scale(output2$Proportion_Correct)
+
+    output2$Flagged = rep(" ")
+    output2$Flagged[output2$z >= 3] = "*"
+    output2$Flagged[output2$z <= -3] = "*"
+
+    colnames(output2)[4] = " "
+
+    print(output2)
+
+  }
+
+  else if (a == FALSE & flag == FALSE){
+
+    input = cbind(input, group.by)
+
+    k = length(key)
+
+    ##Get number of 1's for each participant
+    for (i in unique(input$id)){
+
+      for (g in unique(input$group.by)){
+
+        input2 = subset(input, #subset by participant id
+                        input$id == i)
+
+        input3 = subset(input2,
+                        input2$group.by == g)
+        print(input3)
+
+        output = as.numeric(table(input3$x))[2] #Get each participants total number of correct responses and divide by key
+
+        temp = c(output, temp)
+        temp2 = c(temp2, g)
+        temp3 = c(temp3, i)
+
+
+      }
+
+    }
+
+    name.list = data.frame(temp3)
+    conditions = data.frame(temp2)
+
+    output2 = data.frame(temp3, temp, temp2)
+    colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
+
+    output2$Proportion_Correct = output2$Proportion_Correct / (k / length(unique(output2$Condition)))
+
+    print(output2)
+
+  }
+
+}
 
 ####Set up page####
 ui = fluidPage(
@@ -440,7 +557,7 @@ server = function(input, output) {
 
             items = "None"
 
-            selectInput("conditions3", "Select Second Grouping Variable (Optional)", items)
+            selectInput("conditions3", "Select Second Grouping Variable (Optional)", items, selected = "None")
 
           }
 
@@ -467,7 +584,7 @@ server = function(input, output) {
 
                items = append(items, "None")
 
-               selectInput("conditions3", "Select Second Grouping Variable (Optional)", items)
+               selectInput("conditions3", "Select Second Grouping Variable (Optional)", items, selected = "None")
 
            }
 
@@ -528,12 +645,12 @@ server = function(input, output) {
           ##If the one variable is something other than sub ID
           else if (input$conditions2 != "id"){
 
-            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat[ , input$conditions2], flag = TRUE)
+            final = prop.correct.f(matched$Scored, key = matched$Scored, id = dat[ , input$conditions2], flag = TRUE)
 
             colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
             final
 
-            }
+          }
 
         }
         ##If grouping by multiple variables
@@ -549,12 +666,19 @@ server = function(input, output) {
 
           }
 
-          else if (input$conditions2 != "id"){
+          else if (input$conditions2 != "id" & input$conditions2 != input$conditions3){
 
-            final = prop.correct.f(matched$Scored, key = key$KEY, id = dat[ , input$conditions2], group.by = dat[ , input$conditions3])
+            final = prop.correct.f2(matched$Scored, key = matched$Scored, id = dat[ , input$conditions2], group.by = dat[ , input$conditions3])
 
             #colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
             final
+
+          }
+
+          ##If inputs 1 and 2 match
+          else if (input$conditions2 == input$conditions3){
+
+            final = "Please Select another option!"
 
           }
 
