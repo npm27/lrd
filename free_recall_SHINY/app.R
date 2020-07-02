@@ -856,7 +856,7 @@ server = function(input, output) {
 
         else if (input$conditions != "id") {
 
-            bar = ggplot(dat1, aes(dat1[ ,input$conditions], dat1[ ,5]))
+            bar = ggplot(dat1, aes(dat1[ ,input$conditions], dat1[ ,4]))
 
             bar = bar +
 
