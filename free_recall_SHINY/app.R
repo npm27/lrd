@@ -5,6 +5,14 @@ library(vecsets)
 library(Hmisc)
 
 ####Custom Functions#####
+cleanup = theme(panel.grid.major = element_blank(),
+                panel.grid.minor = element_blank(),
+                panel.background = element_blank(),
+                axis.line.x = element_line(color = "black"),
+                axis.line.y = element_line(color = "black"),
+                legend.key = element_rect(fill = "white"),
+                text = element_text(size = 15))
+
 #x is a dataframe column containing participant responses
 #y is a dataframe column with the answer key (probably uploaded as a separate .csv) y won't be the same length as x
 #z is the participant id. x and z should come from the same df (sample data.csv)
@@ -318,6 +326,8 @@ ui = fluidPage(
 ####Set up server####
 server = function(input, output) {
 
+  ##get the input data for scoring
+
     getData = reactive({
 
         inFile = input$file1
@@ -465,6 +475,8 @@ server = function(input, output) {
 
     })
 
+    ##Get data for the prop correct tab
+
     getData2 = reactive({
 
       inFile = input$file1
@@ -606,6 +618,7 @@ server = function(input, output) {
     }
     )
 
+    ##Get data for the plots
     getData3 = reactive({
 
         inFile = input$file1
@@ -652,7 +665,7 @@ server = function(input, output) {
 
           matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = NULL)
 
-          prop.correct.output = prop.correct(matched$Scored, id = dat$ID, flag = TRUE)
+          prop.correct.output = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
 
           Participant = row.names(prop.correct.output)
           Participant = as.data.frame(Participant)
