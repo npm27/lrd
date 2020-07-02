@@ -418,7 +418,7 @@ server = function(input, output) {
 
         }
 
-        #One extra column (this one doesn't work yet)
+        #One extra column (Finally got this one working!)
         else if (length(df) == 5) {
 
           df2 = df[ ,-c(1:3)]
@@ -665,13 +665,10 @@ server = function(input, output) {
 
           matched = match_free_recall(dat$Response, key = key$KEY, id = dat$ID, cutoff = percentage, other = NULL)
 
-          prop.correct.output = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, flag = TRUE)
+          final = prop.correct.f(matched$Scored, key = key$KEY, id = dat$ID, group.by = NULL)
 
-          Participant = row.names(prop.correct.output)
-          Participant = as.data.frame(Participant)
-          final_out = cbind(Participant, prop.correct.output)
-          colnames(final_out)[2] = "Proportion Correct Response"
-          final_out
+          colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
+          final
 
           }
         }
@@ -689,24 +686,27 @@ server = function(input, output) {
 
     )
 
+    ##This controls the plots tab dropdown menus
     output$toCol = renderUI({
 
         df = getData()
 
         items = colnames(df)
 
-            if (length(df) == 5) {
+        #If no condition columns (data has four columns after scoring)
+            if (length(df) == 4) {
 
                 items = names(df)
                 items = items[1]
                 selectInput("conditions", "Select Grouping Condition", items)
 
-        }
+            }
 
-            else if (length(df) > 5) {
+        #If the data has condition columns
+            else if (length(df) > 4) {
 
                 items = names(df)
-                items = items[ -c(2:5)]
+                items = items[ -c(2:4)]
                 selectInput("conditions", "Select Grouping Condition", items)
 
             }
