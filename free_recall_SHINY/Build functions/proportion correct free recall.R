@@ -93,27 +93,24 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
         print(input3)
 
         output = as.numeric(table(input3$x))[2] / k #Get each participants total number of correct responses and divide by key
-        print(output)
 
         temp = c(output, temp)
         temp2 = c(temp2, g)
-        print(temp2)
         temp3 = c(temp3, i)
-
 
       }
 
     }
 
+    name.list = data.frame(temp3)
+    conditions = data.frame(temp2)
+
+    output2 = data.frame(temp3, temp, temp2)
+    colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
+
+    print(output2)
+
   }
-
-  name.list = data.frame(temp3)
-  conditions = data.frame(temp2)
-
-  output2 = data.frame(temp3, temp, temp2)
-  colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
-
-  print(output2)
 
 }
 

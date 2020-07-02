@@ -186,11 +186,9 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
         print(input3)
 
         output = as.numeric(table(input3$x))[2] / k #Get each participants total number of correct responses and divide by key
-        print(output)
 
         temp = c(output, temp)
         temp2 = c(temp2, g)
-        print(temp2)
         temp3 = c(temp3, i)
 
 
@@ -366,6 +364,8 @@ server = function(input, output) {
         }
     )
 
+    ##This section controls the prop correct tab dropdown menus
+    #First menu
     output$select_grouping1 = renderUI({
 
         df = getData()
@@ -392,13 +392,14 @@ server = function(input, output) {
 
     })
 
+    #Second menu
     output$select_grouping2 = renderUI({
 
         df = getData()
 
         items = colnames(df)
 
-        #No condition columns
+        #No condition columns (This one works as expected)
         if (length(df) == 4) {
 
             items = names(df)
@@ -407,7 +408,36 @@ server = function(input, output) {
 
         }
 
-        else if (length(df) > 4) {
+        #One extra column (this one doesn't work yet)
+        else if (length(df) == 5) {
+
+          df2 = df[ ,-c(1:3)]
+
+          if (input$conditions2 == "id"){
+
+            items = names(df2)
+
+            items = append(items, "None")
+            items = items[items != "Scored"]
+
+            selectInput("conditions3", "Select Second Grouping Variable (Optional)", items, selected = "None")
+
+          }
+
+          else if(input$conditions2 != "id"){
+
+            items = names(df2)
+
+            items = "None"
+
+            selectInput("conditions3", "Select Second Grouping Variable (Optional)", items)
+
+          }
+
+        }
+
+        ##Multiple extra columns (This one also works)
+        else if (length(df) > 5) {
 
             df2 = df[ ,-c(1:4)]
 
