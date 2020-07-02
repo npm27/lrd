@@ -198,15 +198,15 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
     }
 
+    name.list = data.frame(temp3)
+    conditions = data.frame(temp2)
+
+    output2 = data.frame(temp3, temp, temp2)
+    colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
+
+    print(output2)
+
   }
-
-  name.list = data.frame(temp3)
-  conditions = data.frame(temp2)
-
-  output2 = data.frame(temp3, temp, temp2)
-  colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
-
-  print(output2)
 
 }
 
