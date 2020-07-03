@@ -3,6 +3,7 @@ library(shiny)
 library(ggplot2)
 library(vecsets)
 library(Hmisc)
+library(RecordLinkage)
 
 ####Custom Functions#####
 cleanup = theme(panel.grid.major = element_blank(),
@@ -218,8 +219,8 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
 }
 
-##USE THIS ONE WHEN NEEDING TO COLLAPSE ACROSS PARTICIPANT (SO ID WOULD BE ONE OF THE GROUPING CONDITIONS)
-prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
+##USE THIS ONE WHEN NEEDING TO COLLAPSE ACROSS PARTICIPANT (SO ID WOULD BE ONE OF THE GROUPING CONDITIONS INSTEAD OF SUB ID)
+prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL, design = NULL){
 
   a = is.null(group.by)
 
@@ -307,7 +308,7 @@ prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
         input3 = subset(input2,
                         input2$group.by == g)
-        print(input3)
+        #print(input3)
 
         output = as.numeric(table(input3$x))[2] #Get each participants total number of correct responses and divide by key
 
@@ -326,9 +327,27 @@ prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
     output2 = data.frame(temp3, temp, temp2)
     colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
 
-    output2$Proportion_Correct = output2$Proportion_Correct / (k / length(unique(output2$Condition)))
+    if (design == "None"){
 
-    print(output2)
+      print("Please use the drop down menu to specify whether grouping variable is between subjects or repeated measures!")
+
+    }
+
+    else if (design == "Repeated"){
+
+      output2$Proportion_Correct = output2$Proportion_Correct / (k / length(unique(output2$Condition)))
+
+      print(output2)
+
+    }
+
+    else if (design == "Between"){
+
+      output2$Proportion_Correct = output2$Proportion_Correct / (k)
+
+      print(output2)
+
+    }
 
   }
 
@@ -433,7 +452,13 @@ ui = fluidPage(
 
                              uiOutput("select_grouping2"),
 
-                             tableOutput('contents2')),
+                             tableOutput('contents2'),
+
+                             helpText("Select whether the grouping variable is between subjects or repated measures. NOTE: Select \"None\" when grouping by Participant ID or when grouping by only one variable."),
+
+                             helpText(" "),
+
+                             uiOutput("select_design")),
 
                     tabPanel("Plots",
 
@@ -500,6 +525,15 @@ server = function(input, output) {
     )
 
     ##This section controls the prop correct tab dropdown menus
+    #Menu for selecting study design
+    output$select_design = renderUI({
+
+      items2 = c("Repeated", "Between", "None")
+
+      selectInput("conditions4", " ", items2, selected = "None")
+
+    })
+
     #First menu
     output$select_grouping1 = renderUI({
 
@@ -676,7 +710,7 @@ server = function(input, output) {
 
           else if (input$conditions2 != "id" & input$conditions2 != input$conditions3){
 
-            final = prop.correct.f2(matched$Scored, key = matched$Scored, id = dat[ , input$conditions2], group.by = dat[ , input$conditions3])
+            final = prop.correct.f2(matched$Scored, key = matched$Scored, id = dat[ , input$conditions2], group.by = dat[ , input$conditions3], design = input$conditions4)
 
             #colnames(final)[1:2] = c("Participant", "Proportion Correct Response")
             final
