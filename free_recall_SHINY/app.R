@@ -430,7 +430,7 @@ ui = fluidPage(
                              helpText("Two upload .csv files are required. The first .csv file needs to contain the data to be scored. This file must contain at least two columns arranged in the following order:",
                                       "A column containing unique identifiers for each participant followed by a column containing participant responses.",
                                       "The second .csv file contains the scoring key used to process the data. This file should be formatted to contain only one column.",
-                                      "Examples of each file structure are available ", a("here.", href = "https://osf.io/evpq8/", target = "_blank"))),
+                                      "Examples of each file structure are available ", a("here.", href = "https://osf.io/admyx/", target = "_blank"))),
 
                     tabPanel("Scored Output",
 
