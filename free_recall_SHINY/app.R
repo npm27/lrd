@@ -3,6 +3,7 @@ library(shiny)
 library(ggplot2)
 library(vecsets)
 library(Hmisc)
+library(RecordLinkage)
 
 ####Custom Functions#####
 cleanup = theme(panel.grid.major = element_blank(),
@@ -228,6 +229,7 @@ prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
   temp = c() #Make a blank vector for storage
   temp2 = c()
   temp3 = c()
+  temp4 = data.frame()
 
   if (a == TRUE & flag == FALSE) {
 
@@ -307,7 +309,7 @@ prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
         input3 = subset(input2,
                         input2$group.by == g)
-        print(input3)
+        #print(input3)
 
         output = as.numeric(table(input3$x))[2] #Get each participants total number of correct responses and divide by key
 
@@ -326,7 +328,28 @@ prop.correct.f2 = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
     output2 = data.frame(temp3, temp, temp2)
     colnames(output2)[1:3] = c("ID", "Proportion_Correct", "Condition")
 
-    output2$Proportion_Correct = output2$Proportion_Correct / (k / length(unique(output2$Condition)))
+    #print(output2$Proportion_Correct) ##Need to take these...
+
+    output3 = tapply(input$x, list(input$id, input$group.by), length) ##And divide them by these
+
+    output3 = data.frame(output3)
+
+    for (i in 1:length(output3)){
+
+
+      temp5 = output3[ , i]
+      temp5 = data.frame(temp5)
+      colnames(temp5)[1] = "Value"
+
+      temp4 = rbind(temp4, temp5)
+
+    }
+
+    #Convert to a vector
+    temp4 = as.vector(temp4[ , 1])
+
+    #Now divide!
+    output2$Proportion_Correct = output2$Proportion_Correct / temp4
 
     print(output2)
 
