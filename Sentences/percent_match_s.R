@@ -12,8 +12,3 @@ percent_match.s = function(x, y){
   length(vintersect(char.a1[[1]], char.b1[[1]])) / max(c(length((char.a1[[1]])), length((char.b1[[1]]))))
 
 }
-
-x = "cat"
-y = "catto"
-
-percent_match.s(A, B)
