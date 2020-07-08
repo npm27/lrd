@@ -113,5 +113,3 @@ prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
   }
 
 }
-
-prop.correct.f(df2$Scored, key = key, id = df2$id, flag = TRUE)

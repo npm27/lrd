@@ -1,6 +1,6 @@
 ####Work on arrange data function####
 library(readxl)
-source("format data function.R)
+source("format data function.R")
 
 dat = read_excel("Version A Guess Recall Data.xlsx", sheet = "Guess Data")
 colnames(dat)[2:4] = c("List_Num", "List_Type", "Items_Guessed")
