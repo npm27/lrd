@@ -1,12 +1,16 @@
-#Let's try it!
-#make an empty df for storage
+#X = participant responses (see Guess recall data files for formatting example)
+#Sep = whatever character is separating responses from the same response set
+#Id = participant id
+#Other = any condition columns
+#Right now these will need to be specified through indexing -- so other = dat[ , c(2:3)]
 
-arrange.dat = function(x, sep = y, id = z){
+arrange.data = function(x, sep = y, id = z, other = NULL){
 
-df = data.frame()
-lengths = data.frame()
-df2 = data.frame()
-df3 = data.frame()
+  df = data.frame()
+  lengths = data.frame()
+  df2 = data.frame()
+  df3 = data.frame()
+  x6 = c()
 
   for (i in x){
 
@@ -46,7 +50,7 @@ df3 = data.frame()
       x3 = data.frame(x3)
       colnames(x3)[1] = "Sub.ID"
 
-      }
+    }
 
     df2 = rbind(df2, x3)
 
@@ -73,9 +77,60 @@ df3 = data.frame()
 
   }
 
-  #Remove spaces
-  df = as.data.frame(apply(df, 2, function(y)gsub('\\s+', '',y)))
+  if(is.null(other) == FALSE){
 
-  final = cbind(df2, df, df3)
+    namelist = names(other)
+
+    df5 = data.frame(matrix(NA, nrow = nrow(df2), ncol = length(other)))
+
+    for (i in namelist){
+
+      #print(i)
+
+      sub1 = as.data.frame(other[`i`])
+
+      print(sub1)
+
+      q = 0
+      q = q + 1
+
+      r = 0
+
+      j = 1
+
+      for (t in lengths$Length){
+
+        r = r + 1
+
+        x5 = (rep(sub1[r, ], t))
+
+        x6 = c(x6, x5)
+
+      }
+
+      ##The above loop puts all the columns in one list. Now I need to sub divide it up into the correct number of columns
+
+      rownum = nrow(df) #Get number of rows in the final dataset
+
+      splitstuff = split(x6, ceiling(seq_along(x6)/rownum))
+      splitstuff = data.frame(splitstuff)
+
+      colnames(splitstuff)[1:length(splitstuff)] = namelist #Need to check this warning
+
+    }
+
+    #Remove spaces
+    df = as.data.frame(apply(df, 2, function(y)gsub('\\s+', '',y)))
+
+    final = cbind(df2, df, df3, splitstuff)
+
+  } else if (is.null(other) == TRUE){
+
+    #Remove spaces
+    df = as.data.frame(apply(df, 2, function(y)gsub('\\s+', '',y)))
+
+    final = cbind(df2, df, df3)
+
+  }
 
 }
