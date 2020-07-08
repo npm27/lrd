@@ -89,8 +89,6 @@ arrange.data = function(x, sep = y, id = z, other = NULL){
 
       sub1 = as.data.frame(other[`i`])
 
-      print(sub1)
-
       q = 0
       q = q + 1
 
@@ -109,13 +107,21 @@ arrange.data = function(x, sep = y, id = z, other = NULL){
       }
 
       ##The above loop puts all the columns in one list. Now I need to sub divide it up into the correct number of columns
+    }
 
-      rownum = nrow(df) #Get number of rows in the final dataset
+    rownum = nrow(df) #Get number of rows in the final dataset
 
-      splitstuff = split(x6, ceiling(seq_along(x6)/rownum))
-      splitstuff = data.frame(splitstuff)
+    splitstuff = split(x6, ceiling(seq_along(x6)/rownum))
 
-      colnames(splitstuff)[1:length(splitstuff)] = namelist #Need to check this warning
+    splitstuff = data.frame(splitstuff)
+
+    c = 0
+
+    for (i in namelist){
+
+      c = c + 1
+
+      colnames(splitstuff)[c] = i
 
     }
 
