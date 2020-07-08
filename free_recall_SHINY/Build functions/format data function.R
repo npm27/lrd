@@ -79,5 +79,3 @@ df3 = data.frame()
   final = cbind(df2, df, df3)
 
 }
-
-output2 = arrange.dat(dat$Response, id = dat$Sub.ID, sep = ",")
