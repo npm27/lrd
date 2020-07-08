@@ -1,6 +1,6 @@
 ####Lrd Sentence processing####
 #Load some libraries
-library(dplyr) #Can't remember I ended up using this package...
+library(dplyr) #Can't remember if I ended up using this package...
 library(koRpus)
 library(koRpus.lang.en)
 library(rapportools)
@@ -31,7 +31,9 @@ dat = read.csv("sentences example.csv")
 #the answer key (y)
 #the subject number (id)
 #and a percent match cutoff for the spelling stuff (z)
-#Will need to figure out how to suppress those 50 or more warnings
+
+##The function below seems to work pretty well.
+#But I still need to figure out how to suppress those 50 or more warnings coming from the is.empty stuff
 
 sentence_match = function(x, key = y, id = z, cutoff = q){
 
@@ -264,7 +266,7 @@ sentence_match = function(x, key = y, id = z, cutoff = q){
 
   colnames(final)[1:7] = c("ID", "Key", "Response", "Corrected_Response", "Percent_Match", "Omitted_Items", "Extra_Items")
 
-  return(final)
+  final
 
 }
 
