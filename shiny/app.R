@@ -21,7 +21,7 @@ source("free_recall.R")
 source("cued_recall.R")
 
 # Define UI for application that draws a histogram
-ui <- dashboardPage(skin = "green",
+ui <- dashboardPage(skin = "blue",
     dashboardHeader(title = "lrd"),
     dashboardSidebar(
         sidebarMenu(
