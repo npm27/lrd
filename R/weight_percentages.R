@@ -1,13 +1,15 @@
-#' Compute Percent Match
+#' Compute Percent Match cued-recall
 #'
 #' This function computes the percentage of shared characters between two strings
 #'
 #' @param x a vector containing input data
+#' @param key a vector containing the scoring key
+#' @param id a vector containing participant ID numbers
 #' @return a dataframe object containing the input vectors and a percent match column
 #' @import vecsets
 #' @export
 
-percent_match = function(x, key = y, id = z, weight = FALSE, weight.by = NULL){
+percent_match.cr = function(x, key = y, id = z, weight = FALSE, weight.by = NULL){
 
   xx = weight.by
 
