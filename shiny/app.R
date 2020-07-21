@@ -1,5 +1,5 @@
 # Shiny application for lrd -----------------------------------------------
-# Written by Nicholas Maxwell
+# Written by Nicholas P. Maxwell
 # Updated to shinydashboard by Erin M. Buchanan
 
 # Libraries ---------------------------------------------------------------
