@@ -1,0 +1,261 @@
+Username	FinalQuestions	Trial	Question	Type	RT	Response
+	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	3300	Smooth
+	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	2700	Naive
+	FinalQuestions	3	Please report your age (in years)	Text	1800	24
+	FinalQuestions	4	What is your gender?	Radio	2000	Female
+	FinalQuestions	5	How fluent are you in the English Language?	Radio	3200	Completely Fluent
+	FinalQuestions	6	Is English your first language?	Radio	2200	No
+	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	3400	Yes
+	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	6800	9
+	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	4700	South East Asian
+	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	5100	Nope
+A3Q0QELQPXR8QS	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5500	Smooth
+A3Q0QELQPXR8QS	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	4300	Naive
+A3Q0QELQPXR8QS	FinalQuestions	3	Please report your age (in years)	Text	4000	23
+A3Q0QELQPXR8QS	FinalQuestions	4	What is your gender?	Radio	2800	Female
+A3Q0QELQPXR8QS	FinalQuestions	5	How fluent are you in the English Language?	Radio	3300	Completely Fluent
+A3Q0QELQPXR8QS	FinalQuestions	6	Is English your first language?	Radio	2400	Yes
+A3Q0QELQPXR8QS	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	3800	Yes
+A3Q0QELQPXR8QS	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	3800	4
+A3Q0QELQPXR8QS	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	3500	White
+A3Q0QELQPXR8QS	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	6300	No
+A13KYLCBVG5BEB	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	14800	MinorBumps
+A13KYLCBVG5BEB	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	12300	Naive
+A13KYLCBVG5BEB	FinalQuestions	3	Please report your age (in years)	Text	6100	40
+A13KYLCBVG5BEB	FinalQuestions	4	What is your gender?	Radio	3800	Female
+A3NLXFU5MR0JSR	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	11800	Smooth
+A13KYLCBVG5BEB	FinalQuestions	5	How fluent are you in the English Language?	Radio	8500	Completely Fluent
+A13KYLCBVG5BEB	FinalQuestions	6	Is English your first language?	Radio	8600	Completely Fluent
+A3NLXFU5MR0JSR	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	7100	Naive
+A3NLXFU5MR0JSR	FinalQuestions	3	Please report your age (in years)	Text	4400	25
+A13KYLCBVG5BEB	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	10100	Yes
+A3NLXFU5MR0JSR	FinalQuestions	4	What is your gender?	Radio	3100	Male
+A3NLXFU5MR0JSR	FinalQuestions	5	How fluent are you in the English Language?	Radio	4200	Completely Fluent
+A3NLXFU5MR0JSR	FinalQuestions	6	Is English your first language?	Radio	1900	Yes
+A13KYLCBVG5BEB	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	8800	4
+A3NLXFU5MR0JSR	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	5400	Yes
+A13KYLCBVG5BEB	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	7100	Asian
+A3NLXFU5MR0JSR	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	7300	4
+A13KYLCBVG5BEB	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	12300	no
+A3NLXFU5MR0JSR	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	20700	white british
+A3NLXFU5MR0JSR	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	10400	no
+A248G7WMC2OS7F	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	9600	Smooth
+A248G7WMC2OS7F	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	4900	Naive
+A248G7WMC2OS7F	FinalQuestions	3	Please report your age (in years)	Text	3900	43
+A248G7WMC2OS7F	FinalQuestions	4	What is your gender?	Radio	2900	Female
+A248G7WMC2OS7F	FinalQuestions	5	How fluent are you in the English Language?	Radio	4500	Completely Fluent
+A248G7WMC2OS7F	FinalQuestions	6	Is English your first language?	Radio	2000	Yes
+A248G7WMC2OS7F	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	3000	Yes
+A248G7WMC2OS7F	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	6700	0
+A248G7WMC2OS7F	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	11800	Caucasian
+A248G7WMC2OS7F	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	13700	No
+A2HHQFXZDKMGAN	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	8100	Smooth
+A2HHQFXZDKMGAN	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	7600	Naive
+A2HHQFXZDKMGAN	FinalQuestions	3	Please report your age (in years)	Text	4100	20
+A2HHQFXZDKMGAN	FinalQuestions	4	What is your gender?	Radio	3100	Female
+A2HHQFXZDKMGAN	FinalQuestions	5	How fluent are you in the English Language?	Radio	5100	Completely Fluent
+A2HHQFXZDKMGAN	FinalQuestions	6	Is English your first language?	Radio	8300	Yes
+A2HHQFXZDKMGAN	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	8900	Yes
+A2HHQFXZDKMGAN	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	4800	3
+A2HHQFXZDKMGAN	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	16400	African American
+A2HHQFXZDKMGAN	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	25700	Nope. I was very tired though.
+A12GQ323JHYS9Q	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	10300	MinorBumps
+A12GQ323JHYS9Q	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	8500	Naive
+A12GQ323JHYS9Q	FinalQuestions	3	Please report your age (in years)	Text	3900	22
+A12GQ323JHYS9Q	FinalQuestions	4	What is your gender?	Radio	1900	Male
+A12GQ323JHYS9Q	FinalQuestions	5	How fluent are you in the English Language?	Radio	4000	Very Fluent
+A12GQ323JHYS9Q	FinalQuestions	6	Is English your first language?	Radio	1800	No
+A12GQ323JHYS9Q	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	7800	Yes
+A12GQ323JHYS9Q	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	9500	4
+A12GQ323JHYS9Q	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	7500	Asian
+A12GQ323JHYS9Q	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	10200	No
+A3KVFSHZ2EL0WX	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	15900	MinorBumps
+A3KVFSHZ2EL0WX	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	3700	Naive
+A3KVFSHZ2EL0WX	FinalQuestions	3	Please report your age (in years)	Text	3400	31
+A3KVFSHZ2EL0WX	FinalQuestions	4	What is your gender?	Radio	1800	Female
+A3KVFSHZ2EL0WX	FinalQuestions	5	How fluent are you in the English Language?	Radio	3200	Completely Fluent
+A3KVFSHZ2EL0WX	FinalQuestions	6	Is English your first language?	Radio	2000	Yes
+A3KVFSHZ2EL0WX	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	3200	Yes
+A3KVFSHZ2EL0WX	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	12900	7
+A3KVFSHZ2EL0WX	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	6800	Greek
+A3KVFSHZ2EL0WX	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	9200	no
+AVJUIF9QHQRY8	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	11600	Smooth
+AVJUIF9QHQRY8	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	6200	Naive
+AVJUIF9QHQRY8	FinalQuestions	3	Please report your age (in years)	Text	3800	32
+AVJUIF9QHQRY8	FinalQuestions	4	What is your gender?	Radio	2500	Female
+AVJUIF9QHQRY8	FinalQuestions	5	How fluent are you in the English Language?	Radio	3600	Completely Fluent
+AVJUIF9QHQRY8	FinalQuestions	6	Is English your first language?	Radio	2600	Yes
+AVJUIF9QHQRY8	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	3300	Yes
+AVJUIF9QHQRY8	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	4200	2
+AVJUIF9QHQRY8	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	6200	black
+AVJUIF9QHQRY8	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	7000	no
+A2Y749J0XM6TIy	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	11600	MinorBumps
+A2Y749J0XM6TIy	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	3600	Naive
+A2Y749J0XM6TIy	FinalQuestions	3	Please report your age (in years)	Text	5200	34
+A2Y749J0XM6TIy	FinalQuestions	4	What is your gender?	Radio	2300	Male
+A2Y749J0XM6TIy	FinalQuestions	5	How fluent are you in the English Language?	Radio	3200	Completely Fluent
+A2Y749J0XM6TIy	FinalQuestions	6	Is English your first language?	Radio	2000	Yes
+A2Y749J0XM6TIy	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	9700	Yes
+A7X2K7IW80TBU	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	2800	Smooth
+A7X2K7IW80TBU	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	2400	Naive
+A7X2K7IW80TBU	FinalQuestions	3	Please report your age (in years)	Text	3800	34
+A2Y749J0XM6TIy	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	34800	6
+A7X2K7IW80TBU	FinalQuestions	4	What is your gender?	Radio	3000	Female
+A7X2K7IW80TBU	FinalQuestions	5	How fluent are you in the English Language?	Radio	2200	Completely Fluent
+A2Y749J0XM6TIy	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	5900	asian
+A7X2K7IW80TBU	FinalQuestions	6	Is English your first language?	Radio	2400	Yes
+A7X2K7IW80TBU	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	3100	Yes
+A2Y749J0XM6TIy	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	6600	no
+A7X2K7IW80TBU	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	3500	5
+A7X2K7IW80TBU	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	5700	white
+A7X2K7IW80TBU	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	7100	No!
+	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	14800	ExcludeMe
+	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	3900	Naive
+	FinalQuestions	3	Please report your age (in years)	Text	2200	28
+	FinalQuestions	4	What is your gender?	Radio	1700	Male
+	FinalQuestions	5	How fluent are you in the English Language?	Radio	7600	Very Fluent
+	FinalQuestions	6	Is English your first language?	Radio	1600	No
+	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	7900	Yes
+	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	5100	6
+	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	15600	Caucasian
+	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	22400	No, but during the second part the test broke: Warning: session_start(): Failed to decode session object. Session has been destroyed in /home/mclexp/MCLEXP.com/MJH/RGR/CustomFunctions.php on line 150  Warning: session_start(): Cannot send session cache limiter - headers already sent (output started at /home/mclexp/MCLEXP.com/MJH/RGR/CustomFunctions.php:150) in /home/mclexp/MCLEXP.com/MJH/RGR/CustomFunctions.php on line 150
+	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	14100	MinorBumps
+	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	5500	Naive
+	FinalQuestions	3	Please report your age (in years)	Text	6300	39
+	FinalQuestions	4	What is your gender?	Radio	2300	Male
+	FinalQuestions	5	How fluent are you in the English Language?	Radio	2800	Completely Fluent
+	FinalQuestions	6	Is English your first language?	Radio	35200	Yes
+	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	6600	Yes
+	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	2700	16
+	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	14400	Caucasion
+	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	18100	Caucasion
+	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	4100	Smooth
+	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	2300	Naive
+	FinalQuestions	3	Please report your age (in years)	Text	2100	32
+	FinalQuestions	4	What is your gender?	Radio	1800	Female
+	FinalQuestions	5	How fluent are you in the English Language?	Radio	3100	Completely Fluent
+	FinalQuestions	6	Is English your first language?	Radio	1800	Yes
+	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	2100	Yes
+	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	5100	6
+	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	3100	white
+	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	3700	no
+AY0BJCGY2DHIX	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5500	MinorBumps
+AY0BJCGY2DHIX	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	2900	Naive
+AY0BJCGY2DHIX	FinalQuestions	3	Please report your age (in years)	Text	2900	56
+AY0BJCGY2DHIX	FinalQuestions	4	What is your gender?	Radio	2100	Female
+AY0BJCGY2DHIX	FinalQuestions	5	How fluent are you in the English Language?	Radio	2400	Completely Fluent
+AY0BJCGY2DHIX	FinalQuestions	6	Is English your first language?	Radio	2400	Yes
+AY0BJCGY2DHIX	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	2900	Yes
+AY0BJCGY2DHIX	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	6400	4
+AY0BJCGY2DHIX	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	8400	white
+AY0BJCGY2DHIX	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	4800	no
+A32JHON6BQQK90	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	13000	MinorBumps
+A32JHON6BQQK90	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	5400	Naive
+A32JHON6BQQK90	FinalQuestions	3	Please report your age (in years)	Text	4400	38
+A32JHON6BQQK90	FinalQuestions	4	What is your gender?	Radio	3400	Female
+A32JHON6BQQK90	FinalQuestions	5	How fluent are you in the English Language?	Radio	6200	Completely Fluent
+A32JHON6BQQK90	FinalQuestions	6	Is English your first language?	Radio	4200	Yes
+A32JHON6BQQK90	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	8700	Yes
+A32JHON6BQQK90	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	7100	4
+A32JHON6BQQK90	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	7300	white
+A32JHON6BQQK90	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	6000	no
+A2C39KTRMOM1XZ	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5300	Smooth
+A2C39KTRMOM1XZ	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	5000	Naive
+A2C39KTRMOM1XZ	FinalQuestions	3	Please report your age (in years)	Text	5200	50
+A2C39KTRMOM1XZ	FinalQuestions	4	What is your gender?	Radio	3900	Female
+A2C39KTRMOM1XZ	FinalQuestions	5	How fluent are you in the English Language?	Radio	2600	Completely Fluent
+A2C39KTRMOM1XZ	FinalQuestions	6	Is English your first language?	Radio	2400	Yes
+A2C39KTRMOM1XZ	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	3400	Yes
+A2C39KTRMOM1XZ	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	4900	0
+A2C39KTRMOM1XZ	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	7200	white
+A2C39KTRMOM1XZ	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	5900	no
+AZ57C58RDAMJF	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5400	Smooth
+AZ57C58RDAMJF	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	3800	Naive
+AZ57C58RDAMJF	FinalQuestions	3	Please report your age (in years)	Text	3700	53
+AZ57C58RDAMJF	FinalQuestions	4	What is your gender?	Radio	2700	Female
+AZ57C58RDAMJF	FinalQuestions	5	How fluent are you in the English Language?	Radio	3000	Completely Fluent
+AZ57C58RDAMJF	FinalQuestions	6	Is English your first language?	Radio	2700	Yes
+AZ57C58RDAMJF	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	4400	Yes
+AZ57C58RDAMJF	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	7300	4
+AZ57C58RDAMJF	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	5900	CAUCASIAN
+AZ57C58RDAMJF	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	5000	NO
+A3CZFTXS9EQSY3	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5900	Smooth
+A3CZFTXS9EQSY3	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	3100	Naive
+A3CZFTXS9EQSY3	FinalQuestions	3	Please report your age (in years)	Text	2500	40
+A3CZFTXS9EQSY3	FinalQuestions	4	What is your gender?	Radio	1900	Female
+A3CZFTXS9EQSY3	FinalQuestions	5	How fluent are you in the English Language?	Radio	2100	Completely Fluent
+A3CZFTXS9EQSY3	FinalQuestions	6	Is English your first language?	Radio	4200	Yes
+A3CZFTXS9EQSY3	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	4000	Yes
+A3CZFTXS9EQSY3	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	3900	1
+A3CZFTXS9EQSY3	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	4500	White
+A3CZFTXS9EQSY3	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	4300	No
+A14QSZG9TSDO3Z	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	16400	MinorBumps
+A14QSZG9TSDO3Z	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	4900	Naive
+A14QSZG9TSDO3Z	FinalQuestions	3	Please report your age (in years)	Text	3400	27
+A14QSZG9TSDO3Z	FinalQuestions	4	What is your gender?	Radio	2500	Male
+A14QSZG9TSDO3Z	FinalQuestions	5	How fluent are you in the English Language?	Radio	3700	Completely Fluent
+A14QSZG9TSDO3Z	FinalQuestions	6	Is English your first language?	Radio	2000	No
+A14QSZG9TSDO3Z	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	2800	Yes
+A14QSZG9TSDO3Z	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	7500	5
+A14QSZG9TSDO3Z	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	5800	Indian
+A14QSZG9TSDO3Z	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	7300	No
+A26VCAPOC667HR	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	3500	Smooth
+A26VCAPOC667HR	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	2100	Naive
+A26VCAPOC667HR	FinalQuestions	3	Please report your age (in years)	Text	1800	27
+A26VCAPOC667HR	FinalQuestions	4	What is your gender?	Radio	1600	Male
+A26VCAPOC667HR	FinalQuestions	5	How fluent are you in the English Language?	Radio	2500	Completely Fluent
+A26VCAPOC667HR	FinalQuestions	6	Is English your first language?	Radio	1200	Yes
+A26VCAPOC667HR	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	2100	Yes
+A26VCAPOC667HR	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	2300	8
+A26VCAPOC667HR	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	3100	white
+A26VCAPOC667HR	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	4200	no
+A1XZG393ZJRQVZ	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5400	Smooth
+A1XZG393ZJRQVZ	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	4300	Naive
+A1XZG393ZJRQVZ	FinalQuestions	3	Please report your age (in years)	Text	2400	45
+A1XZG393ZJRQVZ	FinalQuestions	4	What is your gender?	Radio	2100	Female
+A1XZG393ZJRQVZ	FinalQuestions	5	How fluent are you in the English Language?	Radio	6500	Completely Fluent
+A1XZG393ZJRQVZ	FinalQuestions	6	Is English your first language?	Radio	2100	Yes
+A1XZG393ZJRQVZ	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	5400	Yes
+A1XZG393ZJRQVZ	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	13000	2
+A1XZG393ZJRQVZ	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	5600	white
+A1XZG393ZJRQVZ	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	5400	no
+A2JADK7LUDYCXB	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5700	Smooth
+A2JADK7LUDYCXB	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	3400	Naive
+A2JADK7LUDYCXB	FinalQuestions	3	Please report your age (in years)	Text	3600	30
+A2JADK7LUDYCXB	FinalQuestions	4	What is your gender?	Radio	2200	Female
+A2JADK7LUDYCXB	FinalQuestions	5	How fluent are you in the English Language?	Radio	3900	Completely Fluent
+A2JADK7LUDYCXB	FinalQuestions	6	Is English your first language?	Radio	1900	Yes
+A2JADK7LUDYCXB	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	6400	Yes
+A2JADK7LUDYCXB	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	6400	4
+A2JADK7LUDYCXB	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	4300	White
+A2JADK7LUDYCXB	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	15700	no
+A2B7SPYBPF7H8I	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	7000	Smooth
+A2B7SPYBPF7H8I	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	5300	Naive
+A2B7SPYBPF7H8I	FinalQuestions	3	Please report your age (in years)	Text	4400	47
+A2B7SPYBPF7H8I	FinalQuestions	4	What is your gender?	Radio	3900	Female
+A2B7SPYBPF7H8I	FinalQuestions	5	How fluent are you in the English Language?	Radio	3500	Completely Fluent
+A2B7SPYBPF7H8I	FinalQuestions	6	Is English your first language?	Radio	2700	Yes
+A2B7SPYBPF7H8I	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	4300	Yes
+A2B7SPYBPF7H8I	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	7600	2
+A2B7SPYBPF7H8I	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	12500	white non-hispanic
+A2B7SPYBPF7H8I	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	6300	No
+A1H72Y9Z5NJXDS	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	5000	Smooth
+A1H72Y9Z5NJXDS	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	5300	Naive
+A1H72Y9Z5NJXDS	FinalQuestions	3	Please report your age (in years)	Text	2700	36
+A1H72Y9Z5NJXDS	FinalQuestions	4	What is your gender?	Radio	2200	Female
+A1H72Y9Z5NJXDS	FinalQuestions	5	How fluent are you in the English Language?	Radio	2500	Completely Fluent
+A1H72Y9Z5NJXDS	FinalQuestions	6	Is English your first language?	Radio	1800	Yes
+A1H72Y9Z5NJXDS	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	4100	Yes
+A1H72Y9Z5NJXDS	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	3900	3
+A1H72Y9Z5NJXDS	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	4300	hispanic
+A1H72Y9Z5NJXDS	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	27100	No, this was only my memory.
+AD4ALUT6LXXBU	FinalQuestions	1	Did the experiment go smoothly or were there problems? (Note: Your compensation will not depend on your answer below, so please be honest.)!!!	Radio	15000	Smooth
+AD4ALUT6LXXBU	FinalQuestions	2	Have you participated in this experiment (or another experiment using the same learning materials) before?	Radio	14700	DoneItBefore
+AD4ALUT6LXXBU	FinalQuestions	3	Please report your age (in years)	Text	4300	47
+AD4ALUT6LXXBU	FinalQuestions	4	What is your gender?	Radio	3100	Female
+AD4ALUT6LXXBU	FinalQuestions	5	How fluent are you in the English Language?	Radio	5200	Completely Fluent
+AD4ALUT6LXXBU	FinalQuestions	6	Is English your first language?	Radio	3200	Yes
+AD4ALUT6LXXBU	FinalQuestions	7	Do you have normal or corrected-to-normal vision (e.g., corrective lenses)?	Radio	5000	Yes
+AD4ALUT6LXXBU	FinalQuestions	8	How many years of post-secondary education have you completed?	Text	15500	1
+AD4ALUT6LXXBU	FinalQuestions	9	List an ethnic category that you most closely identify with.	Text	10200	Caucasian
+AD4ALUT6LXXBU	FinalQuestions	10	Although you were asked not to, did you cheat during the experiment? Answer honestly, you will still be compensated.	Text	25600	No, I didn't cheat.

@@ -1,0 +1,1079 @@
+Stimuli	Stimuli	Stimuli	Stimuli	Stimuli	Procedure	Procedure	Procedure	Procedure	Procedure	Procedure	Response	Response	Response	Response	Response	Response	Response	Response	Response	Response
+Target	Cue	Answer	Shuffle	Stimuli Notes	Item	Trial Type	Post Trial	Timing	Procedure Notes	Shuffle	Response1	RT	RTkey	RTlast	strictAcc	lenientAcc	Accuracy	JOL	postRT	postRTkey
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the first list.	Off										
+OCEAN		OCEAN	OFF	AdHoc_G_L1	12	Study	No	3	AdHoc_G_L1	ON										
+TEARS		TEARS	OFF	AdHoc_G_L1	6	Study	No	3	AdHoc_G_L1	ON										
+SYRUP		SYRUP	OFF	AdHoc_G_L1	20	Study	No	3	AdHoc_G_L1	ON										
+SODA		SODA	OFF	AdHoc_G_L1	3	Study	No	3	AdHoc_G_L1	ON										
+GASOLINE		GASOLINE	OFF	AdHoc_G_L1	17	Study	No	3	AdHoc_G_L1	ON										
+LAKE		LAKE	OFF	AdHoc_G_L1	13	Study	No	3	AdHoc_G_L1	ON										
+BLOOD		BLOOD	OFF	AdHoc_G_L1	18	Study	No	3	AdHoc_G_L1	ON										
+RIVER		RIVER	OFF	AdHoc_G_L1	14	Study	No	3	AdHoc_G_L1	ON										
+SOUP		SOUP	OFF	AdHoc_G_L1	16	Study	No	3	AdHoc_G_L1	ON										
+CREAM		CREAM	OFF	AdHoc_G_L1	21	Study	No	3	AdHoc_G_L1	ON										
+TEA		TEA	OFF	AdHoc_G_L1	4	Study	No	3	AdHoc_G_L1	ON										
+ALCOHOL		ALCOHOL	OFF	AdHoc_G_L1	10	Study	No	3	AdHoc_G_L1	ON										
+BEER		BEER	OFF	AdHoc_G_L1	8	Study	No	3	AdHoc_G_L1	ON										
+HOT CHOCOLATE		HOT CHOCOLATE	OFF	AdHoc_G_L1	11	Study	No	3	AdHoc_G_L1	ON										
+SWEAT		SWEAT	OFF	AdHoc_G_L1	7	Study	No	3	AdHoc_G_L1	ON										
+CIDER		CIDER	OFF	AdHoc_G_L1	2	Study	No	3	AdHoc_G_L1	ON										
+MERCURY		MERCURY	OFF	AdHoc_G_L1	5	Study	No	3	AdHoc_G_L1	ON										
+VINEGAR		VINEGAR	OFF	AdHoc_G_L1	19	Study	No	3	AdHoc_G_L1	ON										
+WINE		WINE	OFF	AdHoc_G_L1	9	Study	No	3	AdHoc_G_L1	ON										
+LAVA		LAVA	OFF	AdHoc_G_L1	15	Study	No	3	AdHoc_G_L1	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Guess Instructions: 5 words related to the list you just saw were not presented. Try to guess these words by typing them into the dialog box on the next screen. You must guess at least one.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	User	Guess Below. You must make at least one guess. Click submit when you are finished.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+STRING BEANS		STRING BEANS	OFF	Cat_G_L2	28	Study	No	3	Cat_G_L2	ON										
+BEETS		BEETS	OFF	Cat_G_L2	30	Study	No	3	Cat_G_L2	ON										
+CELERY		CELERY	OFF	Cat_G_L2	26	Study	No	3	Cat_G_L2	ON										
+CORN		CORN	OFF	Cat_G_L2	22	Study	No	3	Cat_G_L2	ON										
+CABBAGE		CABBAGE	OFF	Cat_G_L2	27	Study	No	3	Cat_G_L2	ON										
+ONION		ONION	OFF	Cat_G_L2	33	Study	No	3	Cat_G_L2	ON										
+POTATO		POTATO	OFF	Cat_G_L2	23	Study	No	3	Cat_G_L2	ON										
+KALE		KALE	OFF	Cat_G_L2	36	Study	No	3	Cat_G_L2	ON										
+ASPARAGUS		ASPARAGUS	OFF	Cat_G_L2	25	Study	No	3	Cat_G_L2	ON										
+SQUASH		SQUASH	OFF	Cat_G_L2	32	Study	No	3	Cat_G_L2	ON										
+OKRA		OKRA	OFF	Cat_G_L2	40	Study	No	3	Cat_G_L2	ON										
+ZUCCHINI		ZUCCHINI	OFF	Cat_G_L2	38	Study	No	3	Cat_G_L2	ON										
+RADISH		RADISH	OFF	Cat_G_L2	34	Study	No	3	Cat_G_L2	ON										
+EGGPLANT		EGGPLANT	OFF	Cat_G_L2	41	Study	No	3	Cat_G_L2	ON										
+LETTUCE		LETTUCE	OFF	Cat_G_L2	24	Study	No	3	Cat_G_L2	ON										
+TURNIP		TURNIP	OFF	Cat_G_L2	35	Study	No	3	Cat_G_L2	ON										
+LIMA BEANS		LIMA BEANS	OFF	Cat_G_L2	31	Study	No	3	Cat_G_L2	ON										
+CAULIFLOWER		CAULIFLOWER	OFF	Cat_G_L2	29	Study	No	3	Cat_G_L2	ON										
+PEPPERS		PEPPERS	OFF	Cat_G_L2	37	Study	No	3	Cat_G_L2	ON										
+PUMPKIN		PUMPKIN	OFF	Cat_G_L2	39	Study	No	3	Cat_G_L2	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Guess Instructions: 5 words related to the list you just saw were not presented. Try to guess these words by typing them into the dialog box on the next screen. You must guess at least one.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	User	Guess Below. You must make at least one guess. Click submit when you are finished.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+SCOUT		SCOUT	OFF	Unrel_G_L3	51	Study	No	3	Unrel_G_L3	ON										
+CANISTER		CANISTER	OFF	Unrel_G_L3	55	Study	No	3	Unrel_G_L3	ON										
+SPIKE		SPIKE	OFF	Unrel_G_L3	47	Study	No	3	Unrel_G_L3	ON										
+MOISTURE		MOISTURE	OFF	Unrel_G_L3	60	Study	No	3	Unrel_G_L3	ON										
+PAPERCLIP		PAPERCLIP	OFF	Unrel_G_L3	57	Study	No	3	Unrel_G_L3	ON										
+MOOSE		MOOSE	OFF	Unrel_G_L3	52	Study	No	3	Unrel_G_L3	ON										
+TEE		TEE	OFF	Unrel_G_L3	43	Study	No	3	Unrel_G_L3	ON										
+THERMOMETER		THERMOMETER	OFF	Unrel_G_L3	58	Study	No	3	Unrel_G_L3	ON										
+INCENSE		INCENSE	OFF	Unrel_G_L3	59	Study	No	3	Unrel_G_L3	ON										
+REPTILE		REPTILE	OFF	Unrel_G_L3	61	Study	No	3	Unrel_G_L3	ON										
+NOODLE		NOODLE	OFF	Unrel_G_L3	48	Study	No	3	Unrel_G_L3	ON										
+FANG		FANG	OFF	Unrel_G_L3	46	Study	No	3	Unrel_G_L3	ON										
+GOAL		GOAL	OFF	Unrel_G_L3	54	Study	No	3	Unrel_G_L3	ON										
+FOG		FOG	OFF	Unrel_G_L3	44	Study	No	3	Unrel_G_L3	ON										
+GHOUL		GHOUL	OFF	Unrel_G_L3	45	Study	No	3	Unrel_G_L3	ON										
+RAMP		RAMP	OFF	Unrel_G_L3	42	Study	No	3	Unrel_G_L3	ON										
+YARD		YARD	OFF	Unrel_G_L3	53	Study	No	3	Unrel_G_L3	ON										
+DOME		DOME	OFF	Unrel_G_L3	49	Study	No	3	Unrel_G_L3	ON										
+RANCH		RANCH	OFF	Unrel_G_L3	50	Study	No	3	Unrel_G_L3	ON										
+ZOO		ZOO	OFF	Unrel_G_L3	56	Study	No	3	Unrel_G_L3	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Guess Instructions: 5 words related to the list you just saw were not presented. Try to guess these words by typing them into the dialog box on the next screen. You must guess at least one.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	User	Guess Below. You must make at least one guess. Click submit when you are finished.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+AIRPORT		AIRPORT	OFF	Unrel_G_L4	73	Study	No	3	Unrel_G_L4	ON										
+WRECK		WRECK	OFF	Unrel_G_L4	63	Study	No	3	Unrel_G_L4	ON										
+MACHINE		MACHINE	OFF	Unrel_G_L4	67	Study	No	3	Unrel_G_L4	ON										
+ROLL		ROLL	OFF	Unrel_G_L4	78	Study	No	3	Unrel_G_L4	ON										
+CAMERA		CAMERA	OFF	Unrel_G_L4	70	Study	No	3	Unrel_G_L4	ON										
+WHIP		WHIP	OFF	Unrel_G_L4	79	Study	No	3	Unrel_G_L4	ON										
+PUPPY		PUPPY	OFF	Unrel_G_L4	69	Study	No	3	Unrel_G_L4	ON										
+MALE		MALE	OFF	Unrel_G_L4	75	Study	No	3	Unrel_G_L4	ON										
+RUT		RUT	OFF	Unrel_G_L4	77	Study	No	3	Unrel_G_L4	ON										
+IVORY		IVORY	OFF	Unrel_G_L4	68	Study	No	3	Unrel_G_L4	ON										
+RAINBOW		RAINBOW	OFF	Unrel_G_L4	65	Study	No	3	Unrel_G_L4	ON										
+PORTRAIT		PORTRAIT	OFF	Unrel_G_L4	64	Study	No	3	Unrel_G_L4	ON										
+BLOUSE		BLOUSE	OFF	Unrel_G_L4	74	Study	No	3	Unrel_G_L4	ON										
+FIRE		FIRE	OFF	Unrel_G_L4	81	Study	No	3	Unrel_G_L4	ON										
+CREPE		CREPE	OFF	Unrel_G_L4	71	Study	No	3	Unrel_G_L4	ON										
+LEAK		LEAK	OFF	Unrel_G_L4	72	Study	No	3	Unrel_G_L4	ON										
+RACKET		RACKET	OFF	Unrel_G_L4	76	Study	No	3	Unrel_G_L4	ON										
+TALK		TALK	OFF	Unrel_G_L4	80	Study	No	3	Unrel_G_L4	ON										
+SAUCER		SAUCER	OFF	Unrel_G_L4	66	Study	No	3	Unrel_G_L4	ON										
+JELLYFISH		JELLYFISH	OFF	Unrel_G_L4	62	Study	No	3	Unrel_G_L4	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Guess Instructions: 5 words related to the list you just saw were not presented. Try to guess these words by typing them into the dialog box on the next screen. You must guess at least one.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	User	Guess Below. You must make at least one guess. Click submit when you are finished.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+ASPHAULT		ASPHAULT	OFF	AdHoc_G_L5	87	Study	No	3	AdHoc_G_L5	ON										
+EBONY		EBONY	OFF	AdHoc_G_L5	101	Study	No	3	AdHoc_G_L5	ON										
+PEPPER 		PEPPER 	OFF	AdHoc_G_L5	94	Study	No	3	AdHoc_G_L5	ON										
+OBSIDIAN		OBSIDIAN	OFF	AdHoc_G_L5	97	Study	No	3	AdHoc_G_L5	ON										
+LICORICE		LICORICE	OFF	AdHoc_G_L5	85	Study	No	3	AdHoc_G_L5	ON										
+ASH		ASH	OFF	AdHoc_G_L5	95	Study	No	3	AdHoc_G_L5	ON										
+INK		INK	OFF	AdHoc_G_L5	93	Study	No	3	AdHoc_G_L5	ON										
+PAVEMENT		PAVEMENT	OFF	AdHoc_G_L5	100	Study	No	3	AdHoc_G_L5	ON										
+TUXEDO		TUXEDO	OFF	AdHoc_G_L5	88	Study	No	3	AdHoc_G_L5	ON										
+ONYX		ONYX	OFF	AdHoc_G_L5	96	Study	No	3	AdHoc_G_L5	ON										
+BRUISE		BRUISE	OFF	AdHoc_G_L5	98	Study	No	3	AdHoc_G_L5	ON										
+PUCK		PUCK	OFF	AdHoc_G_L5	83	Study	No	3	AdHoc_G_L5	ON										
+WITCH		WITCH	OFF	AdHoc_G_L5	89	Study	No	3	AdHoc_G_L5	ON										
+SPIDER		SPIDER	OFF	AdHoc_G_L5	92	Study	No	3	AdHoc_G_L5	ON										
+PUPIL		PUPIL	OFF	AdHoc_G_L5	82	Study	No	3	AdHoc_G_L5	ON										
+CHALKBOARD		CHALKBOARD	OFF	AdHoc_G_L5	86	Study	No	3	AdHoc_G_L5	ON										
+SHADOW		SHADOW	OFF	AdHoc_G_L5	99	Study	No	3	AdHoc_G_L5	ON										
+LIMOUSINE		LIMOUSINE	OFF	AdHoc_G_L5	91	Study	No	3	AdHoc_G_L5	ON										
+PANTHER		PANTHER	OFF	AdHoc_G_L5	90	Study	No	3	AdHoc_G_L5	ON										
+TIRES		TIRES	OFF	AdHoc_G_L5	84	Study	No	3	AdHoc_G_L5	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Guess Instructions: 5 words related to the list you just saw were not presented. Try to guess these words by typing them into the dialog box on the next screen. You must guess at least one.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	User	Guess Below. You must make at least one guess. Click submit when you are finished.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+LEVEL		LEVEL	OFF	Cat_G_L6	103	Study	No	3	Cat_G_L6	ON										
+DRILL		DRILL	OFF	Cat_G_L6	106	Study	No	3	Cat_G_L6	ON										
+SANDPAPER		SANDPAPER	OFF	Cat_G_L6	112	Study	No	3	Cat_G_L6	ON										
+GLUE		GLUE	OFF	Cat_G_L6	108	Study	No	3	Cat_G_L6	ON										
+BOLTS		BOLTS	OFF	Cat_G_L6	120	Study	No	3	Cat_G_L6	ON										
+AWL		AWL	OFF	Cat_G_L6	113	Study	No	3	Cat_G_L6	ON										
+WRENCH		WRENCH	OFF	Cat_G_L6	105	Study	No	3	Cat_G_L6	ON										
+SAWHORSE		SAWHORSE	OFF	Cat_G_L6	109	Study	No	3	Cat_G_L6	ON										
+SCREWS		SCREWS	OFF	Cat_G_L6	107	Study	No	3	Cat_G_L6	ON										
+WOOD		WOOD	OFF	Cat_G_L6	116	Study	No	3	Cat_G_L6	ON										
+SANDER		SANDER	OFF	Cat_G_L6	115	Study	No	3	Cat_G_L6	ON										
+LATHE		LATHE	OFF	Cat_G_L6	111	Study	No	3	Cat_G_L6	ON										
+CROWBAR		CROWBAR	OFF	Cat_G_L6	114	Study	No	3	Cat_G_L6	ON										
+HINGE		HINGE	OFF	Cat_G_L6	121	Study	No	3	Cat_G_L6	ON										
+VISE		VISE	OFF	Cat_G_L6	119	Study	No	3	Cat_G_L6	ON										
+CHISEL		CHISEL	OFF	Cat_G_L6	104	Study	No	3	Cat_G_L6	ON										
+FILE		FILE	OFF	Cat_G_L6	110	Study	No	3	Cat_G_L6	ON										
+NAILS		NAILS	OFF	Cat_G_L6	102	Study	No	3	Cat_G_L6	ON										
+WEDGE		WEDGE	OFF	Cat_G_L6	117	Study	No	3	Cat_G_L6	ON										
+AXE		AXE	OFF	Cat_G_L6	118	Study	No	3	Cat_G_L6	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Guess Instructions: 5 words related to the list you just saw were not presented. Try to guess these words by typing them into the dialog box on the next screen. You must guess at least one.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	User	Guess Below. You must make at least one guess. Click submit when you are finished.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Now you will complete a recognition memory test based on the last 6 lists that you have studied. A word will be displayed on the computer screen and you are to decide whether the word was studied in the last 6 lists. If the word was studied, click the "yes" button. If the word was not studied, click the "no" button. Respond as quickly as possible without compromising accuracy.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below to begin the test.	OFF										
+MOUSE		MOUSE	OFF	NPCI_Cat_G	206	seqrec	No	User	RGN Test	ON										
+MALE		MALE	OFF	LI_Unrel_G	248	seqrec	No	User	RGN Test	ON										
+GARAGE		GARAGE	OFF	CI_Unrel_G	285	seqrec	No	User	RGN Test	ON										
+HUCKLEBERRY		HUCKLEBERRY	OFF	NPLI_Cat_G	151	seqrec	No	User	RGN Test	ON										
+SHEEP		SHEEP	OFF	NPLI_Cat_G	165	seqrec	No	User	RGN Test	ON										
+CAKE		CAKE	OFF	NPLI_Unrel_G	173	seqrec	No	User	RGN Test	ON										
+SPINACH		SPINACH	OFF	CI_Cat_G	280	seqrec	No	User	RGN Test	ON										
+SAWHORSE		SAWHORSE	OFF	LI_Cat_G	265	seqrec	No	User	RGN Test	ON										
+MUD		MUD	OFF	NPCI_Unrel_G	209	seqrec	No	User	RGN Test	ON										
+PUPPY		PUPPY	OFF	LI_Unrel_G	245	seqrec	No	User	RGN Test	ON										
+COW		COW	OFF	NPCI_Cat_G	203	seqrec	No	User	RGN Test	ON										
+JUICE		JUICE	OFF	CI_AdHoc_G	274	seqrec	No	User	RGN Test	ON										
+SHRIMP		SHRIMP	OFF	NPLI_Unrel_G	140	seqrec	No	User	RGN Test	ON										
+CONE		CONE	OFF	NPLI_Unrel_G	136	seqrec	No	User	RGN Test	ON										
+LAWNMOWER		LAWNMOWER	OFF	NPCI_AdHoc_G	200	seqrec	No	User	RGN Test	ON										
+TREAT		TREAT	OFF	CI_Unrel_G	287	seqrec	No	User	RGN Test	ON										
+YARD		YARD	OFF	LI_Unrel_G	237	seqrec	No	User	RGN Test	ON										
+RAT		RAT	OFF	NPLI_Cat_G	164	seqrec	No	User	RGN Test	ON										
+PAPERCLIP		PAPERCLIP	OFF	LI_Unrel_G	239	seqrec	No	User	RGN Test	ON										
+LIME		LIME	OFF	NPLI_AdHoc_G	130	seqrec	No	User	RGN Test	ON										
+VISE		VISE	OFF	LI_Cat_G	270	seqrec	No	User	RGN Test	ON										
+ENGINE		ENGINE	OFF	NPLI_Unrel_G	177	seqrec	No	User	RGN Test	ON										
+SHAMROCK		SHAMROCK	OFF	NPLI_AdHoc_G	125	seqrec	No	User	RGN Test	ON										
+PEA		PEA	OFF	CI_Cat_G	277	seqrec	No	User	RGN Test	ON										
+BOW		BOW	OFF	NPCI_Unrel_G	188	seqrec	No	User	RGN Test	ON										
+MOVIE		MOVIE	OFF	NPLI_Unrel_G	179	seqrec	No	User	RGN Test	ON										
+MILK		MILK	OFF	CI_AdHoc_G	276	seqrec	No	User	RGN Test	ON										
+PYRAMID		PYRAMID	OFF	NPLI_Unrel_G	133	seqrec	No	User	RGN Test	ON										
+HAMMER		HAMMER	OFF	CI_Cat_G	301	seqrec	No	User	RGN Test	ON										
+PIG		PIG	OFF	NPCI_Cat_G	205	seqrec	No	User	RGN Test	ON										
+SCOUT		SCOUT	OFF	LI_Unrel_G	236	seqrec	No	User	RGN Test	ON										
+LAKE		LAKE	OFF	LI_AdHoc_G	217	seqrec	No	User	RGN Test	ON										
+LEVEL		LEVEL	OFF	LI_Cat_G	262	seqrec	No	User	RGN Test	ON										
+CAT		CAT	OFF	NPCI_Cat_G	202	seqrec	No	User	RGN Test	ON										
+BLUEBERRY		BLUEBERRY	OFF	NPLI_Cat_G	148	seqrec	No	User	RGN Test	ON										
+BROCCOLI		BROCCOLI	OFF	NPCI_AdHoc_G	185	seqrec	No	User	RGN Test	ON										
+REPTILE		REPTILE	OFF	LI_Unrel_G	241	seqrec	No	User	RGN Test	ON										
+PACKET		PACKET	OFF	CI_Unrel_G	290	seqrec	No	User	RGN Test	ON										
+VALLEY		VALLEY	OFF	CI_Unrel_G	283	seqrec	No	User	RGN Test	ON										
+PINEAPPLE		PINEAPPLE	OFF	NPLI_Cat_G	145	seqrec	No	User	RGN Test	ON										
+SALAD		SALAD	OFF	NPLI_AdHoc_G	131	seqrec	No	User	RGN Test	ON										
+CAGE		CAGE	OFF	NPCI_Unrel_G	207	seqrec	No	User	RGN Test	ON										
+WATER		WATER	OFF	CI_AdHoc_G	273	seqrec	No	User	RGN Test	ON										
+BUFFALO		BUFFALO	OFF	NPLI_Cat_G	171	seqrec	No	User	RGN Test	ON										
+HOT CHOCOLATE		HOT CHOCOLATE	OFF	LI_AdHoc_G	216	seqrec	No	User	RGN Test	ON										
+WRECK		WRECK	OFF	LI_Unrel_G	242	seqrec	No	User	RGN Test	ON										
+WEDGE		WEDGE	OFF	LI_Cat_G	269	seqrec	No	User	RGN Test	ON										
+CROW		CROW	OFF	CI_AdHoc_G	296	seqrec	No	User	RGN Test	ON										
+SAW		SAW	OFF	CI_Cat_G	297	seqrec	No	User	RGN Test	ON										
+PUCK		PUCK	OFF	LI_AdHoc_G	252	seqrec	No	User	RGN Test	ON										
+COAST		COAST	OFF	NPCI_Unrel_G	208	seqrec	No	User	RGN Test	ON										
+SHORE		SHORE	OFF	NPLI_Unrel_G	178	seqrec	No	User	RGN Test	ON										
+MACHINE		MACHINE	OFF	LI_Unrel_G	244	seqrec	No	User	RGN Test	ON										
+ASPHALT		ASPHALT	OFF	LI_AdHoc_G	254	seqrec	No	User	RGN Test	ON										
+EBONY		EBONY	OFF	LI_AdHoc_G	261	seqrec	No	User	RGN Test	ON										
+ART		ART	OFF	NPCI_Unrel_G	211	seqrec	No	User	RGN Test	ON										
+PIPE		PIPE	OFF	NPLI_Unrel_G	139	seqrec	No	User	RGN Test	ON										
+LATHE		LATHE	OFF	LI_Cat_G	266	seqrec	No	User	RGN Test	ON										
+RAVEN		RAVEN	OFF	CI_AdHoc_G	295	seqrec	No	User	RGN Test	ON										
+LEOPARD		LEOPARD	OFF	NPLI_Cat_G	169	seqrec	No	User	RGN Test	ON										
+TIGER		TIGER	OFF	NPCI_Cat_G	204	seqrec	No	User	RGN Test	ON										
+SCREWDRIVER		SCREWDRIVER	OFF	CI_Cat_G	298	seqrec	No	User	RGN Test	ON										
+TEE		TEE	OFF	LI_Unrel_G	232	seqrec	No	User	RGN Test	ON										
+PLANE		PLANE	OFF	CI_Cat_G	299	seqrec	No	User	RGN Test	ON										
+TANGERINE		TANGERINE	OFF	NPLI_Cat_G	144	seqrec	No	User	RGN Test	ON										
+RAISIN		RAISIN	OFF	NPLI_Cat_G	149	seqrec	No	User	RGN Test	ON										
+WOUND		WOUND	OFF	NPCI_Unrel_G	189	seqrec	No	User	RGN Test	ON										
+COAL		COAL	OFF	CI_AdHoc_G	292	seqrec	No	User	RGN Test	ON										
+SPROUTS		SPROUTS	OFF	NPLI_AdHoc_G	129	seqrec	No	User	RGN Test	ON										
+COMEDY		COMEDY	OFF	CI_Unrel_G	286	seqrec	No	User	RGN Test	ON										
+ELEPHANT		ELEPHANT	OFF	NPLI_Cat_G	163	seqrec	No	User	RGN Test	ON										
+WRENCH		WRENCH	OFF	LI_Cat_G	263	seqrec	No	User	RGN Test	ON										
+LENS		LENS	OFF	CI_Unrel_G	291	seqrec	No	User	RGN Test	ON										
+CANISTER		CANISTER	OFF	LI_Unrel_G	238	seqrec	No	User	RGN Test	ON										
+WITCH		WITCH	OFF	LI_AdHoc_G	255	seqrec	No	User	RGN Test	ON										
+SCREWS		SCREWS	OFF	LI_Cat_G	264	seqrec	No	User	RGN Test	ON										
+INSECT		INSECT	OFF	NPLI_Unrel_G	137	seqrec	No	User	RGN Test	ON										
+PEPPERS		PEPPERS	OFF	LI_Cat_G	229	seqrec	No	User	RGN Test	ON										
+SQUIRREL		SQUIRREL	OFF	NPLI_Cat_G	167	seqrec	No	User	RGN Test	ON										
+WINE		WINE	OFF	LI_AdHoc_G	215	seqrec	No	User	RGN Test	ON										
+STADIUM		STADIUM	OFF	NPLI_Unrel_G	174	seqrec	No	User	RGN Test	ON										
+BELLS		BELLS	OFF	NPLI_AdHoc_G	153	seqrec	No	User	RGN Test	ON										
+LIMA BEANS		LIMA BEANS	OFF	LI_Cat_G	226	seqrec	No	User	RGN Test	ON										
+MINT		MINT	OFF	NPCI_AdHoc_G	186	seqrec	No	User	RGN Test	ON										
+CABBAGE		CABBAGE	OFF	LI_Cat_G	224	seqrec	No	User	RGN Test	ON										
+DRUMS		DRUMS	OFF	NPLI_AdHoc_G	157	seqrec	No	User	RGN Test	ON										
+LIMOUSINE		LIMOUSINE	OFF	LI_AdHoc_G	256	seqrec	No	User	RGN Test	ON										
+DONKEY		DONKEY	OFF	NPLI_Cat_G	168	seqrec	No	User	RGN Test	ON										
+BADGE		BADGE	OFF	NPLI_Unrel_G	132	seqrec	No	User	RGN Test	ON										
+DIAGRAM		DIAGRAM	OFF	CI_Unrel_G	282	seqrec	No	User	RGN Test	ON										
+CHAIN SAW		CHAIN SAW	OFF	NPLI_AdHoc_G	154	seqrec	No	User	RGN Test	ON										
+TRUMPET		TRUMPET	OFF	NPLI_AdHoc_G	155	seqrec	No	User	RGN Test	ON										
+SUNRISE		SUNRISE	OFF	NPLI_Unrel_G	181	seqrec	No	User	RGN Test	ON										
+NIGHT		NIGHT	OFF	CI_AdHoc_G	293	seqrec	No	User	RGN Test	ON										
+OBSIDIAN		OBSIDIAN	OFF	LI_AdHoc_G	259	seqrec	No	User	RGN Test	ON										
+TENNIS BALL		TENNIS BALL	OFF	NPLI_AdHoc_G	127	seqrec	No	User	RGN Test	ON										
+COFFEE		COFFEE	OFF	CI_AdHoc_G	272	seqrec	No	User	RGN Test	ON										
+STRAWBERRY		STRAWBERRY	OFF	NPLI_Cat_G	146	seqrec	No	User	RGN Test	ON										
+HINGE		HINGE	OFF	LI_Cat_G	271	seqrec	No	User	RGN Test	ON										
+GUN		GUN	OFF	NPCI_AdHoc_G	198	seqrec	No	User	RGN Test	ON										
+POISON		POISON	OFF	NPLI_Unrel_G	176	seqrec	No	User	RGN Test	ON										
+INK		INK	OFF	LI_AdHoc_G	257	seqrec	No	User	RGN Test	ON										
+FOX		FOX	OFF	NPLI_Cat_G	170	seqrec	No	User	RGN Test	ON										
+FROG		FROG	OFF	NPLI_AdHoc_G	123	seqrec	No	User	RGN Test	ON										
+NECTARINE		NECTARINE	OFF	NPLI_Cat_G	150	seqrec	No	User	RGN Test	ON										
+PUMPKIN		PUMPKIN	OFF	LI_Cat_G	230	seqrec	No	User	RGN Test	ON										
+GASOLINE		GASOLINE	OFF	LI_AdHoc_G	219	seqrec	No	User	RGN Test	ON										
+BAT		BAT	OFF	CI_AdHoc_G	294	seqrec	No	User	RGN Test	ON										
+TOWN		TOWN	OFF	NPCI_Unrel_G	187	seqrec	No	User	RGN Test	ON										
+CHERRY		CHERRY	OFF	NPLI_Cat_G	143	seqrec	No	User	RGN Test	ON										
+LEMON		LEMON	OFF	NPCI_Cat_G	196	seqrec	No	User	RGN Test	ON										
+VINEGAR		VINEGAR	OFF	LI_AdHoc_G	220	seqrec	No	User	RGN Test	ON										
+SANDER		SANDER	OFF	LI_Cat_G	268	seqrec	No	User	RGN Test	ON										
+ONION		ONION	OFF	LI_Cat_G	227	seqrec	No	User	RGN Test	ON										
+SHADOW		SHADOW	OFF	LI_AdHoc_G	260	seqrec	No	User	RGN Test	ON										
+JUNGLE		JUNGLE	OFF	NPLI_AdHoc_G	126	seqrec	No	User	RGN Test	ON										
+TRACTOR		TRACTOR	OFF	NPLI_AdHoc_G	156	seqrec	No	User	RGN Test	ON										
+EGGPLANT		EGGPLANT	OFF	LI_Cat_G	231	seqrec	No	User	RGN Test	ON										
+PEAR		PEAR	OFF	NPLI_Cat_G	142	seqrec	No	User	RGN Test	ON										
+SODA		SODA	OFF	LI_AdHoc_G	212	seqrec	No	User	RGN Test	ON										
+BANANA		BANANA	OFF	NPCI_Cat_G	193	seqrec	No	User	RGN Test	ON										
+HORSE		HORSE	OFF	NPLI_Cat_G	162	seqrec	No	User	RGN Test	ON										
+OCTOPUS		OCTOPUS	OFF	NPCI_Unrel_G	190	seqrec	No	User	RGN Test	ON										
+GRAPE		GRAPE	OFF	NPCI_Cat_G	194	seqrec	No	User	RGN Test	ON										
+FUR		FUR	OFF	NPCI_Unrel_G	210	seqrec	No	User	RGN Test	ON										
+RUT		RUT	OFF	LI_Unrel_G	249	seqrec	No	User	RGN Test	ON										
+GOAT		GOAT	OFF	NPLI_Cat_G	166	seqrec	No	User	RGN Test	ON										
+GREEN BEANS		GREEN BEANS	OFF	CI_Cat_G	278	seqrec	No	User	RGN Test	ON										
+SWEAT		SWEAT	OFF	LI_AdHoc_G	214	seqrec	No	User	RGN Test	ON										
+JACKHAMMER		JACKHAMMER	OFF	NPCI_AdHoc_G	197	seqrec	No	User	RGN Test	ON										
+BOMB		BOMB	OFF	NPLI_AdHoc_G	161	seqrec	No	User	RGN Test	ON										
+ISLAND		ISLAND	OFF	CI_Unrel_G	284	seqrec	No	User	RGN Test	ON										
+SPIKE		SPIKE	OFF	LI_Unrel_G	234	seqrec	No	User	RGN Test	ON										
+DOME		DOME	OFF	LI_Unrel_G	235	seqrec	No	User	RGN Test	ON										
+CRYPT		CRYPT	OFF	NPLI_Unrel_G	135	seqrec	No	User	RGN Test	ON										
+HOOK		HOOK	OFF	NPLI_Unrel_G	134	seqrec	No	User	RGN Test	ON										
+MOSS		MOSS	OFF	NPLI_AdHoc_G	124	seqrec	No	User	RGN Test	ON										
+AWL		AWL	OFF	LI_Cat_G	267	seqrec	No	User	RGN Test	ON										
+ORANGE		ORANGE	OFF	NPCI_Cat_G	192	seqrec	No	User	RGN Test	ON										
+POTATO		POTATO	OFF	LI_Cat_G	222	seqrec	No	User	RGN Test	ON										
+FATHER		FATHER	OFF	NPLI_Unrel_G	175	seqrec	No	User	RGN Test	ON										
+TURNIP		TURNIP	OFF	LI_Cat_G	228	seqrec	No	User	RGN Test	ON										
+BABIES		BABIES	OFF	NPLI_AdHoc_G	159	seqrec	No	User	RGN Test	ON										
+GHOUL		GHOUL	OFF	LI_Unrel_G	233	seqrec	No	User	RGN Test	ON										
+MERCURY		MERCURY	OFF	LI_AdHoc_G	213	seqrec	No	User	RGN Test	ON										
+CREAM		CREAM	OFF	LI_AdHoc_G	221	seqrec	No	User	RGN Test	ON										
+WHIP		WHIP	OFF	LI_Unrel_G	250	seqrec	No	User	RGN Test	ON										
+THUNDER		THUNDER	OFF	NPCI_AdHoc_G	201	seqrec	No	User	RGN Test	ON										
+VAULT		VAULT	OFF	CI_Unrel_G	289	seqrec	No	User	RGN Test	ON										
+AIRPORT		AIRPORT	OFF	LI_Unrel_G	247	seqrec	No	User	RGN Test	ON										
+CARROT		CARROT	OFF	CI_Cat_G	281	seqrec	No	User	RGN Test	ON										
+LEAVES		LEAVES	OFF	NPLI_AdHoc_G	122	seqrec	No	User	RGN Test	ON										
+WHITE		WHITE	OFF	CI_Unrel_G	288	seqrec	No	User	RGN Test	ON										
+RAIN 		RAIN 	OFF	CI_AdHoc_G	275	seqrec	No	User	RGN Test	ON										
+PARTY		PARTY	OFF	NPLI_AdHoc_G	158	seqrec	No	User	RGN Test	ON										
+CANTALOUPE		CANTALOUPE	OFF	NPLI_Cat_G	147	seqrec	No	User	RGN Test	ON										
+LICORICE		LICORICE	OFF	LI_AdHoc_G	253	seqrec	No	User	RGN Test	ON										
+RAINBOW		RAINBOW	OFF	LI_Unrel_G	243	seqrec	No	User	RGN Test	ON										
+STEREO		STEREO	OFF	NPLI_AdHoc_G	160	seqrec	No	User	RGN Test	ON										
+YELL		YELL	OFF	NPLI_AdHoc_G	152	seqrec	No	User	RGN Test	ON										
+INCENSE		INCENSE	OFF	LI_Unrel_G	240	seqrec	No	User	RGN Test	ON										
+PLUM		PLUM	OFF	NPCI_Cat_G	195	seqrec	No	User	RGN Test	ON										
+PEDAL		PEDAL	OFF	NPCI_Unrel_G	191	seqrec	No	User	RGN Test	ON										
+CREPE		CREPE	OFF	LI_Unrel_G	246	seqrec	No	User	RGN Test	ON										
+ASH		ASH	OFF	LI_AdHoc_G	258	seqrec	No	User	RGN Test	ON										
+AVOCADO		AVOCADO	OFF	NPCI_AdHoc_G	184	seqrec	No	User	RGN Test	ON										
+LAVA		LAVA	OFF	LI_AdHoc_G	218	seqrec	No	User	RGN Test	ON										
+CLOCK		CLOCK	OFF	NPLI_Unrel_G	172	seqrec	No	User	RGN Test	ON										
+DECK		DECK	OFF	NPLI_Unrel_G	180	seqrec	No	User	RGN Test	ON										
+FIRE		FIRE	OFF	LI_Unrel_G	251	seqrec	No	User	RGN Test	ON										
+SIREN		SIREN	OFF	NPCI_AdHoc_G	199	seqrec	No	User	RGN Test	ON										
+CAULIFLOWER		CAULIFLOWER	OFF	LI_Cat_G	225	seqrec	No	User	RGN Test	ON										
+MANHOLE		MANHOLE	OFF	NPLI_Unrel_G	141	seqrec	No	User	RGN Test	ON										
+ASPARAGUS		ASPARAGUS	OFF	LI_Cat_G	223	seqrec	No	User	RGN Test	ON										
+TOMATO		TOMATO	OFF	CI_Cat_G	279	seqrec	No	User	RGN Test	ON										
+SAND		SAND	OFF	NPLI_Unrel_G	138	seqrec	No	User	RGN Test	ON										
+PLIERS		PLIERS	OFF	CI_Cat_G	300	seqrec	No	User	RGN Test	ON										
+SNAKE		SNAKE	OFF	NPLI_AdHoc_G	128	seqrec	No	User	RGN Test	ON										
+GRASS		GRASS	OFF	NPCI_AdHoc_G	182	seqrec	No	User	RGN Test	ON										
+EMERALD		EMERALD	OFF	NPCI_AdHoc_G	183	seqrec	No	User	RGN Test	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below to continue.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	You again will be presented with 6 lists of words, each containing 20 words, but now you will complete a recall memory test following each list. After each list is presented, you will type in the words you saw on that list into a dialog box. You will have 1 minute to recall each list. The computer will prompt you when your time is up. Click the button below to begin the first list.	OFF										
+CANYON		CANYON	OFF	Unrel_Recall_L1	313	Study	No	3	Unrel_Recall_L1	ON										
+FOSSIL		FOSSIL	OFF	Unrel_Recall_L1	314	Study	No	3	Unrel_Recall_L1	ON										
+JOKE		JOKE	OFF	Unrel_Recall_L1	306	Study	No	3	Unrel_Recall_L1	ON										
+WINCH		WINCH	OFF	Unrel_Recall_L1	309	Study	No	3	Unrel_Recall_L1	ON										
+GIN		GIN	OFF	Unrel_Recall_L1	318	Study	No	3	Unrel_Recall_L1	ON										
+CEREAL		CEREAL	OFF	Unrel_Recall_L1	315	Study	No	3	Unrel_Recall_L1	ON										
+WINNER		WINNER	OFF	Unrel_Recall_L1	321	Study	No	3	Unrel_Recall_L1	ON										
+WRAP		WRAP	OFF	Unrel_Recall_L1	302	Study	No	3	Unrel_Recall_L1	ON										
+GONG		GONG	OFF	Unrel_Recall_L1	310	Study	No	3	Unrel_Recall_L1	ON										
+BLAZE		BLAZE	OFF	Unrel_Recall_L1	319	Study	No	3	Unrel_Recall_L1	ON										
+CELLOPHANE		CELLOPHANE	OFF	Unrel_Recall_L1	308	Study	No	3	Unrel_Recall_L1	ON										
+AVENUE		AVENUE	OFF	Unrel_Recall_L1	305	Study	No	3	Unrel_Recall_L1	ON										
+WORKSHOP		WORKSHOP	OFF	Unrel_Recall_L1	320	Study	No	3	Unrel_Recall_L1	ON										
+FLURRY		FLURRY	OFF	Unrel_Recall_L1	307	Study	No	3	Unrel_Recall_L1	ON										
+DWARF		DWARF	OFF	Unrel_Recall_L1	317	Study	No	3	Unrel_Recall_L1	ON										
+LANCE		LANCE	OFF	Unrel_Recall_L1	316	Study	No	3	Unrel_Recall_L1	ON										
+DETOUR		DETOUR	OFF	Unrel_Recall_L1	303	Study	No	3	Unrel_Recall_L1	ON										
+KISS		KISS	OFF	Unrel_Recall_L1	312	Study	No	3	Unrel_Recall_L1	ON										
+JAR		JAR	OFF	Unrel_Recall_L1	311	Study	No	3	Unrel_Recall_L1	ON										
+MARSH		MARSH	OFF	Unrel_Recall_L1	304	Study	No	3	Unrel_Recall_L1	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Recall Instructions: Recall the words that you saw from memory by typing them into the dialog box on the next screen. You will have 1 minute. Click the button below to begin.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	60	Recall now in the box. Spelling will not be counted against you. The computer will advance when your minute is up.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+LOTION		LOTION	OFF	AdHoc_Recall_L2	330	Study	No	3	AdHoc_Recall_L2	ON										
+CANDLE		CANDLE	OFF	AdHoc_Recall_L2	341	Study	No	3	AdHoc_Recall_L2	ON										
+MAT		MAT	OFF	AdHoc_Recall_L2	324	Study	No	3	AdHoc_Recall_L2	ON										
+SHAMPOO		SHAMPOO	OFF	AdHoc_Recall_L2	334	Study	No	3	AdHoc_Recall_L2	ON										
+TWEEZERS		TWEEZERS	OFF	AdHoc_Recall_L2	338	Study	No	3	AdHoc_Recall_L2	ON										
+MOUTHWASH		MOUTHWASH	OFF	AdHoc_Recall_L2	336	Study	No	3	AdHoc_Recall_L2	ON										
+LOOFAH		LOOFAH	OFF	AdHoc_Recall_L2	340	Study	No	3	AdHoc_Recall_L2	ON										
+COMB		COMB	OFF	AdHoc_Recall_L2	328	Study	No	3	AdHoc_Recall_L2	ON										
+SCALE		SCALE	OFF	AdHoc_Recall_L2	323	Study	No	3	AdHoc_Recall_L2	ON										
+MEDICINE		MEDICINE	OFF	AdHoc_Recall_L2	327	Study	No	3	AdHoc_Recall_L2	ON										
+HAIR DRYER		HAIR DRYER	OFF	AdHoc_Recall_L2	339	Study	No	3	AdHoc_Recall_L2	ON										
+FAUCET		FAUCET	OFF	AdHoc_Recall_L2	326	Study	No	3	AdHoc_Recall_L2	ON										
+VANITY		VANITY	OFF	AdHoc_Recall_L2	337	Study	No	3	AdHoc_Recall_L2	ON										
+CURLING IRON		CURLING IRON	OFF	AdHoc_Recall_L2	332	Study	No	3	AdHoc_Recall_L2	ON										
+SHAVER		SHAVER	OFF	AdHoc_Recall_L2	333	Study	No	3	AdHoc_Recall_L2	ON										
+TILE		TILE	OFF	AdHoc_Recall_L2	325	Study	No	3	AdHoc_Recall_L2	ON										
+DEODORANT		DEODORANT	OFF	AdHoc_Recall_L2	331	Study	No	3	AdHoc_Recall_L2	ON										
+BRUSH		BRUSH	OFF	AdHoc_Recall_L2	329	Study	No	3	AdHoc_Recall_L2	ON										
+SOAP		SOAP	OFF	AdHoc_Recall_L2	322	Study	No	3	AdHoc_Recall_L2	ON										
+PLUNGER		PLUNGER	OFF	AdHoc_Recall_L2	335	Study	No	3	AdHoc_Recall_L2	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Recall Instructions: Recall the words that you saw from memory by typing them into the dialog box on the next screen. You will have 1 minute. Click the button below to begin.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	60	Recall now in the box. Spelling will not be counted against you. The computer will advance when your minute is up.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+CIGARETTE		CIGARETTE	OFF	AdHoc_Recall_L3	360	Study	No	3	AdHoc_Recall_L3	ON										
+BUNKBED		BUNKBED	OFF	AdHoc_Recall_L3	347	Study	No	3	AdHoc_Recall_L3	ON										
+CHAINLINK		CHAINLINK	OFF	AdHoc_Recall_L3	350	Study	No	3	AdHoc_Recall_L3	ON										
+ALARM		ALARM	OFF	AdHoc_Recall_L3	352	Study	No	3	AdHoc_Recall_L3	ON										
+WEIGHTS		WEIGHTS	OFF	AdHoc_Recall_L3	346	Study	No	3	AdHoc_Recall_L3	ON										
+TOWER		TOWER	OFF	AdHoc_Recall_L3	351	Study	No	3	AdHoc_Recall_L3	ON										
+FIGHTS		FIGHTS	OFF	AdHoc_Recall_L3	355	Study	No	3	AdHoc_Recall_L3	ON										
+BARS		BARS	OFF	AdHoc_Recall_L3	344	Study	No	3	AdHoc_Recall_L3	ON										
+CELL		CELL	OFF	AdHoc_Recall_L3	343	Study	No	3	AdHoc_Recall_L3	ON										
+DETECTIVE		DETECTIVE	OFF	AdHoc_Recall_L3	361	Study	No	3	AdHoc_Recall_L3	ON										
+CAFETERIA		CAFETERIA	OFF	AdHoc_Recall_L3	348	Study	No	3	AdHoc_Recall_L3	ON										
+NEEDLE		NEEDLE	OFF	AdHoc_Recall_L3	359	Study	No	3	AdHoc_Recall_L3	ON										
+CHAIN		CHAIN	OFF	AdHoc_Recall_L3	353	Study	No	3	AdHoc_Recall_L3	ON										
+GUARD		GUARD	OFF	AdHoc_Recall_L3	349	Study	No	3	AdHoc_Recall_L3	ON										
+INMATE		INMATE	OFF	AdHoc_Recall_L3	356	Study	No	3	AdHoc_Recall_L3	ON										
+OFFICER		OFFICER	OFF	AdHoc_Recall_L3	357	Study	No	3	AdHoc_Recall_L3	ON										
+FINGERPRINTS		FINGERPRINTS	OFF	AdHoc_Recall_L3	345	Study	No	3	AdHoc_Recall_L3	ON										
+TATTOO		TATTOO	OFF	AdHoc_Recall_L3	358	Study	No	3	AdHoc_Recall_L3	ON										
+PISTOL		PISTOL	OFF	AdHoc_Recall_L3	342	Study	No	3	AdHoc_Recall_L3	ON										
+SHACKLE		SHACKLE	OFF	AdHoc_Recall_L3	354	Study	No	3	AdHoc_Recall_L3	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Recall Instructions: Recall the words that you saw from memory by typing them into the dialog box on the next screen. You will have 1 minute. Click the button below to begin.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	60	Recall now in the box. Spelling will not be counted against you. The computer will advance when your minute is up.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+LODGE		LODGE	OFF	Cat_Recall_L4	370	Study	No	3	Cat_Recall_L4	ON										
+PENTHOUSE		PENTHOUSE	OFF	Cat_Recall_L4	380	Study	No	3	Cat_Recall_L4	ON										
+TOWNHOME		TOWNHOME	OFF	Cat_Recall_L4	378	Study	No	3	Cat_Recall_L4	ON										
+DUPLEX		DUPLEX	OFF	Cat_Recall_L4	377	Study	No	3	Cat_Recall_L4	ON										
+HOUSEBOAT		HOUSEBOAT	OFF	Cat_Recall_L4	373	Study	No	3	Cat_Recall_L4	ON										
+MOTEL		MOTEL	OFF	Cat_Recall_L4	364	Study	No	3	Cat_Recall_L4	ON										
+CASTLE		CASTLE	OFF	Cat_Recall_L4	372	Study	No	3	Cat_Recall_L4	ON										
+IGLOO		IGLOO	OFF	Cat_Recall_L4	369	Study	No	3	Cat_Recall_L4	ON										
+BUNGALOW		BUNGALOW	OFF	Cat_Recall_L4	374	Study	No	3	Cat_Recall_L4	ON										
+BARRACKS		BARRACKS	OFF	Cat_Recall_L4	381	Study	No	3	Cat_Recall_L4	ON										
+SHACK 		SHACK 	OFF	Cat_Recall_L4	365	Study	No	3	Cat_Recall_L4	ON										
+HOTEL		HOTEL	OFF	Cat_Recall_L4	362	Study	No	3	Cat_Recall_L4	ON										
+TEPEE		TEPEE	OFF	Cat_Recall_L4	371	Study	No	3	Cat_Recall_L4	ON										
+COTTAGE		COTTAGE	OFF	Cat_Recall_L4	367	Study	No	3	Cat_Recall_L4	ON										
+TRAILER		TRAILER	OFF	Cat_Recall_L4	363	Study	No	3	Cat_Recall_L4	ON										
+BUILDING		BUILDING	OFF	Cat_Recall_L4	376	Study	No	3	Cat_Recall_L4	ON										
+DORM		DORM	OFF	Cat_Recall_L4	368	Study	No	3	Cat_Recall_L4	ON										
+MANSION		MANSION	OFF	Cat_Recall_L4	366	Study	No	3	Cat_Recall_L4	ON										
+ROOM		ROOM	OFF	Cat_Recall_L4	375	Study	No	3	Cat_Recall_L4	ON										
+PALACE		PALACE	OFF	Cat_Recall_L4	379	Study	No	3	Cat_Recall_L4	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Recall Instructions: Recall the words that you saw from memory by typing them into the dialog box on the next screen. You will have 1 minute. Click the button below to begin.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	60	Recall now in the box. Spelling will not be counted against you. The computer will advance when your minute is up.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+SHEARS		SHEARS	OFF	Cat_Recall_L5	388	Study	No	3	Cat_Recall_L5	ON										
+SCYTHE		SCYTHE	OFF	Cat_Recall_L5	398	Study	No	3	Cat_Recall_L5	ON										
+TRIMMER		TRIMMER	OFF	Cat_Recall_L5	397	Study	No	3	Cat_Recall_L5	ON										
+PICK		PICK	OFF	Cat_Recall_L5	383	Study	No	3	Cat_Recall_L5	ON										
+CULTIVATOR		CULTIVATOR	OFF	Cat_Recall_L5	392	Study	No	3	Cat_Recall_L5	ON										
+SPADE		SPADE	OFF	Cat_Recall_L5	382	Study	No	3	Cat_Recall_L5	ON										
+EDGER		EDGER	OFF	Cat_Recall_L5	400	Study	No	3	Cat_Recall_L5	ON										
+TROWEL		TROWEL	OFF	Cat_Recall_L5	387	Study	No	3	Cat_Recall_L5	ON										
+PITCHFORK		PITCHFORK	OFF	Cat_Recall_L5	390	Study	No	3	Cat_Recall_L5	ON										
+MACHETE		MACHETE	OFF	Cat_Recall_L5	396	Study	No	3	Cat_Recall_L5	ON										
+SPRINKLER		SPRINKLER	OFF	Cat_Recall_L5	391	Study	No	3	Cat_Recall_L5	ON										
+PLOW		PLOW	OFF	Cat_Recall_L5	385	Study	No	3	Cat_Recall_L5	ON										
+WHEELBARROW		WHEELBARROW	OFF	Cat_Recall_L5	399	Study	No	3	Cat_Recall_L5	ON										
+BASKET		BASKET	OFF	Cat_Recall_L5	384	Study	No	3	Cat_Recall_L5	ON										
+SIEVE		SIEVE	OFF	Cat_Recall_L5	401	Study	No	3	Cat_Recall_L5	ON										
+COMPOST		COMPOST	OFF	Cat_Recall_L5	394	Study	No	3	Cat_Recall_L5	ON										
+CLIPPERS		CLIPPERS	OFF	Cat_Recall_L5	395	Study	No	3	Cat_Recall_L5	ON										
+SEEDS		SEEDS	OFF	Cat_Recall_L5	386	Study	No	3	Cat_Recall_L5	ON										
+PLANTER		PLANTER	OFF	Cat_Recall_L5	393	Study	No	3	Cat_Recall_L5	ON										
+BUCKET		BUCKET	OFF	Cat_Recall_L5	389	Study	No	3	Cat_Recall_L5	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Recall Instructions: Recall the words that you saw from memory by typing them into the dialog box on the next screen. You will have 1 minute. Click the button below to begin.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	60	Recall now in the box. Spelling will not be counted against you. The computer will advance when your minute is up.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for the next list.	OFF										
+JACKPOT		JACKPOT	OFF	Unrel_Recall_L6	420	Study	No	3	Unrel_Recall_L6	ON										
+LADDER		LADDER	OFF	Unrel_Recall_L6	417	Study	No	3	Unrel_Recall_L6	ON										
+MAUVE		MAUVE	OFF	Unrel_Recall_L6	412	Study	No	3	Unrel_Recall_L6	ON										
+BOULDER		BOULDER	OFF	Unrel_Recall_L6	410	Study	No	3	Unrel_Recall_L6	ON										
+MASCOT		MASCOT	OFF	Unrel_Recall_L6	418	Study	No	3	Unrel_Recall_L6	ON										
+BLISTER		BLISTER	OFF	Unrel_Recall_L6	406	Study	No	3	Unrel_Recall_L6	ON										
+LANDMARK		LANDMARK	OFF	Unrel_Recall_L6	403	Study	No	3	Unrel_Recall_L6	ON										
+ANVIL		ANVIL	OFF	Unrel_Recall_L6	402	Study	No	3	Unrel_Recall_L6	ON										
+LASER		LASER	OFF	Unrel_Recall_L6	421	Study	No	3	Unrel_Recall_L6	ON										
+WIZARD		WIZARD	OFF	Unrel_Recall_L6	407	Study	No	3	Unrel_Recall_L6	ON										
+DAY		DAY	OFF	Unrel_Recall_L6	409	Study	No	3	Unrel_Recall_L6	ON										
+JAZZ		JAZZ	OFF	Unrel_Recall_L6	416	Study	No	3	Unrel_Recall_L6	ON										
+CLASS		CLASS	OFF	Unrel_Recall_L6	419	Study	No	3	Unrel_Recall_L6	ON										
+WINDSHIELD		WINDSHIELD	OFF	Unrel_Recall_L6	404	Study	No	3	Unrel_Recall_L6	ON										
+KNOCK		KNOCK	OFF	Unrel_Recall_L6	411	Study	No	3	Unrel_Recall_L6	ON										
+IRON		IRON	OFF	Unrel_Recall_L6	414	Study	No	3	Unrel_Recall_L6	ON										
+DOWEL		DOWEL	OFF	Unrel_Recall_L6	413	Study	No	3	Unrel_Recall_L6	ON										
+BROTH		BROTH	OFF	Unrel_Recall_L6	415	Study	No	3	Unrel_Recall_L6	ON										
+FOUL		FOUL	OFF	Unrel_Recall_L6	408	Study	No	3	Unrel_Recall_L6	ON										
+ZONE		ZONE	OFF	Unrel_Recall_L6	405	Study	No	3	Unrel_Recall_L6	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Recall Instructions: Recall the words that you saw from memory by typing them into the dialog box on the next screen. You will have 1 minute. Click the button below to begin.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	freerecall	N/A	60	Recall now in the box. Spelling will not be counted against you. The computer will advance when your minute is up.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Now you will complete a recognition memory test based on the last 6 lists that you have studied. A word will be displayed on the computer screen and you are to decide whether the word was studied in the last 6 lists. If the word was studied, click the "yes" button. If the word was not studied, click the "no" button. Respond as quickly as possible without compromising accuracy.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below to begin the test.	OFF										
+LINEN		LINEN	OFF	NPLI_Cat_Recall	462	seqrec	No	User	RGN Test	ON										
+GUARD		GUARD	OFF	LI_AdHoc_Recall	535	seqrec	No	User	RGN Test	ON										
+BARREL		BARREL	OFF	NPCI_AdHoc_Recall	509	seqrec	No	User	RGN Test	ON										
+CEREAL		CEREAL	OFF	LI_Unrel_Recall	518	seqrec	No	User	RGN Test	ON										
+AVENUE		AVENUE	OFF	LI_Unrel_Recall	513	seqrec	No	User	RGN Test	ON										
+ISSUE		ISSUE	OFF	CI_Unrel_Recall	574	seqrec	No	User	RGN Test	ON										
+BRUSH		BRUSH	OFF	LI_AdHoc_Recall	525	seqrec	No	User	RGN Test	ON										
+JERSEY		JERSEY	OFF	NPLI_Cat_Recall	468	seqrec	No	User	RGN Test	ON										
+CLOGS		CLOGS	OFF	NPLI_AdHoc_Recall	476	seqrec	No	User	RGN Test	ON										
+BASEBALL BAT		BASEBALL BAT	OFF	NPLI_AdHoc_Recall	477	seqrec	No	User	RGN Test	ON										
+GEAR		GEAR	OFF	NPLI_AdHoc_Recall	435	seqrec	No	User	RGN Test	ON										
+DESERT		DESERT	OFF	NPLI_Unrel_Recall	444	seqrec	No	User	RGN Test	ON										
+PLANET		PLANET	OFF	NPCI_AdHoc_Recall	488	seqrec	No	User	RGN Test	ON										
+PAPRIKA		PAPRIKA	OFF	NPCI_Cat_Recall	484	seqrec	No	User	RGN Test	ON										
+NEEDLE		NEEDLE	OFF	LI_AdHoc_Recall	540	seqrec	No	User	RGN Test	ON										
+JUMPSUIT		JUMPSUIT	OFF	CI_AdHoc_Recall	584	seqrec	No	User	RGN Test	ON										
+CABLE		CABLE	OFF	NPCI_Unrel_Recall	493	seqrec	No	User	RGN Test	ON										
+STICK		STICK	OFF	NPCI_AdHoc_Recall	508	seqrec	No	User	RGN Test	ON										
+HUT		HUT	OFF	CI_Cat_Recall	590	seqrec	No	User	RGN Test	ON										
+SLED		SLED	OFF	NPLI_AdHoc_Recall	480	seqrec	No	User	RGN Test	ON										
+BENCH		BENCH	OFF	NPLI_AdHoc_Recall	478	seqrec	No	User	RGN Test	ON										
+LASER		LASER	OFF	LI_Unrel_Recall	571	seqrec	No	User	RGN Test	ON										
+SPHERE		SPHERE	OFF	NPLI_AdHoc_Recall	434	seqrec	No	User	RGN Test	ON										
+DIARY		DIARY	OFF	CI_Unrel_Recall	600	seqrec	No	User	RGN Test	ON										
+OREGANO		OREGANO	OFF	NPLI_Cat_Recall	423	seqrec	No	User	RGN Test	ON										
+CAVE		CAVE	OFF	CI_Cat_Recall	589	seqrec	No	User	RGN Test	ON										
+LANDMARK		LANDMARK	OFF	LI_Unrel_Recall	562	seqrec	No	User	RGN Test	ON										
+CHILI POWDER		CHILI POWDER	OFF	NPLI_Cat_Recall	429	seqrec	No	User	RGN Test	ON										
+SHAVER		SHAVER	OFF	LI_AdHoc_Recall	527	seqrec	No	User	RGN Test	ON										
+SPRINKLER		SPRINKLER	OFF	LI_Cat_Recall	556	seqrec	No	User	RGN Test	ON										
+SHACK		SHACK	OFF	LI_Cat_Recall	543	seqrec	No	User	RGN Test	ON										
+BLAZE		BLAZE	OFF	LI_Unrel_Recall	520	seqrec	No	User	RGN Test	ON										
+LEATHER		LEATHER	OFF	NPCI_Cat_Recall	505	seqrec	No	User	RGN Test	ON										
+CANYON		CANYON	OFF	LI_Unrel_Recall	517	seqrec	No	User	RGN Test	ON										
+WHIRLPOOL		WHIRLPOOL	OFF	NPCI_Unrel_Recall	498	seqrec	No	User	RGN Test	ON										
+ROOM		ROOM	OFF	LI_Cat_Recall	548	seqrec	No	User	RGN Test	ON										
+FLURRY		FLURRY	OFF	LI_Unrel_Recall	514	seqrec	No	User	RGN Test	ON										
+BARRACKS		BARRACKS	OFF	LI_Cat_Recall	551	seqrec	No	User	RGN Test	ON										
+TOOTHBRUSH		TOOTHBRUSH	OFF	CI_AdHoc_Recall	579	seqrec	No	User	RGN Test	ON										
+HERMIT		HERMIT	OFF	NPLI_Unrel_Recall	446	seqrec	No	User	RGN Test	ON										
+CELERY SEED		CELERY SEED	OFF	NPLI_Cat_Recall	430	seqrec	No	User	RGN Test	ON										
+NYLON		NYLON	OFF	NPCI_Cat_Recall	504	seqrec	No	User	RGN Test	ON										
+HOE		HOE	OFF	CI_Cat_Recall	593	seqrec	No	User	RGN Test	ON										
+ROLLING PIN		ROLLING PIN	OFF	NPCI_AdHoc_Recall	507	seqrec	No	User	RGN Test	ON										
+GLOVE		GLOVE	OFF	CI_Cat_Recall	595	seqrec	No	User	RGN Test	ON										
+MUSTARD		MUSTARD	OFF	NPCI_Cat_Recall	485	seqrec	No	User	RGN Test	ON										
+FINGERPRINTS		FINGERPRINTS	OFF	LI_AdHoc_Recall	533	seqrec	No	User	RGN Test	ON										
+DETOUR		DETOUR	OFF	LI_Unrel_Recall	512	seqrec	No	User	RGN Test	ON										
+QUICHE		QUICHE	OFF	NPLI_Unrel_Recall	452	seqrec	No	User	RGN Test	ON										
+FIGHTS		FIGHTS	OFF	LI_AdHoc_Recall	538	seqrec	No	User	RGN Test	ON										
+INFANT		INFANT	OFF	NPLI_Unrel_Recall	455	seqrec	No	User	RGN Test	ON										
+LABEL		LABEL	OFF	CI_Unrel_Recall	576	seqrec	No	User	RGN Test	ON										
+BILLBOARD		BILLBOARD	OFF	CI_Unrel_Recall	601	seqrec	No	User	RGN Test	ON										
+ZIGZAG		ZIGZAG	OFF	CI_Unrel_Recall	572	seqrec	No	User	RGN Test	ON										
+DENTIST		DENTIST	OFF	NPLI_Unrel_Recall	461	seqrec	No	User	RGN Test	ON										
+TERRY		TERRY	OFF	NPLI_Cat_Recall	466	seqrec	No	User	RGN Test	ON										
+RAKE		RAKE	OFF	CI_Cat_Recall	594	seqrec	No	User	RGN Test	ON										
+SPIRAL		SPIRAL	OFF	NPLI_AdHoc_Recall	439	seqrec	No	User	RGN Test	ON										
+DOWEL		DOWEL	OFF	LI_Unrel_Recall	567	seqrec	No	User	RGN Test	ON										
+HAZE		HAZE	OFF	NPCI_Unrel_Recall	495	seqrec	No	User	RGN Test	ON										
+BUCKET		BUCKET	OFF	LI_Cat_Recall	555	seqrec	No	User	RGN Test	ON										
+CAROUSEL		CAROUSEL	OFF	NPCI_AdHoc_Recall	490	seqrec	No	User	RGN Test	ON										
+ARCH		ARCH	OFF	CI_Unrel_Recall	599	seqrec	No	User	RGN Test	ON										
+GARLIC		GARLIC	OFF	NPCI_Cat_Recall	482	seqrec	No	User	RGN Test	ON										
+APARTMENT		APARTMENT	OFF	CI_Cat_Recall	587	seqrec	No	User	RGN Test	ON										
+DREIDEL		DREIDEL	OFF	NPLI_AdHoc_Recall	433	seqrec	No	User	RGN Test	ON										
+WINCH		WINCH	OFF	LI_Unrel_Recall	515	seqrec	No	User	RGN Test	ON										
+FLANNEL		FLANNEL	OFF	NPLI_Cat_Recall	465	seqrec	No	User	RGN Test	ON										
+CINNAMON		CINNAMON	OFF	NPCI_Cat_Recall	483	seqrec	No	User	RGN Test	ON										
+WARDEN		WARDEN	OFF	CI_AdHoc_Recall	586	seqrec	No	User	RGN Test	ON										
+IGLOO		IGLOO	OFF	LI_Cat_Recall	545	seqrec	No	User	RGN Test	ON										
+CANDLE		CANDLE	OFF	LI_AdHoc_Recall	531	seqrec	No	User	RGN Test	ON										
+FILTER		FILTER	OFF	NPCI_Unrel_Recall	499	seqrec	No	User	RGN Test	ON										
+FENCE		FENCE	OFF	NPCI_AdHoc_Recall	510	seqrec	No	User	RGN Test	ON										
+TOOTHPICK		TOOTHPICK	OFF	NPCI_AdHoc_Recall	511	seqrec	No	User	RGN Test	ON										
+COLOGNE		COLOGNE	OFF	CI_AdHoc_Recall	580	seqrec	No	User	RGN Test	ON										
+TENT		TENT	OFF	CI_Cat_Recall	588	seqrec	No	User	RGN Test	ON										
+KEROSENE		KEROSENE	OFF	NPLI_Unrel_Recall	456	seqrec	No	User	RGN Test	ON										
+GENE		GENE	OFF	NPCI_Unrel_Recall	501	seqrec	No	User	RGN Test	ON										
+FAN		FAN	OFF	NPCI_AdHoc_Recall	487	seqrec	No	User	RGN Test	ON										
+TRAILER		TRAILER	OFF	LI_Cat_Recall	542	seqrec	No	User	RGN Test	ON										
+LACE		LACE	OFF	NPLI_Cat_Recall	469	seqrec	No	User	RGN Test	ON										
+GINGER		GINGER	OFF	NPLI_Cat_Recall	428	seqrec	No	User	RGN Test	ON										
+TOILET		TOILET	OFF	CI_AdHoc_Recall	578	seqrec	No	User	RGN Test	ON										
+MANUAL		MANUAL	OFF	NPLI_Unrel_Recall	449	seqrec	No	User	RGN Test	ON										
+RAZOR		RAZOR	OFF	CI_AdHoc_Recall	581	seqrec	No	User	RGN Test	ON										
+ONION SALT		ONION SALT	OFF	NPLI_Cat_Recall	424	seqrec	No	User	RGN Test	ON										
+CREST		CREST	OFF	NPLI_Unrel_Recall	459	seqrec	No	User	RGN Test	ON										
+DEBT		DEBT	OFF	NPLI_Unrel_Recall	442	seqrec	No	User	RGN Test	ON										
+VANITY		VANITY	OFF	LI_AdHoc_Recall	529	seqrec	No	User	RGN Test	ON										
+TROWEL		TROWEL	OFF	LI_Cat_Recall	554	seqrec	No	User	RGN Test	ON										
+SATELLITE		SATELLITE	OFF	NPLI_AdHoc_Recall	432	seqrec	No	User	RGN Test	ON										
+ROTOR		ROTOR	OFF	NPCI_AdHoc_Recall	491	seqrec	No	User	RGN Test	ON										
+CHAIN		CHAIN	OFF	LI_AdHoc_Recall	537	seqrec	No	User	RGN Test	ON										
+SHOWER		SHOWER	OFF	CI_AdHoc_Recall	577	seqrec	No	User	RGN Test	ON										
+STAIRS		STAIRS	OFF	NPLI_AdHoc_Recall	479	seqrec	No	User	RGN Test	ON										
+DWARF		DWARF	OFF	LI_Unrel_Recall	519	seqrec	No	User	RGN Test	ON										
+ORPHAN		ORPHAN	OFF	NPLI_Unrel_Recall	448	seqrec	No	User	RGN Test	ON										
+HOSE		HOSE	OFF	CI_Cat_Recall	596	seqrec	No	User	RGN Test	ON										
+DAY		DAY	OFF	LI_Unrel_Recall	565	seqrec	No	User	RGN Test	ON										
+SKATE		SKATE	OFF	NPCI_AdHoc_Recall	489	seqrec	No	User	RGN Test	ON										
+DUPLEX		DUPLEX	OFF	LI_Cat_Recall	549	seqrec	No	User	RGN Test	ON										
+ALPACA		ALPACA	OFF	NPLI_Cat_Recall	470	seqrec	No	User	RGN Test	ON										
+OFFICER		OFFICER	OFF	LI_AdHoc_Recall	539	seqrec	No	User	RGN Test	ON										
+SATIN		SATIN	OFF	NPCI_Cat_Recall	506	seqrec	No	User	RGN Test	ON										
+PENCIL		PENCIL	OFF	NPLI_AdHoc_Recall	474	seqrec	No	User	RGN Test	ON										
+HANDCUFFS		HANDCUFFS	OFF	CI_AdHoc_Recall	582	seqrec	No	User	RGN Test	ON										
+KNOCK		KNOCK	OFF	LI_Unrel_Recall	566	seqrec	No	User	RGN Test	ON										
+WORSTED		WORSTED	OFF	NPLI_Cat_Recall	463	seqrec	No	User	RGN Test	ON										
+BUNKBED		BUNKBED	OFF	LI_AdHoc_Recall	534	seqrec	No	User	RGN Test	ON										
+RAYON		RAYON	OFF	NPCI_Cat_Recall	503	seqrec	No	User	RGN Test	ON										
+INJURY		INJURY	OFF	CI_Unrel_Recall	575	seqrec	No	User	RGN Test	ON										
+HARVEST		HARVEST	OFF	NPLI_Unrel_Recall	450	seqrec	No	User	RGN Test	ON										
+KNIGHT		KNIGHT	OFF	NPCI_Unrel_Recall	497	seqrec	No	User	RGN Test	ON										
+SALT		SALT	OFF	NPCI_Cat_Recall	486	seqrec	No	User	RGN Test	ON										
+DEODORANT		DEODORANT	OFF	LI_AdHoc_Recall	526	seqrec	No	User	RGN Test	ON										
+LANTERN		LANTERN	OFF	NPLI_Unrel_Recall	443	seqrec	No	User	RGN Test	ON										
+CANTEEN		CANTEEN	OFF	NPLI_Unrel_Recall	451	seqrec	No	User	RGN Test	ON										
+CHEESECAKE		CHEESECAKE	OFF	CI_Unrel_Recall	573	seqrec	No	User	RGN Test	ON										
+TRIMMER		TRIMMER	OFF	LI_Cat_Recall	559	seqrec	No	User	RGN Test	ON										
+CURRY		CURRY	OFF	NPLI_Cat_Recall	426	seqrec	No	User	RGN Test	ON										
+DENIUM		DENIUM	OFF	NPLI_Cat_Recall	464	seqrec	No	User	RGN Test	ON										
+HAYSTACK		HAYSTACK	OFF	NPCI_Unrel_Recall	494	seqrec	No	User	RGN Test	ON										
+WINDMILL		WINDMILL	OFF	NPLI_AdHoc_Recall	440	seqrec	No	User	RGN Test	ON										
+WHEELBARROW		WHEELBARROW	OFF	LI_Cat_Recall	560	seqrec	No	User	RGN Test	ON										
+CLASS		CLASS	OFF	LI_Unrel_Recall	570	seqrec	No	User	RGN Test	ON										
+WHALE		WHALE	OFF	NPLI_Unrel_Recall	447	seqrec	No	User	RGN Test	ON										
+WINNER		WINNER	OFF	LI_Unrel_Recall	521	seqrec	No	User	RGN Test	ON										
+ACROBAT		ACROBAT	OFF	NPCI_Unrel_Recall	500	seqrec	No	User	RGN Test	ON										
+DESK		DESK	OFF	NPLI_AdHoc_Recall	475	seqrec	No	User	RGN Test	ON										
+SHOVEL		SHOVEL	OFF	CI_Cat_Recall	592	seqrec	No	User	RGN Test	ON										
+TABLE		TABLE	OFF	NPLI_AdHoc_Recall	472	seqrec	No	User	RGN Test	ON										
+EPISODE		EPISODE	OFF	NPLI_Unrel_Recall	445	seqrec	No	User	RGN Test	ON										
+PICK		PICK	OFF	LI_Cat_Recall	552	seqrec	No	User	RGN Test	ON										
+HOUSEBOAT		HOUSEBOAT	OFF	LI_Cat_Recall	547	seqrec	No	User	RGN Test	ON										
+YO-YO		YO-YO	OFF	NPLI_AdHoc_Recall	441	seqrec	No	User	RGN Test	ON										
+BICYCLE		BICYCLE	OFF	NPLI_AdHoc_Recall	437	seqrec	No	User	RGN Test	ON										
+GYROSCOPE		GYROSCOPE	OFF	NPLI_AdHoc_Recall	436	seqrec	No	User	RGN Test	ON										
+SIEVE		SIEVE	OFF	LI_Cat_Recall	561	seqrec	No	User	RGN Test	ON										
+WIZARD		WIZARD	OFF	LI_Unrel_Recall	564	seqrec	No	User	RGN Test	ON										
+VANILLA		VANILLA	OFF	NPLI_Cat_Recall	422	seqrec	No	User	RGN Test	ON										
+LADDER		LADDER	OFF	LI_Unrel_Recall	569	seqrec	No	User	RGN Test	ON										
+PALACE		PALACE	OFF	LI_Cat_Recall	550	seqrec	No	User	RGN Test	ON										
+LYCRA		LYCRA	OFF	NPLI_Cat_Recall	471	seqrec	No	User	RGN Test	ON										
+ADMIRAL		ADMIRAL	OFF	NPCI_Unrel_Recall	492	seqrec	No	User	RGN Test	ON										
+POLYESTER		POLYESTER	OFF	NPLI_Cat_Recall	467	seqrec	No	User	RGN Test	ON										
+HAIR DRYER		HAIR DRYER	OFF	LI_AdHoc_Recall	530	seqrec	No	User	RGN Test	ON										
+LOCKS		LOCKS	OFF	CI_AdHoc_Recall	583	seqrec	No	User	RGN Test	ON										
+VALVE		VALVE	OFF	NPLI_Unrel_Recall	454	seqrec	No	User	RGN Test	ON										
+COTTAGE		COTTAGE	OFF	LI_Cat_Recall	544	seqrec	No	User	RGN Test	ON										
+WOOL		WOOL	OFF	NPCI_Cat_Recall	502	seqrec	No	User	RGN Test	ON										
+PLANTER		PLANTER	OFF	LI_Cat_Recall	557	seqrec	No	User	RGN Test	ON										
+CELL		CELL	OFF	LI_AdHoc_Recall	532	seqrec	No	User	RGN Test	ON										
+DOOR		DOOR	OFF	NPLI_AdHoc_Recall	473	seqrec	No	User	RGN Test	ON										
+CABIN		CABIN	OFF	CI_Cat_Recall	591	seqrec	No	User	RGN Test	ON										
+PLOW		PLOW	OFF	LI_Cat_Recall	553	seqrec	No	User	RGN Test	ON										
+TILE		TILE	OFF	LI_AdHoc_Recall	523	seqrec	No	User	RGN Test	ON										
+TEPEE		TEPEE	OFF	LI_Cat_Recall	546	seqrec	No	User	RGN Test	ON										
+DETECTIVE		DETECTIVE	OFF	LI_AdHoc_Recall	541	seqrec	No	User	RGN Test	ON										
+PINT		PINT	OFF	NPLI_Unrel_Recall	457	seqrec	No	User	RGN Test	ON										
+ACORN		ACORN	OFF	NPLI_Unrel_Recall	460	seqrec	No	User	RGN Test	ON										
+TURMERIC		TURMERIC	OFF	NPLI_Cat_Recall	431	seqrec	No	User	RGN Test	ON										
+FOOTHILL		FOOTHILL	OFF	CI_Unrel_Recall	597	seqrec	No	User	RGN Test	ON										
+ROSEMARY		ROSEMARY	OFF	NPLI_Cat_Recall	427	seqrec	No	User	RGN Test	ON										
+ZONE		ZONE	OFF	LI_Unrel_Recall	563	seqrec	No	User	RGN Test	ON										
+CLIPPERS		CLIPPERS	OFF	LI_Cat_Recall	558	seqrec	No	User	RGN Test	ON										
+VAPOR		VAPOR	OFF	NPLI_Unrel_Recall	458	seqrec	No	User	RGN Test	ON										
+BLOSSOM		BLOSSOM	OFF	NPLI_Unrel_Recall	453	seqrec	No	User	RGN Test	ON										
+BRISKET		BRISKET	OFF	CI_Unrel_Recall	598	seqrec	No	User	RGN Test	ON										
+BROTH		BROTH	OFF	LI_Unrel_Recall	568	seqrec	No	User	RGN Test	ON										
+BAY LEAVES		BAY LEAVES	OFF	NPLI_Cat_Recall	425	seqrec	No	User	RGN Test	ON										
+TOWER		TOWER	OFF	LI_AdHoc_Recall	536	seqrec	No	User	RGN Test	ON										
+SCALE		SCALE	OFF	LI_AdHoc_Recall	522	seqrec	No	User	RGN Test	ON										
+MEDICINE		MEDICINE	OFF	LI_AdHoc_Recall	524	seqrec	No	User	RGN Test	ON										
+PLUNGER		PLUNGER	OFF	LI_AdHoc_Recall	528	seqrec	No	User	RGN Test	ON										
+CALENDAR		CALENDAR	OFF	NPCI_Unrel_Recall	496	seqrec	No	User	RGN Test	ON										
+TORNADO		TORNADO	OFF	NPLI_AdHoc_Recall	438	seqrec	No	User	RGN Test	ON										
+CIMINAL		CIMINAL	OFF	CI_AdHoc_Recall	585	seqrec	No	User	RGN Test	ON										
+JAR		JAR	OFF	LI_Unrel_Recall	516	seqrec	No	User	RGN Test	ON										
+BARN		BARN	OFF	NPLI_AdHoc_Recall	481	seqrec	No	User	RGN Test	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below to continue.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	You again will be presented with 6 lists of words, each containing 20 words, but now you will be presented with the list for a second time following each list. After each list is presented, the words will be presented to you again, but in a different order. Click the button below to begin the first list.	OFF										
+TONGUE		TONGUE	OFF	Cat_Restudy_L1	621	Study	No	3	Cat_Restudy_L1	ON										
+HAND		HAND	OFF	Cat_Restudy_L1	606	Study	No	3	Cat_Restudy_L1	ON										
+MOUTH		MOUTH	OFF	Cat_Restudy_L1	607	Study	No	3	Cat_Restudy_L1	ON										
+SHOULDERS		SHOULDERS	OFF	Cat_Restudy_L1	619	Study	No	3	Cat_Restudy_L1	ON										
+STOMACH		STOMACH	OFF	Cat_Restudy_L1	608	Study	No	3	Cat_Restudy_L1	ON										
+FACE		FACE	OFF	Cat_Restudy_L1	620	Study	No	3	Cat_Restudy_L1	ON										
+LEGS		LEGS	OFF	Cat_Restudy_L1	602	Study	No	3	Cat_Restudy_L1	ON										
+ELBOW		ELBOW	OFF	Cat_Restudy_L1	618	Study	No	3	Cat_Restudy_L1	ON										
+LIVER		LIVER	OFF	Cat_Restudy_L1	614	Study	No	3	Cat_Restudy_L1	ON										
+HEAD		HEAD	OFF	Cat_Restudy_L1	603	Study	No	3	Cat_Restudy_L1	ON										
+FOOT 		FOOT 	OFF	Cat_Restudy_L1	604	Study	No	3	Cat_Restudy_L1	ON										
+EYEBROW		EYEBROW	OFF	Cat_Restudy_L1	609	Study	No	3	Cat_Restudy_L1	ON										
+LUNGS		LUNGS	OFF	Cat_Restudy_L1	616	Study	No	3	Cat_Restudy_L1	ON										
+HEART		HEART	OFF	Cat_Restudy_L1	611	Study	No	3	Cat_Restudy_L1	ON										
+BRAIN		BRAIN	OFF	Cat_Restudy_L1	615	Study	No	3	Cat_Restudy_L1	ON										
+PELVIS		PELVIS	OFF	Cat_Restudy_L1	613	Study	No	3	Cat_Restudy_L1	ON										
+FINGER		FINGER	OFF	Cat_Restudy_L1	605	Study	No	3	Cat_Restudy_L1	ON										
+TOOTH		TOOTH	OFF	Cat_Restudy_L1	617	Study	No	3	Cat_Restudy_L1	ON										
+NECK		NECK	OFF	Cat_Restudy_L1	610	Study	No	3	Cat_Restudy_L1	ON										
+KNEE		KNEE	OFF	Cat_Restudy_L1	612	Study	No	3	Cat_Restudy_L1	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Restudy Instructions: You will now view this list again, but in a different order. Click the button below to begin.	OFF										
+LUNGS		LUNGS	OFF	Cat_Restudy_L1	636	Study	No	3	Cat_Restudy_L1	ON										
+TOOTH		TOOTH	OFF	Cat_Restudy_L1	637	Study	No	3	Cat_Restudy_L1	ON										
+LEGS		LEGS	OFF	Cat_Restudy_L1	622	Study	No	3	Cat_Restudy_L1	ON										
+NECK		NECK	OFF	Cat_Restudy_L1	630	Study	No	3	Cat_Restudy_L1	ON										
+HEART		HEART	OFF	Cat_Restudy_L1	631	Study	No	3	Cat_Restudy_L1	ON										
+TONGUE		TONGUE	OFF	Cat_Restudy_L1	641	Study	No	3	Cat_Restudy_L1	ON										
+LIVER		LIVER	OFF	Cat_Restudy_L1	634	Study	No	3	Cat_Restudy_L1	ON										
+HAND		HAND	OFF	Cat_Restudy_L1	626	Study	No	3	Cat_Restudy_L1	ON										
+FINGER		FINGER	OFF	Cat_Restudy_L1	625	Study	No	3	Cat_Restudy_L1	ON										
+EYEBROW		EYEBROW	OFF	Cat_Restudy_L1	629	Study	No	3	Cat_Restudy_L1	ON										
+ELBOW		ELBOW	OFF	Cat_Restudy_L1	638	Study	No	3	Cat_Restudy_L1	ON										
+FACE		FACE	OFF	Cat_Restudy_L1	640	Study	No	3	Cat_Restudy_L1	ON										
+KNEE		KNEE	OFF	Cat_Restudy_L1	632	Study	No	3	Cat_Restudy_L1	ON										
+BRAIN		BRAIN	OFF	Cat_Restudy_L1	635	Study	No	3	Cat_Restudy_L1	ON										
+PELVIS		PELVIS	OFF	Cat_Restudy_L1	633	Study	No	3	Cat_Restudy_L1	ON										
+MOUTH		MOUTH	OFF	Cat_Restudy_L1	627	Study	No	3	Cat_Restudy_L1	ON										
+HEAD		HEAD	OFF	Cat_Restudy_L1	623	Study	No	3	Cat_Restudy_L1	ON										
+SHOULDERS		SHOULDERS	OFF	Cat_Restudy_L1	639	Study	No	3	Cat_Restudy_L1	ON										
+FOOT 		FOOT 	OFF	Cat_Restudy_L1	624	Study	No	3	Cat_Restudy_L1	ON										
+STOMACH		STOMACH	OFF	Cat_Restudy_L1	628	Study	No	3	Cat_Restudy_L1	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for a new list.	OFF										
+RING		RING	OFF	AdHoc_Restudy_L2	650	Study	No	3	AdHoc_Restudy_L2	ON										
+SLIP		SLIP	OFF	AdHoc_Restudy_L2	653	Study	No	3	AdHoc_Restudy_L2	ON										
+PENDANT		PENDANT	OFF	AdHoc_Restudy_L2	660	Study	No	3	AdHoc_Restudy_L2	ON										
+LIPSTICK		LIPSTICK	OFF	AdHoc_Restudy_L2	646	Study	No	3	AdHoc_Restudy_L2	ON										
+SCARF		SCARF	OFF	AdHoc_Restudy_L2	642	Study	No	3	AdHoc_Restudy_L2	ON										
+BRACELET		BRACELET	OFF	AdHoc_Restudy_L2	658	Study	No	3	AdHoc_Restudy_L2	ON										
+PANTYHOSE		PANTYHOSE	OFF	AdHoc_Restudy_L2	652	Study	No	3	AdHoc_Restudy_L2	ON										
+DIAMONDS		DIAMONDS	OFF	AdHoc_Restudy_L2	651	Study	No	3	AdHoc_Restudy_L2	ON										
+JEANS		JEANS	OFF	AdHoc_Restudy_L2	647	Study	No	3	AdHoc_Restudy_L2	ON										
+SHIRT		SHIRT	OFF	AdHoc_Restudy_L2	649	Study	No	3	AdHoc_Restudy_L2	ON										
+CONCEALER		CONCEALER	OFF	AdHoc_Restudy_L2	648	Study	No	3	AdHoc_Restudy_L2	ON										
+HEADBAND		HEADBAND	OFF	AdHoc_Restudy_L2	644	Study	No	3	AdHoc_Restudy_L2	ON										
+EYE SHADOW		EYE SHADOW	OFF	AdHoc_Restudy_L2	645	Study	No	3	AdHoc_Restudy_L2	ON										
+PEARLS		PEARLS	OFF	AdHoc_Restudy_L2	659	Study	No	3	AdHoc_Restudy_L2	ON										
+HAT		HAT	OFF	AdHoc_Restudy_L2	643	Study	No	3	AdHoc_Restudy_L2	ON										
+MAKE UP		MAKE UP	OFF	AdHoc_Restudy_L2	657	Study	No	3	AdHoc_Restudy_L2	ON										
+GOWN		GOWN	OFF	AdHoc_Restudy_L2	655	Study	No	3	AdHoc_Restudy_L2	ON										
+BROOCH		BROOCH	OFF	AdHoc_Restudy_L2	661	Study	No	3	AdHoc_Restudy_L2	ON										
+BOBBY PIN		BOBBY PIN	OFF	AdHoc_Restudy_L2	656	Study	No	3	AdHoc_Restudy_L2	ON										
+VEIL		VEIL	OFF	AdHoc_Restudy_L2	654	Study	No	3	AdHoc_Restudy_L2	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Restudy Instructions: You will now view this list again, but in a different order. Click the button below to begin.	OFF										
+JEANS		JEANS	OFF	AdHoc_Restudy_L2	667	Study	No	3	AdHoc_Restudy_L2	ON										
+SHIRT		SHIRT	OFF	AdHoc_Restudy_L2	669	Study	No	3	AdHoc_Restudy_L2	ON										
+HEADBAND		HEADBAND	OFF	AdHoc_Restudy_L2	664	Study	No	3	AdHoc_Restudy_L2	ON										
+RING		RING	OFF	AdHoc_Restudy_L2	670	Study	No	3	AdHoc_Restudy_L2	ON										
+PENDANT		PENDANT	OFF	AdHoc_Restudy_L2	680	Study	No	3	AdHoc_Restudy_L2	ON										
+BOBBY PIN		BOBBY PIN	OFF	AdHoc_Restudy_L2	676	Study	No	3	AdHoc_Restudy_L2	ON										
+PEARLS		PEARLS	OFF	AdHoc_Restudy_L2	679	Study	No	3	AdHoc_Restudy_L2	ON										
+BRACELET		BRACELET	OFF	AdHoc_Restudy_L2	678	Study	No	3	AdHoc_Restudy_L2	ON										
+MAKE UP		MAKE UP	OFF	AdHoc_Restudy_L2	677	Study	No	3	AdHoc_Restudy_L2	ON										
+LIPSTICK		LIPSTICK	OFF	AdHoc_Restudy_L2	666	Study	No	3	AdHoc_Restudy_L2	ON										
+DIAMONDS		DIAMONDS	OFF	AdHoc_Restudy_L2	671	Study	No	3	AdHoc_Restudy_L2	ON										
+CONCEALER		CONCEALER	OFF	AdHoc_Restudy_L2	668	Study	No	3	AdHoc_Restudy_L2	ON										
+EYE SHADOW		EYE SHADOW	OFF	AdHoc_Restudy_L2	665	Study	No	3	AdHoc_Restudy_L2	ON										
+GOWN		GOWN	OFF	AdHoc_Restudy_L2	675	Study	No	3	AdHoc_Restudy_L2	ON										
+PANTYHOSE		PANTYHOSE	OFF	AdHoc_Restudy_L2	672	Study	No	3	AdHoc_Restudy_L2	ON										
+SCARF		SCARF	OFF	AdHoc_Restudy_L2	662	Study	No	3	AdHoc_Restudy_L2	ON										
+VEIL		VEIL	OFF	AdHoc_Restudy_L2	674	Study	No	3	AdHoc_Restudy_L2	ON										
+HAT		HAT	OFF	AdHoc_Restudy_L2	663	Study	No	3	AdHoc_Restudy_L2	ON										
+SLIP		SLIP	OFF	AdHoc_Restudy_L2	673	Study	No	3	AdHoc_Restudy_L2	ON										
+BROOCH		BROOCH	OFF	AdHoc_Restudy_L2	681	Study	No	3	AdHoc_Restudy_L2	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for a new list.	OFF										
+RUG		RUG	OFF	Cat_Restudy_L3	686	Study	No	3	Cat_Restudy_L3	ON										
+DAVENPORT		DAVENPORT	OFF	Cat_Restudy_L3	701	Study	No	3	Cat_Restudy_L3	ON										
+FOOTSTOOL		FOOTSTOOL	OFF	Cat_Restudy_L3	692	Study	No	3	Cat_Restudy_L3	ON										
+COT		COT	OFF	Cat_Restudy_L3	695	Study	No	3	Cat_Restudy_L3	ON										
+ARMOIRE		ARMOIRE	OFF	Cat_Restudy_L3	682	Study	No	3	Cat_Restudy_L3	ON										
+CHAISE		CHAISE	OFF	Cat_Restudy_L3	697	Study	No	3	Cat_Restudy_L3	ON										
+CHINA CLOSET		CHINA CLOSET	OFF	Cat_Restudy_L3	699	Study	No	3	Cat_Restudy_L3	ON										
+ROCKING CHAIR		ROCKING CHAIR	OFF	Cat_Restudy_L3	700	Study	No	3	Cat_Restudy_L3	ON										
+BOOKCASE		BOOKCASE	OFF	Cat_Restudy_L3	688	Study	No	3	Cat_Restudy_L3	ON										
+OTTOMAN		OTTOMAN	OFF	Cat_Restudy_L3	689	Study	No	3	Cat_Restudy_L3	ON										
+MIRROR		MIRROR	OFF	Cat_Restudy_L3	698	Study	No	3	Cat_Restudy_L3	ON										
+PIANO		PIANO	OFF	Cat_Restudy_L3	691	Study	No	3	Cat_Restudy_L3	ON										
+COFFEE TABLE		COFFEE TABLE	OFF	Cat_Restudy_L3	687	Study	No	3	Cat_Restudy_L3	ON										
+CRADLE		CRADLE	OFF	Cat_Restudy_L3	683	Study	No	3	Cat_Restudy_L3	ON										
+END TABLE		END TABLE	OFF	Cat_Restudy_L3	693	Study	No	3	Cat_Restudy_L3	ON										
+CRIB		CRIB	OFF	Cat_Restudy_L3	694	Study	No	3	Cat_Restudy_L3	ON										
+TELEVISION		TELEVISION	OFF	Cat_Restudy_L3	685	Study	No	3	Cat_Restudy_L3	ON										
+LOVE SEAT		LOVE SEAT	OFF	Cat_Restudy_L3	696	Study	No	3	Cat_Restudy_L3	ON										
+COUCH		COUCH	OFF	Cat_Restudy_L3	684	Study	No	3	Cat_Restudy_L3	ON										
+CHEST		CHEST	OFF	Cat_Restudy_L3	690	Study	No	3	Cat_Restudy_L3	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Restudy Instructions: You will now view this list again, but in a different order. Click the button below to begin.	OFF										
+RUG		RUG	OFF	Cat_Restudy_L3	706	Study	No	3	Cat_Restudy_L3	ON										
+DAVENPORT		DAVENPORT	OFF	Cat_Restudy_L3	721	Study	No	3	Cat_Restudy_L3	ON										
+OTTOMAN		OTTOMAN	OFF	Cat_Restudy_L3	709	Study	No	3	Cat_Restudy_L3	ON										
+CHAISE		CHAISE	OFF	Cat_Restudy_L3	717	Study	No	3	Cat_Restudy_L3	ON										
+CRADLE		CRADLE	OFF	Cat_Restudy_L3	703	Study	No	3	Cat_Restudy_L3	ON										
+CHINA CLOSET		CHINA CLOSET	OFF	Cat_Restudy_L3	719	Study	No	3	Cat_Restudy_L3	ON										
+PIANO		PIANO	OFF	Cat_Restudy_L3	711	Study	No	3	Cat_Restudy_L3	ON										
+ARMOIRE		ARMOIRE	OFF	Cat_Restudy_L3	702	Study	No	3	Cat_Restudy_L3	ON										
+FOOTSTOOL		FOOTSTOOL	OFF	Cat_Restudy_L3	712	Study	No	3	Cat_Restudy_L3	ON										
+CHEST		CHEST	OFF	Cat_Restudy_L3	710	Study	No	3	Cat_Restudy_L3	ON										
+END TABLE		END TABLE	OFF	Cat_Restudy_L3	713	Study	No	3	Cat_Restudy_L3	ON										
+BOOKCASE		BOOKCASE	OFF	Cat_Restudy_L3	708	Study	No	3	Cat_Restudy_L3	ON										
+CRIB		CRIB	OFF	Cat_Restudy_L3	714	Study	No	3	Cat_Restudy_L3	ON										
+COFFEE TABLE		COFFEE TABLE	OFF	Cat_Restudy_L3	707	Study	No	3	Cat_Restudy_L3	ON										
+TELEVISION		TELEVISION	OFF	Cat_Restudy_L3	705	Study	No	3	Cat_Restudy_L3	ON										
+MIRROR		MIRROR	OFF	Cat_Restudy_L3	718	Study	No	3	Cat_Restudy_L3	ON										
+ROCKING CHAIR		ROCKING CHAIR	OFF	Cat_Restudy_L3	720	Study	No	3	Cat_Restudy_L3	ON										
+LOVE SEAT		LOVE SEAT	OFF	Cat_Restudy_L3	716	Study	No	3	Cat_Restudy_L3	ON										
+COUCH		COUCH	OFF	Cat_Restudy_L3	704	Study	No	3	Cat_Restudy_L3	ON										
+COT		COT	OFF	Cat_Restudy_L3	715	Study	No	3	Cat_Restudy_L3	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for a new list.	OFF										
+LOLLIPOP		LOLLIPOP	OFF	Unrel_Restudy_L4	740	Study	No	3	Unrel_Restudy_L4	ON										
+KNOB		KNOB	OFF	Unrel_Restudy_L4	723	Study	No	3	Unrel_Restudy_L4	ON										
+LAND		LAND	OFF	Unrel_Restudy_L4	727	Study	No	3	Unrel_Restudy_L4	ON										
+VOTE		VOTE	OFF	Unrel_Restudy_L4	726	Study	No	3	Unrel_Restudy_L4	ON										
+DAIRY		DAIRY	OFF	Unrel_Restudy_L4	733	Study	No	3	Unrel_Restudy_L4	ON										
+WHEEL		WHEEL	OFF	Unrel_Restudy_L4	738	Study	No	3	Unrel_Restudy_L4	ON										
+DANCER		DANCER	OFF	Unrel_Restudy_L4	734	Study	No	3	Unrel_Restudy_L4	ON										
+GAUZE		GAUZE	OFF	Unrel_Restudy_L4	731	Study	No	3	Unrel_Restudy_L4	ON										
+OTTER		OTTER	OFF	Unrel_Restudy_L4	729	Study	No	3	Unrel_Restudy_L4	ON										
+MIST		MIST	OFF	Unrel_Restudy_L4	741	Study	No	3	Unrel_Restudy_L4	ON										
+BEVERAGE		BEVERAGE	OFF	Unrel_Restudy_L4	728	Study	No	3	Unrel_Restudy_L4	ON										
+CLOAK		CLOAK	OFF	Unrel_Restudy_L4	739	Study	No	3	Unrel_Restudy_L4	ON										
+COSTUME		COSTUME	OFF	Unrel_Restudy_L4	730	Study	No	3	Unrel_Restudy_L4	ON										
+FOAM		FOAM	OFF	Unrel_Restudy_L4	725	Study	No	3	Unrel_Restudy_L4	ON										
+NECTAR		NECTAR	OFF	Unrel_Restudy_L4	737	Study	No	3	Unrel_Restudy_L4	ON										
+CHEEK		CHEEK	OFF	Unrel_Restudy_L4	735	Study	No	3	Unrel_Restudy_L4	ON										
+PAIL		PAIL	OFF	Unrel_Restudy_L4	736	Study	No	3	Unrel_Restudy_L4	ON										
+SHRUB		SHRUB	OFF	Unrel_Restudy_L4	732	Study	No	3	Unrel_Restudy_L4	ON										
+TULIP		TULIP	OFF	Unrel_Restudy_L4	722	Study	No	3	Unrel_Restudy_L4	ON										
+STARS		STARS	OFF	Unrel_Restudy_L4	724	Study	No	3	Unrel_Restudy_L4	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Restudy Instructions: You will now view this list again, but in a different order. Click the button below to begin.	OFF										
+PAIL		PAIL	OFF	Unrel_Restudy_L4	756	Study	No	3	Unrel_Restudy_L4	ON										
+DAIRY		DAIRY	OFF	Unrel_Restudy_L4	753	Study	No	3	Unrel_Restudy_L4	ON										
+KNOB		KNOB	OFF	Unrel_Restudy_L4	743	Study	No	3	Unrel_Restudy_L4	ON										
+CHEEK		CHEEK	OFF	Unrel_Restudy_L4	755	Study	No	3	Unrel_Restudy_L4	ON										
+VOTE		VOTE	OFF	Unrel_Restudy_L4	746	Study	No	3	Unrel_Restudy_L4	ON										
+STARS		STARS	OFF	Unrel_Restudy_L4	744	Study	No	3	Unrel_Restudy_L4	ON										
+COSTUME		COSTUME	OFF	Unrel_Restudy_L4	750	Study	No	3	Unrel_Restudy_L4	ON										
+TULIP		TULIP	OFF	Unrel_Restudy_L4	742	Study	No	3	Unrel_Restudy_L4	ON										
+OTTER		OTTER	OFF	Unrel_Restudy_L4	749	Study	No	3	Unrel_Restudy_L4	ON										
+DANCER		DANCER	OFF	Unrel_Restudy_L4	754	Study	No	3	Unrel_Restudy_L4	ON										
+SHRUB		SHRUB	OFF	Unrel_Restudy_L4	752	Study	No	3	Unrel_Restudy_L4	ON										
+CLOAK		CLOAK	OFF	Unrel_Restudy_L4	759	Study	No	3	Unrel_Restudy_L4	ON										
+LOLLIPOP		LOLLIPOP	OFF	Unrel_Restudy_L4	760	Study	No	3	Unrel_Restudy_L4	ON										
+NECTAR		NECTAR	OFF	Unrel_Restudy_L4	757	Study	No	3	Unrel_Restudy_L4	ON										
+WHEEL		WHEEL	OFF	Unrel_Restudy_L4	758	Study	No	3	Unrel_Restudy_L4	ON										
+FOAM		FOAM	OFF	Unrel_Restudy_L4	745	Study	No	3	Unrel_Restudy_L4	ON										
+LAND		LAND	OFF	Unrel_Restudy_L4	747	Study	No	3	Unrel_Restudy_L4	ON										
+BEVERAGE		BEVERAGE	OFF	Unrel_Restudy_L4	748	Study	No	3	Unrel_Restudy_L4	ON										
+MIST		MIST	OFF	Unrel_Restudy_L4	761	Study	No	3	Unrel_Restudy_L4	ON										
+GAUZE		GAUZE	OFF	Unrel_Restudy_L4	751	Study	No	3	Unrel_Restudy_L4	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for a new list.	OFF										
+AUNT		AUNT	OFF	Unrel_Restudy_L5	774	Study	No	3	Unrel_Restudy_L5	ON										
+LANE		LANE	OFF	Unrel_Restudy_L5	773	Study	No	3	Unrel_Restudy_L5	ON										
+MOP		MOP	OFF	Unrel_Restudy_L5	780	Study	No	3	Unrel_Restudy_L5	ON										
+WALNUT		WALNUT	OFF	Unrel_Restudy_L5	781	Study	No	3	Unrel_Restudy_L5	ON										
+LICHEN		LICHEN	OFF	Unrel_Restudy_L5	770	Study	No	3	Unrel_Restudy_L5	ON										
+MUSKET		MUSKET	OFF	Unrel_Restudy_L5	765	Study	No	3	Unrel_Restudy_L5	ON										
+PILLOW		PILLOW	OFF	Unrel_Restudy_L5	762	Study	No	3	Unrel_Restudy_L5	ON										
+BEARD		BEARD	OFF	Unrel_Restudy_L5	779	Study	No	3	Unrel_Restudy_L5	ON										
+HORN		HORN	OFF	Unrel_Restudy_L5	778	Study	No	3	Unrel_Restudy_L5	ON										
+SWITCH		SWITCH	OFF	Unrel_Restudy_L5	768	Study	No	3	Unrel_Restudy_L5	ON										
+BRIGHT		BRIGHT	OFF	Unrel_Restudy_L5	769	Study	No	3	Unrel_Restudy_L5	ON										
+SHOE		SHOE	OFF	Unrel_Restudy_L5	767	Study	No	3	Unrel_Restudy_L5	ON										
+FLOUR		FLOUR	OFF	Unrel_Restudy_L5	771	Study	No	3	Unrel_Restudy_L5	ON										
+ANCHOR		ANCHOR	OFF	Unrel_Restudy_L5	764	Study	No	3	Unrel_Restudy_L5	ON										
+BISCUIT		BISCUIT	OFF	Unrel_Restudy_L5	777	Study	No	3	Unrel_Restudy_L5	ON										
+BOOTH		BOOTH	OFF	Unrel_Restudy_L5	763	Study	No	3	Unrel_Restudy_L5	ON										
+BAR		BAR	OFF	Unrel_Restudy_L5	775	Study	No	3	Unrel_Restudy_L5	ON										
+BROOM		BROOM	OFF	Unrel_Restudy_L5	776	Study	No	3	Unrel_Restudy_L5	ON										
+EASEL		EASEL	OFF	Unrel_Restudy_L5	766	Study	No	3	Unrel_Restudy_L5	ON										
+SNOWMAN		SNOWMAN	OFF	Unrel_Restudy_L5	772	Study	No	3	Unrel_Restudy_L5	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Restudy Instructions: You will now view this list again, but in a different order. Click the button below to begin.	OFF										
+SHOE		SHOE	OFF	Unrel_Restudy_L5	787	Study	No	3	Unrel_Restudy_L5	ON										
+LICHEN		LICHEN	OFF	Unrel_Restudy_L5	790	Study	No	3	Unrel_Restudy_L5	ON										
+BISCUIT		BISCUIT	OFF	Unrel_Restudy_L5	797	Study	No	3	Unrel_Restudy_L5	ON										
+BROOM		BROOM	OFF	Unrel_Restudy_L5	796	Study	No	3	Unrel_Restudy_L5	ON										
+BEARD		BEARD	OFF	Unrel_Restudy_L5	799	Study	No	3	Unrel_Restudy_L5	ON										
+EASEL		EASEL	OFF	Unrel_Restudy_L5	786	Study	No	3	Unrel_Restudy_L5	ON										
+BRIGHT		BRIGHT	OFF	Unrel_Restudy_L5	789	Study	No	3	Unrel_Restudy_L5	ON										
+MUSKET		MUSKET	OFF	Unrel_Restudy_L5	785	Study	No	3	Unrel_Restudy_L5	ON										
+HORN		HORN	OFF	Unrel_Restudy_L5	798	Study	No	3	Unrel_Restudy_L5	ON										
+ANCHOR		ANCHOR	OFF	Unrel_Restudy_L5	784	Study	No	3	Unrel_Restudy_L5	ON										
+MOP		MOP	OFF	Unrel_Restudy_L5	800	Study	No	3	Unrel_Restudy_L5	ON										
+FLOUR		FLOUR	OFF	Unrel_Restudy_L5	791	Study	No	3	Unrel_Restudy_L5	ON										
+LANE		LANE	OFF	Unrel_Restudy_L5	793	Study	No	3	Unrel_Restudy_L5	ON										
+WALNUT		WALNUT	OFF	Unrel_Restudy_L5	801	Study	No	3	Unrel_Restudy_L5	ON										
+AUNT		AUNT	OFF	Unrel_Restudy_L5	794	Study	No	3	Unrel_Restudy_L5	ON										
+SWITCH		SWITCH	OFF	Unrel_Restudy_L5	788	Study	No	3	Unrel_Restudy_L5	ON										
+PILLOW		PILLOW	OFF	Unrel_Restudy_L5	782	Study	No	3	Unrel_Restudy_L5	ON										
+BAR		BAR	OFF	Unrel_Restudy_L5	795	Study	No	3	Unrel_Restudy_L5	ON										
+SNOWMAN		SNOWMAN	OFF	Unrel_Restudy_L5	792	Study	No	3	Unrel_Restudy_L5	ON										
+BOOTH		BOOTH	OFF	Unrel_Restudy_L5	783	Study	No	3	Unrel_Restudy_L5	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below for a new list.	OFF										
+SNOW		SNOW	OFF	AdHoc_Restudy_L6	810	Study	No	3	AdHoc_Restudy_L6	ON										
+CASHMERE		CASHMERE	OFF	AdHoc_Restudy_L6	820	Study	No	3	AdHoc_Restudy_L6	ON										
+BREEZE		BREEZE	OFF	AdHoc_Restudy_L6	818	Study	No	3	AdHoc_Restudy_L6	ON										
+SILK		SILK	OFF	AdHoc_Restudy_L6	803	Study	No	3	AdHoc_Restudy_L6	ON										
+MARSHMALLOW		MARSHMALLOW	OFF	AdHoc_Restudy_L6	811	Study	No	3	AdHoc_Restudy_L6	ON										
+VELVET		VELVET	OFF	AdHoc_Restudy_L6	815	Study	No	3	AdHoc_Restudy_L6	ON										
+LINT		LINT	OFF	AdHoc_Restudy_L6	808	Study	No	3	AdHoc_Restudy_L6	ON										
+PLUSH		PLUSH	OFF	AdHoc_Restudy_L6	814	Study	No	3	AdHoc_Restudy_L6	ON										
+HAIR		HAIR	OFF	AdHoc_Restudy_L6	817	Study	No	3	AdHoc_Restudy_L6	ON										
+CLOUDS		CLOUDS	OFF	AdHoc_Restudy_L6	805	Study	No	3	AdHoc_Restudy_L6	ON										
+PUDDING		PUDDING	OFF	AdHoc_Restudy_L6	816	Study	No	3	AdHoc_Restudy_L6	ON										
+KITTEN		KITTEN	OFF	AdHoc_Restudy_L6	812	Study	No	3	AdHoc_Restudy_L6	ON										
+TOWEL		TOWEL	OFF	AdHoc_Restudy_L6	806	Study	No	3	AdHoc_Restudy_L6	ON										
+DOUGH		DOUGH	OFF	AdHoc_Restudy_L6	819	Study	No	3	AdHoc_Restudy_L6	ON										
+SPONGE		SPONGE	OFF	AdHoc_Restudy_L6	807	Study	No	3	AdHoc_Restudy_L6	ON										
+WHIPPING CREAM		WHIPPING CREAM	OFF	AdHoc_Restudy_L6	813	Study	No	3	AdHoc_Restudy_L6	ON										
+WHISPER		WHISPER	OFF	AdHoc_Restudy_L6	802	Study	No	3	AdHoc_Restudy_L6	ON										
+SKIN		SKIN	OFF	AdHoc_Restudy_L6	804	Study	No	3	AdHoc_Restudy_L6	ON										
+YARN		YARN	OFF	AdHoc_Restudy_L6	821	Study	No	3	AdHoc_Restudy_L6	ON										
+SUEDE		SUEDE	OFF	AdHoc_Restudy_L6	809	Study	No	3	AdHoc_Restudy_L6	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Restudy Instructions: You will now view this list again, but in a different order. Click the button below to begin.	OFF										
+LINT		LINT	OFF	AdHoc_Restudy_L6	828	Study	No	3	AdHoc_Restudy_L6	ON										
+SKIN		SKIN	OFF	AdHoc_Restudy_L6	824	Study	No	3	AdHoc_Restudy_L6	ON										
+WHISPER		WHISPER	OFF	AdHoc_Restudy_L6	822	Study	No	3	AdHoc_Restudy_L6	ON										
+CLOUDS		CLOUDS	OFF	AdHoc_Restudy_L6	825	Study	No	3	AdHoc_Restudy_L6	ON										
+DOUGH		DOUGH	OFF	AdHoc_Restudy_L6	839	Study	No	3	AdHoc_Restudy_L6	ON										
+KITTEN		KITTEN	OFF	AdHoc_Restudy_L6	832	Study	No	3	AdHoc_Restudy_L6	ON										
+PUDDING		PUDDING	OFF	AdHoc_Restudy_L6	836	Study	No	3	AdHoc_Restudy_L6	ON										
+MARSHMALLOW		MARSHMALLOW	OFF	AdHoc_Restudy_L6	831	Study	No	3	AdHoc_Restudy_L6	ON										
+BREEZE		BREEZE	OFF	AdHoc_Restudy_L6	838	Study	No	3	AdHoc_Restudy_L6	ON										
+SNOW		SNOW	OFF	AdHoc_Restudy_L6	830	Study	No	3	AdHoc_Restudy_L6	ON										
+SPONGE		SPONGE	OFF	AdHoc_Restudy_L6	827	Study	No	3	AdHoc_Restudy_L6	ON										
+YARN		YARN	OFF	AdHoc_Restudy_L6	841	Study	No	3	AdHoc_Restudy_L6	ON										
+VELVET		VELVET	OFF	AdHoc_Restudy_L6	835	Study	No	3	AdHoc_Restudy_L6	ON										
+PLUSH		PLUSH	OFF	AdHoc_Restudy_L6	834	Study	No	3	AdHoc_Restudy_L6	ON										
+HAIR		HAIR	OFF	AdHoc_Restudy_L6	837	Study	No	3	AdHoc_Restudy_L6	ON										
+CASHMERE		CASHMERE	OFF	AdHoc_Restudy_L6	840	Study	No	3	AdHoc_Restudy_L6	ON										
+SUEDE		SUEDE	OFF	AdHoc_Restudy_L6	829	Study	No	3	AdHoc_Restudy_L6	ON										
+WHIPPING CREAM		WHIPPING CREAM	OFF	AdHoc_Restudy_L6	833	Study	No	3	AdHoc_Restudy_L6	ON										
+SILK		SILK	OFF	AdHoc_Restudy_L6	823	Study	No	3	AdHoc_Restudy_L6	ON										
+TOWEL		TOWEL	OFF	AdHoc_Restudy_L6	826	Study	No	3	AdHoc_Restudy_L6	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Now you will complete a recognition memory test based on the last 6 lists that you have studied. A word will be displayed on the computer screen and you are to decide whether the word was studied in the last 6 lists. If the word was studied, click the "yes" button. If the word was not studied, click the "no" button. Respond as quickly as possible without compromising accuracy.	OFF										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below to begin the test.	OFF										
+OWL		OWL	OFF	NPLI_Cat_Restudy	890	seqrec	No	User	RGN Test	ON										
+POTS		POTS	OFF	NPLI_AdHoc_Restudy	860	seqrec	No	User	RGN Test	ON										
+DIAMONDS		DIAMONDS	OFF	LI_AdHoc_Restudy	946	seqrec	No	User	RGN Test	ON										
+KIT		KIT	OFF	NPCI_Unrel_Restudy	921	seqrec	No	User	RGN Test	ON										
+NEWSPAPER		NEWSPAPER	OFF	NPCI_AdHoc_Restudy	929	seqrec	No	User	RGN Test	ON										
+RUGBY		RUGBY	OFF	NPLI_Cat_Restudy	850	seqrec	No	User	RGN Test	ON										
+HAIR		HAIR	OFF	LI_AdHoc_Restudy	989	seqrec	No	User	RGN Test	ON										
+COTTON		COTTON	OFF	CI_AdHoc_Restudy	1019	seqrec	No	User	RGN Test	ON										
+TOOTH		TOOTH	OFF	LI_Cat_Restudy	939	seqrec	No	User	RGN Test	ON										
+EYE		EYE	OFF	CI_Cat_Restudy	993	seqrec	No	User	RGN Test	ON										
+EARRINGS		EARRINGS	OFF	CI_AdHoc_Restudy	998	seqrec	No	User	RGN Test	ON										
+WIRE		WIRE	OFF	NPLI_Unrel_Restudy	863	seqrec	No	User	RGN Test	ON										
+GAUZE		GAUZE	OFF	LI_Unrel_Restudy	966	seqrec	No	User	RGN Test	ON										
+SWALLOW		SWALLOW	OFF	NPLI_Cat_Restudy	888	seqrec	No	User	RGN Test	ON										
+KAYAK		KAYAK	OFF	NPLI_Unrel_Restudy	870	seqrec	No	User	RGN Test	ON										
+ESTATE		ESTATE	OFF	NPLI_Unrel_Restudy	872	seqrec	No	User	RGN Test	ON										
+SWIMMING		SWIMMING	OFF	NPCI_Cat_Restudy	906	seqrec	No	User	RGN Test	ON										
+SPARROW		SPARROW	OFF	NPCI_Cat_Restudy	922	seqrec	No	User	RGN Test	ON										
+MASCARA		MASCARA	OFF	CI_AdHoc_Restudy	997	seqrec	No	User	RGN Test	ON										
+HAT		HAT	OFF	LI_AdHoc_Restudy	942	seqrec	No	User	RGN Test	ON										
+SOFTBALL		SOFTBALL	OFF	NPLI_Cat_Restudy	848	seqrec	No	User	RGN Test	ON										
+EYEBROW		EYEBROW	OFF	LI_Cat_Restudy	935	seqrec	No	User	RGN Test	ON										
+MEASURING CUP		MEASURING CUP	OFF	NPLI_AdHoc_Restudy	855	seqrec	No	User	RGN Test	ON										
+DRESSER		DRESSER	OFF	CI_Cat_Restudy	1004	seqrec	No	User	RGN Test	ON										
+DICTIONARY		DICTIONARY	OFF	NPLI_AdHoc_Restudy	900	seqrec	No	User	RGN Test	ON										
+DRESS		DRESS	OFF	CI_AdHoc_Restudy	999	seqrec	No	User	RGN Test	ON										
+PERFUME		PERFUME	OFF	CI_AdHoc_Restudy	1000	seqrec	No	User	RGN Test	ON										
+KNOB		KNOB	OFF	LI_Unrel_Restudy	962	seqrec	No	User	RGN Test	ON										
+HEAD		HEAD	OFF	LI_Cat_Restudy	932	seqrec	No	User	RGN Test	ON										
+NOSE		NOSE	OFF	CI_Cat_Restudy	994	seqrec	No	User	RGN Test	ON										
+HUMMINGBIRD		HUMMINGBIRD	OFF	NPLI_Cat_Restudy	886	seqrec	No	User	RGN Test	ON										
+PASTE		PASTE	OFF	NPLI_Unrel_Restudy	867	seqrec	No	User	RGN Test	ON										
+HILL		HILL	OFF	CI_Unrel_Restudy	1014	seqrec	No	User	RGN Test	ON										
+DUGOUT		DUGOUT	OFF	NPLI_Unrel_Restudy	873	seqrec	No	User	RGN Test	ON										
+OTTER		OTTER	OFF	LI_Unrel_Restudy	965	seqrec	No	User	RGN Test	ON										
+FORK		FORK	OFF	NPLI_AdHoc_Restudy	857	seqrec	No	User	RGN Test	ON										
+CHAISE		CHAISE	OFF	LI_Cat_Restudy	959	seqrec	No	User	RGN Test	ON										
+LEAFLET		LEAFLET	OFF	NPLI_AdHoc_Restudy	897	seqrec	No	User	RGN Test	ON										
+PAPERBACK		PAPERBACK	OFF	NPLI_AdHoc_Restudy	898	seqrec	No	User	RGN Test	ON										
+EAGLE		EAGLE	OFF	NPLI_Cat_Restudy	882	seqrec	No	User	RGN Test	ON										
+BED		BED	OFF	CI_Cat_Restudy	1006	seqrec	No	User	RGN Test	ON										
+TELEVISION		TELEVISION	OFF	LI_Cat_Restudy	953	seqrec	No	User	RGN Test	ON										
+WOODPECKER		WOODPECKER	OFF	NPLI_Cat_Restudy	887	seqrec	No	User	RGN Test	ON										
+COFFEE TABLE		COFFEE TABLE	OFF	LI_Cat_Restudy	954	seqrec	No	User	RGN Test	ON										
+CLOAK		CLOAK	OFF	LI_Unrel_Restudy	970	seqrec	No	User	RGN Test	ON										
+DOUGH		DOUGH	OFF	LI_AdHoc_Restudy	990	seqrec	No	User	RGN Test	ON										
+SPONGE		SPONGE	OFF	LI_AdHoc_Restudy	984	seqrec	No	User	RGN Test	ON										
+FEATHERS		FEATHERS	OFF	CI_AdHoc_Restudy	1021	seqrec	No	User	RGN Test	ON										
+SLIP		SLIP	OFF	LI_AdHoc_Restudy	947	seqrec	No	User	RGN Test	ON										
+DOVE		DOVE	OFF	NPLI_Cat_Restudy	889	seqrec	No	User	RGN Test	ON										
+WHIPPING CREAM		WHIPPING CREAM	OFF	LI_AdHoc_Restudy	987	seqrec	No	User	RGN Test	ON										
+ROBIN		ROBIN	OFF	NPCI_Cat_Restudy	926	seqrec	No	User	RGN Test	ON										
+YARN		YARN	OFF	LI_AdHoc_Restudy	991	seqrec	No	User	RGN Test	ON										
+FLAKE		FLAKE	OFF	NPLI_Unrel_Restudy	875	seqrec	No	User	RGN Test	ON										
+DAIRY		DAIRY	OFF	LI_Unrel_Restudy	967	seqrec	No	User	RGN Test	ON										
+PERIODICAL		PERIODICAL	OFF	NPLI_AdHoc_Restudy	896	seqrec	No	User	RGN Test	ON										
+SKILLET		SKILLET	OFF	NPLI_AdHoc_Restudy	858	seqrec	No	User	RGN Test	ON										
+SINK		SINK	OFF	NPCI_AdHoc_Restudy	910	seqrec	No	User	RGN Test	ON										
+FOOTBALL		FOOTBALL	OFF	NPCI_Cat_Restudy	902	seqrec	No	User	RGN Test	ON										
+BOOTH		BOOTH	OFF	LI_Unrel_Restudy	972	seqrec	No	User	RGN Test	ON										
+SILK		SILK	OFF	LI_AdHoc_Restudy	982	seqrec	No	User	RGN Test	ON										
+FLASK		FLASK	OFF	NPLI_Unrel_Restudy	862	seqrec	No	User	RGN Test	ON										
+ARMS		ARMS	OFF	CI_Cat_Restudy	992	seqrec	No	User	RGN Test	ON										
+STOVE		STOVE	OFF	NPLI_AdHoc_Restudy	861	seqrec	No	User	RGN Test	ON										
+VELVET		VELVET	OFF	LI_AdHoc_Restudy	988	seqrec	No	User	RGN Test	ON										
+SHIRT		SHIRT	OFF	LI_AdHoc_Restudy	945	seqrec	No	User	RGN Test	ON										
+END TABLE		END TABLE	OFF	LI_Cat_Restudy	957	seqrec	No	User	RGN Test	ON										
+TOE		TOE	OFF	CI_Cat_Restudy	996	seqrec	No	User	RGN Test	ON										
+FENCING		FENCING	OFF	NPLI_Cat_Restudy	847	seqrec	No	User	RGN Test	ON										
+ARCHERY		ARCHERY	OFF	NPLI_Cat_Restudy	846	seqrec	No	User	RGN Test	ON										
+CHINA CLOSET		CHINA CLOSET	OFF	LI_Cat_Restudy	960	seqrec	No	User	RGN Test	ON										
+OTTOMAN		OTTOMAN	OFF	LI_Cat_Restudy	955	seqrec	No	User	RGN Test	ON										
+BOWL		BOWL	OFF	NPLI_AdHoc_Restudy	854	seqrec	No	User	RGN Test	ON										
+GOLF		GOLF	OFF	NPLI_Cat_Restudy	842	seqrec	No	User	RGN Test	ON										
+BOOK		BOOK	OFF	NPCI_AdHoc_Restudy	928	seqrec	No	User	RGN Test	ON										
+CASSETTE		CASSETTE	OFF	CI_Unrel_Restudy	1011	seqrec	No	User	RGN Test	ON										
+WRESTLING		WRESTLING	OFF	NPLI_Cat_Restudy	845	seqrec	No	User	RGN Test	ON										
+RANK		RANK	OFF	NPCI_Unrel_Restudy	914	seqrec	No	User	RGN Test	ON										
+DIGIT		DIGIT	OFF	CI_Unrel_Restudy	1007	seqrec	No	User	RGN Test	ON										
+BEEHIVE		BEEHIVE	OFF	NPLI_Unrel_Restudy	878	seqrec	No	User	RGN Test	ON										
+COT		COT	OFF	LI_Cat_Restudy	958	seqrec	No	User	RGN Test	ON										
+ENCYCLOPEDIA		ENCYCLOPEDIA	OFF	NPLI_AdHoc_Restudy	895	seqrec	No	User	RGN Test	ON										
+CATHEDRAL		CATHEDRAL	OFF	CI_Unrel_Restudy	1010	seqrec	No	User	RGN Test	ON										
+ARROW		ARROW	OFF	NPLI_Unrel_Restudy	864	seqrec	No	User	RGN Test	ON										
+SHOP		SHOP	OFF	NPLI_Unrel_Restudy	871	seqrec	No	User	RGN Test	ON										
+MARSHMALLOW		MARSHMALLOW	OFF	LI_AdHoc_Restudy	986	seqrec	No	User	RGN Test	ON										
+WAVE		WAVE	OFF	NPCI_Unrel_Restudy	912	seqrec	No	User	RGN Test	ON										
+TRICYCLE		TRICYCLE	OFF	NPLI_Unrel_Restudy	876	seqrec	No	User	RGN Test	ON										
+SOFA		SOFA	OFF	CI_Cat_Restudy	1002	seqrec	No	User	RGN Test	ON										
+CLOUDS		CLOUDS	OFF	LI_AdHoc_Restudy	983	seqrec	No	User	RGN Test	ON										
+FLOUR		FLOUR	OFF	LI_Unrel_Restudy	976	seqrec	No	User	RGN Test	ON										
+MOON		MOON	OFF	NPCI_Unrel_Restudy	920	seqrec	No	User	RGN Test	ON										
+LAND		LAND	OFF	LI_Unrel_Restudy	964	seqrec	No	User	RGN Test	ON										
+BUNNY		BUNNY	OFF	CI_AdHoc_Restudy	1017	seqrec	No	User	RGN Test	ON										
+PRESS		PRESS	OFF	NPLI_Unrel_Restudy	869	seqrec	No	User	RGN Test	ON										
+CHEEK		CHEEK	OFF	LI_Unrel_Restudy	968	seqrec	No	User	RGN Test	ON										
+SHOULDERS		SHOULDERS	OFF	LI_Cat_Restudy	940	seqrec	No	User	RGN Test	ON										
+MOUTH		MOUTH	OFF	LI_Cat_Restudy	934	seqrec	No	User	RGN Test	ON										
+FALL		FALL	OFF	NPLI_Unrel_Restudy	881	seqrec	No	User	RGN Test	ON										
+PAMPHLET		PAMPHLET	OFF	NPCI_AdHoc_Restudy	930	seqrec	No	User	RGN Test	ON										
+GOWN		GOWN	OFF	LI_AdHoc_Restudy	948	seqrec	No	User	RGN Test	ON										
+STOOL		STOOL	OFF	CI_Cat_Restudy	1005	seqrec	No	User	RGN Test	ON										
+DINER		DINER	OFF	NPLI_Unrel_Restudy	868	seqrec	No	User	RGN Test	ON										
+BRIGHT		BRIGHT	OFF	LI_Unrel_Restudy	975	seqrec	No	User	RGN Test	ON										
+EYE SHADOW		EYE SHADOW	OFF	LI_AdHoc_Restudy	943	seqrec	No	User	RGN Test	ON										
+CHOCOLATE		CHOCOLATE	OFF	CI_Unrel_Restudy	1009	seqrec	No	User	RGN Test	ON										
+NOVEL		NOVEL	OFF	NPCI_AdHoc_Restudy	931	seqrec	No	User	RGN Test	ON										
+BASKETBALL		BASKETBALL	OFF	NPCI_Cat_Restudy	904	seqrec	No	User	RGN Test	ON										
+TUNE		TUNE	OFF	NPLI_Unrel_Restudy	866	seqrec	No	User	RGN Test	ON										
+PARAKEET		PARAKEET	OFF	NPLI_Cat_Restudy	883	seqrec	No	User	RGN Test	ON										
+UNION		UNION	OFF	NPCI_Unrel_Restudy	915	seqrec	No	User	RGN Test	ON										
+FALCON		FALCON	OFF	NPLI_Cat_Restudy	891	seqrec	No	User	RGN Test	ON										
+EAR		EAR	OFF	CI_Cat_Restudy	995	seqrec	No	User	RGN Test	ON										
+GLASS		GLASS	OFF	NPLI_AdHoc_Restudy	856	seqrec	No	User	RGN Test	ON										
+LANE		LANE	OFF	LI_Unrel_Restudy	977	seqrec	No	User	RGN Test	ON										
+CRADLE		CRADLE	OFF	LI_Cat_Restudy	952	seqrec	No	User	RGN Test	ON										
+GOLDFISH		GOLDFISH	OFF	CI_Unrel_Restudy	1015	seqrec	No	User	RGN Test	ON										
+PIANO		PIANO	OFF	LI_Cat_Restudy	956	seqrec	No	User	RGN Test	ON										
+CANARY		CANARY	OFF	NPCI_Cat_Restudy	924	seqrec	No	User	RGN Test	ON										
+KNIFE		KNIFE	OFF	NPLI_AdHoc_Restudy	852	seqrec	No	User	RGN Test	ON										
+PLATTER		PLATTER	OFF	NPLI_AdHoc_Restudy	853	seqrec	No	User	RGN Test	ON										
+DAVENPORT		DAVENPORT	OFF	LI_Cat_Restudy	961	seqrec	No	User	RGN Test	ON										
+MICROWAVE		MICROWAVE	OFF	NPCI_AdHoc_Restudy	911	seqrec	No	User	RGN Test	ON										
+MIST		MIST	OFF	LI_Unrel_Restudy	971	seqrec	No	User	RGN Test	ON										
+SEED		SEED	OFF	NPLI_Unrel_Restudy	880	seqrec	No	User	RGN Test	ON										
+WREN		WREN	OFF	NPLI_Cat_Restudy	884	seqrec	No	User	RGN Test	ON										
+BAR		BAR	OFF	LI_Unrel_Restudy	978	seqrec	No	User	RGN Test	ON										
+TOASTER		TOASTER	OFF	NPCI_AdHoc_Restudy	909	seqrec	No	User	RGN Test	ON										
+POLO		POLO	OFF	NPLI_Cat_Restudy	849	seqrec	No	User	RGN Test	ON										
+LAMP		LAMP	OFF	CI_Cat_Restudy	1003	seqrec	No	User	RGN Test	ON										
+BLUE JAY		BLUE JAY	OFF	NPCI_Cat_Restudy	923	seqrec	No	User	RGN Test	ON										
+NECKLACE		NECKLACE	OFF	CI_AdHoc_Restudy	1001	seqrec	No	User	RGN Test	ON										
+BEARD		BEARD	OFF	LI_Unrel_Restudy	980	seqrec	No	User	RGN Test	ON										
+STATION		STATION	OFF	NPLI_Unrel_Restudy	874	seqrec	No	User	RGN Test	ON										
+KERNEL		KERNEL	OFF	CI_Unrel_Restudy	1012	seqrec	No	User	RGN Test	ON										
+LETTER		LETTER	OFF	NPLI_AdHoc_Restudy	894	seqrec	No	User	RGN Test	ON										
+PEARLS		PEARLS	OFF	LI_AdHoc_Restudy	950	seqrec	No	User	RGN Test	ON										
+TENNIS		TENNIS	OFF	NPCI_Cat_Restudy	905	seqrec	No	User	RGN Test	ON										
+NECTAR		NECTAR	OFF	LI_Unrel_Restudy	969	seqrec	No	User	RGN Test	ON										
+BROOCH		BROOCH	OFF	LI_AdHoc_Restudy	951	seqrec	No	User	RGN Test	ON										
+RACING		RACING	OFF	NPLI_Cat_Restudy	851	seqrec	No	User	RGN Test	ON										
+UNCLE		UNCLE	OFF	NPCI_Unrel_Restudy	917	seqrec	No	User	RGN Test	ON										
+WALNUT		WALNUT	OFF	LI_Unrel_Restudy	981	seqrec	No	User	RGN Test	ON										
+JOURNAL		JOURNAL	OFF	NPLI_AdHoc_Restudy	893	seqrec	No	User	RGN Test	ON										
+BULLETIN		BULLETIN	OFF	NPLI_AdHoc_Restudy	899	seqrec	No	User	RGN Test	ON										
+ROBOT		ROBOT	OFF	NPCI_Unrel_Restudy	913	seqrec	No	User	RGN Test	ON										
+GALLERY		GALLERY	OFF	NPLI_Unrel_Restudy	879	seqrec	No	User	RGN Test	ON										
+PELVIS		PELVIS	OFF	LI_Cat_Restudy	937	seqrec	No	User	RGN Test	ON										
+MUSKET		MUSKET	OFF	LI_Unrel_Restudy	973	seqrec	No	User	RGN Test	ON										
+DOWN		DOWN	OFF	CI_AdHoc_Restudy	1018	seqrec	No	User	RGN Test	ON										
+CONTEST		CONTEST	OFF	CI_Unrel_Restudy	1008	seqrec	No	User	RGN Test	ON										
+FINGER		FINGER	OFF	LI_Cat_Restudy	933	seqrec	No	User	RGN Test	ON										
+JEANS		JEANS	OFF	LI_AdHoc_Restudy	944	seqrec	No	User	RGN Test	ON										
+COOKIE		COOKIE	OFF	NPLI_Unrel_Restudy	877	seqrec	No	User	RGN Test	ON										
+TONGUE		TONGUE	OFF	LI_Cat_Restudy	941	seqrec	No	User	RGN Test	ON										
+INSTRUCTION		INSTRUCTION	OFF	CI_Unrel_Restudy	1013	seqrec	No	User	RGN Test	ON										
+PARROT		PARROT	OFF	NPLI_Cat_Restudy	885	seqrec	No	User	RGN Test	ON										
+BIOGRAPHY		BIOGRAPHY	OFF	NPLI_AdHoc_Restudy	901	seqrec	No	User	RGN Test	ON										
+SUEDE		SUEDE	OFF	LI_AdHoc_Restudy	985	seqrec	No	User	RGN Test	ON										
+OPERA		OPERA	OFF	NPCI_Unrel_Restudy	918	seqrec	No	User	RGN Test	ON										
+HAWK		HAWK	OFF	NPCI_Cat_Restudy	925	seqrec	No	User	RGN Test	ON										
+BASEBALL  		BASEBALL  	OFF	NPCI_Cat_Restudy	903	seqrec	No	User	RGN Test	ON										
+FLAME		FLAME	OFF	CI_Unrel_Restudy	1016	seqrec	No	User	RGN Test	ON										
+HEART		HEART	OFF	LI_Cat_Restudy	936	seqrec	No	User	RGN Test	ON										
+GRAIN		GRAIN	OFF	NPCI_Unrel_Restudy	916	seqrec	No	User	RGN Test	ON										
+BADMINTON		BADMINTON	OFF	NPLI_Cat_Restudy	844	seqrec	No	User	RGN Test	ON										
+NURSE		NURSE	OFF	NPCI_Unrel_Restudy	919	seqrec	No	User	RGN Test	ON										
+TRACK		TRACK	OFF	NPLI_Cat_Restudy	843	seqrec	No	User	RGN Test	ON										
+REFRIGERATOR		REFRIGERATOR	OFF	NPCI_AdHoc_Restudy	908	seqrec	No	User	RGN Test	ON										
+OVEN		OVEN	OFF	NPCI_AdHoc_Restudy	907	seqrec	No	User	RGN Test	ON										
+BISCUIT		BISCUIT	OFF	LI_Unrel_Restudy	979	seqrec	No	User	RGN Test	ON										
+FOAM		FOAM	OFF	LI_Unrel_Restudy	963	seqrec	No	User	RGN Test	ON										
+BLANKET		BLANKET	OFF	CI_AdHoc_Restudy	1020	seqrec	No	User	RGN Test	ON										
+MAGAZINE		MAGAZINE	OFF	NPCI_AdHoc_Restudy	927	seqrec	No	User	RGN Test	ON										
+MIXER		MIXER	OFF	NPLI_AdHoc_Restudy	859	seqrec	No	User	RGN Test	ON										
+SHOE		SHOE	OFF	LI_Unrel_Restudy	974	seqrec	No	User	RGN Test	ON										
+MAKE UP		MAKE UP	OFF	LI_AdHoc_Restudy	949	seqrec	No	User	RGN Test	ON										
+BRAIN		BRAIN	OFF	LI_Cat_Restudy	938	seqrec	No	User	RGN Test	ON										
+PIT		PIT	OFF	NPLI_Unrel_Restudy	865	seqrec	No	User	RGN Test	ON										
+PAPER		PAPER	OFF	NPLI_AdHoc_Restudy	892	seqrec	No	User	RGN Test	ON										
+n/a	n/a	n/a	n/a	n/a	0	Instruct	N/A	User	Click the button below to continue.	OFF										
