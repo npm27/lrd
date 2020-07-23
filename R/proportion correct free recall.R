@@ -13,7 +13,7 @@
 ##z is a column of sub ids
 ##y is the answer key (most likely going to be uploaded as a separate file)
 
-prop.correct.f = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
+prop.correct.f.shiny = function(x, key = y, id = z, flag = FALSE, group.by = NULL){
 
   a = is.null(group.by)
 

@@ -4,7 +4,7 @@
 \alias{arrange.data}
 \title{Arrange Data for Free Recall Scoring}
 \usage{
-arrange.data(x, sep = y, id = z, other = NULL)
+\method{arrange}{data}(x, sep = y, id = z, other = NULL)
 }
 \arguments{
 \item{x}{a vector containing participant responses}
