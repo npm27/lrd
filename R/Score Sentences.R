@@ -9,7 +9,7 @@
 #' @keywords percent
 #' @import dplyr
 #' @import koRpus
-#' @import KoRpus.lang.en
+#' @import koRpus.lang.en
 #' @import rapportools
 #' @export
 #' @examples
