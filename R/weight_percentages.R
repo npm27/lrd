@@ -61,7 +61,7 @@ percent_match.cr = function(x, key = y, id = z, weight = FALSE, weight.by = NULL
     d = char.y1[[k]]
 
     percent_match1[k] = length(vintersect(c, d)) /
-      max(length((c)), length((d)))
+      max(c(length((c)), length((d))))
 
     sub1$percent_match = percent_match1
 
@@ -80,7 +80,7 @@ percent_match.cr = function(x, key = y, id = z, weight = FALSE, weight.by = NULL
     f = char.y2[[j]]
 
     percent_match2[j] = length(vintersect(e, f)) /
-      max(length((e)), length((f)))
+      max(c(length((e)), length((f))))
 
     sub2$percent_match = percent_match2
 
@@ -99,7 +99,7 @@ percent_match.cr = function(x, key = y, id = z, weight = FALSE, weight.by = NULL
     s = char.y3[[p]]
 
     percent_match3[p] = length(vintersect(r, s)) /
-      max(length((r)), length((s)))
+      max(c(length((r)), length((s))))
 
     sub3$percent_match = percent_match3
 
