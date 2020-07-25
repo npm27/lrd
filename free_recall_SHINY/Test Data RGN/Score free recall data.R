@@ -225,12 +225,12 @@ F6 = arrange.data(F6$Response, sep = " ", id = F6$Username, other = F6[ , c(4:5)
 ##First batch of scoring will use a cutoff of 2
 
 ##Start with version A
-scoredA1 = score.recall.f(A1$response, key = ver.A$Cat_Recall_L1, id = A1$Sub.ID, cutoff = 3)
-scoredA2 = score.recall.f(A2$response, key = ver.A$AdHoc_Recall_L2, id = A2$Sub.ID, cutoff = 3)
-scoredA3 = score.recall.f(A3$response, key = ver.A$Unrel_Recall_L3, id = A3$Sub.ID, cutoff = 3)
-scoredA4 = score.recall.f(A4$response, key = ver.A$Unrel_Recall_L4, id = A4$Sub.ID, cutoff = 3)
-scoredA5 = score.recall.f(A5$response, key = ver.A$Cat_Recall_L5, id = A5$Sub.ID, cutoff = 3)
-scoredA6 = score.recall.f(A6$response, key = ver.A$AdHoc_Recall_L6, id = A6$Sub.ID, cutoff = 3)
+scoredA1 = score.recall.f(A1$response, key = ver.A$Cat_Recall_L1, id = A1$Sub.ID, cutoff = 4)
+scoredA2 = score.recall.f(A2$response, key = ver.A$AdHoc_Recall_L2, id = A2$Sub.ID, cutoff = 4)
+scoredA3 = score.recall.f(A3$response, key = ver.A$Unrel_Recall_L3, id = A3$Sub.ID, cutoff = 4)
+scoredA4 = score.recall.f(A4$response, key = ver.A$Unrel_Recall_L4, id = A4$Sub.ID, cutoff = 4)
+scoredA5 = score.recall.f(A5$response, key = ver.A$Cat_Recall_L5, id = A5$Sub.ID, cutoff = 4)
+scoredA6 = score.recall.f(A6$response, key = ver.A$AdHoc_Recall_L6, id = A6$Sub.ID, cutoff = 4)
 
 scoredA1$list = rep("Cat")
 scoredA2$list = rep("AdHoc")
@@ -240,12 +240,12 @@ scoredA5$list = rep("Cat")
 scoredA6$list = rep("AdHoc")
 
 ##Now version B
-scoredB1 = score.recall.f(B1$response, key = ver.D$Unrel_Recall_L1, id = B1$Sub.ID, cutoff = 3) ##ver.B key didn't work for some reason. Using D since it contains the same items
-scoredB2 = score.recall.f(B2$response, key = ver.B$AdHoc_Recall_L2, id = B2$Sub.ID, cutoff = 3)
-scoredB3 = score.recall.f(B3$response, key = ver.B$AdHoc_Recall_L3, id = B3$Sub.ID, cutoff = 3)
-scoredB4 = score.recall.f(B4$response, key = ver.B$Cat_Recall_L4, id = B4$Sub.ID, cutoff = 3)
-scoredB5 = score.recall.f(B5$response, key = ver.B$Cat_Recall_L5, id = B5$Sub.ID, cutoff = 3)
-scoredB6 = score.recall.f(B6$response, key = ver.B$Unrel_Recall_L6, id = B6$Sub.ID, cutoff = 3)
+scoredB1 = score.recall.f(B1$response, key = ver.D$Unrel_Recall_L1, id = B1$Sub.ID, cutoff = 4) ##ver.B key didn't work for some reason. Using D since it contains the same items
+scoredB2 = score.recall.f(B2$response, key = ver.B$AdHoc_Recall_L2, id = B2$Sub.ID, cutoff = 4)
+scoredB3 = score.recall.f(B3$response, key = ver.B$AdHoc_Recall_L3, id = B3$Sub.ID, cutoff = 4)
+scoredB4 = score.recall.f(B4$response, key = ver.B$Cat_Recall_L4, id = B4$Sub.ID, cutoff = 4)
+scoredB5 = score.recall.f(B5$response, key = ver.B$Cat_Recall_L5, id = B5$Sub.ID, cutoff = 4)
+scoredB6 = score.recall.f(B6$response, key = ver.B$Unrel_Recall_L6, id = B6$Sub.ID, cutoff = 4)
 
 scoredB1$list = rep("Unrel")
 scoredB2$list = rep("AdHoc")
@@ -255,12 +255,12 @@ scoredB5$list = rep("Cat")
 scoredB6$list = rep("Unrel")
 
 ##Now version C
-scoredC1 = score.recall.f(C1$response, key = ver.C$Cat_Recall_L1, id = C1$Sub.ID, cutoff = 3)
-scoredC2 = score.recall.f(C2$response, key = ver.C$AdHoc_Recall_L2, id = C2$Sub.ID, cutoff = 3)
-scoredC3 = score.recall.f(C3$response, key = ver.C$Unrel_Recall_L3, id = C3$Sub.ID, cutoff = 3)
-scoredC4 = score.recall.f(C4$response, key = ver.C$Unrel_Recall_L4, id = C4$Sub.ID, cutoff = 3)
-scoredC5 = score.recall.f(C5$response, key = ver.C$Cat_Recall_L5, id = C5$Sub.ID, cutoff = 3)
-scoredC6 = score.recall.f(C6$response, key = ver.C$AdHoc_Recall_L6, id = C6$Sub.ID, cutoff = 3)
+scoredC1 = score.recall.f(C1$response, key = ver.C$Cat_Recall_L1, id = C1$Sub.ID, cutoff = 4)
+scoredC2 = score.recall.f(C2$response, key = ver.C$AdHoc_Recall_L2, id = C2$Sub.ID, cutoff = 4)
+scoredC3 = score.recall.f(C3$response, key = ver.C$Unrel_Recall_L3, id = C3$Sub.ID, cutoff = 4)
+scoredC4 = score.recall.f(C4$response, key = ver.C$Unrel_Recall_L4, id = C4$Sub.ID, cutoff = 4)
+scoredC5 = score.recall.f(C5$response, key = ver.C$Cat_Recall_L5, id = C5$Sub.ID, cutoff = 4)
+scoredC6 = score.recall.f(C6$response, key = ver.C$AdHoc_Recall_L6, id = C6$Sub.ID, cutoff = 4)
 
 scoredC1$list = rep("Cat")
 scoredC2$list = rep("AdHoc")
@@ -270,12 +270,12 @@ scoredC5$list = rep("Cat")
 scoredC6$list = rep("AdHoc")
 
 ##Version D
-scoredD1 = score.recall.f(D1$response, key = ver.D$Unrel_Recall_L1, id = D1$Sub.ID, cutoff = 3)
-scoredD2 = score.recall.f(D2$response, key = ver.D$AdHoc_Recall_L2, id = D2$Sub.ID, cutoff = 3)
-scoredD3 = score.recall.f(D3$response, key = ver.D$AdHoc_Recall_L3, id = D3$Sub.ID, cutoff = 3)
-scoredD4 = score.recall.f(D4$response, key = ver.D$Cat_Recall_L4, id = D4$Sub.ID, cutoff = 3)
-scoredD5 = score.recall.f(D5$response, key = ver.D$Cat_Recall_L5, id = D5$Sub.ID, cutoff = 3)
-scoredD6 = score.recall.f(D6$response, key = ver.D$Unrel_Recall_L6, id = D6$Sub.ID, cutoff = 3)
+scoredD1 = score.recall.f(D1$response, key = ver.D$Unrel_Recall_L1, id = D1$Sub.ID, cutoff = 4)
+scoredD2 = score.recall.f(D2$response, key = ver.D$AdHoc_Recall_L2, id = D2$Sub.ID, cutoff = 4)
+scoredD3 = score.recall.f(D3$response, key = ver.D$AdHoc_Recall_L3, id = D3$Sub.ID, cutoff = 4)
+scoredD4 = score.recall.f(D4$response, key = ver.D$Cat_Recall_L4, id = D4$Sub.ID, cutoff = 4)
+scoredD5 = score.recall.f(D5$response, key = ver.D$Cat_Recall_L5, id = D5$Sub.ID, cutoff = 4)
+scoredD6 = score.recall.f(D6$response, key = ver.D$Unrel_Recall_L6, id = D6$Sub.ID, cutoff = 4)
 
 scoredD1$list = rep("Unrel")
 scoredD2$list = rep("AdHoc")
@@ -285,12 +285,12 @@ scoredD5$list = rep("Cat")
 scoredD6$list = rep("Unrel")
 
 ##Version E
-scoredE1 = score.recall.f(E1$response, key = ver.E$Cat_Recall_L1, id = E1$Sub.ID, cutoff = 3)
-scoredE2 = score.recall.f(E2$response, key = ver.E$AdHoc_Recall_L2, id = E2$Sub.ID, cutoff = 3)
-scoredE3 = score.recall.f(E3$response, key = ver.E$Unrel_Recall_L3, id = E3$Sub.ID, cutoff = 3)
-scoredE4 = score.recall.f(E4$response, key = ver.E$Unrel_Recall_L4, id = E4$Sub.ID, cutoff = 3)
-scoredE5 = score.recall.f(E5$response, key = ver.E$Cat_Recall_L5, id = E5$Sub.ID, cutoff = 3)
-scoredE6 = score.recall.f(E6$response, key = ver.C$AdHoc_Recall_L6, id = E6$Sub.ID, cutoff = 3) ##E didn't work here but c did (they should contain the same items...)
+scoredE1 = score.recall.f(E1$response, key = ver.E$Cat_Recall_L1, id = E1$Sub.ID, cutoff = 4)
+scoredE2 = score.recall.f(E2$response, key = ver.E$AdHoc_Recall_L2, id = E2$Sub.ID, cutoff = 4)
+scoredE3 = score.recall.f(E3$response, key = ver.E$Unrel_Recall_L3, id = E3$Sub.ID, cutoff = 4)
+scoredE4 = score.recall.f(E4$response, key = ver.E$Unrel_Recall_L4, id = E4$Sub.ID, cutoff = 4)
+scoredE5 = score.recall.f(E5$response, key = ver.E$Cat_Recall_L5, id = E5$Sub.ID, cutoff = 4)
+scoredE6 = score.recall.f(E6$response, key = ver.C$AdHoc_Recall_L6, id = E6$Sub.ID, cutoff = 4) ##E didn't work here but c did (they should contain the same items...)
 
 scoredE1$list = rep("Cat")
 scoredE2$list = rep("AdHoc")
@@ -300,12 +300,12 @@ scoredE5$list = rep("Cat")
 scoredE6$list = rep("AdHoc")
 
 ##Now version F
-scoredF1 = score.recall.f(F1$response, key = ver.D$Unrel_Recall_L1, id = F1$Sub.ID, cutoff = 3) #f didn't work so used D
-scoredF2 = score.recall.f(F2$response, key = ver.F$AdHoc_Recall_L2, id = F2$Sub.ID, cutoff = 3)
-scoredF3 = score.recall.f(F3$response, key = ver.F$AdHoc_Recall_L3, id = F3$Sub.ID, cutoff = 3)
-scoredF4 = score.recall.f(F4$response, key = ver.F$Cat_Recall_L4, id = F4$Sub.ID, cutoff = 3)
-scoredF5 = score.recall.f(F5$response, key = ver.F$Cat_Recall_L5, id = F5$Sub.ID, cutoff = 3)
-scoredF6 = score.recall.f(F6$response, key = ver.F$Unrel_Recall_L6, id = F6$Sub.ID, cutoff = 3)
+scoredF1 = score.recall.f(F1$response, key = ver.D$Unrel_Recall_L1, id = F1$Sub.ID, cutoff = 4) #f didn't work so used D
+scoredF2 = score.recall.f(F2$response, key = ver.F$AdHoc_Recall_L2, id = F2$Sub.ID, cutoff = 4)
+scoredF3 = score.recall.f(F3$response, key = ver.F$AdHoc_Recall_L3, id = F3$Sub.ID, cutoff = 4)
+scoredF4 = score.recall.f(F4$response, key = ver.F$Cat_Recall_L4, id = F4$Sub.ID, cutoff = 4)
+scoredF5 = score.recall.f(F5$response, key = ver.F$Cat_Recall_L5, id = F5$Sub.ID, cutoff = 4)
+scoredF6 = score.recall.f(F6$response, key = ver.F$Unrel_Recall_L6, id = F6$Sub.ID, cutoff = 4)
 
 scoredF1$list = rep("Unrel")
 scoredF2$list = rep("AdHoc")
@@ -340,11 +340,32 @@ key1 = rbind(ver.A, ver.C)
 
 length(key1$Cat_Recall_L1)
 
-Cat.proportions = prop.correct.f(Cat$Scored, key = key1$Cat_Recall_L1, id = Cat$id)
-Unrel.Proportions = prop.correct.f(Unrel$Scored, key = key1$Cat_Recall_L1, id = Unrel$id)
-Ad_hoc.Proportions = prop.correct.f(Ad_hoc$Scored, key = key1$Cat_Recall_L1, id = Ad_hoc$id)
+Cat.proportions = prop.correct.f(Cat$Scored, key.length = 40, id = Cat$id)
+Unrel.Proportions = prop.correct.f(Unrel$Scored, key.length = 40, id = Unrel$id)
+Ad_hoc.Proportions = prop.correct.f(Ad_hoc$Scored, key.length = 40, id = Ad_hoc$id)
 
 ##Get means
-mean(Cat.proportions$Proportion_Correct, na.rm = T)
-mean(Unrel.Proportions$Proportion_Correct, na.rm = T)
-mean(Ad_hoc.Proportions$Proportion_Correct, na.rm = T)
+mean(Cat.proportions$prop_correct, na.rm = T)
+mean(Unrel.Proportions$prop_correct, na.rm = T)
+mean(Ad_hoc.Proportions$prop_correct, na.rm = T)
+
+####Combine datasets for senstivity/specificity####
+A.Scored = rbind(scoredA1, scoredA2, scoredA3, scoredA4, scoredA5, scoredA6)
+B.Scored = rbind(scoredB1, scoredB2, scoredB3, scoredB4, scoredB5, scoredB6)
+C.Scored = rbind(scoredC1, scoredC2, scoredC3, scoredC4, scoredC5, scoredC6)
+D.Scored = rbind(scoredD1, scoredD2, scoredD3, scoredD4, scoredD5, scoredD6)
+E.Scored = rbind(scoredE1, scoredE2, scoredE3, scoredE4, scoredE5, scoredE6)
+F.Scored = rbind(scoredF1, scoredF2, scoredA3, scoredF4, scoredF5, scoredF6)
+
+Final = rbind(A.Scored, B.Scored, C.Scored, D.Scored, E.Scored, F.Scored)
+
+Adhoc = subset(Final,
+               Final$list == "AdHoc")
+Unrel2 = subset(Final,
+               Final$list == "Unrel")
+Cat2 = subset(Final,
+                Final$list == "Cat")
+
+#write.csv(Adhoc, file = "Adhoc_4.csv", row.names = F)
+#write.csv(Unrel2, file = "Unrel_4.csv", row.names = F)
+#write.csv(Cat2, file = "Cat_4.csv", row.names = F)
