@@ -239,6 +239,20 @@ scoredA4$list = rep("Unrel")
 scoredA5$list = rep("Cat")
 scoredA6$list = rep("AdHoc")
 
+scoredA1$KEY = rep("Cat_Recall_L1")
+scoredA2$KEY = rep("AdHoc_Recall_L2")
+scoredA3$KEY = rep("Unrel_Recall_L3")
+scoredA4$KEY = rep("Unrel_Recall_L4")
+scoredA5$KEY = rep("Cat_Recall_L5")
+scoredA6$KEY = rep("AdHoc_Recall_L6")
+
+scoredA1$ver = rep("A")
+scoredA2$ver = rep("A")
+scoredA3$ver = rep("A")
+scoredA4$ver = rep("A")
+scoredA5$ver = rep("A")
+scoredA6$ver = rep("A")
+
 ##Now version B
 scoredB1 = score.recall.f(B1$response, key = ver.D$Unrel_Recall_L1, id = B1$Sub.ID, cutoff = 4) ##ver.B key didn't work for some reason. Using D since it contains the same items
 scoredB2 = score.recall.f(B2$response, key = ver.B$AdHoc_Recall_L2, id = B2$Sub.ID, cutoff = 4)
@@ -253,6 +267,20 @@ scoredB3$list = rep("AdHoc")
 scoredB4$list = rep("Cat")
 scoredB5$list = rep("Cat")
 scoredB6$list = rep("Unrel")
+
+scoredB1$KEY = rep("Unrel_Recall_L1")
+scoredB2$KEY = rep("AdHoc_Recall_L2")
+scoredB3$KEY = rep("AdHoc_Recall_L3")
+scoredB4$KEY = rep("Cat_Recall_L4")
+scoredB5$KEY = rep("Cat_Recall_L5")
+scoredB6$KEY = rep("Unrel_Recall_L6")
+
+scoredB1$ver = rep("B")
+scoredB2$ver = rep("B")
+scoredB3$ver = rep("B")
+scoredB4$ver = rep("B")
+scoredB5$ver = rep("B")
+scoredB6$ver = rep("B")
 
 ##Now version C
 scoredC1 = score.recall.f(C1$response, key = ver.C$Cat_Recall_L1, id = C1$Sub.ID, cutoff = 4)
@@ -269,6 +297,20 @@ scoredC4$list = rep("Unrel")
 scoredC5$list = rep("Cat")
 scoredC6$list = rep("AdHoc")
 
+scoredC1$KEY = rep("Cat_Recall_L1")
+scoredC2$KEY = rep("AdHoc_Recall_L2")
+scoredC3$KEY = rep("Unrel_Recall_L3")
+scoredC4$KEY = rep("Unrel_Recall_L4")
+scoredC5$KEY = rep("Cat_Recall_L5")
+scoredC6$KEY = rep("AdHoc_Recall_L6")
+
+scoredC1$ver = rep("C")
+scoredC2$ver = rep("C")
+scoredC3$ver = rep("C")
+scoredC4$ver = rep("C")
+scoredC5$ver = rep("C")
+scoredC6$ver = rep("C")
+
 ##Version D
 scoredD1 = score.recall.f(D1$response, key = ver.D$Unrel_Recall_L1, id = D1$Sub.ID, cutoff = 4)
 scoredD2 = score.recall.f(D2$response, key = ver.D$AdHoc_Recall_L2, id = D2$Sub.ID, cutoff = 4)
@@ -283,6 +325,20 @@ scoredD3$list = rep("AdHoc")
 scoredD4$list = rep("Cat")
 scoredD5$list = rep("Cat")
 scoredD6$list = rep("Unrel")
+
+scoredD1$KEY = rep("Unrel_Recall_L1")
+scoredD2$KEY = rep("AdHoc_Recall_L2")
+scoredD3$KEY = rep("AdHoc_Recall_L3")
+scoredD4$KEY = rep("Cat_Recall_L4")
+scoredD5$KEY = rep("Cat_Recall_L5")
+scoredD6$KEY = rep("Unrel_Recall_L6")
+
+scoredD1$ver = rep("D")
+scoredD2$ver = rep("D")
+scoredD3$ver = rep("D")
+scoredD4$ver = rep("D")
+scoredD5$ver = rep("D")
+scoredD6$ver = rep("D")
 
 ##Version E
 scoredE1 = score.recall.f(E1$response, key = ver.E$Cat_Recall_L1, id = E1$Sub.ID, cutoff = 4)
@@ -299,6 +355,20 @@ scoredE4$list = rep("Unrel")
 scoredE5$list = rep("Cat")
 scoredE6$list = rep("AdHoc")
 
+scoredE1$KEY = rep("Cat_Recall_L1")
+scoredE2$KEY = rep("AdHoc_Recall_L2")
+scoredE3$KEY = rep("Unrel_Recall_L3")
+scoredE4$KEY = rep("Unrel_Recall_L4")
+scoredE5$KEY = rep("Cat_Recall_L5")
+scoredE6$KEY = rep("AdHoc_Recall_L6")
+
+scoredE1$ver = rep("E")
+scoredE2$ver = rep("E")
+scoredE3$ver = rep("E")
+scoredE4$ver = rep("E")
+scoredE5$ver = rep("E")
+scoredE6$ver = rep("E")
+
 ##Now version F
 scoredF1 = score.recall.f(F1$response, key = ver.D$Unrel_Recall_L1, id = F1$Sub.ID, cutoff = 4) #f didn't work so used D
 scoredF2 = score.recall.f(F2$response, key = ver.F$AdHoc_Recall_L2, id = F2$Sub.ID, cutoff = 4)
@@ -313,6 +383,20 @@ scoredF3$list = rep("AdHoc")
 scoredF4$list = rep("Cat")
 scoredF5$list = rep("Cat")
 scoredF6$list = rep("Unrel")
+
+scoredF1$KEY = rep("Unrel_Recall_L1")
+scoredF2$KEY = rep("AdHoc_Recall_L2")
+scoredF3$KEY = rep("AdHoc_Recall_L3")
+scoredF4$KEY = rep("Cat_Recall_L4")
+scoredF5$KEY = rep("Cat_Recall_L5")
+scoredF6$KEY = rep("Unrel_Recall_L6")
+
+scoredF1$ver = rep("F")
+scoredF2$ver = rep("F")
+scoredF3$ver = rep("F")
+scoredF4$ver = rep("F")
+scoredF5$ver = rep("F")
+scoredF6$ver = rep("F")
 
 ####Okay, now to combine scored output####
 Unrel = rbind(scoredA3, scoredA4, scoredB1, scoredB6, scoredC3, scoredC4,
@@ -347,7 +431,7 @@ Ad_hoc.Proportions = prop.correct.f(Ad_hoc$Scored, key.length = 40, id = Ad_hoc$
 ##Get means
 mean(Cat.proportions$prop_correct, na.rm = T)
 mean(Unrel.Proportions$prop_correct, na.rm = T)
-mean(Ad_hoc.Proportions$prop_correct, na.rm = T)
+mean(Ad_hoc.Proportions$prop_correct)
 
 ####Combine datasets for senstivity/specificity####
 A.Scored = rbind(scoredA1, scoredA2, scoredA3, scoredA4, scoredA5, scoredA6)
@@ -355,7 +439,7 @@ B.Scored = rbind(scoredB1, scoredB2, scoredB3, scoredB4, scoredB5, scoredB6)
 C.Scored = rbind(scoredC1, scoredC2, scoredC3, scoredC4, scoredC5, scoredC6)
 D.Scored = rbind(scoredD1, scoredD2, scoredD3, scoredD4, scoredD5, scoredD6)
 E.Scored = rbind(scoredE1, scoredE2, scoredE3, scoredE4, scoredE5, scoredE6)
-F.Scored = rbind(scoredF1, scoredF2, scoredA3, scoredF4, scoredF5, scoredF6)
+F.Scored = rbind(scoredF1, scoredF2, scoredF3, scoredF4, scoredF5, scoredF6)
 
 Final = rbind(A.Scored, B.Scored, C.Scored, D.Scored, E.Scored, F.Scored)
 
@@ -367,5 +451,5 @@ Cat2 = subset(Final,
                 Final$list == "Cat")
 
 #write.csv(Adhoc, file = "Adhoc_4.csv", row.names = F)
-#write.csv(Unrel2, file = "Unrel_4.csv", row.names = F)
-#write.csv(Cat2, file = "Cat_4.csv", row.names = F)
+#write.csv(Unrel2, file = "Unrel_0.csv", row.names = F)
+#write.csv(Cat2, file = "Cat_0.csv", row.names = F)

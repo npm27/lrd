@@ -19,5 +19,12 @@
 #Unrelated = .406 vs .38
 
 ##Levenshtein of 4
+#CAT = .535 vs .48
+#Adhoc = .528 vs .50
+#Unrelated = .411 vs .38
 
-##Levenshtein of 5
+####FOR THE lrd data####
+#Need to figure out how to add in key items that are omitted
+
+##okay, I have an idea! Subset by participant and list. Match objects in the response to the key.
+##Then add in all objects from the key that don't match, and score them with zeros. Items with matches get 1'S
