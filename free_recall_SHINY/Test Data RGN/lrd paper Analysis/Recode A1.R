@@ -1,5 +1,5 @@
 ####Let's start with Cat 0
-dat = read.csv("Cat/Cat_1.csv")
+dat = read.csv("Unrel/Unrel_1.csv")
 
 
 A = subset(dat,
@@ -7,15 +7,15 @@ A = subset(dat,
 
 ##Now subset out list type
 l1 = subset(A,
-            A$KEY == "Cat_Recall_L1")
+            A$KEY == "Unrel_Recall_L3")
 
 length(unique(l1$id))
 
 l2 = na.omit(l1)
 
-l1.key = ver.A$Cat_Recall_L1 ##Remember to switch this out
+l1.key = ver.A$Unrel_Recall_L3 ##Remember to switch this out
 
-#dat$ver == A$Cat_Recall_L1 ##Remember to switch this out
+#dat$ver == A$Unrel_Recall_L3 ##Remember to switch this out
 
 for (af in unique(l2$id)){
 
@@ -145,7 +145,7 @@ for (af in unique(l2$id)){
 }
 
 ####Let's start with Cat 0
-dat = read.csv("Cat/Cat_2.csv")
+dat = read.csv("Unrel/Unrel_2.csv")
 
 
 A = subset(dat,
@@ -153,15 +153,15 @@ A = subset(dat,
 
 ##Now subset out list type
 l1 = subset(A,
-            A$KEY == "Cat_Recall_L1")
+            A$KEY == "Unrel_Recall_L3")
 
 length(unique(l1$id))
 
 l2 = na.omit(l1)
 
-#dat$ver == A$Cat_Recall_L1 ##Remember to switch this out
+#dat$ver == A$Unrel_Recall_L3 ##Remember to switch this out
 
-l1.key = ver.A$Cat_Recall_L1
+l1.key = ver.A$Unrel_Recall_L3
 
 for (af in unique(l2$id)){
 
@@ -291,7 +291,7 @@ for (af in unique(l2$id)){
 }
 
 ####Let's start with Cat 0
-dat = read.csv("Cat/Cat_3.csv")
+dat = read.csv("Unrel/Unrel_3.csv")
 
 
 A = subset(dat,
@@ -299,15 +299,15 @@ A = subset(dat,
 
 ##Now subset out list type
 l1 = subset(A,
-            A$KEY == "Cat_Recall_L1")
+            A$KEY == "Unrel_Recall_L3")
 
 length(unique(l1$id))
 
 l2 = na.omit(l1)
 
-#dat$ver == A$Cat_Recall_L1 ##Remember to switch this out
+#dat$ver == A$Unrel_Recall_L3 ##Remember to switch this out
 
-l1.key = ver.A$Cat_Recall_L1
+l1.key = ver.A$Unrel_Recall_L3
 
 for (af in unique(l2$id)){
 
@@ -437,7 +437,7 @@ for (af in unique(l2$id)){
 }
 
 ####Let's start with Cat 0
-dat = read.csv("Cat/Cat_0.csv")
+dat = read.csv("Unrel/Unrel_0.csv")
 
 
 A = subset(dat,
@@ -445,16 +445,16 @@ A = subset(dat,
 
 ##Now subset out list type
 l1 = subset(A,
-            A$KEY == "Cat_Recall_L1")
+            A$KEY == "Unrel_Recall_L3")
 
 
 length(unique(l1$id))
 
 l2 = na.omit(l1)
 
-#dat$ver == A$Cat_Recall_L1 ##Remember to switch this out
+#dat$ver == A$Unrel_Recall_L3 ##Remember to switch this out
 
-l1.key = ver.A$Cat_Recall_L1
+l1.key = ver.A$Unrel_Recall_L3
 
 for (af in unique(l2$id)){
 
@@ -584,7 +584,7 @@ for (af in unique(l2$id)){
 }
 
 ####Let's start with Cat 0
-dat = read.csv("Cat/Cat_4.csv")
+dat = read.csv("Unrel/Unrel_4.csv")
 
 
 A = subset(dat,
@@ -592,13 +592,13 @@ A = subset(dat,
 
 ##Now subset out list type
 l1 = subset(A,
-            A$KEY == "Cat_Recall_L1")
+            A$KEY == "Unrel_Recall_L3")
 
 length(unique(l1$id))
 
 l2 = na.omit(l1)
 
-l1.key = ver.A$Cat_Recall_L1 ##Remember to switch this out
+l1.key = ver.A$Unrel_Recall_L3 ##Remember to switch this out
 
 for (af in unique(l2$id)){
 
