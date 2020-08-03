@@ -140,6 +140,7 @@ arrange.data = function(x, sep = y, id = z, other = NULL){
     df = as.data.frame(apply(df, 2, function(y)gsub('\\s+', '',y)))
 
     final = cbind(df2, df, df3)
+    return(final)
 
   }
 
