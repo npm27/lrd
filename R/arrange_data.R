@@ -7,6 +7,7 @@
 #' @param id a vector containing participant ID numbers
 #' @param Other an optional argument for passing condition columns. Needs to take the form of an index of the original dataframe.
 #' @return a dataframe object containing the input vectors and a percent match column
+#' @export
 
 arrange.data = function(x, sep = y, id = z, other = NULL){
 
