@@ -9,7 +9,7 @@
 #' @return a dataframe object containing the input vectors and a percent match column
 #' @export
 
-arrange.data = function(x, sep = y, id = z, other = NULL){
+arrange_data = function(x, sep = y, id = z, other = NULL){
 
   df = data.frame()
   lengths = data.frame()
