@@ -1,148 +1,71 @@
 #' Arrange Data for Free Recall Scoring
 #'
-#' This function takes wide format free recall data where all responses are stored in the same cell and converts it to long format.
+#' This function takes wide format free recall data where all
+#' responses are stored in the same cell and converts it to long format.
 #'
-#' @param x a vector containing participant responses
-#' @param sep a character separating each response. This needs to be in quotes.
+#' @param responses a vector containing participant responses
+#' @param sep a character separating each response in quotes - example: ",".
 #' @param id a vector containing participant ID numbers
-#' @param Other an optional argument for passing condition columns. Needs to take the form of an index of the original dataframe.
-#' @return a dataframe object containing the input vectors and a percent match column
+#' @param other an optional argument for passing condition or other columns
+#' you would like to include with the rearranged data. Note: It should
+#' contain the same number of rows as the id variable.
+#'
+#' @return A dataframe of the participant answers including:
+#' \item{Sub.ID}{The participant id number}
+#' \item{response}{The participant response}
+#' \item{position}{The position number of the response listed}
+#' \item{other}{Any additional columns included}
+#'
+#' @keywords data, arrange, wide, long
 #' @export
+#' @examples
+#'
+#' #This dataset includes a subject number, set of answers, and
+#' #experiment condition.
+#'
+#' DF <- read.csv("data/wide_data.csv")
+#' DF_long <- arrange_data(responses = DF$Response, sep = ",",
+#'            id = DF$Sub.ID, other = DF$Disease.Condition)
+#' head(DF_long)
+#'
+arrange_data <- function(responses, sep, id, other = NULL){
 
-arrange_data = function(x, sep = y, id = z, other = NULL){
+  #split the strings, returns a list
+  answers <- strsplit(responses, split = sep)
 
-  df = data.frame()
-  lengths = data.frame()
-  df2 = data.frame()
-  df3 = data.frame()
-  x6 = c()
+  #list to long
+  df <- data.frame(response = unlist(answers))
 
-  for (i in x){
+  #take out any extra spaces
+  df$response <- gsub("\\s+", " ", df$response)
+  df$response <- trimws(df$response, "both")
 
-    for (j in 1:length(x)){
+  #add participant id
+  df$Sub.ID <- rep(id, unlist(lapply(answers, length)))
 
-      x2 = strsplit(i, split = sep)
+  #add position tag
+  df$position <- ave(df$Sub.ID, df$Sub.ID, FUN = seq_along)
 
-      x2 = data.frame(x2)
-      colnames(x2)[1] = "response"
+  #add back in other variables
+  if(!is.null(other)){
 
-      lengths2 = nrow(x2)
+    #make a dataframe
+    other <- as.data.frame(other)
 
-      lengths2 = data.frame(lengths2)
-      colnames(lengths2)[1] = "Length"
-
+    #check its length
+    if(nrow(other) != length(id)){
+      stop("The number of rows or items in the additional columns need to match
+           the number of participants in the id column.")
+    } else {
+        other$Sub.ID <- id
+        final_df <- merge(df, other, by = "Sub.ID")
+    }
+    #otherwise just return final data
+  } else {
+      final_df <- df
     }
 
-    lengths = rbind(lengths, lengths2)
-    lengths$Length = as.numeric(lengths$Length)
-
-    df = rbind(df, x2)
-
-  }
-
-  ##Add in subject IDs
-
-  s = 0
-
-  for (m in lengths$Length){
-
-    s = s + 1
-
-    for (h in 1:length(id)){
-
-      x3 = rep(id[s], m)
-
-      x3 = data.frame(x3)
-      colnames(x3)[1] = "Sub.ID"
-
-    }
-
-    df2 = rbind(df2, x3)
-
-  }
-
-  ##Now add in position tagging
-
-  s = 0 #Reset the counter
-
-  for (m in lengths$Length){
-
-    s = s + 1
-
-    for (h in 1:length(id)){
-
-      x4 = rep(1:m)
-
-      x4 = data.frame(x4)
-      colnames(x4)[1] = "pos.tag"
-
-    }
-
-    df3 = rbind(df3, x4)
-
-  }
-
-  if(is.null(other) == FALSE){
-
-    namelist = names(other)
-
-    df5 = data.frame(matrix(NA, nrow = nrow(df2), ncol = length(other)))
-
-    for (i in namelist){
-
-      #print(i)
-
-      sub1 = as.data.frame(other[`i`])
-
-      q = 0
-      q = q + 1
-
-      r = 0
-
-      j = 1
-
-      for (t in lengths$Length){
-
-        r = r + 1
-
-        x5 = (rep(sub1[r, ], t))
-
-        x6 = c(x6, x5)
-
-      }
-
-      ##The above loop puts all the columns in one list. Now I need to sub divide it up into the correct number of columns
-    }
-
-    rownum = nrow(df) #Get number of rows in the final dataset
-
-    splitstuff = split(x6, ceiling(seq_along(x6)/rownum))
-
-    splitstuff = data.frame(splitstuff)
-
-    c = 0
-
-    for (i in namelist){
-
-      c = c + 1
-
-      colnames(splitstuff)[c] = i
-
-    }
-
-    #Remove spaces
-    df = as.data.frame(apply(df, 2, function(y)gsub('\\s+', '',y)))
-
-    final = cbind(df2, df, df3, splitstuff)
-
-  } else if (is.null(other) == TRUE){
-
-    #Remove spaces
-    df = as.data.frame(apply(df, 2, function(y)gsub('\\s+', '',y)))
-
-    final = cbind(df2, df, df3)
-    return(final)
-
-  }
-
+  return(final_df)
 }
+
+#' @rdname arrange_data
