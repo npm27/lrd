@@ -19,6 +19,8 @@
 load_metadata <- function(webaddress = "https://raw.githubusercontent.com/SemanticPriming/LAB-data/master/included_data.csv") {
 
   metadata <- read.csv(url(webaddress), stringsAsFactors = F)
+  
+  colnames(metadata)[1] <- "included"
 
   metadata <- subset(metadata, included == "yes")
 
