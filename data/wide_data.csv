@@ -2,6 +2,6 @@ Sub.ID,Response,Disease.Condition
 1,"basket, chair, clothes, flowrs, glasses, fan, windows, carpet, lamp, picture frame, remote",healthy
 2,"windows, bed, books, shelf, pictures",healthy
 3,"bacpack, chair, glasses, mirror, iphone, pillow, stereo, nightstand, computer, door, magazines, quilt",healthy
-4,"vase, blinds, computer, magazine, books, bed, blanket, carpet, dresser",healthy
-5,"bed, blankets, closet, windows, books, fan",healthy
-6,"bed, blankets, dreser, nightstand, end table, stereo, flwrs, vase",healthy
+4,"vase, blinds, computer, magazine, books, bed, blanket, carpet, dresser",sick
+5,"bed, blankets, closet, windows, books, fan",sick
+6,"bed, blankets, dreser, nightstand, end table, stereo, flwrs, vase",sick
