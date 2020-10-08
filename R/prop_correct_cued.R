@@ -64,17 +64,15 @@
 #'
 #' DF_test <- read.csv("data/cued_data.csv")
 #'
-#' scored_output <- prop_correct_free(responses = DF_test$response,
-#'                                    key = DF_test$key,
-#'                                    key.trial = DF_test$trial,
-#'                                    id = DF_test$id,
-#'                                    id.trial = DF_test$trial,
-#'                                    cutoff = 1,
-#'                                    flag = TRUE,
-#'                                    group.by = DF_test$condition,
-#'                                    group.by.names = "condition",
-#'                                    other = c(rep("stuff", nrow(DF_test))),
-#'                                    other.names = "fake_column")
+#' scored_output <- prop_correct_free(data = DF_test,
+#'                                   responses = "response",
+#'                                   key = "key",
+#'                                   key.trial = "trial",
+#'                                   id = "id",
+#'                                   id.trial = "trial",
+#'                                   cutoff = 1,
+#'                                   flag = TRUE,
+#'                                   group.by = "condition")
 #'
 #'head(scored_output$DF_Scored)
 #'
