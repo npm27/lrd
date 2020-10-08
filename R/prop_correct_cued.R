@@ -134,8 +134,28 @@ prop_correct_free <- function(data, responses,
   k <- max(k)
 
   #create participant data frame ----
-  DF_participant <- aggregate(DF$Scored, list(DF$Sub.ID), function(x){sum(x)/k})
-  colnames(DF_participant) <- c("Sub.ID", "Proportion.Correct")
+  if (!is.null(group.by)){
+
+    DF_participant <- aggregate(DF$Scored,
+                                by = DF[ , c(group.by, "Sub.ID")],
+                                function(x){sum(x)/k})
+    colnames(DF_participant) <- c(group.by, "Sub.ID", "Proportion.Correct")
+  } else {
+
+    DF_participant <- aggregate(DF$Scored, list(DF$Sub.ID), function(x){sum(x)/k})
+    colnames(DF_participant) <- c("Sub.ID", "Proportion.Correct")
+  }
+
+  #add back in other columns that are one to one
+  other.columns <- setdiff(colnames(DF),
+                           c("Responses", "Sub.ID", "Answer", "Scored",
+                             colnames(DF_participant)))
+  for (col in other.columns){
+    DF_temp <- unique(DF[ , c("Sub.ID", col)])
+    if (sum(duplicated(DF_temp$Sub.ID)) == 0){
+      DF_participant <- merge(DF_participant, DF_temp, by = "Sub.ID")
+    }
+  }
 
   #if they want to flag participants ----
   if (flag) {
