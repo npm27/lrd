@@ -11,26 +11,22 @@ DF_long <- arrange_data(responses = DF_test$Response,
                         id = DF_test$Sub.ID,
                         other = DF_test$Disease.Condition,
                         other.names = "Disease.Condition")
-
- # responses = DF_long$response
+ # data = DF_long
+ # responses = "response"
  # key = DF_answer$Answer_Key
- # id = DF_long$Sub.ID
+ # id = "Sub.ID"
  # cutoff = 1
  # flag = TRUE
- # group.by = DF_long$Disease.Condition
- # group.by.names = "Disease.Condition"
- # other = DF_long$Disease.Condition
- # other.names = "Disease.Condition_other"
-
+ # group.by = "Disease.Condition"
 
 #Include group.by and Flag = True ----
-scored_output <- prop_correct_free(responses = DF_long$response,
-                                   key = DF_answer$Answer_Key,
-                                   id = DF_long$Sub.ID,
-                                   cutoff = 1,
-                                   flag = TRUE,
-                                   group.by = DF_long$Disease.Condition,
-                                   group.by.names = "Disease.Condition")
+scored_output <- prop_correct_free( data = DF_long,
+                                    responses = "response",
+                                    key = DF_answer$Answer_Key,
+                                    id = "Sub.ID",
+                                    cutoff = 1,
+                                    flag = TRUE,
+                                    group.by = "Disease.Condition")
 
 #Doesn't run:  Error in aggregate.data.frame(as.data.frame(x), ...): arguments must have same length
 #Fixed
@@ -40,6 +36,9 @@ head(scored_output$DF_Scored)
 head(scored_output$DF_Participant)
 
 head(scored_output$DF_Group)
+
+
+
 
 #Include group.by and Flag = FALSE ----
 scored_output <- prop_correct_free(responses = DF_long$response,
