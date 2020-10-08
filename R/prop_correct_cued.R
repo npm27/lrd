@@ -1,14 +1,22 @@
-#' Proportion Correct Free Recall
+#' Proportion Correct Cued Recall
 #'
 #' This function computes the proportion of correct responses
 #' per participant. Proportions can either be separated by
-#' condition or collapsed across conditions.
+#' condition or collapsed across conditions. You will need to ensure
+#' each trial is marked with a unique id to correspond to the answer
+#' key.
 #'
 #' Note: This function returns mean values when used with non-binary data.
 #'
 #' @param responses a vector containing participant answers for each item
 #' @param key a vector containing the scoring key
+#' @param key.trial a vector containing the trial numbers for each answer.
+#' Note: If you input long data (i.e., repeating trial-answer responses),
+#' we will take the unique combination of the responses. If a trial number
+#' is repeated, you will receive an error. Key and key.trial can also be
+#' a separate dataframe, depending on how your output data is formatted.
 #' @param id a vector containing participant ID numbers
+#' @param id.trial a vector containing the trial numbers for the participant data
 #' @param cutoff a numeric value that determines the criteria for
 #' scoring (i.e., 0 = strictest, 5 = is most lenient). The scoring
 #' criteria uses a Levenshtein distance measure to match participant
@@ -40,40 +48,59 @@
 #' @keywords proportion correct, scoring, free recall
 #' @export
 #' @examples
-#' DF_test <- read.csv("data/wide_data.csv")
-#' DF_answer <- read.csv("data/answer_key_free.csv")
 #'
-#' DF_long <- arrange_data(responses = DF_test$Response,
-#'                         sep = ",",
-#'                         id = DF_test$Sub.ID,
-#'                         other = DF_test$Disease.Condition,
-#'                         other.names = "Disease.Condition")
+#' #This data contains cued recall test with responses and answers together.
+#' #You can use a separate answer key, but this example will show you an
+#' #embedded answer key. This example also shows how you can use different
+#' #stimuli across participants (i.e., each person sees a randomly selected
+#' #set of trials from a larger set).
 #'
-#' scored_output <- prop_correct_free(responses = DF_long$response,
-#'                                    key = DF_answer$Answer_Key,
-#'                                    id = DF_long$Sub.ID,
+#' DF_test <- read.csv("data/cued_data.csv")
+#'
+#' scored_output <- prop_correct_free(responses = DF_test$response,
+#'                                    key = DF_test$key,
+#'                                    key.trial = DF_test$trial,
+#'                                    id = DF_test$id,
+#'                                    id.trial = DF_test$trial,
 #'                                    cutoff = 1,
 #'                                    flag = TRUE,
-#'                                    group.by = DF_long$Disease.Condition,
-#'                                    group.by.names = "Disease.Condition")
+#'                                    group.by = DF_test$condition,
+#'                                    group.by.names = "condition",
+#'                                    other = c(rep("stuff", nrow(DF_test))),
+#'                                    other.names = "fake_column")
 #'
-#' head(scored_output$DF_Scored)
+#'head(scored_output$DF_Scored)
 #'
-#' head(scored_output$DF_Participant)
+#'head(scored_output$DF_Participant)
 #'
-#' head(scored_output$DF_Group)
+#'head(scored_output$DF_Group)
 #'
-prop_correct_free <- function(responses, key, id,
-                         cutoff = 0, flag = FALSE,
-                         group.by = NULL,
-                         group.by.names = NULL,
-                         other = NULL,
-                         other.names = NULL){
+prop_correct_free <- function(responses, key, key.trial, id, id.trial,
+                              cutoff = 0, flag = FALSE,
+                              group.by = NULL,
+                              group.by.names = NULL,
+                              other = NULL,
+                              other.names = NULL){
 
   #create data from inputs ----
 
   #create a dataframe of the data
-  DF <- data.frame("Sub.ID" = id, "Responses" = responses)
+  DF <- data.frame("Sub.ID" = id, "Responses" = responses, "Trial.ID" = id.trial)
+
+  #create the answer key
+  answer_key <- data.frame("Answer" = key, "Trial.ID" = key.trial)
+
+  #find unique keys
+  answer_key <- unique(answer_key)
+
+  #make sure no trial IDs are repeated because then bork
+  dups <- duplicated(answer_key$Trial.ID)
+  if(sum(dups) > 0){
+    stop("You have duplicate trial ids for your answer key. Please check your data.")
+  }
+
+  #now merge key and data
+  DF <- merge(DF, answer_key, by = "Trial.ID")
 
   #merge back other data
   if (!is.null(other)){
@@ -135,41 +162,20 @@ prop_correct_free <- function(responses, key, id,
 
   #create the scored data ----
 
-  #create a scoring key, score each response once
-  answer_key <- data.frame(responses = as.character(),
-                           answer = as.character())
-  for (i in unique(responses)) {
+  #get all the distances
+  lev_score <- mapply(adist, DF$Responses, DF$Answer)
 
-    #Get the leven score
-    lev_score <- adist(i, key)
-    names(lev_score) <- key
-
-    #Find the minimum value for best match
-    #Figure out if the min score is within the cut off
-    if(min(lev_score) <= cutoff) {
-
-      #put that into the answer key
-      answer_key <- rbind(answer_key,
-                          c(i, attr(which.min(lev_score), "names")))
-
-    } else {
-
-      answer_key <- rbind(answer_key,
-                          c(i, NA))
-
-    }
-
-  }
-
-  #fix answer key
-  colnames(answer_key) <- c("Responses", "Answer")
-
-  #with that answer key, score the data
-  DF <- merge(DF, answer_key, by = "Responses")
-  DF$Scored <- 1 - as.numeric(is.na(DF$Answer))
+  #find if they are less than the cutoff
+  DF$Scored <- as.numeric(lev_score <= cutoff)
 
   #create participant summary ----
-  k <- length(key)
+  k <- tapply(DF$Trial.ID, DF$Sub.ID, length)
+  if(min(k) != max(k)){
+    warning("The number of trials is not the same for every participant.
+            We will use the max value of trials to calculate proportion
+            correct. Check your data if this is not intended.")
+  }
+  k <- max(k)
 
   #create participant data frame ----
   DF_participant <- aggregate(DF$Scored, list(DF$Sub.ID), function(x){sum(x)/k})
@@ -231,4 +237,4 @@ prop_correct_free <- function(responses, key, id,
 
 }
 
-#' @rdname prop_correct_free
+#' @rdname prop_correct_cued

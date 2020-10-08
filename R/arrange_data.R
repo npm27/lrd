@@ -9,6 +9,8 @@
 #' @param other an optional argument for passing condition or other columns
 #' you would like to include with the rearranged data. Note: It should
 #' contain the same number of rows as the id variable.
+#' @param other.names an optional argument that can be used to
+#' name the other variables in your output
 #'
 #' @return A dataframe of the participant answers including:
 #' \item{Sub.ID}{The participant id number}
@@ -28,7 +30,8 @@
 #'            id = DF$Sub.ID, other = DF$Disease.Condition)
 #' head(DF_long)
 #'
-arrange_data <- function(responses, sep, id, other = NULL){
+arrange_data <- function(responses, sep, id,
+                         other = NULL, other.names = NULL){
 
   #split the strings, returns a list
   answers <- strsplit(responses, split = sep)
@@ -51,6 +54,13 @@ arrange_data <- function(responses, sep, id, other = NULL){
 
     #make a dataframe
     other <- as.data.frame(other)
+    if (!is.null(other.names)){
+      if(ncol(other) != length(other.names)){
+        stop("Your other columns and other.names arguments do not have the
+             same number of items. Please check your code.")
+      }
+      colnames(other) <- other.names
+    }
 
     #check its length
     if(nrow(other) != length(id)){

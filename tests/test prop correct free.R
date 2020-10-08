@@ -9,27 +9,39 @@ source("R/arrange_data.R")
 DF_long <- arrange_data(responses = DF_test$Response,
                         sep = ",",
                         id = DF_test$Sub.ID,
-                        other = DF_test$Disease.Condition)
+                        other = DF_test$Disease.Condition,
+                        other.names = "Disease.Condition")
 
-#change other name to real column name
-colnames(DF_long)[4] <- "Disease.Condition"
+ # responses = DF_long$response
+ # key = DF_answer$Answer_Key
+ # id = DF_long$Sub.ID
+ # cutoff = 1
+ # flag = TRUE
+ # group.by = DF_long$Disease.Condition
+ # group.by.names = "Disease.Condition"
+ # other = DF_long$Disease.Condition
+ # other.names = "Disease.Condition_other"
 
-####Test the thing####
-#Include group.by and Flag = True
+
+#Include group.by and Flag = True ----
 scored_output <- prop_correct_free(responses = DF_long$response,
                                    key = DF_answer$Answer_Key,
                                    id = DF_long$Sub.ID,
                                    cutoff = 1,
                                    flag = TRUE,
-                                   group.by = DF_long$Disease.Condition) #Doesn't run:  Error in aggregate.data.frame(as.data.frame(x), ...): arguments must have same length 
+                                   group.by = DF_long$Disease.Condition,
+                                   group.by.names = "Disease.Condition")
+
+#Doesn't run:  Error in aggregate.data.frame(as.data.frame(x), ...): arguments must have same length
+#Fixed
 
 head(scored_output$DF_Scored)
 
-head(scored_output$DF_Participant) 
+head(scored_output$DF_Participant)
 
-head(scored_output$DF_Group) 
+head(scored_output$DF_Group)
 
-#Include group.by and Flag = FALSE
+#Include group.by and Flag = FALSE ----
 scored_output <- prop_correct_free(responses = DF_long$response,
                                    key = DF_answer$Answer_Key,
                                    id = DF_long$Sub.ID,
@@ -37,29 +49,47 @@ scored_output <- prop_correct_free(responses = DF_long$response,
                                    flag = FALSE,
                                    group.by = DF_long$Disease.Condition)
 
-#Also doesn't run: Error in names(x) <- value :'names' attribute [3] must be the same length as the vector [2]
+head(scored_output$DF_Scored)
 
-#Remove group.by
+head(scored_output$DF_Participant)
+
+head(scored_output$DF_Group)
+
+#Also doesn't run: Error in names(x) <- value :'names' attribute [3] must be the same length as the vector [2]
+#Fixed
+
+#Remove group.by ----
 scored_output <- prop_correct_free(responses = DF_long$response,
                                    key = DF_answer$Answer_Key,
                                    id = DF_long$Sub.ID,
                                    cutoff = 1,
-                                   flag = TRUE) #This runs! 
+                                   flag = TRUE) #This runs!
 head(scored_output$DF_Scored)
 
-head(scored_output$DF_Participant)  #I think grouping.variable column should be renamed Z
+head(scored_output$DF_Participant)
+#I think grouping.variable column should be renamed Z
+#Fixed
+
+head(scored_output$DF_Group)
 
 ##Try including disease condition as other
 
-#Remove group.by and set flag to FALSE
+#Remove group.by and set flag to FALSE ----
 scored_output <- prop_correct_free(responses = DF_long$response,
                                    key = DF_answer$Answer_Key,
                                    id = DF_long$Sub.ID,
                                    cutoff = 1,
-                                   flag = FALSE) #Doesn't run: Also doesn't run: Error in names(x) <- value :'names' attribute [3] must be the same length as the vector [2]
+                                   flag = FALSE)
+
+#Doesn't run: Also doesn't run: Error in names(x) <- value :'names' attribute [3] must be the same length as the vector [2]
+#Fixed
 head(scored_output$DF_Scored)
 
-##Other
+head(scored_output$DF_Participant)
+
+head(scored_output$DF_Group) #comes up null but that's correct with no group
+
+##Other ----
 DF_long2 = DF_long
 DF_long2$thing = c(rep("a", times = 25), rep("b", times = 26))
 
@@ -82,6 +112,10 @@ scored_output <- prop_correct_free(responses = DF_long$response,
                                    flag = TRUE,
                                    other = DF_long2[ , 5:6])
 
-head(scored_output$DF_Scored) #colnames for others are both NA... but this thing runs! 
+head(scored_output$DF_Scored) #colnames for others are both NA... but this thing runs!
 
-head(scored_output$DF_Participant) #First other column is labeled as grouping variable. But z-score column is now correct. Is there something in the code forcing the third column to be named Grouping.Variable?
+head(scored_output$DF_Participant)
+#First other column is labeled as grouping variable.
+#But z-score column is now correct. Is there something
+#in the code forcing the third column to be named Grouping.Variable?
+
