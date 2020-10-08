@@ -29,3 +29,13 @@ position = "position"
 scored = "Scored"
 answer = "Answer"
 group.by = "Version"
+
+source("R/serial_position.R")
+
+serial_output <- serial_position(data = scored_output$DF_Scored,
+                                 key = DF_answer$Answer_Key,
+                                 position = "position",
+                                 scored = "Scored",
+                                 answer = "Answer",
+                                 group.by = "Version")
+head(serial_output)
