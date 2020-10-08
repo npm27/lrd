@@ -156,20 +156,31 @@ prop_correct_free <- function(data,
   #if they want a grouping variable
   if (!is.null(group.by)){
 
-    #do formula notation aggregate(no~id+age, df, sum)
-    formula_participant <- paste("Scored~Sub.ID+", paste(group.by, collapse = "+"))
-
     #summarize participant scores by group
     DF_group_person <- aggregate(DF$Scored,
                                  by = DF[ , c(group.by, "Sub.ID")],
                                  FUN = function(x){sum(x)/k})
     colnames(DF_group_person) <- c(group.by,"Sub.ID", "Mean")
-    DF_group <- aggregate(DF_group_person$Mean,
-                          by = DF_group_person[ , group.by], mean)
-    DF_group$SD <- aggregate(DF_group_person$Mean,
-                             by = DF_group_person[ , group.by], sd)$x
-    DF_group$N <- aggregate(DF_group_person$Mean,
-                            by = DF_group_person[ , group.by], length)$x
+
+    #why does aggregate do this
+    #if one variable by has to be a list
+    #if more than one, no list allowed
+    if (length(group.by) > 1){
+      DF_group <- aggregate(DF_group_person$Mean,
+                            by = DF_group_person[ , group.by], mean)
+      DF_group$SD <- aggregate(DF_group_person$Mean,
+                               by = DF_group_person[ , group.by], sd)$x
+      DF_group$N <- aggregate(DF_group_person$Mean,
+                              by = DF_group_person[ , group.by], length)$x
+    } else {
+      DF_group <- aggregate(DF_group_person$Mean,
+                            by = list(DF_group_person[ , group.by]), mean)
+      DF_group$SD <- aggregate(DF_group_person$Mean,
+                               by = list(DF_group_person[ , group.by]), sd)$x
+      DF_group$N <- aggregate(DF_group_person$Mean,
+                              by = list(DF_group_person[ , group.by]), length)$x
+    }
+
     colnames(DF_group) <- c(group.by, "Mean", "SD", "N")
 
     return(list(DF_Scored = DF,

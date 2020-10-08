@@ -89,6 +89,13 @@ prop_correct_free <- function(data, responses,
 
   #create data from inputs ----
 
+  #grab the input dataframe  and convert to our names
+  DF <- as.data.frame(data)
+  colnames(DF)[grepl(responses, colnames(DF))] <- "Responses"
+  colnames(DF)[grepl(responses, colnames(id))] <- "Sub.ID"
+
+  #create data from inputs ----
+
   #create a dataframe of the data
   DF <- data.frame("Sub.ID" = id, "Responses" = responses, "Trial.ID" = id.trial)
 
