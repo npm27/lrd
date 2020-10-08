@@ -33,3 +33,20 @@ head(scored_output$DF_Participant)
 
 head(scored_output$DF_Group)
 
+scored_output2 <- prop_correct_free(responses = DF_test$response,
+                                   key = DF_test$key,
+                                   key.trial = DF_test$trial,
+                                   id = DF_test$id,
+                                   id.trial = DF_test$trial,
+                                   cutoff = 2,
+                                   flag = FALSE,
+                                   group.by = DF_test$condition,
+                                   group.by.names = "condition",
+                                   other = c(rep("stuff", nrow(DF_test))),
+                                   other.names = "fake_column")
+
+head(scored_output2$DF_Scored)
+
+head(scored_output2$DF_Participant)
+
+head(scored_output2$DF_Group)

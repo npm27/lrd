@@ -119,3 +119,31 @@ head(scored_output$DF_Participant)
 #But z-score column is now correct. Is there something
 #in the code forcing the third column to be named Grouping.Variable?
 
+##Group.by with multiple others
+scored_output <- prop_correct_free(responses = DF_long$response,
+                                   key = DF_answer$Answer_Key,
+                                   id = DF_long$Sub.ID,
+                                   cutoff = 1,
+                                   flag = FALSE,
+                                   group.by = DF_long$Disease.Condition,
+                                   other = DF_long2[ , 5:6])
+
+head(scored_output$DF_Scored)
+
+head(scored_output$DF_Participant)
+
+head(scored_output$DF_Group)
+
+#Multiple group.by
+scored_output <- prop_correct_free(responses = DF_long2$response,
+                                   key = DF_answer$Answer_Key,
+                                   id = DF_long2$Sub.ID,
+                                   cutoff = 1,
+                                   flag = FALSE,
+                                   group.by = DF_long2[ , 5:6])
+
+head(scored_output$DF_Scored)
+
+head(scored_output$DF_Participant)
+
+head(scored_output$DF_Group)
