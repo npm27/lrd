@@ -92,15 +92,17 @@ prop_correct_free <- function(data, responses,
   #grab the input dataframe  and convert to our names
   DF <- as.data.frame(data)
   colnames(DF)[grepl(responses, colnames(DF))] <- "Responses"
-  colnames(DF)[grepl(responses, colnames(id))] <- "Sub.ID"
-
-  #create data from inputs ----
-
-  #create a dataframe of the data
-  DF <- data.frame("Sub.ID" = id, "Responses" = responses, "Trial.ID" = id.trial)
+  colnames(DF)[grepl(id, colnames(DF))] <- "Sub.ID"
+  colnames(DF)[grepl(id.trial, colnames(DF))] <- "Trial.ID"
 
   #create the answer key
-  answer_key <- data.frame("Answer" = key, "Trial.ID" = key.trial)
+  #if the length > 1, assume it's a vector to merge together
+  if (length(key) > 1){
+    answer_key <- data.frame("Answer" = key, "Trial.ID" = key.trial)
+  } else { #assume it is in the original dataframe
+    answer_key <- data.frame("Answer" = data[ , key],
+                             "Trial.ID" = data[ , key.trial])
+  }
 
   #find unique keys
   answer_key <- unique(answer_key)
@@ -113,64 +115,6 @@ prop_correct_free <- function(data, responses,
 
   #now merge key and data
   DF <- merge(DF, answer_key, by = "Trial.ID")
-
-  #merge back other data
-  if (!is.null(other)){
-
-    #convert to data frame
-    other <- as.data.frame(other)
-
-    #add in column names
-    if (!is.null(other.names)){
-      if(ncol(other) != length(other.names)){
-        stop("Your other columns and other.names arguments do not have the
-             same number of items. Please check your code.")
-      }
-      colnames(other) <- other.names
-    } else {
-      colnames(other) <- paste0("other", c(1:ncol(other)))
-    }
-
-    #make sure long enough
-    if(nrow(other) != length(id)) {
-      stop("Your other variables are not the same length as the participant
-           IDs. Please check your data.")
-    }
-
-    other <- cbind(other,id)
-    other_unique <- unique(other)
-    colnames(other)[ncol(other)] <- colnames(other_unique)[ncol(other)] <- "Sub.ID"
-    DF <- merge(DF, other_unique, by = "Sub.ID")
-  }
-
-  #merge back grouping data
-  if (!is.null(group.by)){
-
-    #convert to data frame
-    group.by <- as.data.frame(group.by)
-
-    #add in column names
-    if (!is.null(group.by.names)){
-      if(ncol(group.by) != length(group.by.names)){
-        stop("Your group.by columns and group.by.names arguments do not have the
-             same number of items. Please check your code.")
-      }
-      colnames(group.by) <- group.by.names
-    } else {
-      colnames(group.by) <- paste0("group.by", c(1:ncol(group.by)))
-    }
-
-    #make sure long enough
-    if(nrow(group.by) != length(id)) {
-      stop("Your group.by variables are not the same length as the participant
-           IDs. Please check your data.")
-    }
-
-    group.by <- cbind(group.by,id)
-    group.by_unique <- unique(group.by)
-    colnames(group.by)[ncol(group.by)] <- colnames(group.by_unique)[ncol(group.by)] <- "Sub.ID"
-    DF <- merge(DF, group.by_unique, by = "Sub.ID")
-  }
 
   #create the scored data ----
 
@@ -193,14 +137,6 @@ prop_correct_free <- function(data, responses,
   DF_participant <- aggregate(DF$Scored, list(DF$Sub.ID), function(x){sum(x)/k})
   colnames(DF_participant) <- c("Sub.ID", "Proportion.Correct")
 
-  if (!is.null(other)){
-    DF_participant <- merge(DF_participant, other_unique, by = "Sub.ID")
-  }
-
-  if (!is.null(group.by)){
-    DF_participant <- merge(DF_participant, group.by_unique, by = "Sub.ID")
-  }
-
   #if they want to flag participants ----
   if (flag) {
 
@@ -208,7 +144,7 @@ prop_correct_free <- function(data, responses,
     if (!is.null(group.by)){
 
       DF_participant$Z.Score.Group <- ave(DF_participant$Proportion.Correct,
-                                          DF_participant[ , colnames(group.by)[1:ncol(group.by)-1]],
+                                          DF_participant[ , group.by],
                                           FUN = scale)
 
     }
@@ -222,21 +158,30 @@ prop_correct_free <- function(data, responses,
 
     #summarize participant scores by group
     DF_group_person <- aggregate(DF$Scored,
-                                 list(DF[ , colnames(group.by)[1:ncol(group.by)-1]],
-                                      DF$Sub.ID),
-                          function(x){sum(x)/k})
-    colnames(DF_group_person) <- c(colnames(group.by)[1:ncol(group.by)-1],
-                                   "Sub.ID", "Mean")
-    DF_group <- aggregate(DF_group_person$Mean,
-                          list(DF_group_person[ , colnames(group.by)[1:ncol(group.by)-1]]), mean)
-    DF_group$SD <- aggregate(DF_group_person$Mean,
-                             list(DF_group_person[ , colnames(group.by)[1:ncol(group.by)-1]]), sd)$x
-    DF_group$N <- aggregate(DF_group_person$Mean,
-                            list(DF_group_person[ , colnames(group.by)[1:ncol(group.by)-1]]), length)$x
-    DF_group <- rbind(DF_group,
-                      c("overall", mean(DF_group_person$Mean),
-                        sd(DF_group_person$Mean), length(DF_group_person$Mean)))
-    colnames(DF_group) <- c(colnames(group.by)[1:ncol(group.by)-1], "Mean", "SD", "N")
+                                 by = DF[ , c(group.by, "Sub.ID")],
+                                 FUN = function(x){sum(x)/k})
+    colnames(DF_group_person) <- c(group.by,"Sub.ID", "Mean")
+
+    #why does aggregate do this
+    #if one variable by has to be a list
+    #if more than one, no list allowed
+    if (length(group.by) > 1){
+      DF_group <- aggregate(DF_group_person$Mean,
+                            by = DF_group_person[ , group.by], mean)
+      DF_group$SD <- aggregate(DF_group_person$Mean,
+                               by = DF_group_person[ , group.by], sd)$x
+      DF_group$N <- aggregate(DF_group_person$Mean,
+                              by = DF_group_person[ , group.by], length)$x
+    } else {
+      DF_group <- aggregate(DF_group_person$Mean,
+                            by = list(DF_group_person[ , group.by]), mean)
+      DF_group$SD <- aggregate(DF_group_person$Mean,
+                               by = list(DF_group_person[ , group.by]), sd)$x
+      DF_group$N <- aggregate(DF_group_person$Mean,
+                              by = list(DF_group_person[ , group.by]), length)$x
+    }
+
+    colnames(DF_group) <- c(group.by, "Mean", "SD", "N")
 
     return(list(DF_Scored = DF,
                 DF_Participant = DF_participant,

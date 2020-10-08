@@ -98,7 +98,7 @@ scored_output <- prop_correct_free(data = DF_long2,
                                    key = DF_answer$Answer_Key,
                                    id = "Sub.ID",
                                    cutoff = 1,
-                                   flag = FALSE,
+                                   flag = TRUE,
                                    group.by = c("Disease.Condition", "thing"))
 
 head(scored_output$DF_Scored)
