@@ -55,13 +55,13 @@
 #'                         other = DF_test$Disease.Condition,
 #'                         other.names = "Disease.Condition")
 #'
-#' scored_output <- prop_correct_free(responses = DF_long$response,
+#' scored_output <- prop_correct_free(data = DF_long,
+#'                                    responses = "response",
 #'                                    key = DF_answer$Answer_Key,
-#'                                    id = DF_long$Sub.ID,
+#'                                    id = "Sub.ID",
 #'                                    cutoff = 1,
 #'                                    flag = TRUE,
-#'                                    group.by = DF_long$Disease.Condition,
-#'                                    group.by.names = "Disease.Condition")
+#'                                    group.by = "Disease.Condition")
 #'
 #' head(scored_output$DF_Scored)
 #'
@@ -156,21 +156,20 @@ prop_correct_free <- function(data,
   #if they want a grouping variable
   if (!is.null(group.by)){
 
+    #do formula notation aggregate(no~id+age, df, sum)
+    formula_participant <- paste("Scored~Sub.ID+", paste(group.by, collapse = "+"))
+
     #summarize participant scores by group
     DF_group_person <- aggregate(DF$Scored,
-                                 list(DF[ , group.by],
-                                      DF$Sub.ID),
-                          function(x){sum(x)/k})
+                                 by = DF[ , c(group.by, "Sub.ID")],
+                                 FUN = function(x){sum(x)/k})
     colnames(DF_group_person) <- c(group.by,"Sub.ID", "Mean")
     DF_group <- aggregate(DF_group_person$Mean,
-                          list(DF_group_person[ , group.by]), mean)
+                          by = DF_group_person[ , group.by], mean)
     DF_group$SD <- aggregate(DF_group_person$Mean,
-                             list(DF_group_person[ , group.by]), sd)$x
+                             by = DF_group_person[ , group.by], sd)$x
     DF_group$N <- aggregate(DF_group_person$Mean,
-                            list(DF_group_person[ , group.by]), length)$x
-    DF_group <- rbind(DF_group,
-                      c("overall", mean(DF_group_person$Mean),
-                        sd(DF_group_person$Mean), length(DF_group_person$Mean)))
+                            by = DF_group_person[ , group.by], length)$x
     colnames(DF_group) <- c(group.by, "Mean", "SD", "N")
 
     return(list(DF_Scored = DF,
