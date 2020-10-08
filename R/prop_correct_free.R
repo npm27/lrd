@@ -79,7 +79,7 @@ prop_correct_free <- function(data,
   #grab the input dataframe  and convert to our names
   DF <- as.data.frame(data)
   colnames(DF)[grepl(responses, colnames(DF))] <- "Responses"
-  colnames(DF)[grepl(responses, colnames(id))] <- "Sub.ID"
+  colnames(DF)[grepl(id, colnames(id))] <- "Sub.ID"
 
   #create the scored data ----
 

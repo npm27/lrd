@@ -6,17 +6,29 @@
 #' each trial is marked with a unique id to correspond to the answer
 #' key.
 #'
-#' Note: This function returns mean values when used with non-binary data.
+#' Note: other columns included in the dataframe will be found
+#' in the final scored dataset. If these other columns are
+#' between subjects data, they will also be included in the
+#' participant dataset (i.e., there's a one to one match of
+#' participant ID and column information).
 #'
-#' @param responses a vector containing participant answers for each item
-#' @param key a vector containing the scoring key
+#' @param data a dataframe of the variables you would like to return.
+#' Other variables will be included in the scored output and
+#' in the participant output if they are a one to one match with
+#' the participant id.
+#' @param responses a column name in the dataframe that containts
+#' the participant answers for each item in quotes (i.e., "column")
+#' @param key a vector containing the scoring key or data column name.
+#' This column does not have to be included in the original dataframe.
 #' @param key.trial a vector containing the trial numbers for each answer.
 #' Note: If you input long data (i.e., repeating trial-answer responses),
 #' we will take the unique combination of the responses. If a trial number
 #' is repeated, you will receive an error. Key and key.trial can also be
 #' a separate dataframe, depending on how your output data is formatted.
-#' @param id a vector containing participant ID numbers
-#' @param id.trial a vector containing the trial numbers for the participant data
+#' @param id a column name containing participant ID numbers from
+#' the original dataframe
+#' @param id.trial a column name containing the trial numbers
+#' for the participant data from the original dataframe
 #' @param cutoff a numeric value that determines the criteria for
 #' scoring (i.e., 0 = strictest, 5 = is most lenient). The scoring
 #' criteria uses a Levenshtein distance measure to match participant
@@ -24,13 +36,8 @@
 #' @param flag a logical argument if you want to flag participant scores
 #' that are outliers using z-scores away from the mean score for group
 #' @param group.by an optional argument that can be used to group the
-#' output by one condition column
-#' @param group.by.names an optional argument that can be used to
-#' name the grouping variables in your output
-#' @param other an optional argument to combine other columns with the
-#' output from this function.
-#' @param other.names an optional argument that can be used to
-#' name the other variables in your output
+#' output by condition columns. These columns should be in the original
+#' dataframe and concatenated c() if there are multiple columns
 #'
 #' @return
 #' \item{DF_Scored}{The dataframe of the original response, answer,
@@ -75,12 +82,10 @@
 #'
 #'head(scored_output$DF_Group)
 #'
-prop_correct_free <- function(responses, key, key.trial, id, id.trial,
+prop_correct_free <- function(data, responses,
+                              key, key.trial, id, id.trial,
                               cutoff = 0, flag = FALSE,
-                              group.by = NULL,
-                              group.by.names = NULL,
-                              other = NULL,
-                              other.names = NULL){
+                              group.by = NULL){
 
   #create data from inputs ----
 
