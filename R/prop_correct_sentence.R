@@ -6,17 +6,29 @@
 #' each trial is marked with a unique id to correspond to the answer
 #' key.
 #'
-#' Note: This function returns mean values when used with non-binary data.
+#' Note: other columns included in the dataframe will be found
+#' in the final scored dataset. If these other columns are
+#' between subjects data, they will also be included in the
+#' participant dataset (i.e., there's a one to one match of
+#' participant ID and column information).
 #'
-#' @param responses a vector containing participant answers for each item
-#' @param key a vector containing the scoring key
+#' @param data a dataframe of the variables you would like to return.
+#' Other variables will be included in the scored output and
+#' in the participant output if they are a one to one match with
+#' the participant id.
+#' @param responses a column name in the dataframe that containts
+#' the participant answers for each item in quotes (i.e., "column")
+#' @param key a vector containing the scoring key or data column name.
+#' This column does not have to be included in the original dataframe.
 #' @param key.trial a vector containing the trial numbers for each answer.
 #' Note: If you input long data (i.e., repeating trial-answer responses),
 #' we will take the unique combination of the responses. If a trial number
 #' is repeated, you will receive an error. Key and key.trial can also be
 #' a separate dataframe, depending on how your output data is formatted.
-#' @param id a vector containing participant ID numbers
-#' @param id.trial a vector containing the trial numbers for the participant data
+#' @param id a column name containing participant ID numbers from
+#' the original dataframe
+#' @param id.trial a column name containing the trial numbers
+#' for the participant data from the original dataframe
 #' @param cutoff a numeric value that determines the criteria for
 #' scoring (i.e., 0 = strictest, 5 = is most lenient). The scoring
 #' criteria uses a Levenshtein distance measure to match participant
@@ -24,13 +36,8 @@
 #' @param flag a logical argument if you want to flag participant scores
 #' that are outliers using z-scores away from the mean score for group
 #' @param group.by an optional argument that can be used to group the
-#' output by one condition column
-#' @param group.by.names an optional argument that can be used to
-#' name the grouping variables in your output
-#' @param other an optional argument to combine other columns with the
-#' output from this function.
-#' @param other.names an optional argument that can be used to
-#' name the other variables in your output
+#' output by condition columns. These columns should be in the original
+#' dataframe and concatenated c() if there are multiple columns
 #' @param token.split an optional argument that can be used to delineate
 #' how to separate tokens. The default is a space after punctuation and
 #' additional spacing is removed.
@@ -48,11 +55,11 @@
 #' grouping variables, along with overall total proportion correct
 #' scoring.}
 #'
-#' @keywords proportion correct, scoring, free recall
+#' @keywords proportion correct, scoring, recall, sentences
 #' @export
 #' @examples
 #'
-#' #This data contains cued recall test with responses and answers together.
+#' #This data contains sentence recall test with responses and answers together.
 #' #You can use a separate answer key, but this example will show you an
 #' #embedded answer key. This example also shows how you can use different
 #' #stimuli across participants (i.e., each person sees a randomly selected
@@ -79,21 +86,28 @@
 #'
 #'head(scored_output$DF_Group)
 #'
-prop_correct_sentence <- function(responses, key, key.trial, id, id.trial,
-                              cutoff = 0, flag = FALSE,
-                              group.by = NULL,
-                              group.by.names = NULL,
-                              other = NULL,
-                              other.names = NULL,
-                              token.split = " "){
+prop_correct_sentence <- function(data, responses,
+                                  key, key.trial, id, id.trial,
+                                  cutoff = 0, flag = FALSE,
+                                  group.by = NULL,
+                                  token.split = " "){
 
   #create data from inputs ----
 
-  #create a dataframe of the data
-  DF <- data.frame("Sub.ID" = id, "Responses" = responses, "Trial.ID" = id.trial)
+  #grab the input dataframe  and convert to our names
+  DF <- as.data.frame(data)
+  colnames(DF)[grepl(responses, colnames(DF))] <- "Responses"
+  colnames(DF)[grepl(id, colnames(DF))] <- "Sub.ID"
+  colnames(DF)[grepl(id.trial, colnames(DF))] <- "Trial.ID"
 
   #create the answer key
-  answer_key <- data.frame("Answer" = key, "Trial.ID" = key.trial)
+  #if the length > 1, assume it's a vector to merge together
+  if (length(key) > 1){
+    answer_key <- data.frame("Answer" = key, "Trial.ID" = key.trial)
+  } else { #assume it is in the original dataframe
+    answer_key <- data.frame("Answer" = data[ , key],
+                             "Trial.ID" = data[ , key.trial])
+  }
 
   #find unique keys
   answer_key <- unique(answer_key)
@@ -106,64 +120,6 @@ prop_correct_sentence <- function(responses, key, key.trial, id, id.trial,
 
   #now merge key and data
   DF <- merge(DF, answer_key, by = "Trial.ID")
-
-  #merge back other data
-  if (!is.null(other)){
-
-    #convert to data frame
-    other <- as.data.frame(other)
-
-    #add in column names
-    if (!is.null(other.names)){
-      if(ncol(other) != length(other.names)){
-        stop("Your other columns and other.names arguments do not have the
-             same number of items. Please check your code.")
-      }
-      colnames(other) <- other.names
-    } else {
-      colnames(other) <- paste0("other", c(1:ncol(other)))
-    }
-
-    #make sure long enough
-    if(nrow(other) != length(id)) {
-      stop("Your other variables are not the same length as the participant
-           IDs. Please check your data.")
-    }
-
-    other <- cbind(other,id)
-    other_unique <- unique(other)
-    colnames(other)[ncol(other)] <- colnames(other_unique)[ncol(other)] <- "Sub.ID"
-    DF <- merge(DF, other_unique, by = "Sub.ID")
-  }
-
-  #merge back grouping data
-  if (!is.null(group.by)){
-
-    #convert to data frame
-    group.by <- as.data.frame(group.by)
-
-    #add in column names
-    if (!is.null(group.by.names)){
-      if(ncol(group.by) != length(group.by.names)){
-        stop("Your group.by columns and group.by.names arguments do not have the
-             same number of items. Please check your code.")
-      }
-      colnames(group.by) <- group.by.names
-    } else {
-      colnames(group.by) <- paste0("group.by", c(1:ncol(group.by)))
-    }
-
-    #make sure long enough
-    if(nrow(group.by) != length(id)) {
-      stop("Your group.by variables are not the same length as the participant
-           IDs. Please check your data.")
-    }
-
-    group.by <- cbind(group.by,id)
-    group.by_unique <- unique(group.by)
-    colnames(group.by)[ncol(group.by)] <- colnames(group.by_unique)[ncol(group.by)] <- "Sub.ID"
-    DF <- merge(DF, group.by_unique, by = "Sub.ID")
-  }
 
   #create the scored data ----
 
@@ -250,22 +206,35 @@ prop_correct_sentence <- function(responses, key, key.trial, id, id.trial,
   k <- tapply(DF$Trial.ID, DF$Sub.ID, length)
   if(min(k) != max(k)){
     warning("The number of trials is not the same for every participant.
-            We will use the max value of trials to calculate proportion
-            correct. Check your data if this is not intended.")
+            This summary represents an average of the avaliable trials
+            for each participant.")
   }
-  k <- max(k)
 
   #create participant data frame ----
-  DF_participant <- aggregate(DF$Proportion.Match, list(DF$Sub.ID), mean)
-  colnames(DF_participant) <- c("Sub.ID", "Proportion.Correct")
-
-  if (!is.null(other)){
-    DF_participant <- merge(DF_participant, other_unique, by = "Sub.ID")
-  }
-
   if (!is.null(group.by)){
-    DF_participant <- merge(DF_participant, group.by_unique, by = "Sub.ID")
+
+    DF_participant <- aggregate(DF$Proportion.Match,
+                                by = DF[ , c(group.by, "Sub.ID")],
+                                mean)
+    colnames(DF_participant) <- c(group.by, "Sub.ID", "Proportion.Correct")
+  } else {
+
+    DF_participant <- aggregate(DF$Proportion.Match,
+                                list(DF$Sub.ID), mean)
+    colnames(DF_participant) <- c("Sub.ID", "Proportion.Correct")
   }
+
+  #add back in other columns that are one to one
+  other.columns <- setdiff(colnames(DF),
+                           c("Responses", "Sub.ID", "Answer", "Scored",
+                             colnames(DF_participant)))
+  for (col in other.columns){
+    DF_temp <- unique(DF[ , c("Sub.ID", col)])
+    if (sum(duplicated(DF_temp$Sub.ID)) == 0){
+      DF_participant <- merge(DF_participant, DF_temp, by = "Sub.ID")
+    }
+  }
+
 
   #if they want to flag participants ----
   if (flag) {
@@ -274,7 +243,7 @@ prop_correct_sentence <- function(responses, key, key.trial, id, id.trial,
     if (!is.null(group.by)){
 
       DF_participant$Z.Score.Group <- ave(DF_participant$Proportion.Correct,
-                                          DF_participant[ , colnames(group.by)[1:ncol(group.by)-1]],
+                                          DF_participant[ , group.by],
                                           FUN = scale)
 
     }
@@ -288,21 +257,30 @@ prop_correct_sentence <- function(responses, key, key.trial, id, id.trial,
 
     #summarize participant scores by group
     DF_group_person <- aggregate(DF$Proportion.Match,
-                                 list(DF[ , colnames(group.by)[1:ncol(group.by)-1]],
-                                      DF$Sub.ID),
-                          function(x){sum(x)/k})
-    colnames(DF_group_person) <- c(colnames(group.by)[1:ncol(group.by)-1],
-                                   "Sub.ID", "Mean")
-    DF_group <- aggregate(DF_group_person$Mean,
-                          list(DF_group_person[ , colnames(group.by)[1:ncol(group.by)-1]]), mean)
-    DF_group$SD <- aggregate(DF_group_person$Mean,
-                             list(DF_group_person[ , colnames(group.by)[1:ncol(group.by)-1]]), sd)$x
-    DF_group$N <- aggregate(DF_group_person$Mean,
-                            list(DF_group_person[ , colnames(group.by)[1:ncol(group.by)-1]]), length)$x
-    DF_group <- rbind(DF_group,
-                      c("overall", mean(DF_group_person$Mean),
-                        sd(DF_group_person$Mean), length(DF_group_person$Mean)))
-    colnames(DF_group) <- c(colnames(group.by)[1:ncol(group.by)-1], "Mean", "SD", "N")
+                                 by = DF[ , c(group.by, "Sub.ID")],
+                                 mean)
+    colnames(DF_group_person) <- c(group.by,"Sub.ID", "Mean")
+
+    #why does aggregate do this
+    #if one variable by has to be a list
+    #if more than one, no list allowed
+    if (length(group.by) > 1){
+      DF_group <- aggregate(DF_group_person$Mean,
+                            by = DF_group_person[ , group.by], mean)
+      DF_group$SD <- aggregate(DF_group_person$Mean,
+                               by = DF_group_person[ , group.by], sd)$x
+      DF_group$N <- aggregate(DF_group_person$Mean,
+                              by = DF_group_person[ , group.by], length)$x
+    } else {
+      DF_group <- aggregate(DF_group_person$Mean,
+                            by = list(DF_group_person[ , group.by]), mean)
+      DF_group$SD <- aggregate(DF_group_person$Mean,
+                               by = list(DF_group_person[ , group.by]), sd)$x
+      DF_group$N <- aggregate(DF_group_person$Mean,
+                              by = list(DF_group_person[ , group.by]), length)$x
+    }
+
+    colnames(DF_group) <- c(group.by, "Mean", "SD", "N")
 
     return(list(DF_Scored = DF,
                 DF_Participant = DF_participant,
