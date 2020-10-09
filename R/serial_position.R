@@ -9,8 +9,14 @@
 #' tested position. The first and last positions must be answered in the
 #' correct place.
 #'
-#' This output can then be used to create serial position curve visualizations,
+#' This output can then be used to create a serial position curve visualizations,
 #' and an example can be found in our manuscript/vignettes.
+#'
+#' Important: The code is written assuming group.by variables are
+#' between subjects for an individual recall list.
+#' If repeated measures are used (i.e., there are
+#' multiple lists completed by each participant or multiple list versions),
+#' you should use this function several times, once on each list/answer key.
 #'
 #' @param data a dataframe of the scored free recall that you would
 #' like to calculate - use prop_correct_free() for best formatting.
