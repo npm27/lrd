@@ -31,7 +31,7 @@
 #'
 #' @return
 #' \item{DF_CRP}{A dataframe of the proportion correct for each
-#' conditional lab position including any other between subjects
+#' conditional lag position including any other between subjects
 #' variables present in the data.}
 #'
 #' @keywords proportion correct, scoring, free recall, serial position
@@ -58,14 +58,14 @@
 #'  flag = TRUE,
 #'  group.by = "Version")
 #'
-#' serial_output <- serial_position(data = scored_output$DF_Scored,
-#'  key = DF_answer$Answer_Key,
+#' crp_output <- crp(data = scored_output$DF_Scored,
 #'  position = "position",
-#'  scored = "Scored",
 #'  answer = "Answer",
-#'  group.by = "Version")
+#'  id = "Sub.ID",
+#'  key = DF_answer$Answer_Key,
+#'  scored = "Scored")
 #'
-#'  head(serial_output)
+#'  head(crp_output)
 #'
 crp <- function(data, position, answer, id,
                 key, scored){
@@ -151,3 +151,5 @@ crp <- function(data, position, answer, id,
   return(DF_final)
 
 }
+
+#' @rdname crp
