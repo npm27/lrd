@@ -23,12 +23,12 @@ scored_output <- prop_correct_free( data = DF_long,
                                     flag = TRUE,
                                     group.by = "Version")
 
-key = DF_answer$Answer_Key
-data = scored_output$DF_Scored
-position = "position"
-scored = "Scored"
-answer = "Answer"
-group.by = "Version"
+#key = DF_answer$Answer_Key
+#data = scored_output$DF_Scored
+#position = "position"
+#scored = "Scored"
+#answer = "Answer"
+#group.by = "Version"
 
 source("R/serial_position.R")
 
@@ -39,3 +39,12 @@ serial_output <- serial_position(data = scored_output$DF_Scored,
                                  answer = "Answer",
                                  group.by = "Version")
 head(serial_output)
+
+tapply(serial_output$Proportion.Correct, serial_output$Tested.Position, mean)
+
+##Quick plot
+library(ggplot2)
+
+ggplot(data = serial_output, aes(x = Tested.Position, y = serial_output$Proportion.Correct)) +
+  geom_line() +
+  geom_point()
