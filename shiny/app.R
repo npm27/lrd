@@ -10,7 +10,7 @@ library(vecsets)
 library(Hmisc)
 library(rio)
 library(DT)
-
+library(lrd)
 
 # Load Pages --------------------------------------------------------------
 
@@ -73,6 +73,52 @@ server <- function(input, output, session) {
     output$free_recall_answer <- renderDT({
         values$answer_key_free
     })
+
+    # Cued Recall Scoring -------------------------------------------------------
+
+    # Get the data
+    observeEvent(input$cued_data, {
+        if (is.null(input$cued_data)) return(NULL)
+        values$cued_data <<- import(input$cued_data$datapath)
+    })
+
+    observeEvent(input$answer_key_cued, {
+        if (is.null(input$answer_key_cued)) return(NULL)
+        values$answer_key_cued <<- import(input$answer_key_cued$datapath)
+    })
+
+    # Output the data
+    output$cued_recall_data <- renderDT({
+        values$cued_data
+    })
+
+    output$cued_recall_answer <- renderDT({
+        values$answer_key_cued
+    })
+
+    # Sentence Recall Scoring -------------------------------------------------------
+
+    # Get the data
+    observeEvent(input$sentence_data, {
+        if (is.null(input$sentence_data)) return(NULL)
+        values$sentence_data <<- import(input$sentence_data$datapath)
+    })
+
+    observeEvent(input$answer_key_sentence, {
+        if (is.null(input$answer_key_sentence)) return(NULL)
+        values$answer_key_sentence <<- import(input$answer_key_sentence$datapath)
+    })
+
+    # Output the data
+    output$sentence_recall_data <- renderDT({
+        values$sentence_data
+    })
+
+    output$sentence_recall_answer <- renderDT({
+        values$answer_key_sentence
+    })
+
+
 
 
 
