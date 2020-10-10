@@ -4,21 +4,19 @@
 \alias{arrange_data}
 \title{Arrange Data for Free Recall Scoring}
 \usage{
-arrange_data(responses, sep, id, other = NULL, other.names = NULL)
+arrange_data(data, responses, sep, id)
 }
 \arguments{
-\item{responses}{a vector containing participant responses}
+\item{data}{a dataframe of the variables you would like to return.
+Other variables will be included in the returned output in long format.}
+
+\item{responses}{a column name in the dataframe that contains
+the participant answers for each item in quotes (i.e., "column")}
 
 \item{sep}{a character separating each response in quotes - example: ",".}
 
-\item{id}{a vector containing participant ID numbers}
-
-\item{other}{an optional argument for passing condition or other columns
-you would like to include with the rearranged data. Note: It should
-contain the same number of rows as the id variable.}
-
-\item{other.names}{an optional argument that can be used to
-name the other variables in your output}
+\item{id}{a column name containing participant ID numbers from
+the original dataframe}
 }
 \value{
 A dataframe of the participant answers including:
@@ -37,8 +35,8 @@ responses are stored in the same cell and converts it to long format.
 #experiment condition.
 
 DF <- read.csv("data/wide_data.csv")
-DF_long <- arrange_data(responses = DF$Response, sep = ",",
-           id = DF$Sub.ID, other = DF$Disease.Condition)
+DF_long <- arrange_data(responses = "Response", sep = ",",
+           id = "Sub.ID")
 head(DF_long)
 
 }

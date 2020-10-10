@@ -19,7 +19,14 @@ info_tab <-
                    score free recall, cued recall, and sentence answers. <br>
                    On each page, you can upload your data and answer key
                    to score the data. Each of these boxes can be closed to view
-                   other output from the function.")
+                   other output from the function."),
+              p(" "),
+              HTML("<b>Arrange Data</b>:
+                   Use the arrange data function to convert responses in wide
+                   format (i.e., one row per participant) to long format (i.e.,
+                   one row per answer per participant. All functions assume your data
+                   is in long format!")
+
               ) # box
             ) #fluidrow
           ) #close page

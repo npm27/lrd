@@ -51,9 +51,7 @@
 #'
 #' DF_long <- arrange_data(responses = DF_test$Response,
 #'                         sep = ",",
-#'                         id = DF_test$Sub.ID,
-#'                         other = DF_test$Disease.Condition,
-#'                         other.names = "Disease.Condition")
+#'                         id = DF_test$Sub.ID)
 #'
 #' scored_output <- prop_correct_free(data = DF_long,
 #'                                    responses = "response",

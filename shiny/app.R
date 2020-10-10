@@ -16,6 +16,7 @@ library(lrd)
 
 source("info_tab.R")
 source("free_recall.R")
+source("wide_tab.R")
 #source("cued_recall.R")
 #source("sentence_recall.R")
 
@@ -26,6 +27,8 @@ ui <- dashboardPage(skin = "blue",
         sidebarMenu(
             menuItem("Information", tabName = "info_tab",
                      icon = icon("question-circle")),
+            menuItem("Arrange Data", tabName = "wide_tab",
+                     icon = icon("sort-amount-down")),
             menuItem("Free Recall", tabName = "free_recall",
                      icon = icon("sd-card")),
             menuItem("Cued Recall", tabName = "cued_recall",
@@ -37,6 +40,7 @@ ui <- dashboardPage(skin = "blue",
     dashboardBody(
         tabItems(
             info_tab,
+            wide_tab,
             free_recall
             #,
             # cued_recall,
@@ -50,17 +54,35 @@ server <- function(input, output, session) {
 
     values <- reactiveValues()
 
+    # Wide to long conversion -------------------------------------------------
+
+    # Get the data
+    observeEvent(input$wide_input, {
+        if(is.null(input$wide_input)) return(NULL)
+        values$wide_data <- import(input$wide_input$datapath)
+    })
+
+    # Output the data
+    output$wide_data <- renderDT({
+        values$wide_data
+    })
+
+    # Convert the data
+    output$long_data_output <- renderDT({
+        #do the conversion
+    })
+
     # Free Recall Scoring -------------------------------------------------------
 
     # Get the data
     observeEvent(input$free_data, {
         if (is.null(input$free_data)) return(NULL)
-        values$free_data <<- import(input$free_data$datapath)
+        values$free_data <- import(input$free_data$datapath)
     })
 
     observeEvent(input$answer_key_free, {
         if (is.null(input$answer_key_free)) return(NULL)
-        values$answer_key_free <<- import(input$answer_key_free$datapath)
+        values$answer_key_free <- import(input$answer_key_free$datapath)
     })
 
     # Output the data
@@ -72,29 +94,64 @@ server <- function(input, output, session) {
         values$answer_key_free
     })
 
-    output$multiple_selectUI <- renderUI({
-        selectizeInput("multiple_select", "Select Words:",
-                       choices = words_for_input,
-                       multiple = TRUE) #close selectizeInput
+    # Create the answer choices
+    output$free_responsesUI <- renderUI({
+        selectizeInput("free_responses", "Choose the response column:",
+                       choices = colnames(values$free_data),
+                       multiple = F)
     })
 
-    htmlOutput("multiple_selectUI")
+    output$free_keyUI <- renderUI({
+        selectizeInput("free_key", "Choose the answer key column:",
+                       choices = colnames(values$answer_key_free),
+                       multiple = F)
+    })
 
-    updateSelectizeInput(session, "free_responses",
-                         choices = colnames(values$free_data),
-                         server = T)
+    output$free_idUI <- renderUI({
+        selectizeInput("free_id", "Choose the participant id column:",
+                       choices = colnames(values$free_data),
+                       multiple = F)
+    })
 
-    updateSelectizeInput(session, "free_key",
-                         choices = colnames(values$answer_key_free),
-                         server = T)
+    output$free_group.byUI <- renderUI({
+        selectizeInput("free_group.by", "Choose the group by columns:",
+                       choices = colnames(values$free_data),
+                       multiple = T)
+    })
 
-    updateSelectizeInput(session, "free_id",
-                         choices = colnames(values$free_data),
-                         server = T)
+    # Score the free recall
+    observeEvent(input$free_recall_go, {
 
-    updateSelectizeInput(session, "free_group.by",
-                         choices = colnames(values$free_data),
-                         server = T)
+        print(input$free_responses)
+        print(input$free_key)
+        print(input$free_id)
+        print(input$free_group.by)
+        print(input$free_cutoff)
+        print(input$free_flag)
+
+        print(class(input$free_responses))
+        print(class(input$free_key))
+        print(class(input$free_id))
+        print(class(input$free_group.by))
+        print(class(input$free_cutoff))
+        print(class(input$free_flag))
+
+        values$free_recall_calculated <- prop_correct_free(
+            data = values$free_data,
+            responses = input$free_responses,
+            key = values$answer_key_free[ , input$free_key],
+            id = input$free_id,
+            cutoff = input$free_cutoff,
+            flag = input$flag,
+            group.by = c(input$free_group.by)
+        )
+
+        })
+
+    output$free_recall_scored <- renderDT({values$free_recall_calculated$DF_Scored})
+    #output$free_recall_participant <- renderDT({})
+    #output$free_recall_group.by <- renderDT({})
+    #output$free_recall_graph <- renderPlot({})
 
     # # Cued Recall Scoring -------------------------------------------------------
     #

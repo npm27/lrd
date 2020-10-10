@@ -3,14 +3,13 @@
 #' This function takes wide format free recall data where all
 #' responses are stored in the same cell and converts it to long format.
 #'
-#' @param responses a vector containing participant responses
+#' @param data a dataframe of the variables you would like to return.
+#' Other variables will be included in the returned output in long format.
+#' @param responses a column name in the dataframe that contains
+#' the participant answers for each item in quotes (i.e., "column")
 #' @param sep a character separating each response in quotes - example: ",".
-#' @param id a vector containing participant ID numbers
-#' @param other an optional argument for passing condition or other columns
-#' you would like to include with the rearranged data. Note: It should
-#' contain the same number of rows as the id variable.
-#' @param other.names an optional argument that can be used to
-#' name the other variables in your output
+#' @param id a column name containing participant ID numbers from
+#' the original dataframe
 #'
 #' @return A dataframe of the participant answers including:
 #' \item{Sub.ID}{The participant id number}
@@ -26,15 +25,17 @@
 #' #experiment condition.
 #'
 #' DF <- read.csv("data/wide_data.csv")
-#' DF_long <- arrange_data(responses = DF$Response, sep = ",",
-#'            id = DF$Sub.ID, other = DF$Disease.Condition)
+#' DF_long <- arrange_data(responses = "Response", sep = ",",
+#'            id = "Sub.ID")
 #' head(DF_long)
 #'
-arrange_data <- function(responses, sep, id,
-                         other = NULL, other.names = NULL){
+arrange_data <- function(data, responses, sep, id){
+
+  #get the data
+  data <- as.data.frame(data)
 
   #split the strings, returns a list
-  answers <- strsplit(responses, split = sep)
+  answers <- strsplit(data[ , responses], split = sep)
 
   #list to long
   df <- data.frame(response = unlist(answers))
@@ -44,38 +45,22 @@ arrange_data <- function(responses, sep, id,
   df$response <- trimws(df$response, "both")
 
   #add participant id
-  df$Sub.ID <- rep(id, unlist(lapply(answers, length)))
+  df$Sub.ID <- rep(data[ , id], unlist(lapply(answers, length)))
 
   #add position tag
   df$position <- ave(df$Sub.ID, df$Sub.ID, FUN = seq_along)
 
-  #add back in other variables
-  if(!is.null(other)){
-
-    #make a dataframe
-    other <- as.data.frame(other)
-    if (!is.null(other.names)){
-      if(ncol(other) != length(other.names)){
-        stop("Your other columns and other.names arguments do not have the
-             same number of items. Please check your code.")
-      }
-      colnames(other) <- other.names
+  #add back in other columns that are one to one
+  other.columns <- setdiff(colnames(data),
+                           c("response", "Sub.ID", "position", responses))
+  for (col in other.columns){
+    data_temp <- unique(data[ , c("Sub.ID", col)])
+    if (sum(duplicated(data$Sub.ID)) == 0){
+      df <- merge(df, data_temp, by = "Sub.ID")
     }
+  }
 
-    #check its length
-    if(nrow(other) != length(id)){
-      stop("The number of rows or items in the additional columns need to match
-           the number of participants in the id column.")
-    } else {
-        other$Sub.ID <- id
-        final_df <- merge(df, other, by = "Sub.ID")
-    }
-    #otherwise just return final data
-  } else {
-      final_df <- df
-    }
-
-  return(final_df)
+  return(df)
 }
 
 #' @rdname arrange_data

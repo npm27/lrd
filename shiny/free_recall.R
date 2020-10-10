@@ -48,19 +48,20 @@ free_recall <-
 
             # Set Up Free Recall ---------------------------------------------------------
             box(
-              title = tags$b("Participant Output"),
+              title = tags$b("Scoring Set Up"),
               collapsible = TRUE,
               solidHeader = TRUE,
               status = "primary",
               width = 12,
               p(" "),
-              selectizeInput('free_responses', "Choose the response column:", choices = NULL),
-              selectizeInput('free_key', "Choose the answer key column:", choices = NULL),
-              selectizeInput('free_id', "Choose the participant ID:", choices = NULL),
-              selectizeInput('free_group.by', "Choose the group by columns:", choices = NULL, multiple = TRUE),
-              sliderInput('free_cutoff', label, min = 0, max = 5, value = 0, step = 1,
+              htmlOutput("free_responsesUI"),
+              htmlOutput("free_keyUI"),
+              htmlOutput("free_idUI"),
+              htmlOutput("free_group.byUI"),
+              sliderInput('free_cutoff', "Choose the scoring cutoff:", min = 0, max = 5, value = 0, step = 1,
                           round = TRUE),
-              checkboxInput('free_flag', "Do you want to flag for outliers?", value = FALSE, width = NULL)
+              checkboxInput('free_flag', "Do you want to flag for outliers?", value = FALSE, width = NULL),
+              actionButton("free_recall_go", "Score Your Data")
             )
             #, # box
 #

@@ -48,9 +48,7 @@
 #'
 #' DF_long <- arrange_data(responses = DF_test$Response,
 #'  sep = " ",
-#'  id = DF_test$Username,
-#'  other = DF_test$Version,
-#'  other.names = "Version")
+#'  id = DF_test$Username)
 #'
 #' scored_output <- prop_correct_free( data = DF_long,
 #'  responses = "response",
