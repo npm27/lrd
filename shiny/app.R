@@ -6,21 +6,18 @@
 library(shiny)
 library(shinydashboard)
 library(ggplot2)
-library(vecsets)
-library(Hmisc)
+# library(vecsets)
+# library(Hmisc)
 library(rio)
 library(DT)
 library(lrd)
 
 # Load Pages --------------------------------------------------------------
 
-#####note here if these are functions in the package,
-#####we should just load them directly from the package
-source("scripts.R")
 source("info_tab.R")
 source("free_recall.R")
-source("cued_recall.R")
-source("sentence_recall.R")
+#source("cued_recall.R")
+#source("sentence_recall.R")
 
 # Define UI for application that draws a histogram
 ui <- dashboardPage(skin = "blue",
@@ -40,9 +37,10 @@ ui <- dashboardPage(skin = "blue",
     dashboardBody(
         tabItems(
             info_tab,
-            free_recall,
-            cued_recall,
-            sentence_recall
+            free_recall
+            #,
+            # cued_recall,
+            # sentence_recall
             )
     )
 )
@@ -74,57 +72,74 @@ server <- function(input, output, session) {
         values$answer_key_free
     })
 
-    # Cued Recall Scoring -------------------------------------------------------
-
-    # Get the data
-    observeEvent(input$cued_data, {
-        if (is.null(input$cued_data)) return(NULL)
-        values$cued_data <<- import(input$cued_data$datapath)
+    output$multiple_selectUI <- renderUI({
+        selectizeInput("multiple_select", "Select Words:",
+                       choices = words_for_input,
+                       multiple = TRUE) #close selectizeInput
     })
 
-    observeEvent(input$answer_key_cued, {
-        if (is.null(input$answer_key_cued)) return(NULL)
-        values$answer_key_cued <<- import(input$answer_key_cued$datapath)
-    })
+    htmlOutput("multiple_selectUI")
 
-    # Output the data
-    output$cued_recall_data <- renderDT({
-        values$cued_data
-    })
+    updateSelectizeInput(session, "free_responses",
+                         choices = colnames(values$free_data),
+                         server = T)
 
-    output$cued_recall_answer <- renderDT({
-        values$answer_key_cued
-    })
+    updateSelectizeInput(session, "free_key",
+                         choices = colnames(values$answer_key_free),
+                         server = T)
 
-    # Sentence Recall Scoring -------------------------------------------------------
+    updateSelectizeInput(session, "free_id",
+                         choices = colnames(values$free_data),
+                         server = T)
 
-    # Get the data
-    observeEvent(input$sentence_data, {
-        if (is.null(input$sentence_data)) return(NULL)
-        values$sentence_data <<- import(input$sentence_data$datapath)
-    })
+    updateSelectizeInput(session, "free_group.by",
+                         choices = colnames(values$free_data),
+                         server = T)
 
-    observeEvent(input$answer_key_sentence, {
-        if (is.null(input$answer_key_sentence)) return(NULL)
-        values$answer_key_sentence <<- import(input$answer_key_sentence$datapath)
-    })
-
-    # Output the data
-    output$sentence_recall_data <- renderDT({
-        values$sentence_data
-    })
-
-    output$sentence_recall_answer <- renderDT({
-        values$answer_key_sentence
-    })
-
-
-
-
-
-
-
-
+    # # Cued Recall Scoring -------------------------------------------------------
+    #
+    # # Get the data
+    # observeEvent(input$cued_data, {
+    #     if (is.null(input$cued_data)) return(NULL)
+    #     values$cued_data <<- import(input$cued_data$datapath)
+    # })
+    #
+    # observeEvent(input$answer_key_cued, {
+    #     if (is.null(input$answer_key_cued)) return(NULL)
+    #     values$answer_key_cued <<- import(input$answer_key_cued$datapath)
+    # })
+    #
+    # # Output the data
+    # output$cued_recall_data <- renderDT({
+    #     values$cued_data
+    # })
+    #
+    # output$cued_recall_answer <- renderDT({
+    #     values$answer_key_cued
+    # })
+    #
+    # # Sentence Recall Scoring -------------------------------------------------------
+    #
+    # # Get the data
+    # observeEvent(input$sentence_data, {
+    #     if (is.null(input$sentence_data)) return(NULL)
+    #     values$sentence_data <<- import(input$sentence_data$datapath)
+    # })
+    #
+    # observeEvent(input$answer_key_sentence, {
+    #     if (is.null(input$answer_key_sentence)) return(NULL)
+    #     values$answer_key_sentence <<- import(input$answer_key_sentence$datapath)
+    # })
+    #
+    # # Output the data
+    # output$sentence_recall_data <- renderDT({
+    #     values$sentence_data
+    # })
+    #
+    # output$sentence_recall_answer <- renderDT({
+    #     values$answer_key_sentence
+    # })
+    #
 
 }
 
