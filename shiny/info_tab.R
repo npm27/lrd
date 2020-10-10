@@ -5,11 +5,21 @@ info_tab <-
               title = tags$b("lrd: An app for quickly scoring lexical data"),
               collapsible = TRUE,
               solidHeader = TRUE,
-              status = "success",
+              status = "primary",
               width = 12,
-              p("Written by: XYZ"),
-              p("Cite our paper: XZY"),
-              p("How to navigate the app")
+              p(" "),
+              HTML("<b>Written by: </b>
+                   Nicholas P. Maxwell, Erin M. Buchanan, Mark Huff"),
+              p(" "),
+              HTML("<b>Cite our paper:</b> Nick! Update this!"),
+              p(" "),
+              HTML("<b>How to navigate the app</b>:
+                   Use the navigation side bar on the left to select
+                   the type of data you are trying to score. You can
+                   score free recall, cued recall, and sentence answers. <br>
+                   On each page, you can upload your data and answer key
+                   to score the data. Each of these boxes can be closed to view
+                   other output from the function.")
               ) # box
             ) #fluidrow
           ) #close page

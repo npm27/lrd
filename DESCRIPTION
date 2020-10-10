@@ -2,19 +2,19 @@ Package: lrd
 Title: The lrd Package: A Package for Processing Lexical Response Data
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Nicholas",
+    c(person(given = "Nicholas",
            family = "Maxwell",
            role = c("aut", "cre"),
            email = "nicholas.maxwell@usm.edu",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: This package is used for processing cued-recall and free-recall responses from memory experiments.
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+           person("Erin M.", "Buchanan", role = c("aut"),
+                     email = "buchananlab@gmail.com",
+                     comment = c(ORCID = "0000-0002-9689-4189")))
+Description: This package is used for processing cued-recall, free-recall, and sentence responses from memory experiments.
 Imports:
-    vecsets (>= 1.2.1),
-    dplyr (>= 0.7.1),
-    koRpus (>= 0.11-2),
-    koRpus.lang.en (>= 0.1-3),
-    rapportools (>= 1.0)
-License: What license it uses
+    stats (>= 3.0.0),
+    utils (>= 3.0.0)
+License: CC BY-SA
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

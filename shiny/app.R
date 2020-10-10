@@ -11,6 +11,7 @@ library(Hmisc)
 library(rio)
 library(DT)
 
+
 # Load Pages --------------------------------------------------------------
 
 #####note here if these are functions in the package,
@@ -19,6 +20,7 @@ source("scripts.R")
 source("info_tab.R")
 source("free_recall.R")
 source("cued_recall.R")
+source("sentence_recall.R")
 
 # Define UI for application that draws a histogram
 ui <- dashboardPage(skin = "blue",
@@ -28,16 +30,19 @@ ui <- dashboardPage(skin = "blue",
             menuItem("Information", tabName = "info_tab",
                      icon = icon("question-circle")),
             menuItem("Free Recall", tabName = "free_recall",
-                     icon = icon("id-card")),
+                     icon = icon("sd-card")),
             menuItem("Cued Recall", tabName = "cued_recall",
-                     icon = icon("address-card"))
+                     icon = icon("memory")),
+            menuItem("Sentence Recall", tabName = "sentence_recall",
+                     icon = icon("keyboard"))
         )
     ),
     dashboardBody(
         tabItems(
             info_tab,
             free_recall,
-            cued_recall
+            cued_recall,
+            sentence_recall
             )
     )
 )
@@ -47,46 +52,31 @@ server <- function(input, output, session) {
 
     values <- reactiveValues()
 
-    # Get Data ----------------------------------------------------------------
+    # Free Recall Scoring -------------------------------------------------------
 
-    observeEvent(input$file1, {
-        if (is.null(input$file1)) return(NULL)
-        values$cue_data <- import(input$file1$datapath)
+    # Get the data
+    observeEvent(input$free_data, {
+        if (is.null(input$free_data)) return(NULL)
+        values$free_data <<- import(input$free_data$datapath)
     })
 
-    # Show the data -----------------------------------------------------------
-
-    output$raw_cue_data <- renderDataTable({
-        datatable(values$cue_data, rownames = F,
-                  options = list(scrollX = T))
+    observeEvent(input$answer_key_free, {
+        if (is.null(input$answer_key_free)) return(NULL)
+        values$answer_key_free <<- import(input$answer_key_free$datapath)
     })
 
-    # Score the data ----------------------------------------------------------
-
-    output$scored_cue_data <- renderDataTable({
-
-        # sliding percent scale
-        percentage <- input$Percentage / 100
-
-        #convert their cue_values$cue_dataa
-        colnames(values$cue_data)[1:3] <- c("ID", "Response", "Key")
-        values$cue_data$Response <- tolower(values$cue_data$Response)
-        values$cue_data$Key <- tolower(values$cue_data$Key)
-
-        if (length(values$cue_data) > 3) {
-
-           scored_cue <- Percent_Match(values$cue_data$Response, key = values$cue_data$Key, id = values$cue_data$ID, other = values$cue_data[ c(4:length(values$cue_data))], cutoff = percentage)
-
-        } else if (length(values$cue_data) == 3) {
-
-            scored_cue <- Percent_Match(values$cue_data$Response, key = values$cue_data$Key, id = values$cue_data$ID, other = NULL, cutoff = percentage)
-
-        }
-
-        datatable(scored_cue, rownames = F,
-                  options = list(scrollX = T))
-
+    # Output the data
+    output$free_recall_data <- renderDT({
+        values$free_data
     })
+
+    output$free_recall_answer <- renderDT({
+        values$answer_key_free
+    })
+
+
+
+
 
 
 

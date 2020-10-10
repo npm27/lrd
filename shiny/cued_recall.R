@@ -5,7 +5,7 @@ cued_recall <-
               title = tags$b("Cued Recall Scoring Instructions"),
               collapsible = TRUE,
               solidHeader = TRUE,
-              status = "success",
+              status = "primary",
               width = 12,
               p(strong("Welcome to lrd!")),
 
@@ -47,7 +47,7 @@ cued_recall <-
               title = tags$b("Upload Your Data"),
               collapsible = TRUE,
               solidHeader = TRUE,
-              status = "success",
+              status = "primary",
               width = 12,
 
               fileInput('file1', 'Choose CSV File',
@@ -74,7 +74,7 @@ cued_recall <-
               title = tags$b("Download Scored Data"),
               collapsible = TRUE,
               solidHeader = TRUE,
-              status = "success",
+              status = "primary",
               width = 12,
               p(strong("Download the data using the buttons at the bottom of the table.")),
               DTOutput("scored_cue_data")

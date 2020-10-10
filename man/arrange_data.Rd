@@ -4,20 +4,45 @@
 \alias{arrange_data}
 \title{Arrange Data for Free Recall Scoring}
 \usage{
-arrange_data(x, sep = y, id = z, other = NULL)
+arrange_data(responses, sep, id, other = NULL, other.names = NULL)
 }
 \arguments{
-\item{x}{a vector containing participant responses}
+\item{responses}{a vector containing participant responses}
 
-\item{sep}{a character separating each response. This needs to be in quotes.}
+\item{sep}{a character separating each response in quotes - example: ",".}
 
 \item{id}{a vector containing participant ID numbers}
 
-\item{Other}{an optional argument for passing condition columns. Needs to take the form of an index of the original dataframe.}
+\item{other}{an optional argument for passing condition or other columns
+you would like to include with the rearranged data. Note: It should
+contain the same number of rows as the id variable.}
+
+\item{other.names}{an optional argument that can be used to
+name the other variables in your output}
 }
 \value{
-a dataframe object containing the input vectors and a percent match column
+A dataframe of the participant answers including:
+\item{Sub.ID}{The participant id number}
+\item{response}{The participant response}
+\item{position}{The position number of the response listed}
+\item{other}{Any additional columns included}
 }
 \description{
-This function takes wide format free recall data where all responses are stored in the same cell and converts it to long format.
+This function takes wide format free recall data where all
+responses are stored in the same cell and converts it to long format.
 }
+\examples{
+
+#This dataset includes a subject number, set of answers, and
+#experiment condition.
+
+DF <- read.csv("data/wide_data.csv")
+DF_long <- arrange_data(responses = DF$Response, sep = ",",
+           id = DF$Sub.ID, other = DF$Disease.Condition)
+head(DF_long)
+
+}
+\keyword{arrange,}
+\keyword{data,}
+\keyword{long}
+\keyword{wide,}
