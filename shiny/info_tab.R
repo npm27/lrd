@@ -25,7 +25,17 @@ info_tab <-
                    Use the arrange data function to convert responses in wide
                    format (i.e., one row per participant) to long format (i.e.,
                    one row per answer per participant. All functions assume your data
-                   is in long format!")
+                   is in long format!"),
+              p(" "),
+              HTML("<b>What is the scoring cutoff?</b>
+                   Studies with open ended responses often have typos and other spelling
+                   mistakes. The scoring cutoff ranges from 0 (most strict, must be
+                   spelled exactly correct acccording to the answer key) to 5 (least
+                   strict and many things will match, so choose this carefully).
+                   What is this number? The score represents the number of insertions,
+                   deletions, and substitutions one might need to convert the given
+                   response to the answer key (Levenshtein distance). Therefore, a 1
+                   represents one letter difference, while 5 represents 5 changes.")
 
               ) # box
             ) #fluidrow

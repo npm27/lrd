@@ -14,6 +14,7 @@ wide_tab <-
                 to long format with one answer per row."),
               HTML("<b>Upload Your Data File:</b> Nearly all file types supported!
                    Only one header row is supported."),
+              p(" "),
               fileInput('wide_input', 'Choose Data File'),
               tags$style(type = "text/css",
                          ".shiny-output-error {visibility: hidden;}",
@@ -29,10 +30,30 @@ wide_tab <-
               width = 12,
               p(" "),
               HTML("<b>Here's your wide formatted data:</b>"),
+              p(" "),
               DTOutput("wide_data"),
               tags$style(type = "text/css",
                          ".shiny-output-error {visibility: hidden;}",
                          ".shiny-output-error:before {visibility: hidden;}")
+            ), # box
+
+            # Data Inputs ---------------------------------------------------------
+            box(
+              title = tags$b("Arrangement Set Up"),
+              collapsible = TRUE,
+              solidHeader = TRUE,
+              status = "primary",
+              width = 12,
+              p(" "),
+              htmlOutput("wide_responsesUI"),
+              htmlOutput("wide_idUI"),
+              textInput("wide_sep", "What is the separator for the
+              participant answers? Be sure to only include a space
+                        if you mean to use spaces.", value = ""),
+              tags$style(type = "text/css",
+                         ".shiny-output-error {visibility: hidden;}",
+                         ".shiny-output-error:before {visibility: hidden;}"),
+              actionButton("wide_data_go", "Convert Your Data")
             ), # box
 
             # Download Data ---------------------------------------------------------

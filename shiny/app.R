@@ -67,9 +67,41 @@ server <- function(input, output, session) {
         values$wide_data
     })
 
+    # Create the answer choices
+    output$wide_responsesUI <- renderUI({
+        selectizeInput("wide_responses", "Choose the response column:",
+                       choices = colnames(values$wide_data),
+                       multiple = F)
+    })
+
+    output$wide_idUI <- renderUI({
+        selectizeInput("wide_id", "Choose the participant ID column:",
+                       choices = colnames(values$wide_data),
+                       multiple = F)
+    })
+
     # Convert the data
-    output$long_data_output <- renderDT({
-        #do the conversion
+    observeEvent(input$wide_data_go, {
+
+        output$long_data_output <- renderDT(server = F, {
+            # do the conversion
+            # print(input$wide_responses)
+            # print(input$wide_sep)
+            # print(input$wide_id)
+
+            long_data <- arrange_data(data = values$wide_data,
+                         responses = input$wide_responses,
+                         sep = input$wide_sep,
+                         id = input$wide_id)
+
+            datatable(long_data,
+                      extensions = 'Buttons',
+                      options = list(dom = 'BRtp',
+                                     filename = 'long_results',
+                                     buttons = c('copy', 'csv', 'excel')),
+                      rownames = FALSE) #close datatable
+
+        })
     })
 
     # Free Recall Scoring -------------------------------------------------------
@@ -122,19 +154,19 @@ server <- function(input, output, session) {
     # Score the free recall
     observeEvent(input$free_recall_go, {
 
-        print(input$free_responses)
-        print(input$free_key)
-        print(input$free_id)
-        print(input$free_group.by)
-        print(input$free_cutoff)
-        print(input$free_flag)
-
-        print(class(input$free_responses))
-        print(class(input$free_key))
-        print(class(input$free_id))
-        print(class(input$free_group.by))
-        print(class(input$free_cutoff))
-        print(class(input$free_flag))
+        # print(input$free_responses)
+        # print(input$free_key)
+        # print(input$free_id)
+         print(input$free_group.by)
+        # print(input$free_cutoff)
+        # print(input$free_flag)
+        #
+        # print(class(input$free_responses))
+        # print(class(input$free_key))
+        # print(class(input$free_id))
+        # print(class(input$free_group.by))
+        # print(class(input$free_cutoff))
+        # print(class(input$free_flag))
 
         values$free_recall_calculated <- prop_correct_free(
             data = values$free_data,
@@ -142,16 +174,93 @@ server <- function(input, output, session) {
             key = values$answer_key_free[ , input$free_key],
             id = input$free_id,
             cutoff = input$free_cutoff,
-            flag = input$flag,
-            group.by = c(input$free_group.by)
-        )
+            flag = input$free_flag,
+            group.by = c(input$free_group.by))
+
+        output$free_recall_scored <- renderDT(server = F, {
+            datatable(values$free_recall_calculated$DF_Scored,
+                      extensions = 'Buttons',
+                      options = list(dom = 'BRtp',
+                                     filename = 'long_results',
+                                     buttons = c('copy', 'csv', 'excel')),
+                      rownames = FALSE) #close datatable
+        })
+
+        output$free_recall_participant <- renderDT(server = F, {
+            datatable(values$free_recall_calculated$DF_Participant,
+                      extensions = 'Buttons',
+                      options = list(dom = 'BRtp',
+                                     filename = 'long_results',
+                                     buttons = c('copy', 'csv', 'excel')),
+                      rownames = FALSE) #close datatable
+        })
+
+        output$free_recall_group.by <- renderDT(server = F, {
+            datatable(values$free_recall_calculated$DF_Group,
+                      extensions = 'Buttons',
+                      options = list(dom = 'BRtp',
+                                     filename = 'long_results',
+                                     buttons = c('copy', 'csv', 'excel')),
+                      rownames = FALSE) #close datatable
+        })
+
+        output$free_recall_graph <- renderPlot({
+
+            #if there are grouping variables
+            if(!is.null(input$free_group.by)){
+
+                if (length(input$free_group.by)==1){
+                    ggplot() +
+                        stat_summary(data = values$free_recall_calculated$DF_Participant,
+                                     aes_string(x = input$free_group.by[1], y = "Proportion.Correct"),
+                                     fun = mean,
+                                     geom = "bar",
+                                     fill = "White",
+                                     color = "Black") +
+                        stat_summary(data = values$free_recall_calculated$DF_Participant,
+                                     aes_string(x = input$free_group.by[1], y = "Proportion.Correct"),
+                                     fun.data = mean_cl_normal,
+                                     geom = "errorbar",
+                                     width = .2,
+                                     position = position_dodge(width = 0.90)) +
+                        theme_bw()
+                }
+
+                if (length(input$free_group.by) == 2){
+                    ggplot() +
+                        stat_summary(data = values$free_recall_calculated$DF_Participant,
+                                     aes_string(x = input$free_group.by[1],
+                                                y = "Proportion.Correct",
+                                                fill = input$free_group.by[2]),
+                                     fun = mean,
+                                     geom = "bar") +
+                        stat_summary(data = values$free_recall_calculated$DF_Participant,
+                                     aes_string(x = input$free_group.by[1],
+                                                y = "Proportion.Correct",
+                                                fill = input$free_group.by[2]),
+                                     fun.data = mean_cl_normal,
+                                     geom = "errorbar",
+                                     width = .2,
+                                     position = position_dodge(width = 0.90)) +
+                        theme_bw()
+                }
+
+
+            }
+        })
 
         })
 
-    output$free_recall_scored <- renderDT({values$free_recall_calculated$DF_Scored})
-    #output$free_recall_participant <- renderDT({})
-    #output$free_recall_group.by <- renderDT({})
-    #output$free_recall_graph <- renderPlot({})
+
+
+    #output$serial_data_output <- renderDT({})
+    #output$serial_graph <- renderPlot({})
+
+    #output$pfr_data_output <- renderDT({})
+    #output$pfr_graph <- renderPlot({})
+
+    #output$crp_data_output <- renderDT({})
+    #output$crp_graph <- renderPlot({})
 
     # # Cued Recall Scoring -------------------------------------------------------
     #
