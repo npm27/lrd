@@ -1,2 +1,4 @@
 ^lrd\.Rproj$
 ^\.Rproj\.user$
+^shiny
+^tests
