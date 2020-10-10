@@ -1,6 +1,0 @@
-# documentation at https://docs.travis-ci.com/user/languages/r
-
-# just the current release
-language: R
-r:
-  - release
