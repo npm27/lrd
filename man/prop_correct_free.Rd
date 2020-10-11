@@ -117,7 +117,7 @@ participant ID and column information).
 #stimuli across participants (i.e., each person sees a randomly selected
 #set of trials from a larger set).
 
-load("data/cued_data.Rdata")
+load("data/cued_data.RData")
 
 scored_output <- prop_correct_free(data = cued_data,
  responses = "response",
@@ -136,8 +136,8 @@ head(scored_output$DF_Participant)
 head(scored_output$DF_Group)
 
 
-load("data/wide_data.Rdata")
-load("data/answer_key_free.Rdata")
+load("data/wide_data.RData")
+load("data/answer_key_free.RData")
 
 DF_long <- arrange_data(data = wide_data,
  responses = "Response",

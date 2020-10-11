@@ -40,8 +40,8 @@
 #' @export
 #' @examples
 #'
-#' load("data/free_data.Rdata")
-#' load("data/answer_key_free2.Rdata")
+#' load("data/free_data.RData")
+#' load("data/answer_key_free2.RData")
 #'
 #' free_data <- subset(free_data,
 #'  List_Type == "Cat_Recall_L1")

@@ -34,7 +34,7 @@ responses are stored in the same cell and converts it to long format.
 #This dataset includes a subject number, set of answers, and
 #experiment condition.
 
-load("data/wide_data.Rdata")
+load("data/wide_data.RData")
 DF_long <- arrange_data(
  data = wide_data,
  responses = "Response",

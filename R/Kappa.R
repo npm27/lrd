@@ -32,7 +32,7 @@
 #' the participant and rated if the word was correct in the recall
 #' experiment.
 #'
-#' load("data/rater_data.Rdata")
+#' load("data/rater_data.RData")
 #'
 #' #Consider normalizing the text if raters used different styles
 #' #Calculate percent match for categorical answers

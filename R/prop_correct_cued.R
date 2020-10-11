@@ -64,7 +64,7 @@
 #' #stimuli across participants (i.e., each person sees a randomly selected
 #' #set of trials from a larger set).
 #'
-#' load("data/cued_data.Rdata")
+#' load("data/cued_data.RData")
 #'
 #' scored_output <- prop_correct_free(data = cued_data,
 #'  responses = "response",
