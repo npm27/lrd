@@ -27,6 +27,7 @@
 #' \item{datasets}{Possible datasets based on your language and variable names}
 #'
 #' @keywords metadata, datasets, linguistic norms
+#' @import utils
 #' @export
 #' @examples
 #'
@@ -47,7 +48,9 @@ get_dataset <- function(corpus = NULL,
 
   if (!is.null(corpus)){
 
-      con <- gzcon(url(paste("http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.",
+      con <- gzcon(
+        url(
+          paste("http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.",
                                       corpus, ".gz", sep="")))
       variable_return$subtitle <- readLines(con, encoding = "utf8")
   }

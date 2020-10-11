@@ -39,6 +39,7 @@
 #' tested position by any optional grouping variables included.}
 #'
 #' @keywords proportion correct, scoring, free recall, serial position
+#' @import stats
 #' @export
 #' @examples
 #'

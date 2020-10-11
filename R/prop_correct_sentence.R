@@ -56,6 +56,8 @@
 #' scoring.}
 #'
 #' @keywords proportion correct, scoring, recall, sentences
+#' @import stats
+#' @import utils
 #' @export
 #' @examples
 #'

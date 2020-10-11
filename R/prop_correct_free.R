@@ -44,6 +44,8 @@
 #' scoring.}
 #'
 #' @keywords proportion correct, scoring, free recall
+#' @import stats
+#' @import utils
 #' @export
 #' @examples
 #'

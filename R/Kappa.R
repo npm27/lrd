@@ -24,6 +24,7 @@
 #' \item{kappa_UL}{Upper limit for the confidence interval of kappa}
 #'
 #' @keywords rating, kappa, reliability
+#' @import stats
 #' @export
 #' @examples
 #'

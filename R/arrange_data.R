@@ -18,6 +18,7 @@
 #' \item{other}{Any additional columns included}
 #'
 #' @keywords data, arrange, wide, long
+#' @import stats
 #' @export
 #' @examples
 #'
