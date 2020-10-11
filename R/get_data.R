@@ -48,10 +48,12 @@ get_dataset <- function(corpus = NULL,
 
   if (!is.null(corpus)){
 
-      con <- gzcon(
-        url(
-          paste("http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.",
-                                      corpus, ".gz", sep="")))
+    #data link
+    #https://raw.githubusercontent.com/SemanticPriming/LAB-data/master/included_data.csv
+    #http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles
+con <- gzcon(url(paste(
+"http://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.",
+corpus, ".gz", sep="")))
       variable_return$subtitle <- readLines(con, encoding = "utf8")
   }
 

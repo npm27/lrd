@@ -29,10 +29,10 @@
 #' @examples
 #'
 #' #This dataset includes two raters who wrote the word listed by
-#' the participant and rated if the word was correct in the recall
-#' experiment.
+#' #the participant and rated if the word was correct in the recall
+#' #experiment.
 #'
-#' load("data/rater_data.RData")
+#' data("data/rater_data.RData")
 #'
 #' #Consider normalizing the text if raters used different styles
 #' #Calculate percent match for categorical answers

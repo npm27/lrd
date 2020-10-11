@@ -49,8 +49,8 @@
 #' @export
 #' @examples
 #'
-#' load("data/wide_data.RData")
-#' load("data/answer_key_free.RData")
+#' data("data/wide_data.RData")
+#' data("data/answer_key_free.RData")
 #'
 #' DF_long <- arrange_data(data = wide_data,
 #'  responses = "Response",

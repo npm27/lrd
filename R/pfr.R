@@ -40,8 +40,8 @@
 #' @export
 #' @examples
 #'
-#' load("data/free_data.RData")
-#' load("data/answer_key_free2.RData")
+#' data("data/free_data.RData")
+#' data("data/answer_key_free2.RData")
 #'
 #' free_data <- subset(free_data,
 #'  List_Type == "Cat_Recall_L1")
@@ -71,6 +71,9 @@
 #'
 pfr <- function(data, position, answer, id,
                 key, scored, group.by){
+
+  # for r cran check
+  Answered.Position <- NULL
 
   #create answer key with order
   if (sum(duplicated(key)) > 0){

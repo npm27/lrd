@@ -4,10 +4,7 @@
 \alias{load_metadata}
 \title{Load Metadata}
 \usage{
-load_metadata(
- 
-    webaddress = "https://raw.githubusercontent.com/SemanticPriming/LAB-data/master/included_data.csv"
-)
+load_metadata(webaddress = "https://rb.gy/l82i9p")
 }
 \arguments{
 \item{webaddress}{The default value for webaddress is the current location

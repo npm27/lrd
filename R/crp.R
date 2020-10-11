@@ -38,8 +38,8 @@
 #' @export
 #' @examples
 #'
-#' load("data/free_data.RData")
-#' load("data/answer_key_free2.RData")
+#' data("data/free_data.RData")
+#' data("data/answer_key_free2.RData")
 #'
 #' free_data <- subset(free_data,
 #'  List_Type == "Cat_Recall_L1")
@@ -68,6 +68,9 @@
 #'
 crp <- function(data, position, answer, id,
                 key, scored){
+
+  # for cran check
+  Sub.ID <- NULL
 
   #create answer key with order
   if (sum(duplicated(key)) > 0){

@@ -17,8 +17,13 @@
 #' metadata <- load_metadata()
 #' View(metadata)
 
-load_metadata <- function(webaddress =
- "https://raw.githubusercontent.com/SemanticPriming/LAB-data/master/included_data.csv") {
+load_metadata <- function(webaddress = "https://rb.gy/l82i9p") {
+
+  #data link
+  #https://raw.githubusercontent.com/SemanticPriming/LAB-data/master/included_data.csv
+
+  # for r cran check
+  included <- NULL
 
   metadata <- read.csv(url(webaddress), stringsAsFactors = F)
 

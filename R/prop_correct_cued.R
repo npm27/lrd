@@ -52,7 +52,7 @@
 #' grouping variables, along with overall total proportion correct
 #' scoring.}
 #'
-#' @keywords proportion correct, scoring, free recall
+#' @keywords proportion correct, scoring, cued recall
 #' @import stats
 #' @import utils
 #' @export
@@ -64,9 +64,9 @@
 #' #stimuli across participants (i.e., each person sees a randomly selected
 #' #set of trials from a larger set).
 #'
-#' load("data/cued_data.RData")
+#' data("data/cued_data.RData")
 #'
-#' scored_output <- prop_correct_free(data = cued_data,
+#' scored_output <- prop_correct_cued(data = cued_data,
 #'  responses = "response",
 #'  key = "key",
 #'  key.trial = "trial",
@@ -82,7 +82,7 @@
 #'
 #' head(scored_output$DF_Group)
 #'
-prop_correct_free <- function(data, responses,
+prop_correct_cued <- function(data, responses,
                               key, key.trial, id, id.trial,
                               cutoff = 0, flag = FALSE,
                               group.by = NULL){
