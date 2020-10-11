@@ -1,6 +1,6 @@
 # lrd - Lexical Response Data
 
-[![Travis build status](https://travis-ci.org/npm27/lrd.svg?branch=master)](https://travis-ci.org/npm27/lrd)
+[![Travis build status](https://travis-ci.org/github/npm27/lrd.svg?branch=master)](https://travis-ci.org/github/npm27/lrd)
 
 ## Overview
 
