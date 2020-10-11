@@ -92,7 +92,7 @@ participant ID and column information).
 #stimuli across participants (i.e., each person sees a randomly selected
 #set of trials from a larger set).
 
-data("data/sentence_data.RData")
+data(sentence_data)
 
 scored_output <- prop_correct_sentence(data = sentence_data,
  responses = "Response",

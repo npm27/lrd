@@ -25,7 +25,7 @@
 #' #This dataset includes a subject number, set of answers, and
 #' #experiment condition.
 #'
-#' data("data/wide_data.RData")
+#' data(wide_data)
 #'
 #' DF_long <- arrange_data(
 #'  data = wide_data,
@@ -39,6 +39,7 @@ arrange_data <- function(data, responses, sep, id){
 
   #get the data
   data <- as.data.frame(data)
+  colnames(data)[grepl(id, colnames(data))] <- "Sub.ID"
 
   #split the strings, returns a list
   answers <- strsplit(data[ , responses], split = sep)
@@ -51,7 +52,7 @@ arrange_data <- function(data, responses, sep, id){
   df$response <- trimws(df$response, "both")
 
   #add participant id
-  df$Sub.ID <- rep(data[ , id], unlist(lapply(answers, length)))
+  df$Sub.ID <- rep(data$Sub.ID, unlist(lapply(answers, length)))
 
   #add position tag
   df$position <- ave(df$Sub.ID, df$Sub.ID, FUN = seq_along)

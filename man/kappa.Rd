@@ -41,7 +41,7 @@ function will return a percent match score between these values.
 #the participant and rated if the word was correct in the recall
 #experiment.
 
-data("data/rater_data.RData")
+data(rater_data)
 
 #Consider normalizing the text if raters used different styles
 #Calculate percent match for categorical answers

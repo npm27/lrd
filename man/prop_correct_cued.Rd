@@ -87,7 +87,7 @@ participant ID and column information).
 #stimuli across participants (i.e., each person sees a randomly selected
 #set of trials from a larger set).
 
-data("data/cued_data.RData")
+data(cued_data)
 
 scored_output <- prop_correct_cued(data = cued_data,
  responses = "response",

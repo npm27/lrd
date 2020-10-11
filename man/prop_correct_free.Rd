@@ -68,8 +68,8 @@ participant ID and column information).
 }
 \examples{
 
-data("data/wide_data.RData")
-data("data/answer_key_free.RData")
+data(wide_data)
+data(answer_key_free)
 
 DF_long <- arrange_data(data = wide_data,
  responses = "Response",

@@ -21,7 +21,7 @@ This function loads the current metadata avaliable from the
 
 #Use the following to load the metadata:
 metadata <- load_metadata()
-View(metadata)
+head(metadata)
 }
 \keyword{datasets,}
 \keyword{linguistic}

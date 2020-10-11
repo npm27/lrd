@@ -15,7 +15,7 @@
 #'
 #' #Use the following to load the metadata:
 #' metadata <- load_metadata()
-#' View(metadata)
+#' head(metadata)
 
 load_metadata <- function(webaddress = "https://rb.gy/l82i9p") {
 
