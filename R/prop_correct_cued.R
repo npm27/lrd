@@ -62,23 +62,23 @@
 #' #stimuli across participants (i.e., each person sees a randomly selected
 #' #set of trials from a larger set).
 #'
-#' DF_test <- read.csv("data/cued_data.csv")
+#' load("data/cued_data.Rdata")
 #'
-#' scored_output <- prop_correct_free(data = DF_test,
-#'                                   responses = "response",
-#'                                   key = "key",
-#'                                   key.trial = "trial",
-#'                                   id = "id",
-#'                                   id.trial = "trial",
-#'                                   cutoff = 1,
-#'                                   flag = TRUE,
-#'                                   group.by = "condition")
+#' scored_output <- prop_correct_free(data = cued_data,
+#'  responses = "response",
+#'  key = "key",
+#'  key.trial = "trial",
+#'  id = "id",
+#'  id.trial = "trial",
+#'  cutoff = 1,
+#'  flag = TRUE,
+#'  group.by = "condition")
 #'
-#'head(scored_output$DF_Scored)
+#' head(scored_output$DF_Scored)
 #'
-#'head(scored_output$DF_Participant)
+#' head(scored_output$DF_Participant)
 #'
-#'head(scored_output$DF_Group)
+#' head(scored_output$DF_Group)
 #'
 prop_correct_free <- function(data, responses,
                               key, key.trial, id, id.trial,

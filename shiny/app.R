@@ -210,16 +210,18 @@ server <- function(input, output, session) {
             if(!is.null(input$free_group.by)){
 
                 if (length(input$free_group.by)==1){
-                    ggplot() +
-                        stat_summary(data = values$free_recall_calculated$DF_Participant,
-                                     aes_string(x = input$free_group.by[1], y = "Proportion.Correct"),
-                                     fun = mean,
+
+                    temp <- values$free_recall_calculated$DF_Participant
+                    temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+
+                    ggplot(temp,
+                           aes_string(x = input$free_group.by[1],
+                                      y = "Proportion.Correct")) +
+                        stat_summary(fun = mean,
                                      geom = "bar",
                                      fill = "White",
                                      color = "Black") +
-                        stat_summary(data = values$free_recall_calculated$DF_Participant,
-                                     aes_string(x = input$free_group.by[1], y = "Proportion.Correct"),
-                                     fun.data = mean_cl_normal,
+                        stat_summary(fun.data = mean_cl_normal,
                                      geom = "errorbar",
                                      width = .2,
                                      position = position_dodge(width = 0.90)) +
@@ -227,18 +229,18 @@ server <- function(input, output, session) {
                 }
 
                 if (length(input$free_group.by) == 2){
-                    ggplot() +
-                        stat_summary(data = values$free_recall_calculated$DF_Participant,
-                                     aes_string(x = input$free_group.by[1],
-                                                y = "Proportion.Correct",
-                                                fill = input$free_group.by[2]),
-                                     fun = mean,
+
+                    temp <- values$free_recall_calculated$DF_Participant
+                    temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+                    temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
+
+                    ggplot(temp,
+                           aes_string(x = input$free_group.by[1],
+                                      y = "Proportion.Correct",
+                                      fill = input$free_group.by[2])) +
+                        stat_summary(fun = mean,
                                      geom = "bar") +
-                        stat_summary(data = values$free_recall_calculated$DF_Participant,
-                                     aes_string(x = input$free_group.by[1],
-                                                y = "Proportion.Correct",
-                                                fill = input$free_group.by[2]),
-                                     fun.data = mean_cl_normal,
+                        stat_summary(fun.data = mean_cl_normal,
                                      geom = "errorbar",
                                      width = .2,
                                      position = position_dodge(width = 0.90)) +

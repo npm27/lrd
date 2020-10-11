@@ -38,19 +38,20 @@
 #' @export
 #' @examples
 #'
-#' DF_test <- read.csv("data/free_data.csv")
-#' DF_answer <- read.csv("data/answer_key_free2.csv")
+#' load("data/free_data.Rdata")
+#' load("data/answer_key_free2.Rdata")
 #'
-#' DF_test <- subset(DF_test,
+#' free_data <- subset(free_data,
 #'  List_Type == "Cat_Recall_L1")
 #'
-#' DF_long <- arrange_data(responses = DF_test$Response,
+#' DF_long <- arrange_data(data = free_data,
+#'  responses = "Response",
 #'  sep = " ",
-#'  id = DF_test$Username)
+#'  id = "Username")
 #'
 #' scored_output <- prop_correct_free( data = DF_long,
 #'  responses = "response",
-#'  key = DF_answer$Answer_Key,
+#'  key = answer_key_free2$Answer_Key,
 #'  id = "Sub.ID",
 #'  cutoff = 1,
 #'  flag = TRUE,
@@ -60,7 +61,7 @@
 #'  position = "position",
 #'  answer = "Answer",
 #'  id = "Sub.ID",
-#'  key = DF_answer$Answer_Key,
+#'  key = answer_key_free2$Answer_Key,
 #'  scored = "Scored")
 #'
 #'  head(crp_output)

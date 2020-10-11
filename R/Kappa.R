@@ -31,13 +31,13 @@
 #' the participant and rated if the word was correct in the recall
 #' experiment.
 #'
-#' DF <- read.csv("data/rater_data.csv")
+#' load("data/rater_data.Rdata")
 #'
 #' #Consider normalizing the text if raters used different styles
 #' #Calculate percent match for categorical answers
-#' kappa(DF$rater1_word, DF$rater2_word)
+#' kappa(rater_data$rater1_word, rater_data$rater2_word)
 #'
-#' kappa(DF$rater1_score, DF$rater2_score)
+#' kappa(rater_data$rater1_score, rater_data$rater2_score)
 #'
 
 kappa <- function(rater1, rater2, confidence = .95) {
