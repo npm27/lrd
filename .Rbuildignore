@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^shiny
 ^tests
+.travis.yml
