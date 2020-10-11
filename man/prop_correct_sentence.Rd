@@ -92,9 +92,9 @@ participant ID and column information).
 #stimuli across participants (i.e., each person sees a randomly selected
 #set of trials from a larger set).
 
-DF_test <- read.csv("data/sentence_data.csv")
+load("data/sentence_data.Rdata")
 
-scored_output <- prop_correct_sentence(data = DF_test,
+scored_output <- prop_correct_sentence(data = sentence_data,
  responses = "Response",
  key = "Sentence",
  key.trial = "Trial.ID",

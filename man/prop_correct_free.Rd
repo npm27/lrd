@@ -117,17 +117,17 @@ participant ID and column information).
 #stimuli across participants (i.e., each person sees a randomly selected
 #set of trials from a larger set).
 
-DF_test <- read.csv("data/cued_data.csv")
+load("data/cued_data.Rdata")
 
-scored_output <- prop_correct_free(data = DF_test,
-                                  responses = "response",
-                                  key = "key",
-                                  key.trial = "trial",
-                                  id = "id",
-                                  id.trial = "trial",
-                                  cutoff = 1,
-                                  flag = TRUE,
-                                  group.by = "condition")
+scored_output <- prop_correct_free(data = cued_data,
+ responses = "response",
+ key = "key",
+ key.trial = "trial",
+ id = "id",
+ id.trial = "trial",
+ cutoff = 1,
+ flag = TRUE,
+ group.by = "condition")
 
 head(scored_output$DF_Scored)
 
@@ -135,20 +135,22 @@ head(scored_output$DF_Participant)
 
 head(scored_output$DF_Group)
 
-DF_test <- read.csv("data/wide_data.csv")
-DF_answer <- read.csv("data/answer_key_free.csv")
 
-DF_long <- arrange_data(responses = DF_test$Response,
-                        sep = ",",
-                        id = DF_test$Sub.ID)
+load("data/wide_data.Rdata")
+load("data/answer_key_free.Rdata")
+
+DF_long <- arrange_data(data = wide_data,
+ responses = "Response",
+ sep = ",",
+ id = "Sub.ID")
 
 scored_output <- prop_correct_free(data = DF_long,
-                                   responses = "response",
-                                   key = DF_answer$Answer_Key,
-                                   id = "Sub.ID",
-                                   cutoff = 1,
-                                   flag = TRUE,
-                                   group.by = "Disease.Condition")
+ responses = "response",
+ key = answer_key_free$Answer_Key,
+ id = "Sub.ID",
+ cutoff = 1,
+ flag = TRUE,
+ group.by = "Disease.Condition")
 
 head(scored_output$DF_Scored)
 
