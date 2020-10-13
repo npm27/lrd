@@ -151,7 +151,14 @@ server <- function(input, output, session) {
                        multiple = T)
     })
 
-    # Score the free recall
+    output$free_positionUI <- renderUI({
+        selectizeInput("free_position", "Choose the position answered column for
+                       serial position curves:",
+                       choices = colnames(values$free_data),
+                       multiple = T)
+    })
+
+    # Score the free recall and do other related calculations
     observeEvent(input$free_recall_go, {
 
         # print(input$free_responses)
@@ -168,6 +175,7 @@ server <- function(input, output, session) {
         # print(class(input$free_cutoff))
         # print(class(input$free_flag))
 
+        # free recall section ----
         values$free_recall_calculated <- prop_correct_free(
             data = values$free_data,
             responses = input$free_responses,
@@ -181,7 +189,7 @@ server <- function(input, output, session) {
             datatable(values$free_recall_calculated$DF_Scored,
                       extensions = 'Buttons',
                       options = list(dom = 'BRtp',
-                                     filename = 'long_results',
+                                     filename = 'free_recall_scored',
                                      buttons = c('copy', 'csv', 'excel')),
                       rownames = FALSE) #close datatable
         })
@@ -190,7 +198,7 @@ server <- function(input, output, session) {
             datatable(values$free_recall_calculated$DF_Participant,
                       extensions = 'Buttons',
                       options = list(dom = 'BRtp',
-                                     filename = 'long_results',
+                                     filename = 'free_participant_scored',
                                      buttons = c('copy', 'csv', 'excel')),
                       rownames = FALSE) #close datatable
         })
@@ -199,7 +207,7 @@ server <- function(input, output, session) {
             datatable(values$free_recall_calculated$DF_Group,
                       extensions = 'Buttons',
                       options = list(dom = 'BRtp',
-                                     filename = 'long_results',
+                                     filename = 'free_group_scored',
                                      buttons = c('copy', 'csv', 'excel')),
                       rownames = FALSE) #close datatable
         })
@@ -251,12 +259,35 @@ server <- function(input, output, session) {
             }
         })
 
+        # serial curvees ----
+        if(!is.null(input$free_position)){
+        values$serial_calculated <- serial_position(
+            data = values$free_recall_calculated$DF_participant,
+            position = input$free_position,
+            aanswer = "Answer",
+            key = key = values$answer_key_free[ , input$free_key],
+            scored = "Scored",
+            group.by = c(input$free_group.by))
+
+        output$serial_data_output <- renderDT(server = F, {
+
+            datatable(values$serial_calculated,
+                      extensions = 'Buttons',
+                      options = list(dom = 'BRtp',
+                                     filename = 'free_serial_position',
+                                     buttons = c('copy', 'csv', 'excel')),
+                      rownames = FALSE) #close datatable
+            })
+
+        #output$serial_graph <- renderPlot({})
+
+        }
+
         })
 
 
 
-    #output$serial_data_output <- renderDT({})
-    #output$serial_graph <- renderPlot({})
+
 
     #output$pfr_data_output <- renderDT({})
     #output$pfr_graph <- renderPlot({})

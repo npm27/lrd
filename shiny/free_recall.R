@@ -68,6 +68,7 @@ free_recall <-
               sliderInput('free_cutoff', "Choose the scoring cutoff:", min = 0, max = 5, value = 0, step = 1,
                           round = TRUE),
               checkboxInput('free_flag', "Do you want to flag for outliers?", value = FALSE, width = NULL),
+              htmlOutput("free_positionUI"),
               actionButton("free_recall_go", "Score Your Data")
             ), # box
 

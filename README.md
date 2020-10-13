@@ -1,6 +1,6 @@
 # lrd - Lexical Response Data
 
-[![Travis build status](https://travis-ci.org/npm27/lrd.svg?branch=master)](https://travis-ci.com/github/npm27/lrd)
+[![Travis build status](https://travis-ci.com/npm27/lrd.svg?branch=master)](https://travis-ci.com/github/npm27/lrd)
 
 ## Overview
 
@@ -21,7 +21,7 @@ The following steps will install the development version of `lrd`. CRAN release 
 This package uses two functions for scoring data.
 
   1. `percent_match()` This function computes the percentage of overlapping characters shared between two strings.
-	
+
   2. `score_recall()` This function determines whether or not two strings match based on a user defined percentage of matching characters.
 
 Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/g96a7/).
