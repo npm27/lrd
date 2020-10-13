@@ -1,4 +1,6 @@
-DF_test <- read.csv("data/cued_data.csv")
+library(lrd)
+data(cued_data)
+DF_test <- cued_data
 
 source("R/prop_correct_cued.R")
 
@@ -13,7 +15,7 @@ source("R/prop_correct_cued.R")
 #group.by = "condition"
 
 #group.by and "" key answers
-scored_output <- prop_correct_free(data = DF_test,
+scored_output <- prop_correct_cued(data = DF_test,
                                    responses = "response",
                                    key = "key",
                                    key.trial = "trial",
