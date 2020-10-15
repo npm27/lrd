@@ -253,7 +253,7 @@ server <- function(input, output, session) {
             values$serial_calculated <- serial_position(
                 data = values$free_recall_calculated$DF_Scored,
                 position = input$free_position,
-                aanswer = "Answer",
+                answer = "Answer",
                 key = values$answer_key_free[ , input$free_key],
                 scored = "Scored",
                 group.by = c(input$free_group.by))
