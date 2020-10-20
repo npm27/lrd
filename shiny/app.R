@@ -205,7 +205,10 @@ server <- function(input, output, session) {
                     temp <- values$free_recall_calculated$DF_Participant
                     temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
 
-                    ggplot(temp,
+                    print(str(temp))
+                    print(input$free_group.by[1])
+
+                    stupid_graph <- ggplot(temp,
                            aes_string(x = input$free_group.by[1],
                                       y = "Proportion.Correct")) +
                         stat_summary(fun = mean,
@@ -225,7 +228,7 @@ server <- function(input, output, session) {
                     temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
                     temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
 
-                    ggplot(temp,
+                    stupid_graph <- ggplot(temp,
                            aes_string(x = input$free_group.by[1],
                                       y = "Proportion.Correct",
                                       fill = input$free_group.by[2])) +
@@ -241,11 +244,15 @@ server <- function(input, output, session) {
 
             } else {
 
-                ggplot(values$free_recall_calculated$DF_Participant,
+                stupid_graph <- ggplot(values$free_recall_calculated$DF_Participant,
                        aes(x = Proportion.Correct)) +
+                    xlab("Proportion Correct") +
+                    ylab("Frequency") +
                     geom_histogram() +
                     theme_bw()
             }
+
+            stupid_graph
         })
 
         # serial curves ----
@@ -278,7 +285,7 @@ server <- function(input, output, session) {
                         temp <- values$serial_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
 
-                        ggplot(data = temp,
+                        stupid_graph <- ggplot(data = temp,
                                aes_string(x = "Tested.Position",
                                           y = "Proportion.Correct",
                                           color = input$free_group.by[1])) +
@@ -297,7 +304,7 @@ server <- function(input, output, session) {
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
                         temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
 
-                        ggplot(data = temp,
+                        stupid_graph <- ggplot(data = temp,
                                aes_string(x = "Tested.Position",
                                           y = "Proportion.Correct",
                                           color = input$free_group.by[1])) +
@@ -316,7 +323,7 @@ server <- function(input, output, session) {
 
                     temp <- values$serial_calculated
                     #print(head(temp))
-                    ggplot(data = temp,
+                    stupid_graph <- ggplot(data = temp,
                            aes_string(x = "Tested.Position",
                                       y = "Proportion.Correct")) +
                         geom_line() +
@@ -326,7 +333,10 @@ server <- function(input, output, session) {
                         xlab("Tested Position") +
                         ylab("Proportion Correct") +
                         theme_bw()
-                    }
+                }
+
+                stupid_graph
+
                 })
 
             } #close null free position so serial curves
@@ -362,7 +372,7 @@ server <- function(input, output, session) {
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
                         temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
 
-                        ggplot(data = temp,
+                        stupid_graph <- ggplot(data = temp,
                                aes_string(x = "Tested.Position",
                                           y = "pfr",
                                           color = input$free_group.by[1])) +
@@ -380,7 +390,7 @@ server <- function(input, output, session) {
                         temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
                         temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
 
-                        ggplot(data = temp,
+                        stupid_graph <- ggplot(data = temp,
                                aes_string(x = "Tested.Position",
                                           y = "pfr",
                                           color = input$free_group.by[1])) +
@@ -397,8 +407,8 @@ server <- function(input, output, session) {
 
                     temp <- values$pfr_calculated
                     temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
-                    print(str(temp))
-                    ggplot(data = temp,
+                    #print(str(temp))
+                    stupid_graph <- ggplot(data = temp,
                            aes_string(x = "Tested.Position",
                                       y = "pfr")) +
                         geom_line() +
@@ -407,6 +417,8 @@ server <- function(input, output, session) {
                         ylab("Probability of First Response") +
                         theme_bw()
                 }
+
+                stupid_graph
             })
         }
 
@@ -441,7 +453,7 @@ server <- function(input, output, session) {
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
                         temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
 
-                        ggplot(data = temp,
+                        stupid_graph <- ggplot(data = temp,
                                aes_string(x = "participant_lags",
                                           y = "CRP",
                                           color = input$free_group.by[1])) +
@@ -459,7 +471,7 @@ server <- function(input, output, session) {
                         temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
                         temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
 
-                        ggplot(data = temp,
+                        stupid_graph <- ggplot(data = temp,
                                aes_string(x = "participant_lags",
                                           y = "CRP",
                                           color = input$free_group.by[1])) +
@@ -476,7 +488,7 @@ server <- function(input, output, session) {
 
                     temp <- values$crp_calculated
                     temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
-                    ggplot(data = temp,
+                    stupid_graph <- ggplot(data = temp,
                            aes_string(x = "participant_lags",
                                       y = "CRP")) +
                         geom_line() +
@@ -485,6 +497,8 @@ server <- function(input, output, session) {
                         ylab("Probability of First Response") +
                         theme_bw()
                 }
+
+                stupid_graph
             })
 
         } #close null free position
@@ -602,7 +616,7 @@ server <- function(input, output, session) {
                     temp <- values$cued_recall_calculated$DF_Participant
                     temp[ , input$cued_group.by[1]] <- factor(temp[ , input$cued_group.by[1]])
 
-                    ggplot(temp,
+                    stupid_graph <- ggplot(temp,
                            aes_string(x = input$cued_group.by[1],
                                       y = "Proportion.Correct")) +
                         stat_summary(fun = mean,
@@ -622,7 +636,7 @@ server <- function(input, output, session) {
                     temp[ , input$cued_group.by[1]] <- factor(temp[ , input$cued_group.by[1]])
                     temp[ , input$cued_group.by[2]] <- factor(temp[ , input$cued_group.by[2]])
 
-                    ggplot(temp,
+                    stupid_graph <- ggplot(temp,
                            aes_string(x = input$cued_group.by[1],
                                       y = "Proportion.Correct",
                                       fill = input$cued_group.by[2])) +
@@ -638,11 +652,13 @@ server <- function(input, output, session) {
 
             } else {
 
-                ggplot(values$cued_recall_calculated$DF_Participant,
+                stupid_graph <- ggplot(values$cued_recall_calculated$DF_Participant,
                        aes(x = Proportion.Correct)) +
                     geom_histogram() +
                     theme_bw()
             }
+
+            stupid_graph
         })
 
     })
@@ -761,7 +777,7 @@ server <- function(input, output, session) {
                     temp <- values$sentence_recall_calculated$DF_Participant
                     temp[ , input$sentence_group.by[1]] <- factor(temp[ , input$sentence_group.by[1]])
 
-                    ggplot(temp,
+                    stupid_graph <- ggplot(temp,
                            aes_string(x = input$sentence_group.by[1],
                                       y = "Proportion.Correct")) +
                         stat_summary(fun = mean,
@@ -781,7 +797,7 @@ server <- function(input, output, session) {
                     temp[ , input$sentence_group.by[1]] <- factor(temp[ , input$sentence_group.by[1]])
                     temp[ , input$sentence_group.by[2]] <- factor(temp[ , input$sentence_group.by[2]])
 
-                    ggplot(temp,
+                    stupid_graph <- ggplot(temp,
                            aes_string(x = input$sentence_group.by[1],
                                       y = "Proportion.Correct",
                                       fill = input$sentence_group.by[2])) +
@@ -797,11 +813,13 @@ server <- function(input, output, session) {
 
             } else {
 
-                ggplot(values$sentence_recall_calculated$DF_Participant,
+                stupid_graph <- ggplot(values$sentence_recall_calculated$DF_Participant,
                        aes(x = Proportion.Correct)) +
                     geom_histogram() +
                     theme_bw()
             }
+
+            stupid_graph
         })
 
     })

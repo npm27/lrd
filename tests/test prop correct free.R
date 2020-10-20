@@ -1,16 +1,21 @@
-DF_test <- read.csv("data/wide_data.csv")
-DF_answer <- read.csv("data/answer_key_free.csv")
+# DF_test <- read.csv("data/wide_data.csv")
+# DF_answer <- read.csv("data/answer_key_free.csv")
+#
+# colnames(DF_answer)[1] <- "Answer_Key" #Remove weird characters
+#
+# source("R/prop_correct_free.R")
+# source("R/arrange_data.R")
 
-colnames(DF_answer)[1] <- "Answer_Key" #Remove weird characters
+library(lrd)
+data(wide_data)
+data("answer_key_free")
+DF_test <- wide_data
+DF_answer <- answer_key_free
 
-source("R/prop_correct_free.R")
-source("R/arrange_data.R")
-
-DF_long <- arrange_data(responses = DF_test$Response,
+DF_long <- arrange_data(data = DF_test,
+                        responses = "Response",
                         sep = ",",
-                        id = DF_test$Sub.ID,
-                        other = DF_test$Disease.Condition,
-                        other.names = "Disease.Condition")
+                        id = "Sub.ID")
  # data = DF_long
  # responses = "response"
  # key = DF_answer$Answer_Key
