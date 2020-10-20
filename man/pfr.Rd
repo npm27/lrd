@@ -4,7 +4,7 @@
 \alias{pfr}
 \title{Probability of First Recall}
 \usage{
-pfr(data, position, answer, id, key, scored, group.by)
+pfr(data, position, answer, id, key, scored, group.by = NULL)
 }
 \arguments{
 \item{data}{a dataframe of the scored free recall that you would

@@ -70,7 +70,7 @@
 #'  head(pfr_output)
 #'
 pfr <- function(data, position, answer, id,
-                key, scored, group.by){
+                key, scored, group.by = NULL){
 
   # for r cran check
   Answered.Position <- NULL
@@ -109,11 +109,12 @@ pfr <- function(data, position, answer, id,
       pfr_table$pfr[group_code == group] <- pfr_table$Freq[group_code == group] / group_sizes$Freq[group_sizes$group_code == group]
     }
 
-  } else{
+  } else {
 
     pfr_table <- as.data.frame(table(DF_first$Tested.Position))
     group_sizes <- length(unique(DF$Sub.ID))
     pfr_table$pfr <- pfr_table$Freq / group_sizes
+    colnames(pfr_table)[1] <- c("Tested.Position")
 
   }
 

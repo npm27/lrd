@@ -200,7 +200,7 @@ server <- function(input, output, session) {
             #if there are grouping variables
             if(!is.null(input$free_group.by)){
 
-                if (length(input$free_group.by)==1){
+                if (length(input$free_group.by) == 1){
 
                     temp <- values$free_recall_calculated$DF_Participant
                     temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
@@ -219,7 +219,7 @@ server <- function(input, output, session) {
                         theme_bw()
                 }
 
-                if (length(input$free_group.by) == 2){
+                if (length(input$free_group.by) > 1){
 
                     temp <- values$free_recall_calculated$DF_Participant
                     temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
@@ -248,7 +248,7 @@ server <- function(input, output, session) {
             }
         })
 
-        # serial curvees ----
+        # serial curves ----
         if(!is.null(input$free_position)){
             values$serial_calculated <- serial_position(
                 data = values$free_recall_calculated$DF_Scored,
@@ -273,7 +273,7 @@ server <- function(input, output, session) {
                 #if there are grouping variables
                 if(!is.null(input$free_group.by)){
 
-                    if (length(input$free_group.by)==1){
+                    if (length(input$free_group.by) == 1){
 
                         temp <- values$serial_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
@@ -291,7 +291,7 @@ server <- function(input, output, session) {
                             theme_bw()
                     }
 
-                    if (length(input$free_group.by) == 2){
+                    if (length(input$free_group.by) > 1){
 
                         temp <- values$serial_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
@@ -315,6 +315,7 @@ server <- function(input, output, session) {
                 } else {
 
                     temp <- values$serial_calculated
+                    #print(head(temp))
                     ggplot(data = temp,
                            aes_string(x = "Tested.Position",
                                       y = "Proportion.Correct")) +
@@ -355,7 +356,7 @@ server <- function(input, output, session) {
                 #if there are grouping variables
                 if(!is.null(input$free_group.by)){
 
-                    if (length(input$free_group.by)==1){
+                    if (length(input$free_group.by) == 1){
 
                         temp <- values$pfr_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
@@ -371,7 +372,7 @@ server <- function(input, output, session) {
                             theme_bw()
                     }
 
-                    if (length(input$free_group.by) == 2){
+                    if (length(input$free_group.by) > 1){
 
                         temp <- values$pfr_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
@@ -393,6 +394,7 @@ server <- function(input, output, session) {
                 } else {
 
                     temp <- values$pfr_calculated
+                    print(head(temp))
                     ggplot(data = temp,
                            aes_string(x = "Tested.Position",
                                       y = "pfr")) +
@@ -412,8 +414,7 @@ server <- function(input, output, session) {
                                          answer = "Answer",
                                          id = "Sub.ID",
                                          key = values$answer_key_free[ , input$free_key],
-                                         scored = "Scored",
-                                         group.by = c(input$free_group.by))
+                                         scored = "Scored")
 
 
             output$crp_data_output <- renderDT(server = F, {
@@ -426,7 +427,7 @@ server <- function(input, output, session) {
                           rownames = FALSE) #close datatable
             })
 
-            output$pfr_graph <- renderPlot({
+            output$crp_graph <- renderPlot({
 
                 #if there are grouping variables
                 if(!is.null(input$free_group.by)){
@@ -437,12 +438,12 @@ server <- function(input, output, session) {
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
 
                         ggplot(data = temp,
-                               aes_string(x = "Tested.Position",
+                               aes_string(x = "participant_lags",
                                           y = "CRP",
                                           color = input$free_group.by[1])) +
                             geom_line() +
                             geom_point() +
-                            xlab("Tested Position") +
+                            xlab("Lag Distance") +
                             ylab("Conditional Response Probability") +
                             theme_bw()
                     }
@@ -454,12 +455,12 @@ server <- function(input, output, session) {
                         temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
 
                         ggplot(data = temp,
-                               aes_string(x = "Tested.Position",
+                               aes_string(x = "participant_lags",
                                           y = "CRP",
                                           color = input$free_group.by[1])) +
                             geom_line() +
                             geom_point() +
-                            xlab("Tested Position") +
+                            xlab("Lag Distance") +
                             ylab("Conditional Response Probability") +
                             facet_wrap(~ input$free_group.by[2]) +
                             theme_bw()
@@ -470,11 +471,11 @@ server <- function(input, output, session) {
 
                     temp <- values$crp_calculated
                     ggplot(data = temp,
-                           aes_string(x = "Tested.Position",
+                           aes_string(x = "participant_lags",
                                       y = "CRP")) +
                         geom_line() +
                         geom_point() +
-                        xlab("Tested Position") +
+                        xlab("Lag Distance") +
                         ylab("Probability of First Response") +
                         theme_bw()
                 }
