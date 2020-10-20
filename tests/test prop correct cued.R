@@ -2,7 +2,7 @@ library(lrd)
 data(cued_data)
 DF_test <- cued_data
 
-source("R/prop_correct_cued.R")
+#source("R/prop_correct_cued.R")
 
 #data = DF_test
 #responses = "response"
@@ -18,6 +18,16 @@ scored_output <- prop_correct_cued(data = DF_test,
                                    responses = "response",
                                    key = "key",
                                    key.trial = "trial",
+                                   id = "id",
+                                   id.trial = "trial",
+                                   cutoff = 1,
+                                   flag = TRUE,
+                                   group.by = "condition")
+
+scored_output <- prop_correct_cued(data = DF_test,
+                                   responses = "response",
+                                   key = DF_test$key,
+                                   key.trial = DF_test$trial,
                                    id = "id",
                                    id.trial = "trial",
                                    cutoff = 1,

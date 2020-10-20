@@ -360,6 +360,7 @@ server <- function(input, output, session) {
 
                         temp <- values$pfr_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+                        temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
 
                         ggplot(data = temp,
                                aes_string(x = "Tested.Position",
@@ -377,6 +378,7 @@ server <- function(input, output, session) {
                         temp <- values$pfr_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
                         temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
+                        temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
 
                         ggplot(data = temp,
                                aes_string(x = "Tested.Position",
@@ -394,7 +396,8 @@ server <- function(input, output, session) {
                 } else {
 
                     temp <- values$pfr_calculated
-                    print(head(temp))
+                    temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
+                    print(str(temp))
                     ggplot(data = temp,
                            aes_string(x = "Tested.Position",
                                       y = "pfr")) +
@@ -436,6 +439,7 @@ server <- function(input, output, session) {
 
                         temp <- values$crp_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+                        temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
 
                         ggplot(data = temp,
                                aes_string(x = "participant_lags",
@@ -453,6 +457,7 @@ server <- function(input, output, session) {
                         temp <- values$crp_calculated
                         temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
                         temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
+                        temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
 
                         ggplot(data = temp,
                                aes_string(x = "participant_lags",
@@ -470,6 +475,7 @@ server <- function(input, output, session) {
                 } else {
 
                     temp <- values$crp_calculated
+                    temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
                     ggplot(data = temp,
                            aes_string(x = "participant_lags",
                                       y = "CRP")) +
@@ -548,7 +554,7 @@ server <- function(input, output, session) {
     observeEvent(input$cued_recall_go, {
 
         # free recall section ----
-        values$cued_recall_caculated <- prop_correct_cued(
+        values$cued_recall_calculated <- prop_correct_cued(
             data = values$cued_data,
             responses = input$cued_responses,
             key = values$answer_key_cued[ , input$cued_key],
@@ -591,7 +597,7 @@ server <- function(input, output, session) {
             #if there are grouping variables
             if(!is.null(input$cued_group.by)){
 
-                if (length(input$cued_group.by)==1){
+                if (length(input$cued_group.by) == 1){
 
                     temp <- values$cued_recall_calculated$DF_Participant
                     temp[ , input$cued_group.by[1]] <- factor(temp[ , input$cued_group.by[1]])
@@ -610,7 +616,7 @@ server <- function(input, output, session) {
                         theme_bw()
                 }
 
-                if (length(input$cued_group.by) == 2){
+                if (length(input$cued_group.by) > 1){
 
                     temp <- values$cued_recall_calculated$DF_Participant
                     temp[ , input$cued_group.by[1]] <- factor(temp[ , input$cued_group.by[1]])
@@ -706,7 +712,7 @@ server <- function(input, output, session) {
     observeEvent(input$sentence_recall_go, {
 
         # sentence section ----
-        values$sentence_recall_caculated <- prop_correct_sentence(
+        values$sentence_recall_calculated <- prop_correct_sentence(
             data = values$sentence_data,
             responses = input$sentence_responses,
             key = values$answer_key_sentence[ , input$sentence_key],

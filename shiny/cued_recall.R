@@ -105,7 +105,7 @@ cued_recall <-
             p(" "),
             HTML("<b>Here's the scored group output:</b>"),
             p(" "),
-            DTOutput("cued_recall_groupby"),
+            DTOutput("cued_recall_group.by"),
             tags$style(type = "text/css",
                        ".shiny-output-error {visibility: hidden;}",
                        ".shiny-output-error:before {visibility: hidden;}")
