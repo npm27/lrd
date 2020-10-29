@@ -11,7 +11,7 @@ info_tab <-
               HTML("<b>Written by: </b>
                    Nicholas P. Maxwell, Erin M. Buchanan, Mark Huff"),
               p(" "),
-              HTML("<b>Cite our paper:</b> Nick! Update this!"),
+              HTML("<b>Cite our paper:</b> Maxwell, N. P., Buchanan, E. M, & Huff, M. J. The lrd Package: An R Package and Shiny Application for Processing Lexical Data."),
               p(" "),
               HTML("<b>How to navigate the app</b>:
                    Use the navigation side bar on the left to select
