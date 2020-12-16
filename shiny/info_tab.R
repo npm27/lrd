@@ -30,7 +30,7 @@ info_tab <-
               HTML("<b>What is the scoring cutoff?</b>
                    Studies with open ended responses often have typos and other spelling
                    mistakes. The scoring cutoff ranges from 0 (most strict, must be
-                   spelled exactly correct acccording to the answer key) to 5 (least
+                   spelled exactly correct according to the answer key) to 5 (least
                    strict and many things will match, so choose this carefully).
                    What is this number? The score represents the number of insertions,
                    deletions, and substitutions one might need to convert the given

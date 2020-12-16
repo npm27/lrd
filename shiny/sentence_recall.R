@@ -70,7 +70,7 @@ sentence_recall <-
               sliderInput('sentence_cutoff', "Choose the scoring cutoff:", min = 0, max = 5, value = 0, step = 1,
                           round = TRUE),
               checkboxInput('sentence_flag', "Do you want to flag for outliers?", value = FALSE, width = NULL),
-              textInput("sentence_token", "What the delimiter for your sentence tokens?
+              textInput("sentence_token", "What is the delimiter for your sentence tokens?
                         Default is a space, please delete it in the box if you do not
                         wish to use a space", value = " "),
               actionButton("sentence_recall_go", "Score Your Data")
