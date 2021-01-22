@@ -33,3 +33,9 @@ crp_output <- crp(data = scored_output$DF_Scored,
                   scored = "Scored")
 
 head(crp_output)
+
+library(ggplot2)
+
+ggplot(data = crp_output, aes(x = participant_lags, y = CRP)) +
+  geom_line() +
+  geom_point()
