@@ -510,12 +510,12 @@ server <- function(input, output, session) {
     # Get the data
     observeEvent(input$cued_data, {
         if (is.null(input$cued_data)) return(NULL)
-        values$cued_data <<- import(input$cued_data$datapath)
+        values$cued_data <- import(input$cued_data$datapath)
     })
 
     observeEvent(input$answer_key_cued, {
         if (is.null(input$answer_key_cued)) return(NULL)
-        values$answer_key_cued <<- import(input$answer_key_cued$datapath)
+        values$answer_key_cued <- import(input$answer_key_cued$datapath)
     })
 
     # Output the data
@@ -669,12 +669,12 @@ server <- function(input, output, session) {
     # Get the data
     observeEvent(input$sentence_data, {
         if (is.null(input$sentence_data)) return(NULL)
-        values$sentence_data <<- import(input$sentence_data$datapath)
+        values$sentence_data <- import(input$sentence_data$datapath)
     })
 
     observeEvent(input$answer_key_sentence, {
         if (is.null(input$answer_key_sentence)) return(NULL)
-        values$answer_key_sentence <<- import(input$answer_key_sentence$datapath)
+        values$answer_key_sentence <- import(input$answer_key_sentence$datapath)
     })
 
     # Output the data
