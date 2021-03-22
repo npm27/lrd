@@ -1,0 +1,81 @@
+---
+title: "Free Recall Example"
+author: "Nicholas Maxwell, Erin Buchanan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Free Recall Example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Libraries and Data UPDATE COMING SOON
+
+Please see manuscript for a long description of the following data. We will load the example data, and you can use the `?` with the dataset name to learn more about the data.  
+
+```{r}
+library(lrd)
+data("cued_recall_manuscript")
+head(cued_recall_manuscript)
+#?cued_recall_manuscript
+```
+
+# Data Cleanup
+
+Scoring in `lrd` is case sensitive, so we will use `tolower()` to lower case all correct answers and participant answers. 
+
+```{r}
+cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
+cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
+```
+
+# Score the Data
+
+You should define the following:
+
+- data = dataframe of participant responses
+- responses = column name of the participant answers
+- key = column name of the answer key
+- key.trial = column name of the trial id code
+- id = column name of the participant id number
+- id.trial = column name of the trial id within the participant data
+- cutoff = the Levenshtein distance value you want to use for scoring (0 no changes exactly the same, higher numbers allow more variance in the word)
+- flag = calculate z scores for outliers (TRUE/FALSE)
+- group.by = column name(s) for grouping variables
+
+Note that the answer key can be in a separate dataframe, use something like  `answer_key$answer` for the key argument and `answer_key$id_num` for the trial number. Fill in `answer_key` with your dataframe name and the column name for those columns after the `$`. 
+
+```{r}
+cued_output <- prop_correct_cued(data = cued_recall_manuscript,
+                                 responses = "Answer",
+                                 key = "Target",
+                                 key.trial = "Trial_num",
+                                 id = "Sub.ID",
+                                 id.trial = "Trial_num",
+                                 cutoff = 1,
+                                 flag = TRUE,
+                                 group.by = NULL)
+
+str(cued_output)
+```
+
+# Output
+
+We can use `DF_Scored` to see the original dataframe with our new scored column - also to check if our answer key and participant answers matched up correctly! The `DF_Participant` can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use `DF_Group` to see that output. 
+
+```{r}
+#Overall
+cued_output$DF_Scored
+
+#Participant
+cued_output$DF_Participant
+```
+
+
