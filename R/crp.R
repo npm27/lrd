@@ -150,6 +150,7 @@ crp <- function(data, position, answer, id,
   } #participant loop
 
   DF_final$CRP <- DF_final$Freq / DF_final$Possible.Freq
+  DF_final <- unique(DF_final) #a hack because it's repeating
   return(DF_final)
 
 }

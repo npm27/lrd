@@ -112,7 +112,7 @@ serial_position <- function(data, position, answer,
     DF_serial <- aggregate(DF$Serial.Yes,
                            by = DF[ , c(group.by, "Tested.Position")],
                            sum, na.rm = T)
-    colnames(DF_serial)[ncol(DF_serial)] <- "Sum"
+    colnames(DF_serial)[ncol(DF_serial)] <- "Freq"
 
     DF_unique <- unique(DF[ , c("Sub.ID", group.by)])
     group_sizes <- as.data.frame(table(DF_unique[ , group.by]))
@@ -122,7 +122,7 @@ serial_position <- function(data, position, answer,
     DF_serial$Proportion.Correct <- NA
 
     for (group in group_code){
-      DF_serial$Proportion.Correct[group_code == group] <- DF_serial$Sum[group_code == group] / group_sizes$Freq[group_sizes$group_code == group]
+      DF_serial$Proportion.Correct[group_code == group] <- DF_serial$Freq[group_code == group] / group_sizes$Freq[group_sizes$group_code == group]
       DF_serial$SE[group_code == group] <- sqrt((DF_serial$Proportion.Correct[group_code == group]*(1-DF_serial$Proportion.Correct[group_code == group])/
                                                    group_sizes$Freq[group_sizes$group_code == group]))
     }
@@ -132,9 +132,9 @@ serial_position <- function(data, position, answer,
     DF_serial <- aggregate(DF$Serial.Yes,
                            by = list(DF[ , "Tested.Position"]),
                            sum, na.rm = T)
-    colnames(DF_serial) <- c("Tested.Position", "Sum")
+    colnames(DF_serial) <- c("Tested.Position", "Freq")
     group_sizes <- length(unique(DF$Sub.ID))
-    DF_serial$Proportion.Correct <- DF_serial$Sum / group_sizes
+    DF_serial$Proportion.Correct <- DF_serial$Freq / group_sizes
     DF_serial$SE <- sqrt((DF_serial$Proportion.Correct*(1-DF_serial$Proportion.Correct)/
                             group_sizes))
 

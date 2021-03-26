@@ -1,20 +1,20 @@
-## ----setup, include = FALSE--------------------------------
+## ----setup, include = FALSE----------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----------------------------------------------------------
+## ------------------------------------------------------------------------------
 library(lrd)
 data("cued_recall_manuscript")
 head(cued_recall_manuscript)
 #?cued_recall_manuscript
 
-## ----------------------------------------------------------
+## ------------------------------------------------------------------------------
 cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
-cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
+cued_recall_manuscript$Answer <- tolower(cued_recall_manuscript$Answer)
 
-## ----------------------------------------------------------
+## ------------------------------------------------------------------------------
 cued_output <- prop_correct_cued(data = cued_recall_manuscript,
                                  responses = "Answer",
                                  key = "Target",
@@ -27,7 +27,7 @@ cued_output <- prop_correct_cued(data = cued_recall_manuscript,
 
 str(cued_output)
 
-## ----------------------------------------------------------
+## ------------------------------------------------------------------------------
 #Overall
 cued_output$DF_Scored
 

@@ -16,15 +16,31 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Libraries and Data UPDATE COMING SOON
+# Libraries and Data 
 
 Please see manuscript for a long description of the following data. We will load the example data, and you can use the `?` with the dataset name to learn more about the data.  
 
 ```{r}
 library(lrd)
-data("cued_recall_manuscript")
-head(cued_recall_manuscript)
-#?cued_recall_manuscript
+data("wide_data")
+head(wide_data)
+#?wide_data
+
+data("answer_key_free")
+head(answer_key_free)
+#?answer_key_free
+
+library(ggplot2)
+```
+
+# Data Restructuring
+
+```{r}
+DF_long <- arrange_data(data = wide_data,
+      responses = "Response",
+      sep = ",",
+      id = "Sub.ID")
+head(DF_long)
 ```
 
 # Data Cleanup
@@ -32,8 +48,8 @@ head(cued_recall_manuscript)
 Scoring in `lrd` is case sensitive, so we will use `tolower()` to lower case all correct answers and participant answers. 
 
 ```{r}
-cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
-cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
+wide_data$Response <- tolower(wide_data$Response)
+answer_key_free$Answer_Key <- tolower(answer_key_free$Answer_Key)
 ```
 
 # Score the Data
@@ -43,27 +59,22 @@ You should define the following:
 - data = dataframe of participant responses
 - responses = column name of the participant answers
 - key = column name of the answer key
-- key.trial = column name of the trial id code
 - id = column name of the participant id number
-- id.trial = column name of the trial id within the participant data
 - cutoff = the Levenshtein distance value you want to use for scoring (0 no changes exactly the same, higher numbers allow more variance in the word)
 - flag = calculate z scores for outliers (TRUE/FALSE)
 - group.by = column name(s) for grouping variables
 
-Note that the answer key can be in a separate dataframe, use something like  `answer_key$answer` for the key argument and `answer_key$id_num` for the trial number. Fill in `answer_key` with your dataframe name and the column name for those columns after the `$`. 
-
 ```{r}
-cued_output <- prop_correct_cued(data = cued_recall_manuscript,
-                                 responses = "Answer",
-                                 key = "Target",
-                                 key.trial = "Trial_num",
+free_output <- prop_correct_free(data = DF_long,
+                                 responses = "response",
+                                 key = answer_key_free$Answer_Key,
                                  id = "Sub.ID",
-                                 id.trial = "Trial_num",
                                  cutoff = 1,
                                  flag = TRUE,
-                                 group.by = NULL)
+                                 group.by = "Disease.Condition")
 
-str(cued_output)
+
+str(free_output)
 ```
 
 # Output
@@ -72,10 +83,87 @@ We can use `DF_Scored` to see the original dataframe with our new scored column 
 
 ```{r}
 #Overall
-cued_output$DF_Scored
+free_output$DF_Scored
 
 #Participant
-cued_output$DF_Participant
+free_output$DF_Participant
+
+#Group
+free_output$DF_Group
 ```
+
+# Other Possible Calculations
+
+## Serial Position
+
+This function prepares the data for a serial position curve analysis or visualization. Please note, it assumes you are using the output from above, but any output with these columns would work fine. The arguments are roughly the same as the overall scoring function. We've also included some `ggplot2` code as an example to help show how you might use our output for plotting. These graphs aren't too exciting with a small example! 
+
+```{r}
+serial_output <- serial_position(data = free_output$DF_Scored,
+                                 key = answer_key_free$Answer_Key,
+                                 position = "position",
+                                 scored = "Scored",
+                                 answer = "Answer",
+                                 group.by = "Disease.Condition")
+
+head(serial_output)
+
+ggplot(serial_output, aes(Tested.Position, Proportion.Correct, color = Disease.Condition)) +
+  geom_line() +
+  geom_point() +
+  xlab("Tested Position") +
+  ylab("Probability of First Response") +
+  theme_bw() 
+```
+
+## Conditional Response Probability
+
+Conditional response probability is the likelihood of answers given the current answer set. Therefore, the column participant_lags represents the lag between the written and tested position (e.g., *chair* was listed second, which represents a lag of -6 from spot number 8 on the answer key list).  The column `Freq` represents the frequency of the lags between listed and shown position, while the `Possible.Freq` column indicates the number of times that frequency could occur given each answer listed (e.g., given the current answer, a tally of the possible lags that could still occur). The `CRP` column calculates the conditional response probability, or the frequency column divided by the possible frequencies of lags. 
+
+```{r}
+crp_output <- crp(data = free_output$DF_Scored,
+                  key = answer_key_free$Answer_Key,
+                  position = "position",
+                  scored = "Scored",
+                  answer = "Answer",
+                  id = "Sub.ID")
+
+head(crp_output)
+
+crp_output$participant_lags <- as.numeric(as.character(crp_output$participant_lags))
+
+ggplot(crp_output, aes(participant_lags, CRP, color = Disease.Condition)) +
+  geom_line() +
+  geom_point() +
+  xlab("Lag Distance") +
+  ylab("Conditional Response Probability") +
+  theme_bw()
+```
+
+## Probability of First Response
+
+Participant answers are first filtered for their first response, and these are matched to the original order on the answer key list (`Tested.Position`). Then the frequency (`Freq`) of each of those answers is tallied and divided by the number of participants overall or by group if the `group.by` argument is included (`pfr`). 
+
+```{r}
+pfr_output <- pfr(data = free_output$DF_Scored,
+                  key = answer_key_free$Answer_Key,
+                  position = "position",
+                  scored = "Scored",
+                  answer = "Answer",
+                  id = "Sub.ID",
+                  group.by = "Disease.Condition")
+
+head(pfr_output)
+
+pfr_output$Tested.Position <- as.numeric(as.character(pfr_output$Tested.Position))
+
+ggplot(pfr_output, aes(Tested.Position, pfr, color = Disease.Condition)) +
+  geom_line() +
+  geom_point() +
+  xlab("Tested Position") +
+  ylab("Probability of First Response") +
+  theme_bw()
+```
+
 
 

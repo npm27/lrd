@@ -33,7 +33,7 @@ Scoring in `lrd` is case sensitive, so we will use `tolower()` to lower case all
 
 ```{r}
 cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
-cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
+cued_recall_manuscript$Answer <- tolower(cued_recall_manuscript$Answer)
 ```
 
 # Score the Data

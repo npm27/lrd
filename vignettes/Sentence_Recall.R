@@ -1,36 +1,41 @@
-## ----setup, include = FALSE--------------------------------
+## ----setup, include = FALSE----------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----------------------------------------------------------
+## ------------------------------------------------------------------------------
 library(lrd)
-data("cued_recall_manuscript")
-head(cued_recall_manuscript)
-#?cued_recall_manuscript
+data("sentence_data")
+head(sentence_data)
+#?sentence_data
 
-## ----------------------------------------------------------
-cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
-cued_recall_manuscript$Target <- tolower(cued_recall_manuscript$Target)
+## ------------------------------------------------------------------------------
+sentence_data$Sentence <- tolower(sentence_data$Sentence)
+sentence_data$Response <- tolower(sentence_data$Response)
 
-## ----------------------------------------------------------
-cued_output <- prop_correct_cued(data = cued_recall_manuscript,
-                                 responses = "Answer",
-                                 key = "Target",
-                                 key.trial = "Trial_num",
-                                 id = "Sub.ID",
-                                 id.trial = "Trial_num",
-                                 cutoff = 1,
-                                 flag = TRUE,
-                                 group.by = NULL)
+## ------------------------------------------------------------------------------
+sentence_ouptut <- 
+  prop_correct_sentence(data = sentence_data,
+                        responses = "Response",
+                        key = "Sentence",
+                        key.trial = "Trial.ID",
+                        id = "Sub.ID",
+                        id.trial = "Trial.ID",
+                        cutoff = 1,
+                        flag = TRUE,
+                        group.by = "Condition",
+                        token.split = " ")
 
-str(cued_output)
+str(sentence_ouptut)
 
-## ----------------------------------------------------------
+## ------------------------------------------------------------------------------
 #Overall
-cued_output$DF_Scored
+sentence_ouptut$DF_Scored
 
 #Participant
-cued_output$DF_Participant
+sentence_ouptut$DF_Participant
+
+#Groups
+sentence_ouptut$DF_Group
 
