@@ -27,10 +27,10 @@ ui <- dashboardPage(skin = "blue",
                      icon = icon("question-circle")),
             menuItem("Arrange Data", tabName = "wide_tab",
                      icon = icon("sort-amount-down")),
-            menuItem("Free Recall", tabName = "free_recall",
-                     icon = icon("sd-card")),
             menuItem("Cued Recall", tabName = "cued_recall",
                      icon = icon("memory")),
+            menuItem("Free Recall", tabName = "free_recall",
+                     icon = icon("sd-card")),
             menuItem("Sentence Recall", tabName = "sentence_recall",
                      icon = icon("keyboard"))
         )
@@ -39,8 +39,8 @@ ui <- dashboardPage(skin = "blue",
         tabItems(
             info_tab,
             wide_tab,
-            free_recall,
             cued_recall,
+            free_recall,
             sentence_recall
             )
     )
@@ -150,7 +150,7 @@ server <- function(input, output, session) {
 
     output$free_positionUI <- renderUI({
         selectizeInput("free_position", "Choose the position answered column for
-                       serial position curves:",
+                       position related information:",
                        choices = colnames(values$free_data),
                        multiple = T)
     })
