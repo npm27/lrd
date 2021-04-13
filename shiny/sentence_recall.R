@@ -39,7 +39,7 @@ sentence_recall <-
               status = "primary",
               width = 12,
               p(" "),
-              HTML("<b>Here's your sentence recall data:</b>"),
+              HTML("<b>Here's your sentence-recall data:</b>"),
               p(" "),
               DTOutput("sentence_recall_data"),
               tags$style(type = "text/css",
@@ -117,7 +117,7 @@ sentence_recall <-
 
             # sentence Recall Graph ---------------------------------------------------------
             box(
-              title = tags$b("Graphed Sentence Recall Output"),
+              title = tags$b("Graphed Sentence-Recall Output"),
               collapsible = TRUE,
               solidHeader = TRUE,
               status = "primary",

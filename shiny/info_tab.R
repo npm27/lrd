@@ -8,10 +8,10 @@ info_tab <-
               status = "primary",
               width = 12,
               p(" "),
-              HTML("<b>Written by: </b>
-                   Nicholas P. Maxwell, Erin M. Buchanan, Mark Huff"),
+              HTML("<b>Application written by: </b>
+                   Nicholas P. Maxwell, Erin M. Buchanan"),
               p(" "),
-              HTML("<b>Cite our paper:</b> Maxwell, N. P., Buchanan, E. M, & Huff, M. J. The lrd Package: An R Package and Shiny Application for Processing Lexical Data."),
+              HTML("<b>Cite our paper:</b> Maxwell, N. P., Huff, M. J, & Buchanan, E. M. The lrd Package: An R Package and Shiny Application for Processing Lexical Data."),
               p(" "),
               HTML("<b>How to navigate the app</b>:
                    Use the navigation side bar on the left to select

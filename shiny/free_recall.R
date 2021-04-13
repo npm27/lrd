@@ -39,7 +39,7 @@ free_recall <-
               status = "primary",
               width = 12,
               p(" "),
-              HTML("<b>Here's your free recall data:</b>"),
+              HTML("<b>Here's your free-recall data:</b>"),
               p(" "),
               DTOutput("free_recall_data"),
               tags$style(type = "text/css",
@@ -113,7 +113,7 @@ free_recall <-
 
             # Free Recall Graph ---------------------------------------------------------
             box(
-              title = tags$b("Graphed Free Recall Output"),
+              title = tags$b("Graphed Free-Recall Output"),
               collapsible = TRUE,
               solidHeader = TRUE,
               status = "primary",

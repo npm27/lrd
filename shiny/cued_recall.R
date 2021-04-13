@@ -39,7 +39,7 @@ cued_recall <-
               status = "primary",
               width = 12,
               p(" "),
-              HTML("<b>Here's your cued recall data:</b>"),
+              HTML("<b>Here's your cued-recall data:</b>"),
               p(" "),
               DTOutput("cued_recall_data"),
               tags$style(type = "text/css",
@@ -114,7 +114,7 @@ cued_recall <-
 
           # cued Recall Graph ---------------------------------------------------------
           box(
-            title = tags$b("Graphed Cued Recall Output"),
+            title = tags$b("Graphed Cued-Recall Output"),
             collapsible = TRUE,
             solidHeader = TRUE,
             status = "primary",
