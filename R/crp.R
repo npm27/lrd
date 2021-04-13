@@ -94,8 +94,15 @@ crp <- function(data, position, answer, id,
   number_spots <- 1:max(DF$Tested.Position)
   DF_final <- NULL
 
+  # Get all possible lags for 0 options
+  all_lags <- sort(c((1:(nrow(key) - 1)) * -1, 1:(nrow(key) - 1)))
+
+  # Create a dataframe of all possible options and ids
+  merge_lags <- data.frame(Sub.ID = rep(unique(DF$Sub.ID), each = length(all_lags)),
+                           participant_lags = rep(all_lags, length(unique(DF$Sub.ID))))
+
   #for each participant calculate the possible lags
-  for (i in DF$Sub.ID){
+  for (i in unique(DF$Sub.ID)){
 
     temp_part <- subset(DF,
                         Sub.ID == i)
@@ -115,6 +122,7 @@ crp <- function(data, position, answer, id,
 
         possible_lags <- c(possible_lags, answers_left - current_spot)
 
+
       } #answers loop
 
       table_part_lags <- as.data.frame(table(participant_lags))
@@ -126,31 +134,41 @@ crp <- function(data, position, answer, id,
 
       table_part_lags$Sub.ID <- i
 
-      #add back in other columns that are one to one
-      other.columns <- setdiff(colnames(DF),
-                               c("Responses", "Sub.ID", "Answer",
-                                 "Scored", "Answered.Position",
-                                 "Tested.Position", "Lag",
-                                 colnames(table_part_lags)))
-      for (col in other.columns){
-        DF_temp <- unique(DF[ , c("Sub.ID", col)])
-        if (sum(duplicated(DF_temp$Sub.ID)) == 0){
-          table_part_lags <- merge(table_part_lags, DF_temp, by = "Sub.ID")
-        }
-      } #for other columns
-
       if (is.null(DF_final)){
         DF_final <- table_part_lags
       } else {
         DF_final <- rbind(DF_final, table_part_lags)
       }
 
-    } #must have more than one row
+    } #close nrow check
 
   } #participant loop
 
+  # create other columns in merge_lags
+  other.columns <- setdiff(colnames(DF),
+                           c("Responses", "Sub.ID", "Answer",
+                             "Scored", "Answered.Position",
+                             "Tested.Position", "Lag",
+                             colnames(merge_lags)))
+  for (col in other.columns){
+    DF_temp <- unique(DF[ , c("Sub.ID", col)])
+    if (sum(duplicated(DF_temp$Sub.ID)) == 0){
+      merge_lags <- merge(merge_lags, DF_temp, by = "Sub.ID")
+    }
+  }
+
+  # Merge all possible lags with real lags
+  DF_final$participant_lags <- as.numeric(as.character(DF_final$participant_lags))
+  DF_final <- merge(DF_final, merge_lags, by = c("Sub.ID", "participant_lags"), all = T)
+
+  # Create CRP
   DF_final$CRP <- DF_final$Freq / DF_final$Possible.Freq
-  DF_final <- unique(DF_final) #a hack because it's repeating
+
+  # Add zeroes back in
+  DF_final$Freq[is.na(DF_final$Freq)] <- 0
+  DF_final$Possible.Freq[is.na(DF_final$Possible.Freq)] <- 0
+  DF_final$CRP[is.na(DF_final$CRP)] <- 0
+
   return(DF_final)
 
 }

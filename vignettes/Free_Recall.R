@@ -1,10 +1,10 @@
-## ----setup, include = FALSE----------------------------------------------------
+## ----setup, include = FALSE--------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 library(lrd)
 data("wide_data")
 head(wide_data)
@@ -16,18 +16,18 @@ head(answer_key_free)
 
 library(ggplot2)
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 DF_long <- arrange_data(data = wide_data,
       responses = "Response",
       sep = ",",
       id = "Sub.ID")
 head(DF_long)
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 wide_data$Response <- tolower(wide_data$Response)
 answer_key_free$Answer_Key <- tolower(answer_key_free$Answer_Key)
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 free_output <- prop_correct_free(data = DF_long,
                                  responses = "response",
                                  key = answer_key_free$Answer_Key,
@@ -39,7 +39,7 @@ free_output <- prop_correct_free(data = DF_long,
 
 str(free_output)
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 #Overall
 free_output$DF_Scored
 
@@ -49,7 +49,7 @@ free_output$DF_Participant
 #Group
 free_output$DF_Group
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 serial_output <- serial_position(data = free_output$DF_Scored,
                                  key = answer_key_free$Answer_Key,
                                  position = "position",
@@ -66,7 +66,7 @@ ggplot(serial_output, aes(Tested.Position, Proportion.Correct, color = Disease.C
   ylab("Probability of First Response") +
   theme_bw() 
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 crp_output <- crp(data = free_output$DF_Scored,
                   key = answer_key_free$Answer_Key,
                   position = "position",
@@ -85,7 +85,7 @@ ggplot(crp_output, aes(participant_lags, CRP, color = Disease.Condition)) +
   ylab("Conditional Response Probability") +
   theme_bw()
 
-## ------------------------------------------------------------------------------
+## ----------------------------------------------------------
 pfr_output <- pfr(data = free_output$DF_Scored,
                   key = answer_key_free$Answer_Key,
                   position = "position",
