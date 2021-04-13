@@ -1,41 +1,28 @@
-DF_test <- read.csv("data/free_data.csv")
-DF_answer <- read.csv("data/answer_key_free2.csv")
+ data(free_data)
+ data(answer_key_free2)
 
-colnames(DF_answer)[1] <- "Answer_Key" #Remove weird characters
+ free_data <- subset(free_data,
+  List_Type == "Cat_Recall_L1")
 
-source("R/prop_correct_free.R")
-source("R/arrange_data.R")
+ DF_long <- arrange_data(data = free_data,
+  responses = "Response",
+  sep = " ",
+  id = "Username")
 
-DF_test <- subset(DF_test,
-                  List_Type == "Cat_Recall_L1")
+ scored_output <- prop_correct_free( data = DF_long,
+  responses = "response",
+  key = answer_key_free2$Answer_Key,
+  id = "Sub.ID",
+  cutoff = 1,
+  flag = TRUE,
+  group.by = "Version")
 
-DF_long <- arrange_data(responses = DF_test$Response,
-                        sep = " ",
-                        id = DF_test$Username,
-                        other = DF_test$Version,
-                        other.names = "Version")
+ crp_output <- crp(data = scored_output$DF_Scored,
+  position = "position",
+  answer = "Answer",
+  id = "Sub.ID",
+  key = answer_key_free2$Answer_Key,
+  scored = "Scored")
 
-scored_output <- prop_correct_free( data = DF_long,
-                                    responses = "response",
-                                    key = DF_answer$Answer_Key,
-                                    id = "Sub.ID",
-                                    cutoff = 1,
-                                    flag = TRUE,
-                                    group.by = "Version")
+  head(crp_output)
 
-source("R/crp.R")
-
-crp_output <- crp(data = scored_output$DF_Scored,
-                  position = "position",
-                  answer = "Answer",
-                  id = "Sub.ID",
-                  key = DF_answer$Answer_Key,
-                  scored = "Scored")
-
-head(crp_output)
-
-library(ggplot2)
-
-ggplot(data = crp_output, aes(x = participant_lags, y = CRP)) +
-  geom_line() +
-  geom_point()
