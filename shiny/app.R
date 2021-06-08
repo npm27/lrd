@@ -22,6 +22,15 @@ source("sentence_recall.R")
 ui <- dashboardPage(skin = "blue",
     dashboardHeader(title = "lrd"),
     dashboardSidebar(
+
+      tags$head(
+        tags$style(HTML("
+                      .sidebar { height: 90vh; overflow-y: auto; }
+                      .dataTables_wrapper { overflow-x: scroll; }
+                      " )
+        )
+      ),
+
         sidebarMenu(
             menuItem("Information", tabName = "info_tab",
                      icon = icon("question-circle")),
@@ -34,6 +43,8 @@ ui <- dashboardPage(skin = "blue",
             menuItem("Sentence-Recall", tabName = "sentence_recall",
                      icon = icon("keyboard"))
         )
+
+
     ),
     dashboardBody(
         tabItems(
@@ -95,6 +106,7 @@ server <- function(input, output, session) {
                       extensions = 'Buttons',
                       options = list(dom = 'BRtp',
                                      filename = 'long_results',
+                                     scrollX = TRUE,
                                      buttons = c('copy', 'csv', 'excel')),
                       rownames = FALSE) #close datatable
 
@@ -182,6 +194,7 @@ server <- function(input, output, session) {
                       extensions = 'Buttons',
                       options = list(dom = 'BRtp',
                                      filename = 'free_participant_scored',
+                                     scrollX = TRUE,
                                      buttons = c('copy', 'csv', 'excel')),
                       rownames = FALSE) #close datatable
         })
@@ -593,6 +606,7 @@ server <- function(input, output, session) {
                       extensions = 'Buttons',
                       options = list(dom = 'BRtp',
                                      filename = 'cued_participant_scored',
+                                     scrollX = TRUE,
                                      buttons = c('copy', 'csv', 'excel')),
                       rownames = FALSE) #close datatable
         })
@@ -763,6 +777,7 @@ server <- function(input, output, session) {
                       extensions = 'Buttons',
                       options = list(dom = 'BRtp',
                                      filename = 'sentence_group_scored',
+                                     scrollX = TRUE,
                                      buttons = c('copy', 'csv', 'excel')),
                       rownames = FALSE) #close datatable
         })
