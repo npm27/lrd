@@ -14,6 +14,7 @@ wide_tab <-
                 to long format with one answer per row."),
               HTML("<b>Upload Your Data File:</b> Nearly all file types supported!
                    Only one header row is supported."),
+              HTML("An example of how to format the upload file is available <a href=\"https://osf.io/gyvjz/\">here</a>."),
               p(" "),
               fileInput('wide_input', 'Choose Data File'),
               tags$style(type = "text/css",
