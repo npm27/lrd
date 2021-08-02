@@ -18,7 +18,8 @@ Imports:
     utils,
     knitr
 Suggests:
-    ggplot2
+    ggplot2,
+    rmarkdown
 License: CC BY-NC-SA 4.0
 Encoding: UTF-8
 LazyData: true
