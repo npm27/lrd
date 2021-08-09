@@ -116,7 +116,7 @@ free_output$DF_Scored
 free_output$DF_Participant
 
 #Group
-free_output$DF_Group
+#free_output$DF_Group
 ```
 
 # Other Possible Calculations
@@ -126,16 +126,17 @@ free_output$DF_Group
 This function prepares the data for a serial position curve analysis or visualization. Please note, it assumes you are using the output from above, but any output with these columns would work fine. The arguments are roughly the same as the overall scoring function. We've also included some `ggplot2` code as an example to help show how you might use our output for plotting. These graphs aren't too exciting with a small example! 
 
 ```{r}
-serial_output <- serial_position(data = free_output$DF_Scored,
-                                 key = answer_key_free$Answer_Key,
-                                 position = "position",
-                                 scored = "Scored",
-                                 answer = "Answer",
-                                 group.by = "Disease.Condition")
+serial_output <- serial_position_multiple(data = free_output$DF_Scored,
+                                position = "position", 
+                                answer = "Answer", 
+                                key = answer_long$Answer,
+                                key.trial = answer_long$List.ID,
+                                scored = "Scored",
+                                id.trial = "List.Number")
 
 head(serial_output)
 
-ggplot(serial_output, aes(Tested.Position, Proportion.Correct, color = Disease.Condition)) +
+ggplot(serial_output, aes(Tested.Position, Proportion.Correct)) +
   geom_line() +
   geom_point() +
   xlab("Tested Position") +

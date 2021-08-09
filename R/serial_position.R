@@ -72,7 +72,7 @@
 #'  head(serial_output)
 #'
 serial_position <- function(data, position, answer,
-                            key, scored, group.by){
+                            key, scored, group.by = NULL){
 
   #create answer key with order
   if (sum(duplicated(key)) > 0){
