@@ -116,10 +116,14 @@ prop_correct_multiple <- function(data, #data frame
 
   #recreate the data
   DF_Scored <- lapply(scored_data, `[[`, 1)
+  DF_Scored <- do.call("rbind", DF_Scored)
+
   DF_Participant <- lapply(scored_data, `[[`, 2)
+  DF_Participant <- do.call("rbind", DF_Participant)
 
   if (!is.null(group.by)){
     DF_Group <- lapply(scored_data, `[[`, 3)
+    DF_Group <- do.call("rbind", DF_Group)
 
     return(list(DF_Scored, DF_Participant, DF_Group))
   } else {
