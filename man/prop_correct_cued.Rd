@@ -61,7 +61,7 @@ and suggestions for improvement are welcome.}
 \item{DF_Participant}{A dataframe of the proportion correct by
 participant, which also includes optional z-scoring, grouping, and
 other variables.}
-\item{DF_group}{A dataframe of the summary scores by any optional
+\item{DF_Group}{A dataframe of the summary scores by any optional
 grouping variables, along with overall total proportion correct
 scoring.}
 }

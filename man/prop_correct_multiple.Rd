@@ -7,6 +7,7 @@
 prop_correct_multiple(
   data,
   responses,
+  key,
   key.trial,
   id,
   id.trial,
@@ -23,6 +24,9 @@ the participant id.}
 
 \item{responses}{a column name in the dataframe that contains
 the participant answers for each item in quotes (i.e., "column")}
+
+\item{key}{a vector containing the scoring key or data column name.
+This column does not have to be included in the original dataframe.}
 
 \item{key.trial}{a vector containing the trial numbers for each answer.
 Note: If you input long data (i.e., repeating trial-answer responses),
@@ -49,9 +53,6 @@ that are outliers using z-scores away from the mean score for group}
 \item{group.by}{an optional argument that can be used to group the
 output by condition columns. These columns should be in the original
 dataframe and concatenated c() if there are multiple columns}
-
-\item{key}{a vector containing the scoring key or data column name.
-This column does not have to be included in the original dataframe.}
 }
 \value{
 \item{DF_Scored}{The dataframe of the original response, answer,
@@ -62,7 +63,7 @@ and suggestions for improvement are welcome.}
 \item{DF_Participant}{A dataframe of the proportion correct by
 participant, which also includes optional z-scoring, grouping, and
 other variables.}
-\item{DF_group}{A dataframe of the summary scores by any optional
+\item{DF_Group}{A dataframe of the summary scores by any optional
 grouping variables, along with overall total proportion correct
 scoring.}
 }

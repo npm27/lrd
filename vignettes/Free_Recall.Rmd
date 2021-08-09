@@ -48,7 +48,7 @@ head(DF_long)
 Scoring in `lrd` is case sensitive, so we will use `tolower()` to lower case all correct answers and participant answers. 
 
 ```{r}
-wide_data$Response <- tolower(wide_data$Response)
+DF_long$response <- tolower(DF_long$response)
 answer_key_free$Answer_Key <- tolower(answer_key_free$Answer_Key)
 ```
 

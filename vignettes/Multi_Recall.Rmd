@@ -31,18 +31,40 @@ head(multi_answers)
 #?multi_answers
 
 library(ggplot2)
+library(reshape)
 ```
 
 # Data Restructuring
 
-The participant data should be in long format with each answer as one row of data. The participant ID will be repeated by participant, while the trial ID will be repeated by trial.  
+The participant data should be in long format with each answer as one row of data. The participant ID will be repeated by participant, while the trial ID will be repeated by trial. You should use the `repeated` argument to indicate the information that denotes how the trials are repeated across participants. Note that in our example `List.Type` and `List.Number` contain the same information. 
 
 ```{r}
-DF_long <- arrange_data(data = multi_test,
+DF_long <- arrange_data(data = multi_data,
       responses = "Response",
       sep = " ",
-      id = "Sub.ID")
+      id = "Sub.ID",
+      repeated = "List.Number")
 head(DF_long)
+```
+
+Next, we will restructure the answer key to have one column for the answers and one column for the list ID. We will also relabel the columns (since `reshape`'s output is vague using `variable` and `value`). Last, we need to make sure the list ID column matches the column in our participant data. 
+
+```{r}
+multi_answers$position <- 1:nrow(multi_answers) #this column is only to reshape
+answer_long <- melt(multi_answers,
+                    measured = colnames(multi_answers),
+                    id = "position")
+
+#fix columns
+colnames(answer_long) <- c("position", "List.ID", "Answer")
+
+#match list id to participant data, which is only numbers
+#list IDs can be characters or numbers 
+answer_long$List.ID <- gsub(pattern = "List", 
+                            replacement = "", 
+                            x = answer_long$List.ID)
+
+head(answer_long)
 ```
 
 # Data Cleanup
@@ -50,8 +72,8 @@ head(DF_long)
 Scoring in `lrd` is case sensitive, so we will use `tolower()` to lower case all correct answers and participant answers. 
 
 ```{r}
-multi_data$Response <- tolower(multi_data$Response)
-answer_key_free$Answer_Key <- tolower(answer_key_free$Answer_Key)
+DF_long$response <- tolower(DF_long$response)
+answer_long$Answer <- tolower(answer_long$Answer)
 ```
 
 # Score the Data
@@ -61,19 +83,22 @@ You should define the following:
 - data = dataframe of participant responses
 - responses = column name of the participant answers
 - key = column name of the answer key
+- key.trial = list ID denoting the different lists participants completed
 - id = column name of the participant id number
+- id.trial = column name of the list ID within the participant data (this can be the same column as key.trial)
 - cutoff = the Levenshtein distance value you want to use for scoring (0 no changes exactly the same, higher numbers allow more variance in the word)
 - flag = calculate z scores for outliers (TRUE/FALSE)
 - group.by = column name(s) for grouping variables
 
 ```{r}
-free_output <- prop_correct_free(data = DF_long,
+free_output <- prop_correct_multiple(data = DF_long,
                                  responses = "response",
-                                 key = answer_key_free$Answer_Key,
+                                 key = answer_long$Answer,
+                                 key.trial = answer_long$List.ID,
                                  id = "Sub.ID",
+                                 id.trial = "List.Number", 
                                  cutoff = 1,
-                                 flag = TRUE,
-                                 group.by = "Disease.Condition")
+                                 flag = TRUE)
 
 
 str(free_output)
