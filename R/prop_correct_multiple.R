@@ -1,10 +1,10 @@
-#' Proportion Correct Cued Recall
+#' Proportion Correct Free Recall fro Multiple Lists
 #'
 #' This function computes the proportion of correct responses
 #' per participant. Proportions can either be separated by
-#' condition or collapsed across conditions. You will need to ensure
-#' each trial is marked with a unique id to correspond to the answer
-#' key.
+#' condition or collapsed across conditions. This function
+#' extends prop_correct_multiple() to including multiple or randomized
+#' lists for participants.
 #'
 #' Note: other columns included in the dataframe will be found
 #' in the final scored dataset. If these other columns are
@@ -28,7 +28,9 @@
 #' @param id a column name containing participant ID numbers from
 #' the original dataframe.
 #' @param id.trial a column name containing the trial numbers
-#' for the participant data from the original dataframe.
+#' for the participant data from the original dataframe. Note that
+#' the free response "key" trial and this trial number should match.
+#' The trial key will be repeated for each answer a participant gave.
 #' @param cutoff a numeric value that determines the criteria for
 #' scoring (i.e., 0 = strictest, 5 = is most lenient). The scoring
 #' criteria uses a Levenshtein distance measure to match participant
@@ -52,29 +54,27 @@
 #' grouping variables, along with overall total proportion correct
 #' scoring.}
 #'
-#' @keywords proportion correct, scoring, cued recall
+#' @keywords proportion correct, scoring, free recall
 #' @import stats
 #' @import utils
 #' @export
 #' @examples
 #'
-#' #This data contains cued recall test with responses and answers together.
-#' #You can use a separate answer key, but this example will show you an
-#' #embedded answer key. This example also shows how you can use different
-#' #stimuli across participants (i.e., each person sees a randomly selected
-#' #set of trials from a larger set).
+#' data(wide_data)
+#' data(answer_key_free)
 #'
-#' data(cued_data)
+#' DF_long <- arrange_data(data = wide_data,
+#'  responses = "Response",
+#'  sep = ",",
+#'  id = "Sub.ID")
 #'
-#' scored_output <- prop_correct_cued(data = cued_data,
+#' scored_output <- prop_correct_multiple(data = DF_long,
 #'  responses = "response",
-#'  key = "key",
-#'  key.trial = "trial",
-#'  id = "id",
-#'  id.trial = "trial",
+#'  key = answer_key_free$Answer_Key,
+#'  id = "Sub.ID",
 #'  cutoff = 1,
 #'  flag = TRUE,
-#'  group.by = "condition")
+#'  group.by = "Disease.Condition")
 #'
 #' head(scored_output$DF_Scored)
 #'
@@ -82,10 +82,13 @@
 #'
 #' head(scored_output$DF_Group)
 #'
-prop_correct_cued <- function(data, responses,
-                              key, key.trial, id, id.trial,
-                              cutoff = 0, flag = FALSE,
-                              group.by = NULL){
+prop_correct_multiple <- function(data, #data frame
+                         responses, #participant responses
+                         key.trial, #free order
+                         id, #participant id
+                         id.trial, #free to participant match
+                         cutoff = 0, flag = FALSE,
+                         group.by = NULL){
 
   #create data from inputs ----
 
@@ -93,57 +96,61 @@ prop_correct_cued <- function(data, responses,
   DF <- as.data.frame(data)
   colnames(DF)[grepl(responses, colnames(DF))] <- "Responses"
   colnames(DF)[grepl(id, colnames(DF))] <- "Sub.ID"
-  colnames(DF)[grepl(id.trial, colnames(DF))] <- "Trial.ID"
-
-  #create the answer key
-  #if the length > 1, assume it's a vector to merge together
-  if (length(key) > 1){
-    answer_key <- data.frame("Answer" = key, "Trial.ID" = key.trial)
-  } else { #assume it is in the original dataframe
-    answer_key <- data.frame("Answer" = data[ , key],
-                             "Trial.ID" = data[ , key.trial])
-  }
-
-  #find unique keys
-  answer_key <- unique(answer_key)
-
-  #make sure no trial IDs are repeated because then bork
-  dups <- duplicated(answer_key$Trial.ID)
-  if(sum(dups) > 0){
-    stop("You have duplicate trial ids for your answer key. Please check your data.")
-  }
-
-  #now merge key and data
-  DF <- merge(DF, answer_key, by = "Trial.ID")
 
   #create the scored data ----
 
-  #get all the distances
-  lev_score <- mapply(adist, DF$Responses, DF$Answer)
+  #create a scoring key, score each response once
+  answer_key <- data.frame("Responses" = as.character(),
+                           "Answer" = as.character())
 
-  #find if they are less than the cutoff
-  DF$Scored <- as.numeric(lev_score <= cutoff)
+  #no need to check the same word twice
+  key <- unique(key)
+
+  #find the key-response pairs
+  for (i in unique(DF$Responses)) {
+
+    #Get the leven score
+    lev_score <- adist(i, key)
+    names(lev_score) <- key
+
+    #Find the minimum value for best match
+    #Figure out if the min score is within the cut off
+    if(min(lev_score) <= cutoff) {
+
+      #put that into the answer key
+      answer_key <- rbind(answer_key,
+                          c(i, attr(which.min(lev_score), "names")))
+
+    } else {
+
+      answer_key <- rbind(answer_key,
+                          c(i, NA))
+
+    }
+
+  }
+
+  #fix answer key
+  colnames(answer_key) <- c("Responses", "Answer")
+
+  #with that answer key, score the data
+  DF <- merge(DF, answer_key, by = "Responses")
+  DF$Scored <- 1 - as.numeric(is.na(DF$Answer))
 
   #create participant summary ----
-  k <- tapply(DF$Trial.ID, DF$Sub.ID, length)
-  if(min(k) != max(k)){
-    warning("The number of trials is not the same for every participant.
-            We will use the max value of trials to calculate proportion
-            correct. Check your data if this is not intended.")
-  }
-  k <- max(k)
+  k <- length(key)
 
   #create participant data frame ----
   if (!is.null(group.by)){
 
-    DF_participant <- aggregate(DF$Scored,
-                                by = DF[ , c(group.by, "Sub.ID")],
-                                function(x){sum(x)/k})
-    colnames(DF_participant) <- c(group.by, "Sub.ID", "Proportion.Correct")
-  } else {
+      DF_participant <- aggregate(DF$Scored,
+                                  by = DF[ , c(group.by, "Sub.ID")],
+                                  function(x){sum(x)/k})
+      colnames(DF_participant) <- c(group.by, "Sub.ID", "Proportion.Correct")
+      } else {
 
-    DF_participant <- aggregate(DF$Scored, list(DF$Sub.ID), function(x){sum(x)/k})
-    colnames(DF_participant) <- c("Sub.ID", "Proportion.Correct")
+        DF_participant <- aggregate(DF$Scored, list(DF$Sub.ID), function(x){sum(x)/k})
+        colnames(DF_participant) <- c("Sub.ID", "Proportion.Correct")
   }
 
   #add back in other columns that are one to one
@@ -214,4 +221,4 @@ prop_correct_cued <- function(data, responses,
 
 }
 
-#' @rdname prop_correct_cued
+#' @rdname prop_correct_multiple
