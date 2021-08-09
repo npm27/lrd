@@ -4,11 +4,14 @@
 \alias{arrange_data}
 \title{Arrange Data for Free Recall Scoring}
 \usage{
-arrange_data(data, responses, sep, id)
+arrange_data(data, responses, sep, id, repeated = NULL)
 }
 \arguments{
 \item{data}{a dataframe of the variables you would like to return.
-Other variables will be included in the returned output in long format.}
+Other variables will be included in the returned output in long format
+if they represent a one to one match with the participant ID. If you
+have repeated data, please use the repeated argument or run this
+function several times for each trial.}
 
 \item{responses}{a column name in the dataframe that contains
 the participant answers for each item in quotes (i.e., "column")}
@@ -17,6 +20,12 @@ the participant answers for each item in quotes (i.e., "column")}
 
 \item{id}{a column name containing participant ID numbers from
 the original dataframe}
+
+\item{repeated}{(optional) a single column name or set of columns
+that indicate repeated measures columns you would like to
+keep with the data. You should include all columns that are not a one
+to one match with the subject ID (i.e., participants saw multiple
+trials). Please see our vignette for an example.}
 }
 \value{
 A dataframe of the participant answers including:

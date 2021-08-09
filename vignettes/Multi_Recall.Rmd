@@ -18,27 +18,29 @@ knitr::opts_chunk$set(
 
 # Libraries and Data 
 
-Please see manuscript for a long description of the following data. We will load the example data, and you can use the `?` with the dataset name to learn more about the data.  
+Please see manuscript for a long description of the following data. We will load the example data, and you can use the `?` with the dataset name to learn more about the data.  This example focuses on expanding the free recall options to include multiple or randomized lists by participant. You will need the data with a "list" or trial ID, as well as a matching answer key with the same ID. 
 
 ```{r}
 library(lrd)
-data("wide_data")
-head(wide_data)
-#?wide_data
+data("multi_data")
+head(multi_data)
+#?multi_data
 
-data("answer_key_free")
-head(answer_key_free)
-#?answer_key_free
+data("multi_answers")
+head(multi_answers)
+#?multi_answers
 
 library(ggplot2)
 ```
 
 # Data Restructuring
 
+The participant data should be in long format with each answer as one row of data. The participant ID will be repeated by participant, while the trial ID will be repeated by trial.  
+
 ```{r}
-DF_long <- arrange_data(data = wide_data,
+DF_long <- arrange_data(data = multi_test,
       responses = "Response",
-      sep = ",",
+      sep = " ",
       id = "Sub.ID")
 head(DF_long)
 ```
@@ -48,7 +50,7 @@ head(DF_long)
 Scoring in `lrd` is case sensitive, so we will use `tolower()` to lower case all correct answers and participant answers. 
 
 ```{r}
-wide_data$Response <- tolower(wide_data$Response)
+multi_data$Response <- tolower(multi_data$Response)
 answer_key_free$Answer_Key <- tolower(answer_key_free$Answer_Key)
 ```
 
