@@ -24,7 +24,7 @@ This package contains four functions for scoring data.
 
   2. `prop_correct_free()` This function can be used to score data from free recall studies.
 
-  3. `prop_correct_multiple()' This function can be used to score data from free recall studies when participants study multiple or random lists.
+  3. `prop_correct_multiple()` This function can be used to score data from free recall studies when participants study multiple or random lists.
   
   4. `prop_correct_sentence()` This function can be used to score sentence recall.
 
