@@ -1,0 +1,87 @@
+---
+title: "Sentence Recall Example"
+author: "Nicholas Maxwell, Erin Buchanan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Sentence Recall Example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Libraries and Data
+
+Please see manuscript for a long description of the following data. We will load the example data, and you can use the `?` with the dataset name to learn more about the data.  
+
+```{r}
+library(lrd)
+data("sentence_data")
+head(sentence_data)
+#?sentence_data
+```
+
+# Data Cleanup
+
+Scoring in `lrd` is case sensitive, so we will use `tolower()` to lower case all correct answers and participant answers. 
+
+```{r}
+sentence_data$Sentence <- tolower(sentence_data$Sentence)
+sentence_data$Response <- tolower(sentence_data$Response)
+```
+
+# Score the Data
+
+You should define the following:
+
+- data = dataframe of participant responses
+- responses = column name of the participant answers
+- key = column name of the answer key
+- key.trial = column name of the trial id code
+- id = column name of the participant id number
+- id.trial = column name of the trial id within the participant data
+- cutoff = the Levenshtein distance value you want to use for scoring (0 no changes exactly the same, higher numbers allow more variance in the word)
+- flag = calculate z scores for outliers (TRUE/FALSE)
+- group.by = column name(s) for grouping variables
+- token.split = a value to split the tokens (i.e., words) in the sentence
+
+Note that the answer key can be in a separate dataframe, use something like  `answer_key$answer` for the key argument and `answer_key$id_num` for the trial number. Fill in `answer_key` with your dataframe name and the column name for those columns after the `$`. 
+
+```{r}
+sentence_ouptut <- 
+  prop_correct_sentence(data = sentence_data,
+                        responses = "Response",
+                        key = "Sentence",
+                        key.trial = "Trial.ID",
+                        id = "Sub.ID",
+                        id.trial = "Trial.ID",
+                        cutoff = 1,
+                        flag = TRUE,
+                        group.by = "Condition",
+                        token.split = " ")
+
+str(sentence_ouptut)
+```
+
+# Output
+
+We can use `DF_Scored` to see the original dataframe with our new scoring columns - also to check if our answer key and participant answers matched up correctly! First, each sentence is stripped of punctuation and extra white space within the function. The total number of tokens, as split by `token.split` are tallied for calculating `Proportion.Match.` Then, the tokens are matched using the Levenshtein distance indicated in `cutoff`, as with the cued and free recall functions. The key difference in this function is how each type of token is handled. The `Shared.Items` column includes all the items that were matched completely with the original answer (i.e., a `cutoff`  of 0). The tokens not matched in the participant answer are then compared to the tokens not matched from the answer key to create the `Corrected.Items` column. This column indicates answers that were misspelled but within the cutoff score and were matched to the answer key (i.e., th for the, ths for this). The non-matched items are then separated into `Omitted.Items` (i.e., items in the answer key not found in the participant answer), and `Extra.Items` (i.e., items found in the participant answer that were not found in the answer key). The `Proportion.Match` is calculated by summing the number of tokens matched in `Shared.Items` and `Corrected.Items` and dividing by the total number of tokens in the answer key. The `DF_Participant` can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use `DF_Group` to see that output. 
+
+```{r}
+#Overall
+sentence_ouptut$DF_Scored
+
+#Participant
+sentence_ouptut$DF_Participant
+
+#Groups
+sentence_ouptut$DF_Group
+```
+
+
