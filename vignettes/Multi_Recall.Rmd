@@ -4,7 +4,7 @@ author: "Nicholas Maxwell, Erin Buchanan"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Free Recall Example}
+  %\VignetteIndexEntry{Multiple List Free Recall Example}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

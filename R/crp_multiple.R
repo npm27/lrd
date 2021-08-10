@@ -1,18 +1,14 @@
-#' Conditional Response Probability
+#' Conditional Response Probability for Multiple Lists
 #'
 #' This function calculates the conditional response
 #' probability of each lag position. Participants' lag
 #' between subsequent named items is tallied and then
 #' divided by the possible combination of subsequent lags
-#' given their response pattern.
+#' given their response pattern. This function was designed
+#' to handle multiple or randomized lists across participants.
 #'
 #' This output can then be used to create a CRP visualizations,
 #' and an example can be found in our manuscript/vignettes.
-#'
-#' Important: The code is written assuming the data provided are for
-#' a single recall list. If repeated measures are used (i.e., there are
-#' multiple lists completed by each participant or multiple list versions),
-#' you should use this function several times, once on each list/answer key.
 #'
 #' @param data a dataframe of the scored free recall that you would
 #' like to calculate - use prop_correct_free() for best formatting.
@@ -26,6 +22,15 @@
 #' This column does not have to be included in the original dataframe.
 #' We assume your answer key is in the tested position order. You should
 #' not include duplicates in your answer key.
+#' @param key.trial a vector containing the trial numbers for each answer.
+#' Note: If you input long data (i.e., repeating trial-answer responses),
+#' we will take the unique combination of the responses. If a trial number
+#' is repeated, you will receive an error. Key and key.trial can also be
+#' a separate dataframe, depending on how your output data is formatted.
+#' @param id.trial a column name containing the trial numbers
+#' for the participant data from the original dataframe. Note that
+#' the free response "key" trial and this trial number should match.
+#' The trial key will be repeated for each answer a participant gave.
 #' @param scored a column in the original dataframe indicating if the
 #' participant got the answer correct (1) or incorrect (0).
 #'
@@ -66,111 +71,35 @@
 #'
 #'  head(crp_output)
 #'
-crp <- function(data, position, answer, id,
-                key, scored){
+crp_multiple <- function(data, position, answer, id,
+                key, key.trial, id.trial, scored){
 
-  # for cran check
-  Sub.ID <- NULL
+  #get list IDs
+  list_ids <- unique(data[ , id.trial])
 
-  #create answer key with order
-  if (sum(duplicated(key)) > 0){
-    stop("Your answer key contains duplicates. Please check your data.")
-  }
-  key <- data.frame("Answer" = key, "Tested.Position" = 1:length(key))
+  #split the data based on ID
+  data_list <- split(data, data[ , id.trial])
 
-  #merge that with the data
-  DF <- as.data.frame(data)
-  colnames(DF)[grepl(answer, colnames(DF))] <- "Answer"
-  colnames(DF)[grepl(position, colnames(DF))] <- "Answered.Position"
-  colnames(DF)[grepl(scored, colnames(DF))] <- "Scored"
-  colnames(DF)[grepl(id, colnames(DF))] <- "Sub.ID"
-  DF <- merge(DF, key, by = "Answer")
+  answer_key <- data.frame("Answers" = key, "List.ID" = key.trial)
+  answer_list <- split(answer_key, answer_key$List.ID)
 
-  #calculate the number of times within window
-  DF$Answered.Position <- as.numeric(DF$Answered.Position)
-  DF$Tested.Position <- as.numeric(DF$Tested.Position)
-  DF$Lag <- DF$Tested.Position - DF$Answered.Position
+  #create a storage space for the final scored data
+  scored_data <- list()
 
-  number_spots <- 1:max(DF$Tested.Position)
-  DF_final <- NULL
-
-  # Get all possible lags for 0 options
-  all_lags <- sort(c((1:(nrow(key) - 1)) * -1, 1:(nrow(key) - 1)))
-
-  # Create a dataframe of all possible options and ids
-  merge_lags <- data.frame(Sub.ID = rep(unique(DF$Sub.ID), each = length(all_lags)),
-                           participant_lags = rep(all_lags, length(unique(DF$Sub.ID))))
-
-  #for each participant calculate the possible lags
-  for (i in unique(DF$Sub.ID)){
-
-    temp_part <- subset(DF,
-                        Sub.ID == i)
-    temp_part <- temp_part[order(temp_part$Answered.Position), ]
-
-    participant_lags <- diff(temp_part$Tested.Position)
-    possible_lags <- c()
-
-    if (nrow(temp_part) > 1){
-      #participant lags
-      for (j in 1:nrow(temp_part)){
-
-        #take up to the current answered position
-        current_used <- temp_part$Tested.Position[1:j]
-        answers_left <- setdiff(number_spots, current_used)
-        current_spot <- temp_part$Tested.Position[j]
-
-        possible_lags <- c(possible_lags, answers_left - current_spot)
-
-
-      } #answers loop
-
-      table_part_lags <- as.data.frame(table(participant_lags))
-      table_possible_lags <- as.data.frame(table(possible_lags))
-      colnames(table_possible_lags) <- c("participant_lags", "Possible.Freq")
-      table_part_lags <- merge(table_part_lags,
-                               table_possible_lags,
-                               by = "participant_lags")
-
-      table_part_lags$Sub.ID <- i
-
-      if (is.null(DF_final)){
-        DF_final <- table_part_lags
-      } else {
-        DF_final <- rbind(DF_final, table_part_lags)
-      }
-
-    } #close nrow check
-
-  } #participant loop
-
-  # create other columns in merge_lags
-  other.columns <- setdiff(colnames(DF),
-                           c("Responses", "Sub.ID", "Answer",
-                             "Scored", "Answered.Position",
-                             "Tested.Position", "Lag",
-                             colnames(merge_lags)))
-  for (col in other.columns){
-    DF_temp <- unique(DF[ , c("Sub.ID", col)])
-    if (sum(duplicated(DF_temp$Sub.ID)) == 0){
-      merge_lags <- merge(merge_lags, DF_temp, by = "Sub.ID")
-    }
+  #run the function on each list separately
+  for (i in 1:length(data_list)){
+    scored_data[[i]] <- crp(data = data_list[[i]],
+                            position = position,
+                            answer = answer,
+                            id = id,
+                            key = answer_list[[i]]$Answers,
+                            scored = scored)
   }
 
-  # Merge all possible lags with real lags
-  DF_final$participant_lags <- as.numeric(as.character(DF_final$participant_lags))
-  DF_final <- merge(DF_final, merge_lags, by = c("Sub.ID", "participant_lags"), all = T)
+  DF_crp <- do.call("rbind", scored_data)
 
-  # Create CRP
-  DF_final$CRP <- DF_final$Freq / DF_final$Possible.Freq
-
-  # Add zeroes back in
-  DF_final$Freq[is.na(DF_final$Freq)] <- 0
-  DF_final$Possible.Freq[is.na(DF_final$Possible.Freq)] <- 0
-  DF_final$CRP[is.na(DF_final$CRP)] <- 0
-
-  return(DF_final)
+  return(DF_crp)
 
 }
 
-#' @rdname crp
+#' @rdname crp_multiple

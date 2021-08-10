@@ -1,4 +1,4 @@
-#' Probability of First Recall
+#' Probability of First Recall for Multiple LIsts
 #'
 #' This function calculates the probability of first recall
 #' for each serial position. The total number of times an
@@ -8,11 +8,6 @@
 #'
 #' This output can then be used to create a PFR visualizations,
 #' and an example can be found in our manuscript/vignettes.
-#'
-#' Important: The code is written assuming the data provided are for
-#' a single recall list. If repeated measures are used (i.e., there are
-#' multiple lists completed by each participant or multiple list versions),
-#' you should use this function several times, once on each list/answer key.
 #'
 #' @param data a dataframe of the scored free recall that you would
 #' like to calculate - use prop_correct_free() for best formatting.
@@ -26,6 +21,15 @@
 #' This column does not have to be included in the original dataframe.
 #' We assume your answer key is in the tested position order. You should
 #' not include duplicates in your answer key.
+#' @param key.trial a vector containing the trial numbers for each answer.
+#' Note: If you input long data (i.e., repeating trial-answer responses),
+#' we will take the unique combination of the responses. If a trial number
+#' is repeated, you will receive an error. Key and key.trial can also be
+#' a separate dataframe, depending on how your output data is formatted.
+#' @param id.trial a column name containing the trial numbers
+#' for the participant data from the original dataframe. Note that
+#' the free response "key" trial and this trial number should match.
+#' The trial key will be repeated for each answer a participant gave.
 #' @param scored a column in the original dataframe indicating if the
 #' participant got the answer correct (1) or incorrect (0).
 #' @param group.by an optional argument that can be used to group the
@@ -69,58 +73,37 @@
 #'
 #'  head(pfr_output)
 #'
-pfr <- function(data, position, answer, id,
-                key, scored, group.by = NULL){
+pfr_multiple <- function(data, position, answer, id,
+                key, key.trial, id.trial, scored, group.by = NULL){
 
-  # for r cran check
-  Answered.Position <- NULL
+  #get list IDs
+  list_ids <- unique(data[ , id.trial])
 
-  #create answer key with order
-  if (sum(duplicated(key)) > 0){
-    stop("Your answer key contains duplicates. Please check your data.")
-  }
-  key <- data.frame("Answer" = key, "Tested.Position" = 1:length(key))
+  #split the data based on ID
+  data_list <- split(data, data[ , id.trial])
 
-  #merge that with the data
-  DF <- as.data.frame(data)
-  colnames(DF)[grepl(answer, colnames(DF))] <- "Answer"
-  colnames(DF)[grepl(position, colnames(DF))] <- "Answered.Position"
-  colnames(DF)[grepl(scored, colnames(DF))] <- "Scored"
-  colnames(DF)[grepl(id, colnames(DF))] <- "Sub.ID"
-  DF <- merge(DF, key, by = "Answer")
+  answer_key <- data.frame("Answers" = key, "List.ID" = key.trial)
+  answer_list <- split(answer_key, answer_key$List.ID)
 
-  #calculate the number of times within window
-  DF$Answered.Position <- as.numeric(DF$Answered.Position)
-  DF$Tested.Position <- as.numeric(DF$Tested.Position)
+  #create a storage space for the final scored data
+  scored_data <- list()
 
-  DF_first <- subset(DF, Answered.Position == 1)
-
-  if(!is.null(group.by)){
-    pfr_table <- as.data.frame(table(DF_first[ , c("Tested.Position", group.by)]))
-
-    DF_unique <- unique(DF[ , c("Sub.ID", group.by)])
-    group_sizes <- as.data.frame(table(DF_unique[ , group.by]))
-    group_sizes$group_code <- paste(group_sizes[ , -ncol(group_sizes)])
-
-    group_code <- paste(pfr_table[ , group.by])
-    pfr_table$pfr <- NA
-
-    for (group in group_code){
-      pfr_table$pfr[group_code == group] <- pfr_table$Freq[group_code == group] / group_sizes$Freq[group_sizes$group_code == group]
-    }
-
-  } else {
-
-    pfr_table <- as.data.frame(table(DF_first$Tested.Position))
-    group_sizes <- length(unique(DF$Sub.ID))
-    pfr_table$pfr <- pfr_table$Freq / group_sizes
-    colnames(pfr_table)[1] <- c("Tested.Position")
-
+  #run the function on each list separately
+  for (i in 1:length(data_list)){
+    scored_data[[i]] <- pfr(data = data_list[[i]],
+                            position = position,
+                            answer = answer,
+                            id = id,
+                            key = answer_list[[i]]$Answers,
+                            scored = scored,
+                            group.by = group.by)
   }
 
-  return(pfr_table)
+  DF_pfr <- do.call("rbind", scored_data)
+
+  return(DF_pfr)
 
 }
 
-#' @rdname pfr
+#' @rdname pfr_multiple
 
