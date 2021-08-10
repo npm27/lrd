@@ -43,31 +43,52 @@
 #' @export
 #' @examples
 #'
-#' data(free_data)
-#' data(answer_key_free2)
+#' data("multi_data")
+#' data("multi_answers")
 #'
-#' free_data <- subset(free_data,
-#'  List_Type == "Cat_Recall_L1")
+#' DF_long <- arrange_data(data = multi_data,
+#'                        responses = "Response",
+#'                        sep = " ",
+#'                        id = "Sub.ID",
+#'                        repeated = "List.Number")
 #'
-#' DF_long <- arrange_data(data = free_data,
-#'  responses = "Response",
-#'  sep = " ",
-#'  id = "Username")
+#' library(reshape)
+#' multi_answers$position <- 1:nrow(multi_answers)
+#' answer_long <- melt(multi_answers,
+#'                     measured = colnames(multi_answers),
+#'                     id = "position")
+#' colnames(answer_long) <- c("position", "List.ID", "Answer")
 #'
-#' scored_output <- prop_correct_free( data = DF_long,
-#'  responses = "response",
-#'  key = answer_key_free2$Answer_Key,
-#'  id = "Sub.ID",
-#'  cutoff = 1,
-#'  flag = TRUE,
-#'  group.by = "Version")
+#' answer_long$List.ID <- gsub(pattern = "List",
+#'                             replacement = "",
+#'                             x = answer_long$List.ID)
 #'
-#' crp_output <- crp(data = scored_output$DF_Scored,
-#'  position = "position",
-#'  answer = "Answer",
-#'  id = "Sub.ID",
-#'  key = answer_key_free2$Answer_Key,
-#'  scored = "Scored")
+#' DF_long$response <- tolower(DF_long$response)
+#' answer_long$Answer <- tolower(answer_long$Answer)
+#' answer_long$Answer <- gsub(" ", "", answer_long$Answer)
+#'
+#' scored_output <- prop_correct_multiple(data = DF_long,
+#'                                     responses = "response",
+#'                                     key = answer_long$Answer,
+#'                                     key.trial = answer_long$List.ID,
+#'                                     id = "Sub.ID",
+#'                                     id.trial = "List.Number",
+#'                                     cutoff = 1,
+#'                                     flag = TRUE)
+#'
+#' head(scored_output$DF_Scored)
+#'
+#' head(scored_output$DF_Participant)
+#'
+#'
+#' crp_output <- crp_multiple(data = scored_output$DF_Scored,
+#'                           key = answer_long$Answer,
+#'                           position = "position",
+#'                           scored = "Scored",
+#'                           answer = "Answer",
+#'                           id = "Sub.ID",
+#'                           key.trial = answer_long$List.ID,
+#'                           id.trial = "List.Number")
 #'
 #'  head(crp_output)
 #'
@@ -97,6 +118,8 @@ crp_multiple <- function(data, position, answer, id,
   }
 
   DF_crp <- do.call("rbind", scored_data)
+  #lengths <- unlist(lapply(scored_data, nrow))
+  #DF_crp$List.ID <- rep(list_ids, lengths)
 
   return(DF_crp)
 
