@@ -18,17 +18,19 @@ The following steps will install the development version of `lrd`. CRAN release 
 
 ## Scoring data:
 
-This package contains three functions for scoring data.
+This package contains four functions for scoring data.
 
   1. `prop_correct_cued()` This function can be used to score cued-recall data.
 
   2. `prop_correct_free()` This function can be used to score data from free recall studies.
+
+  3. `prop_correct_multiple()' This function can be used to score data from free recall studies when participants study multiple or random lists.
   
-  3. `prop_correct_sentence()` This function can be used to score sentence recall.
+  4. `prop_correct_sentence()` This function can be used to score sentence recall.
 
 In additionally, `arrange_data()` can be used to convert wide format data to long format prior to scoring.
 
-Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/g96a7/).
+Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/r942y/).
 
 You can also use the [Shiny app](https://npm27.shinyapps.io/lrd_shiny/)! For step-by-step instructions on using the Shiny application, see the [how-to-guide](https://www.macapsych.com/lexical-re).
 
