@@ -1,4 +1,4 @@
-#' Proportion Correct Free Recall fro Multiple Lists
+#' Proportion Correct Free Recall for Multiple Lists
 #'
 #' This function computes the proportion of correct responses
 #' per participant. Proportions can either be separated by

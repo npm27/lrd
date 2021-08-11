@@ -17,7 +17,7 @@ free_recall_multiple <-
               HTML("<b>Upload Your Data File:</b> Nearly all file types supported!
                    Only one header row is supported."),
               p(" "),
-              fileInput('free_data', 'Choose Data File'),
+              fileInput('free_data_multiple', 'Choose Data File'),
               tags$style(type = "text/css",
                          ".shiny-output-error {visibility: hidden;}",
                          ".shiny-output-error:before {visibility: hidden;}"),
@@ -25,7 +25,7 @@ free_recall_multiple <-
               HTML("<b>Upload Your Answer Key:</b> Your answer key can be in
                    the original data file, just upload it again here."),
               p(" "),
-              fileInput('answer_key_free', 'Choose Answer File'),
+              fileInput('answer_key_multiple', 'Choose Answer File'),
               tags$style(type = "text/css",
                          ".shiny-output-error {visibility: hidden;}",
                          ".shiny-output-error:before {visibility: hidden;}")
@@ -41,13 +41,13 @@ free_recall_multiple <-
               p(" "),
               HTML("<b>Here's your free-recall data:</b>"),
               p(" "),
-              DTOutput("free_recall_data"),
+              DTOutput("multiple_recall_data"),
               tags$style(type = "text/css",
                          ".shiny-output-error {visibility: hidden;}",
                          ".shiny-output-error:before {visibility: hidden;}"),
               p(" "),
               HTML("<b>Here's your answer key:</b>"),
-              DTOutput("free_recall_answer"),
+              DTOutput("multiple_recall_answer"),
               tags$style(type = "text/css",
                          ".shiny-output-error {visibility: hidden;}",
                          ".shiny-output-error:before {visibility: hidden;}")
@@ -61,15 +61,17 @@ free_recall_multiple <-
               status = "primary",
               width = 12,
               p(" "),
-              htmlOutput("free_responsesUI"),
-              htmlOutput("free_keyUI"),
-              htmlOutput("free_idUI"),
-              htmlOutput("free_group.byUI"),
-              sliderInput('free_cutoff', "Choose the scoring cutoff:", min = 0, max = 5, value = 0, step = 1,
+              htmlOutput("multiple_responsesUI"),
+              htmlOutput("multiple_keyUI"),
+              htmlOutput("multiple_key.trialUI"),
+              htmlOutput("multiple_idUI"),
+              htmlOutput("multiple_id.trialUI"),
+              htmlOutput("multiple_group.byUI"),
+              sliderInput('multiple_cutoff', "Choose the scoring cutoff:", min = 0, max = 5, value = 0, step = 1,
                           round = TRUE),
-              checkboxInput('free_flag', "Do you want to flag for outliers?", value = FALSE, width = NULL),
-              htmlOutput("free_positionUI"),
-              actionButton("free_recall_go", "Score Your Data")
+              checkboxInput('multiple_flag', "Do you want to flag for outliers?", value = FALSE, width = NULL),
+              htmlOutput("multiple_positionUI"),
+              actionButton("multiple_recall_go", "Score Your Data")
             ), # box
 
             # Free Recall Output ---------------------------------------------------------
@@ -82,7 +84,7 @@ free_recall_multiple <-
               p(" "),
               HTML("<b>Here's the scored long version output:</b>"),
               p(" "),
-              DTOutput("free_recall_scored"),
+              DTOutput("multiple_recall_scored"),
               tags$style(type = "text/css",
                          ".shiny-output-error {visibility: hidden;}",
                          ".shiny-output-error:before {visibility: hidden;}")

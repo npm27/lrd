@@ -524,65 +524,78 @@ server <- function(input, output, session) {
     # Multiple Free Recall Scoring -------------------------------------------------------
 
     # Get the data
-    observeEvent(input$free_data, {
-      if (is.null(input$free_data)) return(NULL)
-      values$free_data <- import(input$free_data$datapath)
+    observeEvent(input$free_data_multiple, {
+      if (is.null(input$free_data_multiple)) return(NULL)
+      values$free_data_multiple <- import(input$free_data_multiple$datapath)
     })
 
-    observeEvent(input$answer_key_free, {
-      if (is.null(input$answer_key_free)) return(NULL)
-      values$answer_key_free <- import(input$answer_key_free$datapath)
+    observeEvent(input$answer_key_multiple, {
+      if (is.null(input$answer_key_multiple)) return(NULL)
+      values$answer_key_multiple <- import(input$answer_key_multiple$datapath)
     })
 
     # Output the data
-    output$free_recall_data <- renderDT({
-      values$free_data
+    output$multiple_recall_data <- renderDT({
+      values$free_data_multiple
     })
 
-    output$free_recall_answer <- renderDT({
-      values$answer_key_free
+    output$multiple_recall_answer <- renderDT({
+      values$answer_key_multiple
     })
 
     # Create the answer choices
-    output$free_responsesUI <- renderUI({
-      selectizeInput("free_responses", "Choose the response column:",
-                     choices = colnames(values$free_data),
+    output$multiple_responsesUI <- renderUI({
+      selectizeInput("multiple_responses", "Choose the response column:",
+                     choices = colnames(values$free_data_multiple),
                      multiple = F)
     })
 
-    output$free_keyUI <- renderUI({
-      selectizeInput("free_key", "Choose the answer key column:",
-                     choices = colnames(values$answer_key_free),
+    output$multiple_keyUI <- renderUI({
+      selectizeInput("multiple_key", "Choose the answer key column:",
+                     choices = colnames(values$answer_key_multiple),
                      multiple = F)
     })
 
-    output$free_idUI <- renderUI({
-      selectizeInput("free_id", "Choose the participant id column:",
-                     choices = colnames(values$free_data),
+    output$multiple_key.trialUI <- renderUI({
+      selectizeInput("multiple_key", "Choose the answer key trial ID column:",
+                     choices = colnames(values$answer_key_multiple),
                      multiple = F)
     })
 
-    output$free_group.byUI <- renderUI({
-      selectizeInput("free_group.by", "Choose the group by columns:",
-                     choices = colnames(values$free_data),
+    output$multiple_idUI <- renderUI({
+      selectizeInput("multiple_id", "Choose the participant id column:",
+                     choices = colnames(values$free_data_multiple),
+                     multiple = F)
+    })
+
+    output$multiple_id.trialUI <- renderUI({
+      selectizeInput("multiple_id", "Choose the participant trial ID column:",
+                     choices = colnames(values$free_data_multiple),
+                     multiple = F)
+    })
+
+    output$multiple_group.byUI <- renderUI({
+      selectizeInput("multiple_group.by", "Choose the group by columns:",
+                     choices = colnames(values$free_data_multiple),
                      multiple = T)
     })
 
-    output$free_positionUI <- renderUI({
-      selectizeInput("free_position", "Choose the position answered column for
+    output$multiple_positionUI <- renderUI({
+      selectizeInput("multiple_position", "Choose the position answered column for
                        position related information:",
-                     choices = colnames(values$free_data),
+                     choices = colnames(values$free_data_multiple),
                      multiple = T)
     })
 
     # Score the free recall and do other related calculations
-    observeEvent(input$free_recall_go, {
+    observeEvent(input$multiple_recall_go, {
 
       # free recall section ----
-      values$free_recall_calculated <- prop_correct_free(
-        data = values$free_data,
+      values$multiple_recall_calculated <- prop_correct_multiple(
+        data = values$free_data_multiple,
         responses = input$free_responses,
-        key = values$answer_key_free[ , input$free_key],
+        key = values$answer_key_multiple[ , input$free_key],
+        key.trial = values$
         id = input$free_id,
         cutoff = input$free_cutoff,
         flag = input$free_flag,
@@ -682,7 +695,7 @@ server <- function(input, output, session) {
           data = values$free_recall_calculated$DF_Scored,
           position = input$free_position,
           answer = "Answer",
-          key = values$answer_key_free[ , input$free_key],
+          key = values$answer_key_multiple[ , input$free_key],
           scored = "Scored",
           group.by = c(input$free_group.by))
 
@@ -768,7 +781,7 @@ server <- function(input, output, session) {
                                      position = input$free_position,
                                      answer = "Answer",
                                      id = "Sub.ID",
-                                     key = values$answer_key_free[ , input$free_key],
+                                     key = values$answer_key_multiple[ , input$free_key],
                                      scored = "Scored",
                                      group.by = c(input$free_group.by))
 
@@ -849,7 +862,7 @@ server <- function(input, output, session) {
                                      position = input$free_position,
                                      answer = "Answer",
                                      id = "Sub.ID",
-                                     key = values$answer_key_free[ , input$free_key],
+                                     key = values$answer_key_multiple[ , input$free_key],
                                      scored = "Scored")
 
 
