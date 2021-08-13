@@ -17,6 +17,7 @@ source("free_recall.R")
 source("wide_tab.R")
 source("cued_recall.R")
 source("sentence_recall.R")
+source("free_recall_multiple.R")
 
 # Define UI for application that draws a histogram
 ui <- dashboardPage(skin = "blue",
@@ -91,6 +92,12 @@ server <- function(input, output, session) {
                        multiple = F)
     })
 
+    output$wide_repeatedUI <- renderUI({
+      selectizeInput("wide_repeated", "Choose any repeated measures columns:",
+                     choices = colnames(values$wide_data),
+                     multiple = T)
+    })
+
     # Convert the data
     observeEvent(input$wide_data_go, {
 
@@ -103,7 +110,8 @@ server <- function(input, output, session) {
             long_data <- arrange_data(data = values$wide_data,
                          responses = input$wide_responses,
                          sep = input$wide_sep,
-                         id = input$wide_id)
+                         id = input$wide_id,
+                         repeated = c(input$wide_repeated))
 
             datatable(long_data,
                       extensions = 'Buttons',
@@ -167,7 +175,7 @@ server <- function(input, output, session) {
         selectizeInput("free_position", "Choose the position answered column for
                        position related information:",
                        choices = colnames(values$free_data),
-                       multiple = T)
+                       multiple = F)
     })
 
     # Score the free recall and do other related calculations
@@ -557,7 +565,7 @@ server <- function(input, output, session) {
     })
 
     output$multiple_key.trialUI <- renderUI({
-      selectizeInput("multiple_key", "Choose the answer key trial ID column:",
+      selectizeInput("multiple_key.trial", "Choose the answer key trial ID column:",
                      choices = colnames(values$answer_key_multiple),
                      multiple = F)
     })
@@ -569,7 +577,7 @@ server <- function(input, output, session) {
     })
 
     output$multiple_id.trialUI <- renderUI({
-      selectizeInput("multiple_id", "Choose the participant trial ID column:",
+      selectizeInput("multiple_id.trial", "Choose the participant trial ID column:",
                      choices = colnames(values$free_data_multiple),
                      multiple = F)
     })
@@ -584,7 +592,7 @@ server <- function(input, output, session) {
       selectizeInput("multiple_position", "Choose the position answered column for
                        position related information:",
                      choices = colnames(values$free_data_multiple),
-                     multiple = T)
+                     multiple = F)
     })
 
     # Score the free recall and do other related calculations
@@ -593,57 +601,58 @@ server <- function(input, output, session) {
       # free recall section ----
       values$multiple_recall_calculated <- prop_correct_multiple(
         data = values$free_data_multiple,
-        responses = input$free_responses,
-        key = values$answer_key_multiple[ , input$free_key],
-        key.trial = values$
-        id = input$free_id,
-        cutoff = input$free_cutoff,
-        flag = input$free_flag,
-        group.by = c(input$free_group.by))
+        responses = input$multiple_responses,
+        key = values$answer_key_multiple[ , input$multiple_key],
+        key.trial = values$answer_key_multiple[ , input$multiple_key.trial],
+        id = input$multiple_id,
+        id.trial = input$multiple_id.trial,
+        cutoff = input$multiple_cutoff,
+        flag = input$multiple_flag,
+        group.by = c(input$multiple_group.by))
 
-      output$free_recall_scored <- renderDT(server = F, {
-        datatable(values$free_recall_calculated$DF_Scored,
+      output$multiple_recall_scored <- renderDT(server = F, {
+        datatable(values$multiple_recall_calculated$DF_Scored,
                   extensions = 'Buttons',
                   options = list(dom = 'BRtp',
-                                 filename = 'free_recall_scored',
+                                 filename = 'multiple_recall_scored',
                                  buttons = c('copy', 'csv', 'excel')),
                   rownames = FALSE) #close datatable
       })
 
-      output$free_recall_participant <- renderDT(server = F, {
-        datatable(values$free_recall_calculated$DF_Participant,
+      output$multiple_recall_participant <- renderDT(server = F, {
+        datatable(values$multiple_recall_calculated$DF_Participant,
                   extensions = 'Buttons',
                   options = list(dom = 'BRtp',
-                                 filename = 'free_participant_scored',
+                                 filename = 'multiple_participant_scored',
                                  scrollX = TRUE,
                                  buttons = c('copy', 'csv', 'excel')),
                   rownames = FALSE) #close datatable
       })
 
-      output$free_recall_group.by <- renderDT(server = F, {
-        datatable(values$free_recall_calculated$DF_Group,
+      output$multiple_recall_group.by <- renderDT(server = F, {
+        datatable(values$multiple_recall_calculated$DF_Group,
                   extensions = 'Buttons',
                   options = list(dom = 'BRtp',
-                                 filename = 'free_group_scored',
+                                 filename = 'multiple_group_scored',
                                  buttons = c('copy', 'csv', 'excel')),
                   rownames = FALSE) #close datatable
       })
 
-      output$free_recall_graph <- renderPlot({
+      output$multiple_recall_graph <- renderPlot({
 
         #if there are grouping variables
-        if(!is.null(input$free_group.by)){
+        if(!is.null(input$multiple_group.by)){
 
-          if (length(input$free_group.by) == 1){
+          if (length(input$multiple_group.by) == 1){
 
-            temp <- values$free_recall_calculated$DF_Participant
-            temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+            temp <- values$multiple_recall_calculated$DF_Participant
+            temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
 
             print(str(temp))
-            print(input$free_group.by[1])
+            print(input$multiple_group.by[1])
 
             stupid_graph <- ggplot(temp,
-                                   aes_string(x = input$free_group.by[1],
+                                   aes_string(x = input$multiple_group.by[1],
                                               y = "Proportion.Correct")) +
               stat_summary(fun = mean,
                            geom = "bar",
@@ -656,16 +665,16 @@ server <- function(input, output, session) {
               theme_bw()
           }
 
-          if (length(input$free_group.by) > 1){
+          if (length(input$multiple_group.by) > 1){
 
-            temp <- values$free_recall_calculated$DF_Participant
-            temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
-            temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
+            temp <- values$multiple_recall_calculated$DF_Participant
+            temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
+            temp[ , input$multiple_group.by[2]] <- factor(temp[ , input$multiple_group.by[2]])
 
             stupid_graph <- ggplot(temp,
-                                   aes_string(x = input$free_group.by[1],
+                                   aes_string(x = input$multiple_group.by[1],
                                               y = "Proportion.Correct",
-                                              fill = input$free_group.by[2])) +
+                                              fill = input$multiple_group.by[2])) +
               stat_summary(fun = mean,
                            geom = "bar") +
               stat_summary(fun.data = mean_cl_normal,
@@ -678,7 +687,7 @@ server <- function(input, output, session) {
 
         } else {
 
-          stupid_graph <- ggplot(values$free_recall_calculated$DF_Participant,
+          stupid_graph <- ggplot(values$multiple_recall_calculated$DF_Participant,
                                  aes(x = Proportion.Correct)) +
             xlab("Proportion Correct") +
             ylab("Frequency") +
@@ -690,39 +699,41 @@ server <- function(input, output, session) {
       })
 
       # serial curves ----
-      if(!is.null(input$free_position)){
-        values$serial_calculated <- serial_position(
-          data = values$free_recall_calculated$DF_Scored,
-          position = input$free_position,
+      if(!is.null(input$multiple_position)){
+        values$serial_calculated_multiple <- serial_position_multiple(
+          data = values$multiple_recall_calculated$DF_Scored,
+          position = input$multiple_position,
           answer = "Answer",
-          key = values$answer_key_multiple[ , input$free_key],
+          key = values$answer_key_multiple[ , input$multiple_key],
+          key.trial = values$answer_key_multiple[ , input$multiple_key.trial],
+          id.trial = input$multiple_id.trial,
           scored = "Scored",
-          group.by = c(input$free_group.by))
+          group.by = c(input$multiple_group.by))
 
-        output$serial_data_output <- renderDT(server = F, {
+        output$serial_data_output_multiple <- renderDT(server = F, {
 
-          datatable(values$serial_calculated,
+          datatable(values$serial_calculated_multiple,
                     extensions = 'Buttons',
                     options = list(dom = 'BRtp',
-                                   filename = 'free_serial_position',
+                                   filename = 'multiple_serial_position',
                                    buttons = c('copy', 'csv', 'excel')),
                     rownames = FALSE) #close datatable
         })
 
-        output$serial_graph <- renderPlot({
+        output$serial_graph_multiple <- renderPlot({
 
           #if there are grouping variables
-          if(!is.null(input$free_group.by)){
+          if(!is.null(input$multiple_group.by)){
 
-            if (length(input$free_group.by) == 1){
+            if (length(input$multiple_group.by) == 1){
 
-              temp <- values$serial_calculated
-              temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+              temp <- values$serial_calculated_multiple
+              temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
 
               stupid_graph <- ggplot(data = temp,
                                      aes_string(x = "Tested.Position",
                                                 y = "Proportion.Correct",
-                                                color = input$free_group.by[1])) +
+                                                color = input$multiple_group.by[1])) +
                 geom_line() +
                 geom_point() +
                 geom_errorbar(aes(ymin = Proportion.Correct - SE, ymax = Proportion.Correct + SE),
@@ -732,30 +743,30 @@ server <- function(input, output, session) {
                 theme_bw()
             }
 
-            if (length(input$free_group.by) > 1){
+            if (length(input$multiple_group.by) > 1){
 
-              temp <- values$serial_calculated
-              temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
-              temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
+              temp <- values$serial_calculated_multiple
+              temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
+              temp[ , input$multiple_group.by[2]] <- factor(temp[ , input$multiple_group.by[2]])
 
               stupid_graph <- ggplot(data = temp,
                                      aes_string(x = "Tested.Position",
                                                 y = "Proportion.Correct",
-                                                color = input$free_group.by[1])) +
+                                                color = input$multiple_group.by[1])) +
                 geom_line() +
                 geom_point() +
                 geom_errorbar(aes(ymin = Proportion.Correct - SE, ymax = Proportion.Correct + SE),
                               width = .2, position = position_dodge()) +
                 xlab("Tested Position") +
                 ylab("Proportion Correct") +
-                facet_wrap(~ input$free_group.by[2]) +
+                facet_wrap(~ input$multiple_group.by[2]) +
                 theme_bw()
             }
 
 
           } else {
 
-            temp <- values$serial_calculated
+            temp <- values$serial_calculated_multiple
             #print(head(temp))
             stupid_graph <- ggplot(data = temp,
                                    aes_string(x = "Tested.Position",
@@ -776,40 +787,43 @@ server <- function(input, output, session) {
       } #close null free position so serial curves
 
       # probability of first response ----
-      if(!is.null(input$free_position)){
-        values$pfr_calculated <- pfr(data = values$free_recall_calculated$DF_Scored,
-                                     position = input$free_position,
-                                     answer = "Answer",
-                                     id = "Sub.ID",
-                                     key = values$answer_key_multiple[ , input$free_key],
-                                     scored = "Scored",
-                                     group.by = c(input$free_group.by))
+      if(!is.null(input$multiple_position)){
+        values$pfr_calculated_multiple <-
+          pfr_multiple(data = values$multiple_recall_calculated$DF_Scored,
+                       position = input$multiple_position,
+                       answer = "Answer",
+                       id = "Sub.ID",
+                       key = values$answer_key_multiple[ , input$multiple_key],
+                       key.trial = values$answer_key_multiple[ , input$multiple_key.trial],
+                       id.trial = input$multiple_id.trial,
+                       scored = "Scored",
+                       group.by = c(input$multiple_group.by))
 
-        output$pfr_data_output <- renderDT(server = F, {
+        output$pfr_data_output_multiple <- renderDT(server = F, {
 
-          datatable(values$pfr_calculated,
+          datatable(values$pfr_calculated_multiple,
                     extensions = 'Buttons',
                     options = list(dom = 'BRtp',
-                                   filename = 'free_pfr',
+                                   filename = 'multiple_pfr',
                                    buttons = c('copy', 'csv', 'excel')),
                     rownames = FALSE) #close datatable
         })
 
-        output$pfr_graph <- renderPlot({
+        output$pfr_graph_multiple <- renderPlot({
 
           #if there are grouping variables
-          if(!is.null(input$free_group.by)){
+          if(!is.null(input$multiple_group.by)){
 
-            if (length(input$free_group.by) == 1){
+            if (length(input$multiple_group.by) == 1){
 
-              temp <- values$pfr_calculated
-              temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+              temp <- values$pfr_calculated_multiple
+              temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
               temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
 
               stupid_graph <- ggplot(data = temp,
                                      aes_string(x = "Tested.Position",
                                                 y = "pfr",
-                                                color = input$free_group.by[1])) +
+                                                color = input$multiple_group.by[1])) +
                 geom_line() +
                 geom_point() +
                 xlab("Tested Position") +
@@ -817,29 +831,29 @@ server <- function(input, output, session) {
                 theme_bw()
             }
 
-            if (length(input$free_group.by) > 1){
+            if (length(input$multiple_group.by) > 1){
 
-              temp <- values$pfr_calculated
-              temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
-              temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
+              temp <- values$pfr_calculated_multiple
+              temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
+              temp[ , input$multiple_group.by[2]] <- factor(temp[ , input$multiple_group.by[2]])
               temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
 
               stupid_graph <- ggplot(data = temp,
                                      aes_string(x = "Tested.Position",
                                                 y = "pfr",
-                                                color = input$free_group.by[1])) +
+                                                color = input$multiple_group.by[1])) +
                 geom_line() +
                 geom_point() +
                 xlab("Tested Position") +
                 ylab("Probability of First Response") +
-                facet_wrap(~ input$free_group.by[2]) +
+                facet_wrap(~ input$multiple_group.by[2]) +
                 theme_bw()
             }
 
 
           } else {
 
-            temp <- values$pfr_calculated
+            temp <- values$pfr_calculated_multiple
             temp$Tested.Position <- as.numeric(as.character(temp$Tested.Position))
             #print(str(temp))
             stupid_graph <- ggplot(data = temp,
@@ -854,43 +868,46 @@ server <- function(input, output, session) {
 
           stupid_graph
         })
-      }
+       } # close pfr section
 
       # conditional response probability ----
-      if(!is.null(input$free_position)){
-        values$crp_calculated <- crp(data = values$free_recall_calculated$DF_Scored,
-                                     position = input$free_position,
-                                     answer = "Answer",
-                                     id = "Sub.ID",
-                                     key = values$answer_key_multiple[ , input$free_key],
-                                     scored = "Scored")
+      if(!is.null(input$multiple_position)){
+        values$crp_calculated_multiple <-
+          crp_multiple(data = values$multiple_recall_calculated$DF_Scored,
+                       position = input$multiple_position,
+                       answer = "Answer",
+                       id = "Sub.ID",
+                       key = values$answer_key_multiple[ , input$multiple_key],
+                       key.trial = values$answer_key_multiple[ , input$multiple_key.trial],
+                       id.trial = input$multiple_id.trial,
+                       scored = "Scored")
 
 
-        output$crp_data_output <- renderDT(server = F, {
+        output$crp_data_output_multiple <- renderDT(server = F, {
 
-          datatable(values$crp_calculated,
+          datatable(values$crp_calculated_multiple,
                     extensions = 'Buttons',
                     options = list(dom = 'BRtp',
-                                   filename = 'free_crp',
+                                   filename = 'multiple_crp',
                                    buttons = c('copy', 'csv', 'excel')),
                     rownames = FALSE) #close datatable
         })
 
-        output$crp_graph <- renderPlot({
+        output$crp_graph_multiple <- renderPlot({
 
           #if there are grouping variables
-          if(!is.null(input$free_group.by)){
+          if(!is.null(input$multiple_group.by)){
 
-            if (length(input$free_group.by)==1){
+            if (length(input$multiple_group.by)==1){
 
-              temp <- values$crp_calculated
-              temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
+              temp <- values$crp_calculated_multiple
+              temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
               temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
 
               stupid_graph <- ggplot(data = temp,
                                      aes_string(x = "participant_lags",
                                                 y = "CRP",
-                                                color = input$free_group.by[1])) +
+                                                color = input$multiple_group.by[1])) +
                 geom_line() +
                 geom_point() +
                 xlab("Lag Distance") +
@@ -898,29 +915,29 @@ server <- function(input, output, session) {
                 theme_bw()
             }
 
-            if (length(input$free_group.by) == 2){
+            if (length(input$multiple_group.by) == 2){
 
-              temp <- values$crp_calculated
-              temp[ , input$free_group.by[1]] <- factor(temp[ , input$free_group.by[1]])
-              temp[ , input$free_group.by[2]] <- factor(temp[ , input$free_group.by[2]])
+              temp <- values$crp_calculated_multiple
+              temp[ , input$multiple_group.by[1]] <- factor(temp[ , input$multiple_group.by[1]])
+              temp[ , input$multiple_group.by[2]] <- factor(temp[ , input$multiple_group.by[2]])
               temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
 
               stupid_graph <- ggplot(data = temp,
                                      aes_string(x = "participant_lags",
                                                 y = "CRP",
-                                                color = input$free_group.by[1])) +
+                                                color = input$multiple_group.by[1])) +
                 geom_line() +
                 geom_point() +
                 xlab("Lag Distance") +
                 ylab("Conditional Response Probability") +
-                facet_wrap(~ input$free_group.by[2]) +
+                facet_wrap(~ input$multiple_group.by[2]) +
                 theme_bw()
             }
 
 
           } else {
 
-            temp <- values$crp_calculated
+            temp <- values$crp_calculated_multiple
             temp$participant_lags <- as.numeric(as.character(temp$participant_lags))
             stupid_graph <- ggplot(data = temp,
                                    aes_string(x = "participant_lags",
@@ -935,7 +952,7 @@ server <- function(input, output, session) {
           stupid_graph
         })
 
-      } #close null free position
+      } #close null free position CRP
 
     }) #close observe event
 
@@ -1260,7 +1277,7 @@ server <- function(input, output, session) {
 
     })
 
-}
+} # close server
 
 # Run the application
 shinyApp(ui = ui, server = server)

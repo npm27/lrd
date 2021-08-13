@@ -3,7 +3,7 @@
 #' This function computes the proportion of correct responses
 #' per participant. Proportions can either be separated by
 #' condition or collapsed across conditions. This function
-#' extends prop_correct_multiple() to include multiple or randomized
+#' extends prop_correct_free() to include multiple or randomized
 #' lists for participants.
 #'
 #' Note: other columns included in the dataframe will be found

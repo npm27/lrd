@@ -48,6 +48,7 @@ wide_tab <-
               p(" "),
               htmlOutput("wide_responsesUI"),
               htmlOutput("wide_idUI"),
+              htmlOutput("wide_repeatedUI"),
               textInput("wide_sep", "What is the separator for the
               participant answers? Be sure to only include a space
                         if you mean to use spaces.", value = ""),

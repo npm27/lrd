@@ -2,7 +2,7 @@
 % Please edit documentation in R/prop_correct_multiple.R
 \name{prop_correct_multiple}
 \alias{prop_correct_multiple}
-\title{Proportion Correct Free Recall fro Multiple Lists}
+\title{Proportion Correct Free Recall for Multiple Lists}
 \usage{
 prop_correct_multiple(
   data,
@@ -71,7 +71,7 @@ scoring.}
 This function computes the proportion of correct responses
 per participant. Proportions can either be separated by
 condition or collapsed across conditions. This function
-extends prop_correct_multiple() to including multiple or randomized
+extends prop_correct_free() to include multiple or randomized
 lists for participants.
 }
 \details{
