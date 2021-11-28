@@ -1,7 +1,5 @@
 # lrd - Lexical Response Data
 
-[![Travis build status](https://travis-ci.com/npm27/lrd.svg?branch=master)](https://travis-ci.com/github/npm27/lrd)
-
 ## Overview
 
 The `lrd` package provides tools for quickly and accurately processing the large amounts of lexical response data that are typically generated from recall tests, while also being able to control for minor errors in participant responses.
