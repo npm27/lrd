@@ -31,7 +31,7 @@ urlchecker::url_check()
 # very slow only run once
 devtools::check_rhub(email = "buchananlab@gmail.com")
 devtools::check_win_devel(email = "buchananlab@gmail.com")
-# this will email you results from the three big platforms
+# this will email you results from three big platforms
 # no macOS, but erin is a macOS
 # got back a note about knitr namespace but has to be
   # vignette builder so there's that
