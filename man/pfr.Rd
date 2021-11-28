@@ -83,10 +83,10 @@ pfr_output <- pfr(data = scored_output$DF_Scored,
  head(pfr_output)
 
 }
-\keyword{correct,}
+\keyword{correct}
 \keyword{free}
 \keyword{position}
 \keyword{proportion}
-\keyword{recall,}
-\keyword{scoring,}
+\keyword{recall}
+\keyword{scoring}
 \keyword{serial}

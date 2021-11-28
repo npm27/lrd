@@ -34,7 +34,7 @@
 #' conditional lag position including any other between subjects
 #' variables present in the data.}
 #'
-#' @keywords proportion correct, scoring, free recall, serial position
+#' @keywords proportion correct scoring free recall serial position
 #' @export
 #' @examples
 #'

@@ -36,7 +36,7 @@
 #' \item{DF_PFR}{A dataframe of the probability of first response
 #' for each position including group by variables if indicated.}
 #'
-#' @keywords proportion correct, scoring, free recall, serial position
+#' @keywords proportion correct scoring free recall serial position
 #' @export
 #' @examples
 #'

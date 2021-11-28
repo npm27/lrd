@@ -76,7 +76,7 @@ they don't agree at all!" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -103,6 +103,9 @@ they don't agree at all!" />
     </li>
     <li>
       <a href="../articles/Free_Recall.html">Free Recall Example</a>
+    </li>
+    <li>
+      <a href="../articles/Multi_Recall.html">Multiple List Free Recall Example</a>
     </li>
     <li>
       <a href="../articles/Sentence_Recall.html">Sentence Recall Example</a>
@@ -177,34 +180,36 @@ for 0 and 1 scoring. If you pass categorical variables, the
 function will return a percent match score between these values.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>#This dataset includes two raters who wrote the word listed by</span>
-<span class='co'>#the participant and rated if the word was correct in the recall</span>
-<span class='co'>#experiment.</span>
-
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>rater_data</span><span class='op'>)</span>
-
-<span class='co'>#Consider normalizing the text if raters used different styles</span>
-<span class='co'>#Calculate percent match for categorical answers</span>
-<span class='fu'>kappa</span><span class='op'>(</span><span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater1_word</span>, <span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater2_word</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 90</div><div class='input'>
-<span class='fu'>kappa</span><span class='op'>(</span><span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater1_score</span>, <span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater2_score</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $p_agree
-#&gt; [1] 40
-#&gt; 
-#&gt; $kappa
-#&gt; [1] -0.2
-#&gt; 
-#&gt; $se_kappa
-#&gt; [1] 0.219089
-#&gt; 
-#&gt; $kappa_LL
-#&gt; [1] -0.6294066
-#&gt; 
-#&gt; $kappa_UL
-#&gt; [1] 0.2294066
-#&gt; </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='co'>#This dataset includes two raters who wrote the word listed by</span></span>
+<span class='r-in'><span class='co'>#the participant and rated if the word was correct in the recall</span></span>
+<span class='r-in'><span class='co'>#experiment.</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>rater_data</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#Consider normalizing the text if raters used different styles</span></span>
+<span class='r-in'><span class='co'>#Calculate percent match for categorical answers</span></span>
+<span class='r-in'><span class='fu'>kappa</span><span class='op'>(</span><span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater1_word</span>, <span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater2_word</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 90</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>kappa</span><span class='op'>(</span><span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater1_score</span>, <span class='va'>rater_data</span><span class='op'>$</span><span class='va'>rater2_score</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $p_agree</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 40</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $kappa</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -0.2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $se_kappa</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.219089</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $kappa_LL</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -0.6294066</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $kappa_UL</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.2294066</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

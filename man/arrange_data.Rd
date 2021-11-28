@@ -54,7 +54,7 @@ DF_long <- arrange_data(
 head(DF_long)
 
 }
-\keyword{arrange,}
-\keyword{data,}
+\keyword{arrange}
+\keyword{data}
 \keyword{long}
-\keyword{wide,}
+\keyword{wide}

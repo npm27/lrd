@@ -2,7 +2,7 @@
 % Please edit documentation in R/pfr_multiple.R
 \name{pfr_multiple}
 \alias{pfr_multiple}
-\title{Probability of First Recall for Multiple LIsts}
+\title{Probability of First Recall for Multiple Lists}
 \usage{
 pfr_multiple(
   data,
@@ -120,10 +120,10 @@ pfr_output <- pfr_multiple(data = scored_output$DF_Scored,
  head(pfr_output)
 
 }
-\keyword{correct,}
+\keyword{correct}
 \keyword{free}
 \keyword{position}
 \keyword{proportion}
-\keyword{recall,}
-\keyword{scoring,}
+\keyword{recall}
+\keyword{scoring}
 \keyword{serial}

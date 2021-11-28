@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -60,6 +60,9 @@
       <a href="../articles/Free_Recall.html">Free Recall Example</a>
     </li>
     <li>
+      <a href="../articles/Multi_Recall.html">Multiple List Free Recall Example</a>
+    </li>
+    <li>
       <a href="../articles/Sentence_Recall.html">Sentence Recall Example</a>
     </li>
   </ul>
@@ -75,13 +78,13 @@
 
       
 
-      </header><script src="Sentence_Recall_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><script src="Sentence_Recall_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Sentence Recall Example</h1>
                         <h4 class="author">Nicholas Maxwell, Erin Buchanan</h4>
             
-            <h4 class="date">2021-08-02</h4>
+            <h4 class="date">2021-11-28</h4>
       
       
       <div class="hidden name"><code>Sentence_Recall.Rmd</code></div>
@@ -93,9 +96,9 @@
 <div id="libraries-and-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#libraries-and-data" class="anchor"></a>Libraries and Data</h1>
-<p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> with the dataset name to learn more about the data.</p>
+<p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code>?</code> with the dataset name to learn more about the data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lrd</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://npm27.github.io/lrd/">lrd</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lrd'</span>
 <span class="co">#&gt; The following object is masked from 'package:base':</span>
@@ -143,7 +146,7 @@
 <li>group.by = column name(s) for grouping variables</li>
 <li>token.split = a value to split the tokens (i.e., words) in the sentence</li>
 </ul>
-<p>Note that the answer key can be in a separate dataframe, use something like <code>answer_key$answer</code> for the key argument and <code>answer_key$id_num</code> for the trial number. Fill in <code>answer_key</code> with your dataframe name and the column name for those columns after the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>.</p>
+<p>Note that the answer key can be in a separate dataframe, use something like <code>answer_key$answer</code> for the key argument and <code>answer_key$id_num</code> for the trial number. Fill in <code>answer_key</code> with your dataframe name and the column name for those columns after the <code>$</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sentence_ouptut</span> <span class="op">&lt;-</span> 
   <span class="fu"><a href="../reference/prop_correct_sentence.html">prop_correct_sentence</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">sentence_data</span>,
@@ -188,7 +191,7 @@
 <div id="output" class="section level1">
 <h1 class="hasAnchor">
 <a href="#output" class="anchor"></a>Output</h1>
-<p>We can use <code>DF_Scored</code> to see the original dataframe with our new scoring columns - also to check if our answer key and participant answers matched up correctly! First, each sentence is stripped of punctuation and extra white space within the function. The total number of tokens, as split by <code>token.split</code> are tallied for calculating <code>Proportion.Match.</code> Then, the tokens are matched using the Levenshtein distance indicated in <code>cutoff</code>, as with the cued and free recall functions. The key difference in this function is how each type of token is handled. The <code>Shared.Items</code> column includes all the items that were matched completely with the original answer (i.e., a <code>cutoff</code> of 0). The tokens not matched in the participant answer are then compared to the tokens not matched from the answer key to create the <code>Corrected.Items</code> column. This column indicates answers that were misspelled but within the cutoff score and were matched to the answer key (i.e., th for the, ths for this). The non-matched items are then separated into <code>Omitted.Items</code> (i.e., items in the answer key not found in the participant answer), and <code>Extra.Items</code> (i.e., items found in the participant answer that were not found in the answer key). The <code>Proportion.Match</code> is calculated by summing the number of tokens matched in <code>Shared.Items</code> and <code>Corrected.Items</code> and dividing by the total number of tokens in the answer key. The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
+<p>We can use <code>DF_Scored</code> to see the original dataframe with our new scoring columns - also to check if our answer key and participant answers matched up correctly! First, each sentence is stripped of punctuation and extra white space within the function. The total number of tokens, as split by <code>token.split</code> are tallied for calculating <code>Proportion.Match.</code> Then, the tokens are matched using the Levenshtein distance indicated in <code>cutoff</code>, as with the cued and free recall functions. The key difference in this function is how each type of token is handled. The <code>Shared.Items</code> column includes all the items that were matched completely with the original answer (i.e., a <code>cutoff</code> of 0). The tokens not matched in the participant answer are then compared to the tokens not matched from the answer key to create the <code>Corrected.Items</code> column. This column indicates answers that were misspelled but within the cutoff score and were matched to the answer key (i.e., “th” for the, “ths” for this). The non-matched items are then separated into <code>Omitted.Items</code> (i.e., items in the answer key not found in the participant answer), and <code>Extra.Items</code> (i.e., items found in the participant answer that were not found in the answer key). The <code>Proportion.Match</code> is calculated by summing the number of tokens matched in <code>Shared.Items</code> and <code>Corrected.Items</code> and dividing by the total number of tokens in the answer key. The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Overall</span>
 <span class="va">sentence_ouptut</span><span class="op">$</span><span class="va">DF_Scored</span>

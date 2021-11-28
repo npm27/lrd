@@ -50,6 +50,6 @@ kappa(rater_data$rater1_word, rater_data$rater2_word)
 kappa(rater_data$rater1_score, rater_data$rater2_score)
 
 }
-\keyword{kappa,}
-\keyword{rating,}
+\keyword{kappa}
+\keyword{rating}
 \keyword{reliability}

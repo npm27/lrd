@@ -76,7 +76,7 @@ key." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -103,6 +103,9 @@ key." />
     </li>
     <li>
       <a href="../articles/Free_Recall.html">Free Recall Example</a>
+    </li>
+    <li>
+      <a href="../articles/Multi_Recall.html">Multiple List Free Recall Example</a>
     </li>
     <li>
       <a href="../articles/Sentence_Recall.html">Sentence Recall Example</a>
@@ -162,7 +165,7 @@ the participant id.</p></td>
     </tr>
     <tr>
       <th>responses</th>
-      <td><p>a column name in the dataframe that containts
+      <td><p>a column name in the dataframe that contains
 the participant answers for each item in quotes (i.e., "column")</p></td>
     </tr>
     <tr>
@@ -181,12 +184,12 @@ a separate dataframe, depending on how your output data is formatted.</p></td>
     <tr>
       <th>id</th>
       <td><p>a column name containing participant ID numbers from
-the original dataframe</p></td>
+the original dataframe.</p></td>
     </tr>
     <tr>
       <th>id.trial</th>
       <td><p>a column name containing the trial numbers
-for the participant data from the original dataframe</p></td>
+for the participant data from the original dataframe.</p></td>
     </tr>
     <tr>
       <th>cutoff</th>
@@ -220,7 +223,7 @@ and suggestions for improvement are welcome.</p></dd>
 <dt>DF_Participant</dt><dd><p>A dataframe of the proportion correct by
 participant, which also includes optional z-scoring, grouping, and
 other variables.</p></dd>
-<dt>DF_group</dt><dd><p>A dataframe of the summary scores by any optional
+<dt>DF_Group</dt><dd><p>A dataframe of the summary scores by any optional
 grouping variables, along with overall total proportion correct
 scoring.</p></dd>
 
@@ -233,48 +236,52 @@ participant dataset (i.e., there's a one to one match of
 participant ID and column information).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>#This data contains cued recall test with responses and answers together.</span>
-<span class='co'>#You can use a separate answer key, but this example will show you an</span>
-<span class='co'>#embedded answer key. This example also shows how you can use different</span>
-<span class='co'>#stimuli across participants (i.e., each person sees a randomly selected</span>
-<span class='co'>#set of trials from a larger set).</span>
-
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>cued_data</span><span class='op'>)</span>
-
-<span class='va'>scored_output</span> <span class='op'>&lt;-</span> <span class='fu'>prop_correct_cued</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>cued_data</span>,
- responses <span class='op'>=</span> <span class='st'>"response"</span>,
- key <span class='op'>=</span> <span class='st'>"key"</span>,
- key.trial <span class='op'>=</span> <span class='st'>"trial"</span>,
- id <span class='op'>=</span> <span class='st'>"id"</span>,
- id.trial <span class='op'>=</span> <span class='st'>"trial"</span>,
- cutoff <span class='op'>=</span> <span class='fl'>1</span>,
- flag <span class='op'>=</span> <span class='cn'>TRUE</span>,
- group.by <span class='op'>=</span> <span class='st'>"condition"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: The number of trials is not the same for every participant.</span>
-#&gt; <span class='warning'>            We will use the max value of trials to calculate proportion</span>
-#&gt; <span class='warning'>            correct. Check your data if this is not intended.</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>scored_output</span><span class='op'>$</span><span class='va'>DF_Scored</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   Trial.ID Sub.ID Responses  key condition Answer Scored
-#&gt; 1        1      2      long long         a   long      1
-#&gt; 2        1     93      long long         a   long      1
-#&gt; 3        1    122      long long         a   long      1
-#&gt; 4        1    105           long         a   long      0
-#&gt; 5        1     17           long         b   long      0
-#&gt; 6        1     61  lengthen long         b   long      0</div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>scored_output</span><span class='op'>$</span><span class='va'>DF_Participant</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   condition Sub.ID Proportion.Correct Z.Score.Group Z.Score.Participant
-#&gt; 1         a      2            0.53750    0.76599878           0.9803657
-#&gt; 2         b      3            0.48750    0.83985588           0.5969490
-#&gt; 3         a      4            0.25625   -1.16238975          -1.1763533
-#&gt; 4         b      5            0.45000    0.50471149           0.3093865
-#&gt; 5         a      6            0.43125    0.03749644           0.1656052
-#&gt; 6         b      7            0.44375    0.44885409           0.2614594</div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>scored_output</span><span class='op'>$</span><span class='va'>DF_Group</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   condition      Mean        SD  N
-#&gt; 1         a 0.4257812 0.1458472 56
-#&gt; 2         b 0.3935268 0.1118921 56</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='co'>#This data contains cued recall test with responses and answers together.</span></span>
+<span class='r-in'><span class='co'>#You can use a separate answer key, but this example will show you an</span></span>
+<span class='r-in'><span class='co'>#embedded answer key. This example also shows how you can use different</span></span>
+<span class='r-in'><span class='co'>#stimuli across participants (i.e., each person sees a randomly selected</span></span>
+<span class='r-in'><span class='co'>#set of trials from a larger set).</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>cued_data</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>scored_output</span> <span class='op'>&lt;-</span> <span class='fu'>prop_correct_cued</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>cued_data</span>,</span>
+<span class='r-in'> responses <span class='op'>=</span> <span class='st'>"response"</span>,</span>
+<span class='r-in'> key <span class='op'>=</span> <span class='st'>"key"</span>,</span>
+<span class='r-in'> key.trial <span class='op'>=</span> <span class='st'>"trial"</span>,</span>
+<span class='r-in'> id <span class='op'>=</span> <span class='st'>"id"</span>,</span>
+<span class='r-in'> id.trial <span class='op'>=</span> <span class='st'>"trial"</span>,</span>
+<span class='r-in'> cutoff <span class='op'>=</span> <span class='fl'>1</span>,</span>
+<span class='r-in'> flag <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span class='r-in'> group.by <span class='op'>=</span> <span class='st'>"condition"</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>The number of trials is not the same for every participant.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span>             We will use the max value of trials to calculate proportion</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span>             correct. Check your data if this is not intended.</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>scored_output</span><span class='op'>$</span><span class='va'>DF_Scored</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Trial.ID Sub.ID Responses  key condition Answer Scored</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1        1      2      long long         a   long      1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2        1     93      long long         a   long      1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3        1    122      long long         a   long      1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4        1    105           long         a   long      0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5        1     17           long         b   long      0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6        1     61  lengthen long         b   long      0</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>scored_output</span><span class='op'>$</span><span class='va'>DF_Participant</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   condition Sub.ID Proportion.Correct Z.Score.Group Z.Score.Participant</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1         a      2            0.53750    0.76599878           0.9803657</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2         b      3            0.48750    0.83985588           0.5969490</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3         a      4            0.25625   -1.16238975          -1.1763533</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4         b      5            0.45000    0.50471149           0.3093865</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5         a      6            0.43125    0.03749644           0.1656052</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6         b      7            0.44375    0.44885409           0.2614594</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>scored_output</span><span class='op'>$</span><span class='va'>DF_Group</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   condition      Mean        SD  N</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1         a 0.4257812 0.1458472 56</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2         b 0.3935268 0.1118921 56</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

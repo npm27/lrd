@@ -43,7 +43,7 @@
 #' grouping variables, along with overall total proportion correct
 #' scoring.}
 #'
-#' @keywords proportion correct, scoring, free recall
+#' @keywords proportion correct scoring free recall
 #' @import stats
 #' @import utils
 #' @export

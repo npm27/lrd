@@ -36,6 +36,5 @@ file.copy(dir("vignettes", full.names=TRUE), "inst/doc", overwrite=TRUE)
 
 devtools::install_github("npm27/lrd")
 
-
 usethis::use_pkgdown()
 pkgdown::build_site()

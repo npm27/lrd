@@ -73,7 +73,7 @@ responses are stored in the same cell and converts it to long format." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -100,6 +100,9 @@ responses are stored in the same cell and converts it to long format." />
     </li>
     <li>
       <a href="../articles/Free_Recall.html">Free Recall Example</a>
+    </li>
+    <li>
+      <a href="../articles/Multi_Recall.html">Multiple List Free Recall Example</a>
     </li>
     <li>
       <a href="../articles/Sentence_Recall.html">Sentence Recall Example</a>
@@ -132,7 +135,7 @@ responses are stored in the same cell and converts it to long format." />
 responses are stored in the same cell and converts it to long format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>arrange_data</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>responses</span>, <span class='va'>sep</span>, <span class='va'>id</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>arrange_data</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>responses</span>, <span class='va'>sep</span>, <span class='va'>id</span>, repeated <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,7 +143,10 @@ responses are stored in the same cell and converts it to long format.</p>
     <tr>
       <th>data</th>
       <td><p>a dataframe of the variables you would like to return.
-Other variables will be included in the returned output in long format.</p></td>
+Other variables will be included in the returned output in long format
+if they represent a one to one match with the participant ID. If you
+have repeated data, please use the repeated argument or run this
+function several times for each trial.</p></td>
     </tr>
     <tr>
       <th>responses</th>
@@ -156,6 +162,14 @@ the participant answers for each item in quotes (i.e., "column")</p></td>
       <td><p>a column name containing participant ID numbers from
 the original dataframe</p></td>
     </tr>
+    <tr>
+      <th>repeated</th>
+      <td><p>(optional) a single column name or set of columns
+that indicate repeated measures columns you would like to
+keep with the data. You should include all columns that are not a one
+to one match with the subject ID (i.e., participants saw multiple
+trials). Please see our vignette for an example.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -168,27 +182,28 @@ the original dataframe</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>#This dataset includes a subject number, set of answers, and</span>
-<span class='co'>#experiment condition.</span>
-
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>wide_data</span><span class='op'>)</span>
-
-<span class='va'>DF_long</span> <span class='op'>&lt;-</span> <span class='fu'>arrange_data</span><span class='op'>(</span>
- data <span class='op'>=</span> <span class='va'>wide_data</span>,
- responses <span class='op'>=</span> <span class='st'>"Response"</span>,
- sep <span class='op'>=</span> <span class='st'>","</span>,
- id <span class='op'>=</span> <span class='st'>"Sub.ID"</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>DF_long</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   Sub.ID response position Disease.Condition
-#&gt; 1      1   basket        1           healthy
-#&gt; 2      1    chair        2           healthy
-#&gt; 3      1  clothes        3           healthy
-#&gt; 4      1   flowrs        4           healthy
-#&gt; 5      1  glasses        5           healthy
-#&gt; 6      1      fan        6           healthy</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='co'>#This dataset includes a subject number, set of answers, and</span></span>
+<span class='r-in'><span class='co'>#experiment condition.</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>wide_data</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>DF_long</span> <span class='op'>&lt;-</span> <span class='fu'>arrange_data</span><span class='op'>(</span></span>
+<span class='r-in'> data <span class='op'>=</span> <span class='va'>wide_data</span>,</span>
+<span class='r-in'> responses <span class='op'>=</span> <span class='st'>"Response"</span>,</span>
+<span class='r-in'> sep <span class='op'>=</span> <span class='st'>","</span>,</span>
+<span class='r-in'> id <span class='op'>=</span> <span class='st'>"Sub.ID"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>DF_long</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Sub.ID response position Disease.Condition</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      1   basket        1           healthy</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      1    chair        2           healthy</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      1  clothes        3           healthy</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4      1   flowrs        4           healthy</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5      1  glasses        5           healthy</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6      1      fan        6           healthy</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

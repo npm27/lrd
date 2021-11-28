@@ -23,7 +23,7 @@ Other variables will be included in the scored output and
 in the participant output if they are a one to one match with
 the participant id.}
 
-\item{responses}{a column name in the dataframe that containts
+\item{responses}{a column name in the dataframe that contains
 the participant answers for each item in quotes (i.e., "column")}
 
 \item{key}{a vector containing the scoring key or data column name.
@@ -112,8 +112,8 @@ head(scored_output$DF_Participant)
 head(scored_output$DF_Group)
 
 }
-\keyword{correct,}
+\keyword{correct}
 \keyword{proportion}
-\keyword{recall,}
-\keyword{scoring,}
+\keyword{recall}
+\keyword{scoring}
 \keyword{sentences}

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Nicholas Maxwell, Erin Buchanan" />
 
-<meta name="date" content="2021-08-13" />
+<meta name="date" content="2021-11-28" />
 
 <title>Sentence Recall Example</title>
 
@@ -40,6 +40,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -140,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 class="title toc-ignore">Sentence Recall Example</h1>
 <h4 class="author">Nicholas Maxwell, Erin Buchanan</h4>
-<h4 class="date">2021-08-13</h4>
+<h4 class="date">2021-11-28</h4>
 
 
 
@@ -244,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="output" class="section level1">
 <h1>Output</h1>
-<p>We can use <code>DF_Scored</code> to see the original dataframe with our new scoring columns - also to check if our answer key and participant answers matched up correctly! First, each sentence is stripped of punctuation and extra white space within the function. The total number of tokens, as split by <code>token.split</code> are tallied for calculating <code>Proportion.Match.</code> Then, the tokens are matched using the Levenshtein distance indicated in <code>cutoff</code>, as with the cued and free recall functions. The key difference in this function is how each type of token is handled. The <code>Shared.Items</code> column includes all the items that were matched completely with the original answer (i.e., a <code>cutoff</code> of 0). The tokens not matched in the participant answer are then compared to the tokens not matched from the answer key to create the <code>Corrected.Items</code> column. This column indicates answers that were misspelled but within the cutoff score and were matched to the answer key (i.e., th for the, ths for this). The non-matched items are then separated into <code>Omitted.Items</code> (i.e., items in the answer key not found in the participant answer), and <code>Extra.Items</code> (i.e., items found in the participant answer that were not found in the answer key). The <code>Proportion.Match</code> is calculated by summing the number of tokens matched in <code>Shared.Items</code> and <code>Corrected.Items</code> and dividing by the total number of tokens in the answer key. The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
+<p>We can use <code>DF_Scored</code> to see the original dataframe with our new scoring columns - also to check if our answer key and participant answers matched up correctly! First, each sentence is stripped of punctuation and extra white space within the function. The total number of tokens, as split by <code>token.split</code> are tallied for calculating <code>Proportion.Match.</code> Then, the tokens are matched using the Levenshtein distance indicated in <code>cutoff</code>, as with the cued and free recall functions. The key difference in this function is how each type of token is handled. The <code>Shared.Items</code> column includes all the items that were matched completely with the original answer (i.e., a <code>cutoff</code> of 0). The tokens not matched in the participant answer are then compared to the tokens not matched from the answer key to create the <code>Corrected.Items</code> column. This column indicates answers that were misspelled but within the cutoff score and were matched to the answer key (i.e., “th” for the, “ths” for this). The non-matched items are then separated into <code>Omitted.Items</code> (i.e., items in the answer key not found in the participant answer), and <code>Extra.Items</code> (i.e., items found in the participant answer that were not found in the answer key). The <code>Proportion.Match</code> is calculated by summing the number of tokens matched in <code>Shared.Items</code> and <code>Corrected.Items</code> and dividing by the total number of tokens in the answer key. The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Overall</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sentence_ouptut<span class="sc">$</span>DF_Scored</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Trial.ID Sub.ID</span></span>
@@ -464,85 +465,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28                              this is the</span></span>
 <span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29                            this is final</span></span>
 <span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30                              this is the</span></span>
-<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Corrected.Items</span></span>
-<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1             &lt;NA&gt;</span></span>
-<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2             &lt;NA&gt;</span></span>
-<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3             &lt;NA&gt;</span></span>
-<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4             &lt;NA&gt;</span></span>
-<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5             &lt;NA&gt;</span></span>
-<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6             &lt;NA&gt;</span></span>
-<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7             &lt;NA&gt;</span></span>
-<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8             &lt;NA&gt;</span></span>
-<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9             &lt;NA&gt;</span></span>
-<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10            &lt;NA&gt;</span></span>
-<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11            &lt;NA&gt;</span></span>
-<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12            &lt;NA&gt;</span></span>
-<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13            &lt;NA&gt;</span></span>
-<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14            &lt;NA&gt;</span></span>
-<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15            &lt;NA&gt;</span></span>
-<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16            &lt;NA&gt;</span></span>
-<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17            &lt;NA&gt;</span></span>
-<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18            &lt;NA&gt;</span></span>
-<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19            &lt;NA&gt;</span></span>
-<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20            &lt;NA&gt;</span></span>
-<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21          anothr</span></span>
-<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22      tis xample</span></span>
-<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23          anothr</span></span>
-<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24            &lt;NA&gt;</span></span>
-<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25            &lt;NA&gt;</span></span>
-<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26            &lt;NA&gt;</span></span>
-<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27            &lt;NA&gt;</span></span>
-<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28            &lt;NA&gt;</span></span>
-<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29              th</span></span>
-<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30            &lt;NA&gt;</span></span>
-<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       Omitted.Items  Extra.Items</span></span>
-<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                              &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                 a         &lt;NA&gt;</span></span>
-<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                              &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                              &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                              &lt;NA&gt;        thing</span></span>
-<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                              &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7                              &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8                         sentences    sentecnes</span></span>
-<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9                               woo         &lt;NA&gt;</span></span>
-<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10                             &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11                              woo         &lt;NA&gt;</span></span>
-<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12                              woo       woohoo</span></span>
-<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13           that participant typed         &lt;NA&gt;</span></span>
-<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14                          is that         &lt;NA&gt;</span></span>
-<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15                             &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16          is that the participant          was</span></span>
-<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17          is that the participant          was</span></span>
-<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18    is thing that the participant sentence was</span></span>
-<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19                          another     an extra</span></span>
-<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20                             &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21                         sentence         &lt;NA&gt;</span></span>
-<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22                             &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23                         sentence         &lt;NA&gt;</span></span>
-<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24                 example sentence          one</span></span>
-<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25                             that         &lt;NA&gt;</span></span>
-<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26                             that         &lt;NA&gt;</span></span>
-<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27                       final that         last</span></span>
-<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28 okay final thing that they typed  ok last one</span></span>
-<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29            okay thing that typed          one</span></span>
-<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30 okay final thing that they typed  ok last one</span></span>
+<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Corrected.Items                    Omitted.Items</span></span>
+<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1             &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2             &lt;NA&gt;                                a</span></span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3             &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4             &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5             &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6             &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7             &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8             &lt;NA&gt;                        sentences</span></span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9             &lt;NA&gt;                              woo</span></span>
+<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10            &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11            &lt;NA&gt;                              woo</span></span>
+<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12            &lt;NA&gt;                              woo</span></span>
+<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13            &lt;NA&gt;           that participant typed</span></span>
+<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14            &lt;NA&gt;                          is that</span></span>
+<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15            &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16            &lt;NA&gt;          is that the participant</span></span>
+<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17            &lt;NA&gt;          is that the participant</span></span>
+<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18            &lt;NA&gt;    is thing that the participant</span></span>
+<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19            &lt;NA&gt;                          another</span></span>
+<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20            &lt;NA&gt;                             &lt;NA&gt;</span></span>
+<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21          anothr                         sentence</span></span>
+<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22      tis xample                             &lt;NA&gt;</span></span>
+<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23          anothr                         sentence</span></span>
+<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24            &lt;NA&gt;                 example sentence</span></span>
+<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25            &lt;NA&gt;                             that</span></span>
+<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26            &lt;NA&gt;                             that</span></span>
+<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27            &lt;NA&gt;                       final that</span></span>
+<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28            &lt;NA&gt; okay final thing that they typed</span></span>
+<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29              th            okay thing that typed</span></span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30            &lt;NA&gt; okay final thing that they typed</span></span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Extra.Items</span></span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          &lt;NA&gt;</span></span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          &lt;NA&gt;</span></span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          &lt;NA&gt;</span></span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          &lt;NA&gt;</span></span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5         thing</span></span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          &lt;NA&gt;</span></span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7          &lt;NA&gt;</span></span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8     sentecnes</span></span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9          &lt;NA&gt;</span></span>
+<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10         &lt;NA&gt;</span></span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11         &lt;NA&gt;</span></span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12       woohoo</span></span>
+<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13         &lt;NA&gt;</span></span>
+<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14         &lt;NA&gt;</span></span>
+<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15         &lt;NA&gt;</span></span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16          was</span></span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17          was</span></span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 sentence was</span></span>
+<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19     an extra</span></span>
+<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20         &lt;NA&gt;</span></span>
+<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21         &lt;NA&gt;</span></span>
+<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22         &lt;NA&gt;</span></span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23         &lt;NA&gt;</span></span>
+<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24          one</span></span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25         &lt;NA&gt;</span></span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26         &lt;NA&gt;</span></span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27         last</span></span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28  ok last one</span></span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29          one</span></span>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30  ok last one</span></span>
 <span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a><span class="co">#Participant</span></span>
 <span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a>sentence_ouptut<span class="sc">$</span>DF_Participant</span>
-<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Condition Sub.ID Proportion.Correct</span></span>
-<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1         a      1          0.9777778</span></span>
-<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         b      2          0.8020635</span></span>
-<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3         a      3          0.8317460</span></span>
-<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4         b      4          0.6457143</span></span>
-<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5         a      5          0.5993651</span></span>
-<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6         b      6          0.6457143</span></span>
-<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Z.Score.Group Z.Score.Participant</span></span>
-<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.9160221           1.5637499</span></span>
-<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     1.1547005           0.3553233</span></span>
-<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.1508220           0.5594568</span></span>
-<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    -0.5773503          -0.7199254</span></span>
-<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    -1.0668441          -1.0386793</span></span>
-<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    -0.5773503          -0.7199254</span></span>
+<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Condition Sub.ID Proportion.Correct Z.Score.Group</span></span>
+<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1         a      1          0.9777778     0.9160221</span></span>
+<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         b      2          0.8020635     1.1547005</span></span>
+<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3         a      3          0.8317460     0.1508220</span></span>
+<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4         b      4          0.6457143    -0.5773503</span></span>
+<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5         a      5          0.5993651    -1.0668441</span></span>
+<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6         b      6          0.6457143    -0.5773503</span></span>
+<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Z.Score.Participant</span></span>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1           1.5637499</span></span>
+<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2           0.3553233</span></span>
+<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3           0.5594568</span></span>
+<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          -0.7199254</span></span>
+<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          -1.0386793</span></span>
+<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          -0.7199254</span></span>
 <span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a><span class="co">#Groups</span></span>
 <span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a>sentence_ouptut<span class="sc">$</span>DF_Group</span>

@@ -52,7 +52,7 @@
 #' grouping variables, along with overall total proportion correct
 #' scoring.}
 #'
-#' @keywords proportion correct, scoring, cued recall
+#' @keywords proportion correct scoring cued recall
 #' @import stats
 #' @import utils
 #' @export

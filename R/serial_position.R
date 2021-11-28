@@ -38,7 +38,7 @@
 #' \item{DF_Serial}{A dataframe of the proportion correct for each
 #' tested position by any optional grouping variables included.}
 #'
-#' @keywords proportion correct, scoring, free recall, serial position
+#' @keywords proportion correct scoring free recall serial position
 #' @import stats
 #' @export
 #' @examples

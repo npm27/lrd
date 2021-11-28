@@ -16,7 +16,7 @@
 #' Other variables will be included in the scored output and
 #' in the participant output if they are a one to one match with
 #' the participant id.
-#' @param responses a column name in the dataframe that containts
+#' @param responses a column name in the dataframe that contains
 #' the participant answers for each item in quotes (i.e., "column")
 #' @param key a vector containing the scoring key or data column name.
 #' This column does not have to be included in the original dataframe.
@@ -55,7 +55,7 @@
 #' grouping variables, along with overall total proportion correct
 #' scoring.}
 #'
-#' @keywords proportion correct, scoring, recall, sentences
+#' @keywords proportion correct scoring recall sentences
 #' @import stats
 #' @import utils
 #' @export

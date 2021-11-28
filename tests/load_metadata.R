@@ -1,6 +1,6 @@
 #' Load Metadata
 #'
-#' This function loads the current metadata avaliable from the
+#' This function loads the current metadata available from the
 #' \href{https://github.com/orgs/SemanticPriming/}{Semantic Priming GitHub Group}.
 #'
 #' @param webaddress The default value for webaddress is the current location

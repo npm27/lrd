@@ -119,10 +119,10 @@ serial_output <- serial_position_multiple(data = scored_output$DF_Scored,
  head(serial_output)
 
 }
-\keyword{correct,}
+\keyword{correct}
 \keyword{free}
 \keyword{position}
 \keyword{proportion}
-\keyword{recall,}
-\keyword{scoring,}
+\keyword{recall}
+\keyword{scoring}
 \keyword{serial}

@@ -23,7 +23,7 @@
 #' \item{kappa_LL}{Lower limit for the confidence interval of kappa}
 #' \item{kappa_UL}{Upper limit for the confidence interval of kappa}
 #'
-#' @keywords rating, kappa, reliability
+#' @keywords rating kappa reliability
 #' @import stats
 #' @export
 #' @examples

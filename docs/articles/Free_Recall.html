@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -60,6 +60,9 @@
       <a href="../articles/Free_Recall.html">Free Recall Example</a>
     </li>
     <li>
+      <a href="../articles/Multi_Recall.html">Multiple List Free Recall Example</a>
+    </li>
+    <li>
       <a href="../articles/Sentence_Recall.html">Sentence Recall Example</a>
     </li>
   </ul>
@@ -75,13 +78,13 @@
 
       
 
-      </header><script src="Free_Recall_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><script src="Free_Recall_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Free Recall Example</h1>
                         <h4 class="author">Nicholas Maxwell, Erin Buchanan</h4>
             
-            <h4 class="date">2021-08-02</h4>
+            <h4 class="date">2021-11-28</h4>
       
       
       <div class="hidden name"><code>Free_Recall.Rmd</code></div>
@@ -93,9 +96,9 @@
 <div id="libraries-and-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#libraries-and-data" class="anchor"></a>Libraries and Data</h1>
-<p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> with the dataset name to learn more about the data.</p>
+<p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code>?</code> with the dataset name to learn more about the data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lrd</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://npm27.github.io/lrd/">lrd</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lrd'</span>
 <span class="co">#&gt; The following object is masked from 'package:base':</span>
@@ -161,7 +164,7 @@
 <a href="#data-cleanup" class="anchor"></a>Data Cleanup</h1>
 <p>Scoring in <code>lrd</code> is case sensitive, so we will use <code><a href="https://rdrr.io/r/base/chartr.html">tolower()</a></code> to lower case all correct answers and participant answers.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">wide_data</span><span class="op">$</span><span class="va">Response</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">wide_data</span><span class="op">$</span><span class="va">Response</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">DF_long</span><span class="op">$</span><span class="va">response</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">DF_long</span><span class="op">$</span><span class="va">response</span><span class="op">)</span>
 <span class="va">answer_key_free</span><span class="op">$</span><span class="va">Answer_Key</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">answer_key_free</span><span class="op">$</span><span class="va">Answer_Key</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="score-the-data" class="section level1">

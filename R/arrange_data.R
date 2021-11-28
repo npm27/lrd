@@ -25,7 +25,7 @@
 #' \item{position}{The position number of the response listed}
 #' \item{other}{Any additional columns included}
 #'
-#' @keywords data, arrange, wide, long
+#' @keywords arrange data wide long
 #' @import stats
 #' @export
 #' @examples

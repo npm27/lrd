@@ -91,8 +91,8 @@ head(scored_output$DF_Participant)
 head(scored_output$DF_Group)
 
 }
-\keyword{correct,}
+\keyword{correct}
 \keyword{free}
 \keyword{proportion}
 \keyword{recall}
-\keyword{scoring,}
+\keyword{scoring}

@@ -1,4 +1,4 @@
-#' Probability of First Recall for Multiple LIsts
+#' Probability of First Recall for Multiple Lists
 #'
 #' This function calculates the probability of first recall
 #' for each serial position. The total number of times an
@@ -40,7 +40,7 @@
 #' \item{DF_PFR}{A dataframe of the probability of first response
 #' for each position including group by variables if indicated.}
 #'
-#' @keywords proportion correct, scoring, free recall, serial position
+#' @keywords proportion correct scoring free recall serial position
 #' @export
 #' @examples
 #'
