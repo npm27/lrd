@@ -36,6 +36,10 @@ devtools::check_win_devel(email = "buchananlab@gmail.com")
 # got back a note about knitr namespace but has to be
   # vignette builder so there's that
 
+# build tar for release
+# https://cran.r-project.org/submit.html
+devtools::build()
+
 # rebuild github stuff
 tools::buildVignettes(dir = ".", tangle=TRUE)
 dir.create("inst/doc")
@@ -43,8 +47,6 @@ file.copy(dir("vignettes", full.names=TRUE), "inst/doc", overwrite=TRUE)
 
 # rebuild site
 pkgdown::build_site()
-
-#
 
 # update on git and reinstall
 devtools::install_github("npm27/lrd")
