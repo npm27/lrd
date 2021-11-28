@@ -44,9 +44,7 @@ file.copy(dir("vignettes", full.names=TRUE), "inst/doc", overwrite=TRUE)
 # rebuild site
 pkgdown::build_site()
 
-# Verify you're ready for release, and release
-# this will create the tar file you upload
-devtools::release()
+#
 
 # update on git and reinstall
 devtools::install_github("npm27/lrd")
