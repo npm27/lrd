@@ -28,7 +28,7 @@ This package contains four functions for scoring data.
 
 In additionally, `arrange_data()` can be used to convert wide format data to long format prior to scoring.
 
-Detailed descriptions of each function are available in the documentation and in the [manuscript](https://osf.io/fmgcy/).
+Detailed descriptions of each function are available in the documentation and in the [manuscript](https://link.springer.com/article/10.3758/s13428-021-01718-y).
 
 You can also use the [Shiny app](https://npm27.shinyapps.io/lrd_shiny/)! For step-by-step instructions on using the Shiny application, see the [how-to-guide](https://www.macapsych.com/lexical-re).
 
