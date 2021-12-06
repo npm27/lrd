@@ -1,10 +1,10 @@
-## ----setup, include = FALSE------------------------
+## ----setup, include = FALSE----------------------------------------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 library(lrd)
 data("multi_data")
 head(multi_data)
@@ -17,7 +17,7 @@ head(multi_answers)
 library(ggplot2)
 library(reshape)
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 DF_long <- arrange_data(data = multi_data,
       responses = "Response",
       sep = " ",
@@ -25,7 +25,7 @@ DF_long <- arrange_data(data = multi_data,
       repeated = "List.Number")
 head(DF_long)
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 multi_answers$position <- 1:nrow(multi_answers) #this column is only to reshape
 answer_long <- melt(multi_answers,
                     measured = colnames(multi_answers),
@@ -42,7 +42,7 @@ answer_long$List.ID <- gsub(pattern = "List",
 
 head(answer_long)
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 DF_long$response <- tolower(DF_long$response)
 answer_long$Answer <- tolower(answer_long$Answer)
 answer_long$Answer <- gsub(" ", "", answer_long$Answer)
@@ -51,7 +51,7 @@ head(DF_long)
 
 head(answer_long)
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 free_output <- prop_correct_multiple(data = DF_long,
                                  responses = "response",
                                  key = answer_long$Answer,
@@ -64,7 +64,7 @@ free_output <- prop_correct_multiple(data = DF_long,
 
 str(free_output)
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 #Overall
 free_output$DF_Scored
 
@@ -74,7 +74,7 @@ free_output$DF_Participant
 #Group
 #free_output$DF_Group
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 serial_output <- serial_position_multiple(data = free_output$DF_Scored,
                                 position = "position", 
                                 answer = "Answer", 
@@ -92,7 +92,7 @@ ggplot(serial_output, aes(Tested.Position, Proportion.Correct, color = List.ID))
   ylab("Probability of First Response") +
   theme_bw() 
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 crp_output <- crp_multiple(data = free_output$DF_Scored,
                   key = answer_long$Answer,
                   position = "position",
@@ -113,7 +113,7 @@ ggplot(crp_output, aes(participant_lags, CRP, color = List.Number)) +
   ylab("Conditional Response Probability") +
   theme_bw()
 
-## --------------------------------------------------
+## ------------------------------------------------------------------------------------------------------------------
 pfr_output <- pfr_multiple(data = free_output$DF_Scored,
                   key = answer_long$Answer,
                   position = "position",

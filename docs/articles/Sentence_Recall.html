@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -78,13 +74,13 @@
 
       
 
-      </header><script src="Sentence_Recall_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Sentence Recall Example</h1>
-                        <h4 class="author">Nicholas Maxwell, Erin Buchanan</h4>
+                        <h4 data-toc-skip class="author">Nicholas Maxwell, Erin Buchanan</h4>
             
-            <h4 class="date">2021-11-28</h4>
+            <h4 data-toc-skip class="date">2021-12-06</h4>
       
       
       <div class="hidden name"><code>Sentence_Recall.Rmd</code></div>
@@ -93,19 +89,19 @@
 
     
     
-<div id="libraries-and-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#libraries-and-data" class="anchor"></a>Libraries and Data</h1>
+<div class="section level1">
+<h1 id="libraries-and-data">Libraries and Data<a class="anchor" aria-label="anchor" href="#libraries-and-data"></a>
+</h1>
 <p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code>?</code> with the dataset name to learn more about the data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://npm27.github.io/lrd/">lrd</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://npm27.github.io/lrd/" class="external-link">lrd</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lrd'</span>
 <span class="co">#&gt; The following object is masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     kappa</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"sentence_data"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sentence_data</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sentence_data"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sentence_data</span><span class="op">)</span>
 <span class="co">#&gt;   Sub.ID Trial.ID                                      Sentence</span>
 <span class="co">#&gt; 1      1        1                           This is a sentence.</span>
 <span class="co">#&gt; 2      1        2                           Woo more sentences!</span>
@@ -122,17 +118,17 @@
 <span class="co">#&gt; 6                             This is sentence.         b</span>
 <span class="co">#?sentence_data</span></code></pre></div>
 </div>
-<div id="data-cleanup" class="section level1">
-<h1 class="hasAnchor">
-<a href="#data-cleanup" class="anchor"></a>Data Cleanup</h1>
-<p>Scoring in <code>lrd</code> is case sensitive, so we will use <code><a href="https://rdrr.io/r/base/chartr.html">tolower()</a></code> to lower case all correct answers and participant answers.</p>
+<div class="section level1">
+<h1 id="data-cleanup">Data Cleanup<a class="anchor" aria-label="anchor" href="#data-cleanup"></a>
+</h1>
+<p>Scoring in <code>lrd</code> is case sensitive, so we will use <code><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower()</a></code> to lower case all correct answers and participant answers.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sentence_data</span><span class="op">$</span><span class="va">Sentence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">sentence_data</span><span class="op">$</span><span class="va">Sentence</span><span class="op">)</span>
-<span class="va">sentence_data</span><span class="op">$</span><span class="va">Response</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">sentence_data</span><span class="op">$</span><span class="va">Response</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">sentence_data</span><span class="op">$</span><span class="va">Sentence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">sentence_data</span><span class="op">$</span><span class="va">Sentence</span><span class="op">)</span>
+<span class="va">sentence_data</span><span class="op">$</span><span class="va">Response</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">sentence_data</span><span class="op">$</span><span class="va">Response</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="score-the-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#score-the-data" class="anchor"></a>Score the Data</h1>
+<div class="section level1">
+<h1 id="score-the-data">Score the Data<a class="anchor" aria-label="anchor" href="#score-the-data"></a>
+</h1>
 <p>You should define the following:</p>
 <ul>
 <li>data = dataframe of participant responses</li>
@@ -160,7 +156,7 @@
                         group.by <span class="op">=</span> <span class="st">"Condition"</span>,
                         token.split <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sentence_ouptut</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sentence_ouptut</span><span class="op">)</span>
 <span class="co">#&gt; List of 3</span>
 <span class="co">#&gt;  $ DF_Scored     :'data.frame':  30 obs. of  11 variables:</span>
 <span class="co">#&gt;   ..$ Trial.ID        : int [1:30] 1 1 1 1 1 1 2 2 2 2 ...</span>
@@ -188,9 +184,9 @@
 <span class="co">#&gt;   ..$ SD       : num [1:2] 0.1908 0.0903</span>
 <span class="co">#&gt;   ..$ N        : int [1:2] 3 3</span></code></pre></div>
 </div>
-<div id="output" class="section level1">
-<h1 class="hasAnchor">
-<a href="#output" class="anchor"></a>Output</h1>
+<div class="section level1">
+<h1 id="output">Output<a class="anchor" aria-label="anchor" href="#output"></a>
+</h1>
 <p>We can use <code>DF_Scored</code> to see the original dataframe with our new scoring columns - also to check if our answer key and participant answers matched up correctly! First, each sentence is stripped of punctuation and extra white space within the function. The total number of tokens, as split by <code>token.split</code> are tallied for calculating <code>Proportion.Match.</code> Then, the tokens are matched using the Levenshtein distance indicated in <code>cutoff</code>, as with the cued and free recall functions. The key difference in this function is how each type of token is handled. The <code>Shared.Items</code> column includes all the items that were matched completely with the original answer (i.e., a <code>cutoff</code> of 0). The tokens not matched in the participant answer are then compared to the tokens not matched from the answer key to create the <code>Corrected.Items</code> column. This column indicates answers that were misspelled but within the cutoff score and were matched to the answer key (i.e., “th” for the, “ths” for this). The non-matched items are then separated into <code>Omitted.Items</code> (i.e., items in the answer key not found in the participant answer), and <code>Extra.Items</code> (i.e., items found in the participant answer that were not found in the answer key). The <code>Proportion.Match</code> is calculated by summing the number of tokens matched in <code>Shared.Items</code> and <code>Corrected.Items</code> and dividing by the total number of tokens in the answer key. The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Overall</span>
@@ -380,11 +376,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Nicholas Maxwell, Erin M. Buchanan.</p>
+  <p></p>
+<p>Developed by Nicholas Maxwell, Erin M. Buchanan.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -392,6 +390,8 @@
 
   
 
+
+  
 
   </body>
 </html>

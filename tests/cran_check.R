@@ -29,8 +29,8 @@ urlchecker::url_check()
 # check on other distributions
 # you can change this to you
 # very slow only run once
-devtools::check_rhub(email = "buchananlab@gmail.com")
-devtools::check_win_devel(email = "buchananlab@gmail.com")
+devtools::check_rhub(email = "nicholas.maxwell@usm.edu")
+devtools::check_win_devel(email = "nicholas.maxwell@usm.edu")
 # this will email you results from three big platforms
 # no macOS, but erin is a macOS
 # got back a note about knitr namespace but has to be

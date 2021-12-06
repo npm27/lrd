@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The LRD Package: A Package for Processing Lexical Response Data • lrd</title>
+<title>LRD: A Package for Processing Lexical Response Data • lrd</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="The LRD Package: A Package for Processing Lexical Response Data">
+<script src="pkgdown.js"></script><meta property="og:title" content="LRD: A Package for Processing Lexical Response Data">
 <meta property="og:description" content="Lexical response data is a package that 
     can be used for processing cued-recall, free-recall, 
     and sentence responses from memory experiments.">
@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -82,41 +78,41 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="lrd---lexical-response-data" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#lrd---lexical-response-data" class="anchor"></a>lrd - Lexical Response Data</h1></div>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="section level1">
+<div class="page-header"><h1 id="lrd---lexical-response-data">lrd - Lexical Response Data<a class="anchor" aria-label="anchor" href="#lrd---lexical-response-data"></a>
+</h1></div>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>The <code>lrd</code> package provides tools for quickly and accurately processing the large amounts of lexical response data that are typically generated from recall tests, while also being able to control for minor errors in participant responses.</p>
 </div>
-<div id="to-install" class="section level2">
-<h2 class="hasAnchor">
-<a href="#to-install" class="anchor"></a>To install:</h2>
+<div class="section level2">
+<h2 id="to-install">To install:<a class="anchor" aria-label="anchor" href="#to-install"></a>
+</h2>
 <p>The following steps will install the development version of <code>lrd</code>. CRAN release coming soon!</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li><p>Install devtools if you do not have it. This package lets install packages hosted on GitHub. <code>install.packages("devtools")</code></p></li>
 <li><p>With devtools installed, you can then install lrd by executing the following: <code>devtools::install_github("npm27/lrd")</code></p></li>
-<li><p>Load the library to get started! <code><a href="https://npm27.github.io/lrd/">library(lrd)</a></code></p></li>
+<li><p>Load the library to get started! <code><a href="https://npm27.github.io/lrd/" class="external-link">library(lrd)</a></code></p></li>
 </ol>
 </div>
-<div id="scoring-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#scoring-data" class="anchor"></a>Scoring data:</h2>
+<div class="section level2">
+<h2 id="scoring-data">Scoring data:<a class="anchor" aria-label="anchor" href="#scoring-data"></a>
+</h2>
 <p>This package contains four functions for scoring data.</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li><p><code><a href="reference/prop_correct_cued.html">prop_correct_cued()</a></code> This function can be used to score cued-recall data.</p></li>
 <li><p><code><a href="reference/prop_correct_free.html">prop_correct_free()</a></code> This function can be used to score data from free recall studies.</p></li>
 <li><p><code><a href="reference/prop_correct_multiple.html">prop_correct_multiple()</a></code> This function can be used to score data from free recall studies when participants study multiple or random lists.</p></li>
 <li><p><code><a href="reference/prop_correct_sentence.html">prop_correct_sentence()</a></code> This function can be used to score sentence recall.</p></li>
 </ol>
 <p>In additionally, <code><a href="reference/arrange_data.html">arrange_data()</a></code> can be used to convert wide format data to long format prior to scoring.</p>
-<p>Detailed descriptions of each function are available in the documentation and in the <a href="https://osf.io/fmgcy/">manuscript</a>.</p>
-<p>You can also use the <a href="https://npm27.shinyapps.io/lrd_shiny/">Shiny app</a>! For step-by-step instructions on using the Shiny application, see the <a href="https://www.macapsych.com/lexical-re">how-to-guide</a>.</p>
+<p>Detailed descriptions of each function are available in the documentation and in the <a href="https://link.springer.com/article/10.3758/s13428-021-01718-y" class="external-link">manuscript</a>.</p>
+<p>You can also use the <a href="https://npm27.shinyapps.io/lrd_shiny/" class="external-link">Shiny app</a>! For step-by-step instructions on using the Shiny application, see the <a href="https://www.macapsych.com/lexical-re" class="external-link">how-to-guide</a>.</p>
 </div>
-<div id="contact" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contact" class="anchor"></a>Contact:</h2>
+<div class="section level2">
+<h2 id="contact">Contact:<a class="anchor" aria-label="anchor" href="#contact"></a>
+</h2>
 <p>We happily take comments and suggestions. Please email <a href="mailto:nicholas.maxwell@usm.edu" class="email">nicholas.maxwell@usm.edu</a>.</p>
 </div>
 </div>
@@ -124,29 +120,42 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a></li>
+<li><a href="https://www.r-project.org/Licenses/LGPL-3" class="external-link">LGPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing lrd</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Nicholas Maxwell <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-4517-8323" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Erin M. Buchanan <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9689-4189" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Nicholas Maxwell <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-4517-8323" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Erin M. Buchanan <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9689-4189" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Nicholas Maxwell, Erin M. Buchanan.</p>
+  <p></p>
+<p>Developed by Nicholas Maxwell, Erin M. Buchanan.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -154,6 +163,8 @@
 
   
 
+
+  
 
   </body>
 </html>

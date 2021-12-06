@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lrd</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -78,13 +74,13 @@
 
       
 
-      </header><script src="Cued_Recall_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Cued Recall Example</h1>
-                        <h4 class="author">Nicholas Maxwell, Erin Buchanan</h4>
+                        <h4 data-toc-skip class="author">Nicholas Maxwell, Erin Buchanan</h4>
             
-            <h4 class="date">2021-11-28</h4>
+            <h4 data-toc-skip class="date">2021-12-06</h4>
       
       
       <div class="hidden name"><code>Cued_Recall.Rmd</code></div>
@@ -93,19 +89,19 @@
 
     
     
-<div id="libraries-and-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#libraries-and-data" class="anchor"></a>Libraries and Data</h1>
+<div class="section level1">
+<h1 id="libraries-and-data">Libraries and Data<a class="anchor" aria-label="anchor" href="#libraries-and-data"></a>
+</h1>
 <p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code>?</code> with the dataset name to learn more about the data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://npm27.github.io/lrd/">lrd</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://npm27.github.io/lrd/" class="external-link">lrd</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lrd'</span>
 <span class="co">#&gt; The following object is masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     kappa</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"cued_recall_manuscript"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cued_recall_manuscript</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"cued_recall_manuscript"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cued_recall_manuscript</span><span class="op">)</span>
 <span class="co">#&gt;   Sub.ID Trial_num          Cue      Target      Answer</span>
 <span class="co">#&gt; 1      1         1 chlorination ideological ideological</span>
 <span class="co">#&gt; 2      1         2        bendy   financial   financial</span>
@@ -115,17 +111,17 @@
 <span class="co">#&gt; 6      1         6    speedball   stopwatch   stopwatch</span>
 <span class="co">#?cued_recall_manuscript</span></code></pre></div>
 </div>
-<div id="data-cleanup" class="section level1">
-<h1 class="hasAnchor">
-<a href="#data-cleanup" class="anchor"></a>Data Cleanup</h1>
-<p>Scoring in <code>lrd</code> is case sensitive, so we will use <code><a href="https://rdrr.io/r/base/chartr.html">tolower()</a></code> to lower case all correct answers and participant answers.</p>
+<div class="section level1">
+<h1 id="data-cleanup">Data Cleanup<a class="anchor" aria-label="anchor" href="#data-cleanup"></a>
+</h1>
+<p>Scoring in <code>lrd</code> is case sensitive, so we will use <code><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower()</a></code> to lower case all correct answers and participant answers.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Target</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Target</span><span class="op">)</span>
-<span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Answer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Answer</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Target</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Target</span><span class="op">)</span>
+<span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Answer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">cued_recall_manuscript</span><span class="op">$</span><span class="va">Answer</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="score-the-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#score-the-data" class="anchor"></a>Score the Data</h1>
+<div class="section level1">
+<h1 id="score-the-data">Score the Data<a class="anchor" aria-label="anchor" href="#score-the-data"></a>
+</h1>
 <p>You should define the following:</p>
 <ul>
 <li>data = dataframe of participant responses</li>
@@ -150,7 +146,7 @@
                                  flag <span class="op">=</span> <span class="cn">TRUE</span>,
                                  group.by <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cued_output</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">cued_output</span><span class="op">)</span>
 <span class="co">#&gt; List of 2</span>
 <span class="co">#&gt;  $ DF_Scored     :'data.frame':  120 obs. of  7 variables:</span>
 <span class="co">#&gt;   ..$ Trial.ID : int [1:120] 1 1 1 1 1 1 2 2 2 2 ...</span>
@@ -167,9 +163,9 @@
 <span class="co">#&gt;   .. ..- attr(*, "scaled:center")= num 0.8</span>
 <span class="co">#&gt;   .. ..- attr(*, "scaled:scale")= num 0.195</span></code></pre></div>
 </div>
-<div id="output" class="section level1">
-<h1 class="hasAnchor">
-<a href="#output" class="anchor"></a>Output</h1>
+<div class="section level1">
+<h1 id="output">Output<a class="anchor" aria-label="anchor" href="#output"></a>
+</h1>
 <p>We can use <code>DF_Scored</code> to see the original dataframe with our new scored column - also to check if our answer key and participant answers matched up correctly! The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Overall</span>
@@ -440,11 +436,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Nicholas Maxwell, Erin M. Buchanan.</p>
+  <p></p>
+<p>Developed by Nicholas Maxwell, Erin M. Buchanan.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -452,6 +450,8 @@
 
   
 
+
+  
 
   </body>
 </html>
