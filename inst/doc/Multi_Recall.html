@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Nicholas Maxwell, Erin Buchanan" />
+
+<meta name="date" content="2021-12-06" />
+
+<title>Multiple List Free Recall Example</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Multiple List Free Recall Example</h1>
+<h4 class="author">Nicholas Maxwell, Erin Buchanan</h4>
+<h4 class="date">2021-12-06</h4>
+
+
+
+<div id="libraries-and-data" class="section level1">
+<h1>Libraries and Data</h1>
+<p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code>?</code> with the dataset name to learn more about the data. This example focuses on expanding the free recall options to include multiple or randomized lists by participant. You will need the data with a “list” or trial ID, as well as a matching answer key with the same ID.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lrd)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;multi_data&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(multi_data)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sub.ID       List.Type                                                           Response List.Number</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1   Cat_Recall_L1     rosemary onionsalt chilli powder ginger gloves bayleaves curry           1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1 AdHoc_Recall_L2       yo-yo top sphere orb spiral satellite bicycle gear hurricane           2</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      1 Unrel_Recall_L3                          bishop desert whale index canteen lantern           3</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      2 Unrel_Recall_L4            canoe dentist vapor solar saloon baby farm nugget valve           4</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      2   Cat_Recall_L5              cheese cloth jersey denim tweed burlap sheepskin lace           5</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      2 AdHoc_Recall_L6 door chair desk table clogs cabinet ship ruler shelf pencil stairs           6</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#?multi_data</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;multi_answers&quot;</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(multi_answers)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        List1     List2  List3   List4        List5         List6</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     NUTMEG  WINDMILL MANUAL   SOLAR      CHIFFON          DOOR</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    VANILLA   DREIDEL DESERT   CANOE       DENIUM        GAZEBO</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      THYME SATELLITE HELMET BLOSSOM CHEESE CLOTH         RULER</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      CUMIN    SPIRAL  CANDY DENTIST       BURLAP ROCKING HORSE</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 ONION SALT   TORNADO  INDEX    MATH      WORSTED         HOUSE</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     CHIVES  PINWHEEL ORPHAN   ACORN       ANGORA          BARN</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#?multi_answers</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span></code></pre></div>
+</div>
+<div id="data-restructuring" class="section level1">
+<h1>Data Restructuring</h1>
+<p>The participant data should be in long format with each answer as one row of data. The participant ID will be repeated by participant, while the trial ID will be repeated by trial. You should use the <code>repeated</code> argument to indicate the information that denotes how the trials are repeated across participants. Note that in our example <code>List.Type</code> and <code>List.Number</code> contain the same information.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DF_long <span class="ot">&lt;-</span> <span class="fu">arrange_data</span>(<span class="at">data =</span> multi_data,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">responses =</span> <span class="st">&quot;Response&quot;</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">repeated =</span> <span class="st">&quot;List.Number&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DF_long)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    response position Sub.ID List.Number</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  rosemary        1      1           1</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 onionsalt        2      1           1</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    chilli        3      1           1</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    powder        4      1           1</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    ginger        5      1           1</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    gloves        6      1           1</span></span></code></pre></div>
+<p>Next, we will restructure the answer key to have one column for the answers and one column for the list ID. We will also relabel the columns (since <code>reshape</code>’s output is vague using <code>variable</code> and <code>value</code>). Last, we need to make sure the list ID column matches the column in our participant data.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>multi_answers<span class="sc">$</span>position <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(multi_answers) <span class="co">#this column is only to reshape</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>answer_long <span class="ot">&lt;-</span> <span class="fu">melt</span>(multi_answers,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">measured =</span> <span class="fu">colnames</span>(multi_answers),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">id =</span> <span class="st">&quot;position&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#fix columns</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(answer_long) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;position&quot;</span>, <span class="st">&quot;List.ID&quot;</span>, <span class="st">&quot;Answer&quot;</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#match list id to participant data, which is only numbers</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#list IDs can be characters or numbers </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>answer_long<span class="sc">$</span>List.ID <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">&quot;List&quot;</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> answer_long<span class="sc">$</span>List.ID)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(answer_long)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   position List.ID     Answer</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        1       1     NUTMEG</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        2       1    VANILLA</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        3       1      THYME</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4        4       1      CUMIN</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        5       1 ONION SALT</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6        6       1     CHIVES</span></span></code></pre></div>
+</div>
+<div id="data-cleanup" class="section level1">
+<h1>Data Cleanup</h1>
+<p>Scoring in <code>lrd</code> is case sensitive, so we will use <code>tolower()</code> to lower case all correct answers and participant answers. In this particular example, all the spaces from the participant answers were removed, so we will also remove them from the answer key.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DF_long<span class="sc">$</span>response <span class="ot">&lt;-</span> <span class="fu">tolower</span>(DF_long<span class="sc">$</span>response)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>answer_long<span class="sc">$</span>Answer <span class="ot">&lt;-</span> <span class="fu">tolower</span>(answer_long<span class="sc">$</span>Answer)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>answer_long<span class="sc">$</span>Answer <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>, answer_long<span class="sc">$</span>Answer)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DF_long)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    response position Sub.ID List.Number</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  rosemary        1      1           1</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 onionsalt        2      1           1</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    chilli        3      1           1</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    powder        4      1           1</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    ginger        5      1           1</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    gloves        6      1           1</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(answer_long)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   position List.ID    Answer</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        1       1    nutmeg</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        2       1   vanilla</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        3       1     thyme</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4        4       1     cumin</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        5       1 onionsalt</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6        6       1    chives</span></span></code></pre></div>
+</div>
+<div id="score-the-data" class="section level1">
+<h1>Score the Data</h1>
+<p>You should define the following:</p>
+<ul>
+<li>data = dataframe of participant responses</li>
+<li>responses = column name of the participant answers</li>
+<li>key = column name of the answer key</li>
+<li>key.trial = list ID denoting the different lists participants completed</li>
+<li>id = column name of the participant id number</li>
+<li>id.trial = column name of the list ID within the participant data (this can be the same column as key.trial)</li>
+<li>cutoff = the Levenshtein distance value you want to use for scoring (0 no changes exactly the same, higher numbers allow more variance in the word)</li>
+<li>flag = calculate z scores for outliers (TRUE/FALSE)</li>
+<li>group.by = column name(s) for grouping variables</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>free_output <span class="ot">&lt;-</span> <span class="fu">prop_correct_multiple</span>(<span class="at">data =</span> DF_long,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">responses =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">key =</span> answer_long<span class="sc">$</span>Answer,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">key.trial =</span> answer_long<span class="sc">$</span>List.ID,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">id.trial =</span> <span class="st">&quot;List.Number&quot;</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">cutoff =</span> <span class="dv">1</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">flag =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(free_output)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ DF_Scored     :&#39;data.frame&#39;:  117 obs. of  6 variables:</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Responses  : chr [1:117] &quot;basil&quot; &quot;basil&quot; &quot;bayleaves&quot; &quot;bayleaves&quot; ...</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ position   : chr [1:117] &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;8&quot; ...</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Sub.ID     : chr [1:117] &quot;5&quot; &quot;3&quot; &quot;1&quot; &quot;3&quot; ...</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ List.Number: chr [1:117] &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; ...</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Answer     : chr [1:117] &quot;basil&quot; &quot;basil&quot; &quot;bayleaves&quot; &quot;bayleaves&quot; ...</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Scored     : num [1:117] 1 1 1 1 1 1 1 0 1 1 ...</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ DF_Participant:&#39;data.frame&#39;:  14 obs. of  4 variables:</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Sub.ID             : chr [1:14] &quot;1&quot; &quot;3&quot; &quot;5&quot; &quot;1&quot; ...</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Proportion.Correct : num [1:14] 0.3 0.45 0.45 0.45 0.45 0.55 0.3 0.35 0.35 0.35 ...</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ List.Number        : chr [1:14] &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;2&quot; ...</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Z.Score.Participant: num [1:14, 1] -1.155 0.577 0.577 -0.577 -0.577 ...</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : NULL</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : NULL</span></span></code></pre></div>
+</div>
+<div id="output" class="section level1">
+<h1>Output</h1>
+<p>We can use <code>DF_Scored</code> to see the original dataframe with our new scored column - also to check if our answer key and participant answers matched up correctly! The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Overall</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>free_output<span class="sc">$</span>DF_Scored</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Responses position Sub.ID List.Number      Answer Scored</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1         basil        8      5           1       basil      1</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         basil        7      3           1       basil      1</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     bayleaves        7      1           1   bayleaves      1</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     bayleaves        8      3           1   bayleaves      1</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     bayleaves        3      5           1   bayleaves      1</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    celeryseed        1      5           1  celeryseed      1</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7   chilipowder        6      3           1 chilipowder      1</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8        chilli        3      1           1        &lt;NA&gt;      0</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9         chyme        3      3           1       thyme      1</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10       cloves        9      3           1      cloves      1</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11        cumin        7      5           1       cumin      1</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12        curry        6      5           1       curry      1</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13        curry        8      1           1       curry      1</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14       ginger        5      1           1      ginger      1</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15       ginger        1      3           1      ginger      1</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16       gloves        6      1           1      cloves      1</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17  horseradish        4      5           1 horseradish      1</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18       nutmeg        2      3           1      nutmeg      1</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19    onionsalt        2      1           1   onionsalt      1</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20    onionsalt        2      5           1   onionsalt      1</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21    onionsalt        4      3           1   onionsalt      1</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22      oregano        9      5           1     oregano      1</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23       powder        4      1           1        &lt;NA&gt;      0</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24     rosemary        1      1           1    rosemary      1</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25     rosemary        5      3           1    rosemary      1</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26         sage       10      5           1        sage      1</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27         salt        5      5           1        &lt;NA&gt;      0</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28      bicycle        4      3           2     bicycle      1</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29      bicycle        7      1           2     bicycle      1</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30       bottle        1      3           2      bottle      1</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31         gear        8      1           2        gear      1</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32    hurricane        9      1           2   hurricane      1</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33    hurricane        9      5           2   hurricane      1</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 34          orb        4      1           2         orb      1</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35          orb        5      5           2         orb      1</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 36     pinwheel        1      5           2    pinwheel      1</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 37    propeller        7      3           2   propeller      1</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 38    propeller        2      5           2   propeller      1</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 39       record        5      3           2      record      1</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 40       record        7      5           2      record      1</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 41     roulette        8      5           2    roulette      1</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 42    satellite        6      1           2   satellite      1</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 43    satellite        8      3           2   satellite      1</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 44       sphere        3      5           2      sphere      1</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 45       sphere        3      1           2      sphere      1</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 46       spiral        3      3           2      spiral      1</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 47       spiral        5      1           2      spiral      1</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 48        spool        6      5           2       spool      1</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 49          top        2      1           2         top      1</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 50          top        4      5           2         top      1</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 51          top        6      3           2         top      1</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 52      tornado       10      5           2     tornado      1</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 53      tornodo        9      3           2     tornado      1</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 54     windmill       11      5           2    windmill      1</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 55        yo-yo        1      1           2       yo-yo      1</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 56        yo-yo        2      3           2       yo-yo      1</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 57       anchor        6      3           3        &lt;NA&gt;      0</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 58       bishop        1      1           3      bishop      1</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 59        candy        8      3           3       candy      1</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 60      canteen        4      3           3     canteen      1</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 61      canteen        5      1           3     canteen      1</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 62       desert        2      1           3      desert      1</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 63       helmet        2      3           3      helmet      1</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 64       hermet        1      3           3      helmet      1</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 65        index        4      1           3       index      1</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 66      lantern        6      1           3     lantern      1</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 67       meteor        5      3           3      meteor      1</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 68          wax        7      3           3         wax      1</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 69        whale        3      1           3       whale      1</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 70        whale        3      3           3       whale      1</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 71         baby        6      2           4        &lt;NA&gt;      0</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 72         cane        5      4           4        cane      1</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 73        canoe        1      2           4       canoe      1</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 74        canoe        6      4           4       canoe      1</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 75      dentist        2      2           4     dentist      1</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 76         farm        4      4           4        farm      1</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 77         farm        7      2           4        farm      1</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 78         funk        1      4           4        funk      1</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 79         math        3      4           4        math      1</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 80       nugget        8      2           4      nugget      1</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 81       outlaw        2      4           4      outlaw      1</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 82         pint        7      4           4        pint      1</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 83       saloon        5      2           4        &lt;NA&gt;      0</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 84        solar        4      2           4       solar      1</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 85        valve        9      2           4       valve      1</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 86        vapor        3      2           4       vapor      1</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 87       bucket        7      4           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 88       burlap        6      2           5      burlap      1</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 89       cheese        1      2           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 90        cloth        2      2           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 91      compost        1      4           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 92        denim        4      2           5      denium      1</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 93       jersey        3      2           5      jersey      1</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 94         lace        8      2           5        lace      1</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95         pick        6      4           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 96         plow        3      4           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 97       shears        5      4           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 98    sheepskin        7      2           5   sheepskin      1</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 99        sieve        2      4           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 100       tweed        5      2           5       tweed      1</span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 101 wheelbarrow        4      4           5        &lt;NA&gt;      0</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 102 baseballbat        1      4           6 baseballbat      1</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 103     cabinet        6      2           6     cabinet      1</span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 104       chair        2      2           6       chair      1</span></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 105       chair        2      4           6       chair      1</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 106       clogs        5      2           6       clogs      1</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 107        desk        3      2           6        desk      1</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 108        desk        4      4           6        desk      1</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 109        door        1      2           6        door      1</span></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 110      pencil        5      4           6      pencil      1</span></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 111      pencil       10      2           6      pencil      1</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 112       ruler        8      2           6       ruler      1</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 113       shelf        9      2           6       shelf      1</span></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 114        ship        7      2           6        ship      1</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 115      stairs       11      2           6      stairs      1</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 116       table        4      2           6       table      1</span></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 117       table        3      4           6       table      1</span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="co">#Participant</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>free_output<span class="sc">$</span>DF_Participant</span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Sub.ID Proportion.Correct List.Number Z.Score.Participant</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1       1               0.30           1          -1.1547005</span></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2       3               0.45           1           0.5773503</span></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3       5               0.45           1           0.5773503</span></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4       1               0.45           2          -0.5773503</span></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5       3               0.45           2          -0.5773503</span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6       5               0.55           2           1.1547005</span></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7       1               0.30           3          -0.7071068</span></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8       3               0.35           3           0.7071068</span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9       2               0.35           4                 NaN</span></span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10      4               0.35           4                 NaN</span></span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11      2               0.30           5           0.7071068</span></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12      4               0.00           5          -0.7071068</span></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13      2               0.55           6           0.7071068</span></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14      4               0.25           6          -0.7071068</span></span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a><span class="co">#Group</span></span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a><span class="co">#free_output$DF_Group</span></span></code></pre></div>
+</div>
+<div id="other-possible-calculations" class="section level1">
+<h1>Other Possible Calculations</h1>
+<div id="serial-position" class="section level2">
+<h2>Serial Position</h2>
+<p>This function prepares the data for a serial position curve analysis or visualization. Please note, it assumes you are using the output from above, but any output with these columns would work fine. The arguments are roughly the same as the overall scoring function. We’ve also included some <code>ggplot2</code> code as an example to help show how you might use our output for plotting. <code>List.ID</code> indicates the list identifier for examining differences in responses between lists.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>serial_output <span class="ot">&lt;-</span> <span class="fu">serial_position_multiple</span>(<span class="at">data =</span> free_output<span class="sc">$</span>DF_Scored,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">position =</span> <span class="st">&quot;position&quot;</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">answer =</span> <span class="st">&quot;Answer&quot;</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">key =</span> answer_long<span class="sc">$</span>Answer,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">key.trial =</span> answer_long<span class="sc">$</span>List.ID,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                <span class="at">scored =</span> <span class="st">&quot;Scored&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">id.trial =</span> <span class="st">&quot;List.Number&quot;</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(serial_output)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tested.Position Freq Proportion.Correct        SE List.ID</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1               1    0          0.0000000 0.0000000       1</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2               3    0          0.0000000 0.0000000       1</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3               4    0          0.0000000 0.0000000       1</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4               5    1          0.3333333 0.2721655       1</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5               7    1          0.3333333 0.2721655       1</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6               8    0          0.0000000 0.0000000       1</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(serial_output, <span class="fu">aes</span>(Tested.Position, Proportion.Correct, <span class="at">color =</span> List.ID)) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tested Position&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Probability of First Response&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="conditional-response-probability" class="section level2">
+<h2>Conditional Response Probability</h2>
+<p>Conditional response probability is the likelihood of answers given the current answer set. Therefore, the column participant_lags represents the lag between the written and tested position (e.g., <em>chair</em> was listed second, which represents a lag of -6 from spot number 8 on the answer key list). The column <code>Freq</code> represents the frequency of the lags between listed and shown position, while the <code>Possible.Freq</code> column indicates the number of times that frequency could occur given each answer listed (e.g., given the current answer, a tally of the possible lags that could still occur). The <code>CRP</code> column calculates the conditional response probability, or the frequency column divided by the possible frequencies of lags.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>crp_output <span class="ot">&lt;-</span> <span class="fu">crp_multiple</span>(<span class="at">data =</span> free_output<span class="sc">$</span>DF_Scored,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">key =</span> answer_long<span class="sc">$</span>Answer,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">&quot;position&quot;</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">scored =</span> <span class="st">&quot;Scored&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">answer =</span> <span class="st">&quot;Answer&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">key.trial =</span> answer_long<span class="sc">$</span>List.ID,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">id.trial =</span> <span class="st">&quot;List.Number&quot;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(crp_output)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sub.ID participant_lags Freq Possible.Freq List.Number CRP</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1              -19    0             0           1 0.0</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1              -18    0             0           1 0.0</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      1              -17    0             0           1 0.0</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      1              -16    0             0           1 0.0</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      1              -15    1             2           1 0.5</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      1              -14    0             0           1 0.0</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>crp_output<span class="sc">$</span>participant_lags <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(crp_output<span class="sc">$</span>participant_lags))</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(crp_output, <span class="fu">aes</span>(participant_lags, CRP, <span class="at">color =</span> List.Number)) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Lag Distance&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Conditional Response Probability&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="probability-of-first-response" class="section level2">
+<h2>Probability of First Response</h2>
+<p>Participant answers are first filtered for their first response, and these are matched to the original order on the answer key list (<code>Tested.Position</code>). Then the frequency (<code>Freq</code>) of each of those answers is tallied and divided by the number of participants overall or by group if the <code>group.by</code> argument is included (<code>pfr</code>).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pfr_output <span class="ot">&lt;-</span> <span class="fu">pfr_multiple</span>(<span class="at">data =</span> free_output<span class="sc">$</span>DF_Scored,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">key =</span> answer_long<span class="sc">$</span>Answer,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">&quot;position&quot;</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">scored =</span> <span class="st">&quot;Scored&quot;</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">answer =</span> <span class="st">&quot;Answer&quot;</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">key.trial =</span> answer_long<span class="sc">$</span>List.ID,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">id.trial =</span> <span class="st">&quot;List.Number&quot;</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pfr_output)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tested.Position Freq       pfr List.ID</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              12    1 0.3333333       1</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              14    1 0.3333333       1</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3              20    1 0.3333333       1</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4               6    1 0.3333333       2</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              13    1 0.3333333       2</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6              14    1 0.3333333       2</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>pfr_output<span class="sc">$</span>Tested.Position <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(pfr_output<span class="sc">$</span>Tested.Position))</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pfr_output, <span class="fu">aes</span>(Tested.Position, pfr, <span class="at">color =</span> List.ID)) <span class="sc">+</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tested Position&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Probability of First Response&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

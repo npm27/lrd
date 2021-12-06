@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Nicholas Maxwell, Erin Buchanan" />
+
+<meta name="date" content="2021-12-06" />
+
+<title>Free Recall Example</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Free Recall Example</h1>
+<h4 class="author">Nicholas Maxwell, Erin Buchanan</h4>
+<h4 class="date">2021-12-06</h4>
+
+
+
+<div id="libraries-and-data" class="section level1">
+<h1>Libraries and Data</h1>
+<p>Please see manuscript for a long description of the following data. We will load the example data, and you can use the <code>?</code> with the dataset name to learn more about the data.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lrd)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;wide_data&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wide_data)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sub.ID                                                                                              Response</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1            basket, chair, clothes, flowrs, glasses, fan, windows, carpet, lamp, picture frame, remote</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      2                                                                  windows, bed, books, shelf, pictures</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      3 bacpack, chair, glasses, mirror, iphone, pillow, stereo, nightstand, computer, door, magazines, quilt</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      4                                vase, blinds, computer, magazine, books, bed, blanket, carpet, dresser</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      5                                                            bed, blankets, closet, windows, books, fan</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      6                                     bed, blankets, dreser, nightstand, end table, stereo, flwrs, vase</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Disease.Condition</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1           healthy</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2           healthy</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3           healthy</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              sick</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              sick</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6              sick</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#?wide_data</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;answer_key_free&quot;</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(answer_key_free)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Answer_Key</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   backpack</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     basket</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        bed</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    blanket</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     blinds</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      books</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#?answer_key_free</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+</div>
+<div id="data-restructuring" class="section level1">
+<h1>Data Restructuring</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DF_long <span class="ot">&lt;-</span> <span class="fu">arrange_data</span>(<span class="at">data =</span> wide_data,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">responses =</span> <span class="st">&quot;Response&quot;</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DF_long)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sub.ID response position Disease.Condition</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1   basket        1           healthy</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1    chair        2           healthy</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      1  clothes        3           healthy</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      1   flowrs        4           healthy</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      1  glasses        5           healthy</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      1      fan        6           healthy</span></span></code></pre></div>
+</div>
+<div id="data-cleanup" class="section level1">
+<h1>Data Cleanup</h1>
+<p>Scoring in <code>lrd</code> is case sensitive, so we will use <code>tolower()</code> to lower case all correct answers and participant answers.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DF_long<span class="sc">$</span>response <span class="ot">&lt;-</span> <span class="fu">tolower</span>(DF_long<span class="sc">$</span>response)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>answer_key_free<span class="sc">$</span>Answer_Key <span class="ot">&lt;-</span> <span class="fu">tolower</span>(answer_key_free<span class="sc">$</span>Answer_Key)</span></code></pre></div>
+</div>
+<div id="score-the-data" class="section level1">
+<h1>Score the Data</h1>
+<p>You should define the following:</p>
+<ul>
+<li>data = dataframe of participant responses</li>
+<li>responses = column name of the participant answers</li>
+<li>key = column name of the answer key</li>
+<li>id = column name of the participant id number</li>
+<li>cutoff = the Levenshtein distance value you want to use for scoring (0 no changes exactly the same, higher numbers allow more variance in the word)</li>
+<li>flag = calculate z scores for outliers (TRUE/FALSE)</li>
+<li>group.by = column name(s) for grouping variables</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>free_output <span class="ot">&lt;-</span> <span class="fu">prop_correct_free</span>(<span class="at">data =</span> DF_long,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">responses =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">key =</span> answer_key_free<span class="sc">$</span>Answer_Key,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">cutoff =</span> <span class="dv">1</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">flag =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">group.by =</span> <span class="st">&quot;Disease.Condition&quot;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(free_output)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ DF_Scored     :&#39;data.frame&#39;:  51 obs. of  6 variables:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Responses        : chr [1:51] &quot;bacpack&quot; &quot;basket&quot; &quot;bed&quot; &quot;bed&quot; ...</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Sub.ID           : num [1:51] 3 1 2 4 5 6 4 6 5 4 ...</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ position         : num [1:51] 1 1 2 6 1 1 7 2 2 2 ...</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Disease.Condition: chr [1:51] &quot;healthy&quot; &quot;healthy&quot; &quot;healthy&quot; &quot;sick&quot; ...</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Answer           : chr [1:51] &quot;backpack&quot; &quot;basket&quot; &quot;bed&quot; &quot;bed&quot; ...</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Scored           : num [1:51] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ DF_Participant:&#39;data.frame&#39;:  6 obs. of  5 variables:</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Disease.Condition  : chr [1:6] &quot;healthy&quot; &quot;healthy&quot; &quot;healthy&quot; &quot;sick&quot; ...</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Sub.ID             : num [1:6] 1 2 3 4 5 6</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Proportion.Correct : num [1:6] 0.393 0.143 0.393 0.321 0.214 ...</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Z.Score.Group      : num [1:6] 0.577 -1.155 0.577 1.155 -0.577 ...</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Z.Score.Participant: num [1:6, 1] 1.082 -1.31 1.082 0.399 -0.626 ...</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;scaled:center&quot;)= num 0.28</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;scaled:scale&quot;)= num 0.105</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ DF_Group      :&#39;data.frame&#39;:  2 obs. of  4 variables:</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Disease.Condition: chr [1:2] &quot;healthy&quot; &quot;sick&quot;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Mean             : num [1:2] 0.31 0.25</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SD               : num [1:2] 0.1443 0.0619</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ N                : int [1:2] 3 3</span></span></code></pre></div>
+</div>
+<div id="output" class="section level1">
+<h1>Output</h1>
+<p>We can use <code>DF_Scored</code> to see the original dataframe with our new scored column - also to check if our answer key and participant answers matched up correctly! The <code>DF_Participant</code> can be used to view a participant level summary of the data. Last, if a grouping variable is used, we can use <code>DF_Group</code> to see that output.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Overall</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>free_output<span class="sc">$</span>DF_Scored</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Responses Sub.ID position Disease.Condition        Answer Scored</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        bacpack      3        1           healthy      backpack      1</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         basket      1        1           healthy        basket      1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3            bed      2        2           healthy           bed      1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4            bed      4        6              sick           bed      1</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5            bed      5        1              sick           bed      1</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6            bed      6        1              sick           bed      1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7        blanket      4        7              sick       blanket      1</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8       blankets      6        2              sick       blanket      1</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9       blankets      5        2              sick       blanket      1</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10        blinds      4        2              sick        blinds      1</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11         books      5        5              sick         books      1</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12         books      2        3           healthy         books      1</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13         books      4        5              sick         books      1</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14        carpet      1        8           healthy        carpet      1</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15        carpet      4        8              sick        carpet      1</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16         chair      1        2           healthy         chair      1</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17         chair      3        2           healthy         chair      1</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18        closet      5        3              sick        closet      1</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19       clothes      1        3           healthy       clothes      1</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20      computer      3        9           healthy      computer      1</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21      computer      4        3              sick      computer      1</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22          door      3       10           healthy          door      1</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23        dreser      6        3              sick       dresser      1</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24       dresser      4        9              sick       dresser      1</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25     end table      6        5              sick          &lt;NA&gt;      0</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26           fan      1        6           healthy           fan      1</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27           fan      5        6              sick           fan      1</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28        flowrs      1        4           healthy       flowers      1</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29         flwrs      6        7              sick          &lt;NA&gt;      0</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30       glasses      3        3           healthy       glasses      1</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31       glasses      1        5           healthy       glasses      1</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32        iphone      3        5           healthy          &lt;NA&gt;      0</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33          lamp      1        9           healthy          lamp      1</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 34      magazine      4        4              sick     magazines      1</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 35     magazines      3       11           healthy     magazines      1</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 36        mirror      3        4           healthy        mirror      1</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 37    nightstand      6        4              sick    nightstand      1</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 38    nightstand      3        8           healthy    nightstand      1</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 39 picture frame      1       10           healthy picture frame      1</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 40      pictures      2        5           healthy          &lt;NA&gt;      0</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 41        pillow      3        6           healthy        pillow      1</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 42         quilt      3       12           healthy         quilt      1</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 43        remote      1       11           healthy        remote      1</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 44         shelf      2        4           healthy         shelf      1</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 45        stereo      3        7           healthy        stereo      1</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 46        stereo      6        6              sick        stereo      1</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 47          vase      6        8              sick          vase      1</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 48          vase      4        1              sick          vase      1</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 49       windows      2        1           healthy       windows      1</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 50       windows      1        7           healthy       windows      1</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 51       windows      5        4              sick       windows      1</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="co">#Participant</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>free_output<span class="sc">$</span>DF_Participant</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Disease.Condition Sub.ID Proportion.Correct Z.Score.Group Z.Score.Participant</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1           healthy      1          0.3928571     0.5773503           1.0819232</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2           healthy      2          0.1428571    -1.1547005          -1.3096965</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3           healthy      3          0.3928571     0.5773503           1.0819232</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              sick      4          0.3214286     1.1547005           0.3986033</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              sick      5          0.2142857    -0.5773503          -0.6263766</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6              sick      6          0.2142857    -0.5773503          -0.6263766</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="co">#Group</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>free_output<span class="sc">$</span>DF_Group</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Disease.Condition      Mean         SD N</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1           healthy 0.3095238 0.14433757 3</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              sick 0.2500000 0.06185896 3</span></span></code></pre></div>
+</div>
+<div id="other-possible-calculations" class="section level1">
+<h1>Other Possible Calculations</h1>
+<div id="serial-position" class="section level2">
+<h2>Serial Position</h2>
+<p>This function prepares the data for a serial position curve analysis or visualization. Please note, it assumes you are using the output from above, but any output with these columns would work fine. The arguments are roughly the same as the overall scoring function. We’ve also included some <code>ggplot2</code> code as an example to help show how you might use our output for plotting. These graphs aren’t too exciting with a small example!</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>serial_output <span class="ot">&lt;-</span> <span class="fu">serial_position</span>(<span class="at">data =</span> free_output<span class="sc">$</span>DF_Scored,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">key =</span> answer_key_free<span class="sc">$</span>Answer_Key,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">position =</span> <span class="st">&quot;position&quot;</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">scored =</span> <span class="st">&quot;Scored&quot;</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">answer =</span> <span class="st">&quot;Answer&quot;</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">group.by =</span> <span class="st">&quot;Disease.Condition&quot;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(serial_output)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Disease.Condition Tested.Position Freq Proportion.Correct        SE</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1           healthy               1    1          0.3333333 0.2721655</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2           healthy               2    1          0.3333333 0.2721655</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3           healthy               3    1          0.3333333 0.2721655</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              sick               3    0          0.0000000 0.0000000</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              sick               4    0          0.0000000 0.0000000</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6              sick               5    0          0.0000000 0.0000000</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(serial_output, <span class="fu">aes</span>(Tested.Position, Proportion.Correct, <span class="at">color =</span> Disease.Condition)) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tested Position&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Probability of First Response&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="conditional-response-probability" class="section level2">
+<h2>Conditional Response Probability</h2>
+<p>Conditional response probability is the likelihood of answers given the current answer set. Therefore, the column participant_lags represents the lag between the written and tested position (e.g., <em>chair</em> was listed second, which represents a lag of -6 from spot number 8 on the answer key list). The column <code>Freq</code> represents the frequency of the lags between listed and shown position, while the <code>Possible.Freq</code> column indicates the number of times that frequency could occur given each answer listed (e.g., given the current answer, a tally of the possible lags that could still occur). The <code>CRP</code> column calculates the conditional response probability, or the frequency column divided by the possible frequencies of lags.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>crp_output <span class="ot">&lt;-</span> <span class="fu">crp</span>(<span class="at">data =</span> free_output<span class="sc">$</span>DF_Scored,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">key =</span> answer_key_free<span class="sc">$</span>Answer_Key,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">&quot;position&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">scored =</span> <span class="st">&quot;Scored&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">answer =</span> <span class="st">&quot;Answer&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(crp_output)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Sub.ID participant_lags Freq Possible.Freq Disease.Condition CRP</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1              -27    0             0           healthy   0</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1              -26    0             0           healthy   0</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      1              -25    0             0           healthy   0</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      1              -24    0             0           healthy   0</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      1              -23    0             0           healthy   0</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      1              -22    0             0           healthy   0</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>crp_output<span class="sc">$</span>participant_lags <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(crp_output<span class="sc">$</span>participant_lags))</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(crp_output, <span class="fu">aes</span>(participant_lags, CRP, <span class="at">color =</span> Disease.Condition)) <span class="sc">+</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Lag Distance&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Conditional Response Probability&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="probability-of-first-response" class="section level2">
+<h2>Probability of First Response</h2>
+<p>Participant answers are first filtered for their first response, and these are matched to the original order on the answer key list (<code>Tested.Position</code>). Then the frequency (<code>Freq</code>) of each of those answers is tallied and divided by the number of participants overall or by group if the <code>group.by</code> argument is included (<code>pfr</code>).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pfr_output <span class="ot">&lt;-</span> <span class="fu">pfr</span>(<span class="at">data =</span> free_output<span class="sc">$</span>DF_Scored,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">key =</span> answer_key_free<span class="sc">$</span>Answer_Key,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">position =</span> <span class="st">&quot;position&quot;</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">scored =</span> <span class="st">&quot;Scored&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">answer =</span> <span class="st">&quot;Answer&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">id =</span> <span class="st">&quot;Sub.ID&quot;</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">group.by =</span> <span class="st">&quot;Disease.Condition&quot;</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pfr_output)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Tested.Position Disease.Condition Freq       pfr</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1               1           healthy    1 0.3333333</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2               2           healthy    1 0.3333333</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3               3           healthy    0 0.0000000</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              27           healthy    0 0.0000000</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              28           healthy    1 0.3333333</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6               1              sick    0 0.0000000</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>pfr_output<span class="sc">$</span>Tested.Position <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(pfr_output<span class="sc">$</span>Tested.Position))</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pfr_output, <span class="fu">aes</span>(Tested.Position, pfr, <span class="at">color =</span> Disease.Condition)) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tested Position&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Probability of First Response&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
