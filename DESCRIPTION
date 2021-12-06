@@ -1,5 +1,5 @@
 Package: lrd
-Title: lrd: A Package for Processing Lexical Response Data
+Title: LRD: A Package for Processing Lexical Response Data
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Nicholas",
